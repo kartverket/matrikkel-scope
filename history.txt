@@ -1,0 +1,905 @@
+1.0.1
+20/11/02
+Bug fix release
+
+* Added SRadioButton(String controlId, Selector selector) as suggested by andys_77 (ludovicc)
+* STextArea can issue controls like STextField, but only when it loses focus (ludovicc)
+* Deprecated the the org.scopemvc.view.swing.SFields.control_on_lost_focus property in ScopeConfig,
+  and replaced it by org.scopemvc.view.swing.XXX.control_settings where XXX is the name of the component it
+  applies for (STextField, SPasswordField, STextArea). Control settings are also configurable on a per-instance
+  basis for those components. Control settings determine if the component should issue a control when the enter key is 
+  pressed, when the focus is lost and when the value is changed by the user. (ludovicc)
+* Introduced JFCUnit for testing the Swing components (ludovicc)
+* Added alpha version for SSortTable (patrik_nordwall, ludovicc)
+* SLabel is disabled only if its attached to a disabled component with the setLabelFor() method (ludovicc, discussion with patrick_nordwall and David Hall)
+* SModelAction, SModelButton are enabled with the bound parameter is not null, and if the bound parameter is a boolean/Boolean, then
+  they are enabled if the bound value is not null and true. (ludovicc)
+* Added get(String key, String defaultValue) to UIStrings (ludovicc)
+* Added support for default buttons from SwingView and SPanel - with method setDefaultButton (ludovicc)
+* Fixed behaviour of STextField regarding how VK_ENTER events are handled, made it similar to JTextField.
+This means that if a STextField has no control id, then pressing Enter will activate the default button on the screen. (ludovicc)
+* Background color for validation failure is configurable (Michael Lee)
+
+1.0
+25/10/02
+Major release with bug fixes and documentation.
+
+* Added SAction, SModelAction, SModelButon. They where in scope_inprogress before (Ludovic Claude)
+* Fixed the behaviour of Scope components at design-time. They work well - in JBuilder at least (ludovicc)
+* Fixed TestDateStringConvertors and TestStringConvertors (ludovicc)
+* Added Nls for more flexible localisation in scope-inprogress (patrik_nordwall)
+* Added Active validation with the possibility to dynamically activate and deactivate widgets in scope-inprogress (patrik_nordwall)
+* Added the possibility to customise the StringConvertors factory (ludovicc)
+* Added supportsStringAsValue() method on StringConvertor for those custom StringConvertors that can't convert a string to an object (ludovicc)
+* Beanify SwingView (ludovicc)
+* Fixed hideAllViews and exit on SwingContext (ludovicc)
+* Documentation in xdoc format (ludovicc)
+* Maven used for building the web site and the project reports (ludovicc)
+* JRefactory PrettyPrint used for formatting the source code according to Sun coding standards (ludovicc)
+* More useful information in the logging messages and the error messages (ludovicc)
+* SComboBox now accepts only selected items contained in its list of items when it's in non-editable mode (ludovicc)
+* SComboBox uses the PropertyEditor coming from EditorManager and ScopeConfig to use custom editors for the value being edited (ludovicc)
+* SComboBoxModel isn't final anymore (ludovicc)
+* All SComponents can be disabled with setEnabled(false) (ludovicc)
+* Javadoc, code cleanup (ludovicc)
+* STextField and SPasswordField fire a control when user changes something then leaves the control. This behaviour can be disabled by setting the org.scopemvc.view.swing.SFields.control_on_lost_focus property in ScopeConfig to false.
+* Added support for multiple selection in SListSelectionModel (patrik_nordwall)
+* Added getID() to Control. This replaces the deprecated getName(), but for comparing IDs you should still prefer to use matchesID().
+
+1.0rc3
+26/5/02
+
+Minor release with bug-fixes. Note that major new functionality
+is now incubated in the "scope-inprogress" CVS module until
+ready to be moved over to the stable "scope" module.
+
+* Fixes to beanify a couple of un-beany Swing components. (ludovicc)
+* Added convenience to set a menuitem accelerator when creating an SMenuitem. (smeyfroi)
+* Fixed SwingContext for JDK1.4. (alenkei and ludovicc)
+* Added ModelButton to scope-inprogress. (sjones)
+* Changed ScopeConfig to be subclassable. (ajackson)
+* Added SComboBox in STable example to scope-inprogress. (Philippe Caron)
+* Added STree to scope-inprogress. (dkodeih)
+
+
+1.0rc2
+27/1/02
+
+Minor release with bug-fixes.
+
+Note that extensions to the XML/XSLT servlet implementation may
+break with this release: I've switched to using JAXP and TRAX APIs now that 
+they have stabilised. Unfortunately this has changed the implementation
+of AbstractXSLPage, breaking subclasses that customize the default behaviour,
+hopefully in a relatively minor way... Sorry! On the plus side the implementation 
+is now more flexible.  :-)
+
+Scope no longer ships with Xerces and Xalan: instead it ships with Saxon which
+can be replaced with Xerces/Xalan or any other JAXP/TRAX compatible libraries.
+
+* Fixed STable's non-standard renderer/editor implementation.
+* Fixed STable's redraw problems.
+* Renamed Debug.assert to Debug.assertTrue for JDK1.4
+* Replaced direct use of log4j with Apache's commons-logging facade 
+  which uses log4j or jdk1.4 if either is available. See Scope readme.txt
+  for futher details.
+* Switched to JAXP/TRAX API instead of dependence on Xerces/Xalan in 
+  AbstractXSLPage. (thanks for the push, waily!)
+* Fixed bug in STextField on navigation through null submodels. (roytman)
+* Fixed ValidationHelper for multiple validation failures in a row. (pisettam)
+* Binary jars are now compressed.
+
+
+1.0rc1
+12/1/02
+
+Minor release with bug fixes and new documentation. I expect another tidy up
+release before the full 1.0 release -- see todo.txt.
+
+Note: public API change: I've derecated Control.getName(). Application developers 
+should be using Control.matchesID() rather than directly accessing the name/id.
+
+* Fixed up STable's creation of its ColumnModel to address Julia's bug reports.
+* Changed STable's behaviour to ModelChangeEvents: this might break some things in
+  real life uses but looks OK so far, and fixes some problems that were found.
+* Refactored ScopeConfig: please read javadoc for ScopeConfig for much easier config.
+  (The changes are backwardly compatible with previous versions, but more convenient to use).
+* Don't log errors in ServletContexts if client breaks connection to server. (Rob Newsome)
+* Addition of slide presentation on using STables, SCombos to documentation. (Julia Reynolds)
+* Extra ctors for STextField and STextArea to match Swing ctors.
+* Small tidy of sorting for SAbstractListModel.
+* Tidy up of javadocs.
+* Added Scope FAQ to documentation.
+* Added STableModel.setEditableColumns() to allow an STable's columns to be
+  defined read-only regardless of the read-write status of the properties being shown.
+* Added "samples.swing.readonly" to demonstrate dynamic changing state of 
+  properties between writable and read-only.
+* Added sample to demonstrate binding of multiple selections to a HashSet property
+  (unfortunately this just proves that multiple selection is currently broken).
+* Removed private methods from SwingContext to allow subclassing.
+
+
+0.9.2
+18/11/01
+
+Minor release fixing various bugs in the Swing implementation, including
+preliminary work on allowing SLists and STables to be sorted (see the SearchResultsView
+in FileFind sample and the SAbstractListModel API), and also introducing the final 
+validation handling strategy for servlet implementations. Log4J initialisation is no 
+longer performed by Scope in the bin and debug builds: applications may configure 
+log4j if required.
+
+The sorting stuff is a bit rough and will be tidied in the next release. I've also noticed
+occasional exceptions while rendering an STable: non-fatal but will be investigated.
+
+* DateStringConvertors try to pick up defaults from config allowing default 
+  date formats to be specified in app's configuration.
+* Fixed DateStringConvertors to use 'non-lenient' DateFormat objects to avoid
+  screwy parsing.
+* Added workaround in STextField and STextArea that prevented them from working 
+  if bound to null at first. The real fix is more complicated but this works until the 
+  proper fix goes in.
+* Scope no longer initialises log4j: application developers should do so if required.
+* Replaced log4j.jar with minimal log4j-core.jar.
+* Added license.txt, scope.readme and history.txt to binary jars.
+* Rationalised servlet's validation failure handling and added it to the Validation sample.
+* Fixed up ListModel collection wrapper to fire events correctly.
+* JSP property tag allows runtime expression of its parameter.
+* SAbstractListModel now can present its elements in sorted order.
+
+
+0.9.1
+11/11/01
+
+Bug fixes and minor feature additions including final refactor of servlet implementation,
+and addition of a proof of concept JSP implementation for future development. Includes
+autoomatic "busy cursor" in Swing implementation.
+
+Note that I can get the JSP implementation to run in Tomcat 3.2.3 but not Tomcat 4.0.1.
+Needs investigation!
+
+* Fixes and (final?) refactor of servlet implementation.
+* Added basic JSP implementation including the start of a custom taglib.
+* Added "Introduction to Scope" presentation to docs (Julia Reynolds).
+* Added automatic initialisation of XSL SystemID (Beat Glattfelder).
+* Added example for servlet requiring user login.
+* Added credits page to project web site.
+* Unit tests for STable and resulting bug fixes.
+* Allowed explicit set of StringConvertor on STextField and SComboBox.
+* Added simple automatic "busy cursor" handling.
+* Changed semantics of accessing non-existent properties: get now returns
+  null if traversal through null properties, set throws UnsupportedOperationException.
+  The View implementation should handle that correctly. To test whether a property 
+  exists before doing a get or set use PropertyManager.hasProperty().
+* Added active BasicModel wrapper for java.util.Set: SetModel.
+
+
+0.9.0
+4/11/01
+
+Major release introduces the final new features for v1.0 release. This completes the 
+Swing implementation with bound List, Table and ComboBox, as well as partial support 
+for bound multiple selections for Lists and Table. This release also introduces a new 
+sample TimeSheet application. Work now continues on bug-fixing for the production 
+release.
+
+The new work on STable is not as thoroughly unit tested as the rest of the code. 
+Full automatic two way binding for multiple selections is not yet complete.
+This work is in progress and will be included in the next release.
+
+* Added error handler for trying to get ModelManagers for a null model.
+* Consolidated implementation of Swing ListModel, TableModel and ComboBoxModel.
+* Allow List and ComboBox to bind to a static model at setup time.
+* Added ListModelAdapter and ListModelSource (roytman).
+* Added Timesheet sample application (mosesjones).
+* Cleaned up samples that use Combos and Tables.
+* Removed org.scopemvc.model.util.CommonSelectors.
+* Added combobox sample into the main LaunchpadLauncher.
+* Added multiple selection for SList and STable.
+
+
+0.8.0
+20/10/01
+
+Major release introducing new build strategy for optimized, non-debug 
+production distributions and simple "one-click" runnable samples for
+both Swing and Servlet environments. Addition of complex "File Find"
+sample application, numerous bug-fixes and reorganisation of CVS 
+repository to help new contributors.
+
+Next steps during the 0.8.x releases are completion of both Swing and Servlet
+implementations in preparation for full production release.
+
+* Clean up of filefind sample.
+* Integrated filefind sample into Launchpad.
+* Added simple Activemodel sample.
+* Fixed setViewBounds(CENTERED).
+* Changed screenshot for project to the filefind application.
+* Added complex active sample in samples.swing.activesubmodel.
+* Cleaned up build.xml and updated for Ant 1.4.1.
+* Verified servlet operation with Tomcat 4.0.1.
+* New distribution structure in build.xml includes optimized, non-debug runtime build.
+* New "scope" module in CVS to replace old "src" module. Includes full build environment.
+* Added unit tests for validation state of SCheckBox, SRadioButton, SSlider.
+* Minor tidy up of STable and helpers.
+* Fix for ever-growing controller pool in ScopeServlet.
+* Tidied up validation handling in servlet implementation.
+* Tidied up activesubmodel sample.
+* Tidied up validation servlet sample.
+* Tidy up of BasicModel internals.
+* Removed ModelException -- major change to internal model handling.
+
+
+0.7.4
+15/10/01
+
+A clean up release including a lot of internal rework and some
+minor evolution of public APIs. Also some new Swing functionality
+including addition of SPasswordField and SSlider. See history.txt for
+full description.
+
+* Added SSlider.
+* Added SPasswordField.
+* Added ability to centre SwingViews on the screen: see SwingView.setViewBounds(CENTRED).
+* SListModel binds to properties not just models, and now handles Object[] too.
+* SSingleListSelectionModel handles validation failures.
+* Added unit tests for SRadioButton.
+* Tidied SList impl including proper handling of read-only selection.
+* Rationalised ViewContext by removing ViewContextFactory. Note: public API changes.
+* Rationalised Controller chain of responsibility management. Note: public API changes.
+* Tidy up of Controller/BasicController unit tests.
+* Added ability to do an internal servlet redirect using ScopeServlet.redirect().
+* Added DynamicInvokable for BeansActionManager.
+* Deprecated SwingView.setLastShownBounds and getLastShownBounds. Use setViewBounds etc.
+* Tidy up of StringConvertor internals.
+* Tidy up of Beans ModelManager internals.
+* Fixed bug in ScopeServlet that prevented webapps with multiple servlets from working.
+* Added initial cut of servlet demonstrating form entry validation: demonstrates need for better exception handling.
+* Various other bits of tidy up.
+
+
+0.7.3
+11/10/01
+
+Release including danmi's latest Swing work including initial implementations
+of JTable and JComboBox.
+
+* Added JComboBox impl (danmi)
+* Added JTable impl (danmi)
+* Fixed reported bug in SLabel
+
+
+0.7.2
+6/10/01
+
+A release continuing the refactor and tidy of servlet implementation.
+The servlet implementation is considerably changed in this release, although
+the public API is relatively untouched. However, the mechanics of servlet request 
+handling are much more straightforward now, and should allow alternative
+implementations to be fitted on top more easily. However, all handling of 
+session state has been removed although the session is now available in the
+ServletContext during a request.
+
+* Overhaul of org.scopemvc.view.servlet.xml.*
+* Overhaul of org.scopemvc.controller.servlet.*
+* Addition of unit tests for ...controller.servlet.* and ...view.servlet.xml.*
+* Various bug fixes.
+
+
+0.7.1
+30/9/01
+
+Minor release, mainly to bring documentation and samples 
+up to date with current state of code, and to start the final
+refactor of the servlet implementation. Servlet docs still lacking
+until that subsystem stabilises.
+
+* Lots of work on documentation.
+* Refactor of org.scopemvc.view.servlet package.
+* Tidy up servlet sample for future addition of more sample web applications.
+* Tidy up of new StringConvertors.
+* Added a couple of unit tests for new StringConvertors.
+
+
+0.7.0
+24/9/01
+
+Major release introducing new namespace, refactor of StringConvertors 
+(thanks danmi!), fix for long-standing issues with BasicModel implementation
+and many other fixes both major and minor.
+
+Next steps are continual bug-fixing and addition of the last few unit-tests for
+the XML/XSLT processing. Work is in progress to bring the Swing implementation
+to completion. Also need to complete a useful set of examples
+and documentation.
+
+* Fixed bugs in StringConvertors and moved into separate package. (danmi)
+* Fixed bugs in BasicModel.
+* Made ModelChangeEvent delivery synchronous.
+* Moved runtime namespace to "org.scopemvc.*".
+* Moved test namespace to "test.*".
+* Moved examples namespace to "samples.*".
+* Fixed config bug that stopped servlets from running in last release(?).
+* Fixed servlet example to show population of view from model.
+* Don't serialise LIST property of ListModel in ServletXSLView.
+* Properly handle circular model graphs in ServletXSLView.
+* Added default "pass-through" of XML if no XSLT specified for a ServletXSLView.
+* Added showView(View) and hideView(View) conveniences in BasicController.
+* Added Swing Multiview example.
+* Other minor fixes.
+* Fixed javadoc so no warnings about missing @links.
+
+Changes to public API:
+* On Swing components, setSelector(String) is now setSelectorName(String).
+* All references to "com.smeyfroi.scope" package need to be changed to "org.scopemvc".
+
+
+0.6.1
+2/9/01
+
+Bugfixes, some updates to documentation and the first servlet example
+are included in this minor release. The old "file browser" demonstration
+has been removed completely. The examples provide a much better
+platform for learning Scope.
+
+Changes to public API:
+* ControlButton is now SButton
+* ControlMenuItem is now SMenuItem
+
+
+0.6.0
+18/8/01
+
+This is a formal release of the recent refactoring work,
+particularly on the model and swing implementations.
+
+The big news is:
+* The Swing implementation is more complete and actually works now,
+  being backed up with a suite of unit tests.
+* The model implementation is decoupled and less intrusive than it used to be. 
+  Users of the framework can now decide whether to use standard Javabean
+  model objects that are not linked into Scope's model implementation,
+  or to use Scope's BasicModel base class to implement models that tie in
+  more closely. The former choice means that Swing GUIs need to be told
+  to refresh() manually when their bound model changes state, while the
+  latter allows fully automatic two-binding.
+  
+NB: Changes to public API! See below.
+
+The new implementation also opens the way to alternative model 
+implementations, for example to allow JMX MBeans to plug into the 
+framework.
+
+Note that in this release, the BasicModel implementation is still broken
+such that ModelChangeEvent despatch will probably fail for BasicModel
+subclasses that implement equals() and/or hashcode(). This is now
+very high on the list of things to fix.
+  
+
+Changes: (see also the change list for release 0.6.0pre1 below)
+* Rename of Swing components to sensible naming scheme.
+* Rename and repurpose Model to ModelChangeEventSource.
+* Remove SelectorIterator in favour of standard Iterator implementations.
+* Tidy of all imports.
+* Tutorials in sync with current state of sources.
+* Documentation in sync with current state of sources (though a little incomplete).
+* Convenience methods for setting up Selectors on Swing widgets using String descriptions.
+* Lots of tidying up.
+
+Details of API changes: (see also the change list for release 0.6.0pre1 below)
+* Replace "BoundLabel" with "SLabel".
+* Replace "CheckBox" with "SCheckBox".
+* Replace "List" with "SList".
+* Replace "ListCellRenderer" with "SListCellRenderer".
+* Replace "ListModel" with "SListModel".
+* Replace "Panel" with "SPanel".
+* Replace "SingleListSelection" with "SSingleListSelection".
+* Replace "TextArea" with "STextArea".
+* Replace "TextField" with "STextField".
+* Replace references to "Model" with "ModelChangeEventSource".
+* Replace uses of "SelectorIterator" with "java.util.Iterator" that iterates over Selectors.
+
+
+
+0.6.0pre1
+12/8/01
+
+NB: Changes to public API! See below.
+
+This release can be considered a bug-fix release for those using earlier
+0.5.x versions. However, in reality it represents work in progress that
+will soon result in a full 0.6.0 release, featuring a heavily refactored internal
+implementation and a much simpler and more flexible public API.
+
+Changes:
+* Addition of more Swing example applications.
+* Bug fixes in servlet implementation.
+* Major reworking of model properties, actions and editors/viewers around decoupled
+  ModelManagers. This change deprecates methods in BasicModel concerned with
+  properties and actions.
+* Added full support for JavaBeans indexed properties in the default PropertyManager.
+* Reworked Selectors including some API changes (see below).
+* Major reworking of Swing implementation including addition of unit test suite. This
+  involves some changes to the public API (see below).
+* Added better error handling: assertions are now used only to test internal integrity
+  of the framework and RuntimeExceptions are used in validating paramters to
+  the public API.
+* Added support for java.util.List and Object[] as models.
+* Removed most of the Model interface which may disappear or turn into a 
+  ModelChangeEventSource interface.
+* Removed most of BasicModel to follow the Model interface.
+* Removed the need for application developers to initialise the Swing ViewContext.
+* Started reworking the documentation to match the current implementation, and to 
+  provide a simple introduction to the use of Scope rather than details of its internals.
+
+Details of API changes:
+* Replace SelectorFactory.createFromSelectorDescription(String) with Selector.fromString(String).
+* Replace SelectorFactory.get(String) and SelectorFactory.getConstant(String) with Selector.fromString(String).
+* Replace SelectorFactory.get(int) with Selector.fromInt(int).
+* Replace List.setTextSelector(Selector) with List.setRendererSelector(Selector)
+* Replace List.setIconSelector(Selector) with List.setRendererIconSelector(Selector)
+* (Optional) Remove setup of ViewContext from Swing applications:
+        ViewContextFactory.getInstance().setGlobalContext(new SwingContext());
+  This is now done automatically when a SwingView is created.
+* BasicModel and Model have been severely pruned. See PropertyManager, ActionManager
+  and EditorManager for replacements. I can't imagine this affects anyone using
+  Scope to build applications, but I know it impacts some extensions built on top of Scope.
+* Replace overrides of BasicModel.isPropertyReadOnly(Selector) with an implementation
+  of org.scopemvc.model.beans.DynamicReadOnly.
+  
+
+
+0.5.4
+4/7/01
+* Addition of second and third example applications, and the "Launcher" application.
+* Added a build target that delivers a runtime version of Scope without unit tests or sample code. 
+  (Currently the runtime version still has assertions enabled and debug information compiled into the classes.)
+* Added hooks for form entry validation in the servlet implementation.
+* Reworked the Swing implementation and added more bound widgets.
+* Cleaned up the Controller and View management -- this looks much better now.
+* Changed documentation to reflect the new Controller life-cycle.
+
+
+0.5.3
+28/6/01
+Minor bug fixes.
+
+
+0.5.2
+27/6/01
+Minor bug fixes and addition of first example application.
+
+
+
+0.5.0
+25/6/01
+This release is part of a major refactoring that will result in a 0.6.0 version.
+The refactoring will make Scope more modular and easier to use.
+
+Currently, the View management, Controller chain of responsibility, and
+dependence of View/Controller on the Scope Model implementation have
+all been refactored. Work has also begun on adding clean examples, and on
+adding more Swing widgets.
+
+
+
+0.4.0
+19/6/01
+A long-awaited major release of Scope following a prolonged 
+sequence of 0.3.X releases.  This distribution includes: a Model class 
+based on the standard JavaBeans API; much improved Controller and View 
+management; more complete unit tests; better documentation; and many bug 
+fixes.  It includes work by the project's newest contributor, Simon 
+Harris.  Scope is now offered under a BSD style license to simplify the 
+legal issues around commercial use.  
+
+The distribution includes an incomplete view implementation for Swing GUIs 
+and a full view implementation for servlet applications based on XML/XSLT.  
+Both implementations offer transparent round-trip data-synchronization 
+between Model and View, and enable very consistent styles of coding that 
+hide the details of the application context from the developer.  
+
+Scope has been used successfully in developing commercial web applications 
+and has been used as a basis for development of alternate UI layers 
+including VoiceXML.  
+
+Future releases of Scope will move the concept of a generic MVC implementation 
+forward in some huge steps. Watch for news of future plans on the web site...
+this will be very cool!
+
+
+
+0.4.0pre6
+29/5/01
+Final preparation for major 0.4.0 release that will not be 
+backwardly compatible with the 0.3.x releases.
+
+- Upgrade to Ant 1.3, JUnit 3.7, Log4J 1.1.1, Xalan 2.1.0, Xerces 1.4.0, JSDK 2.2
+  (the latter introduces 5 deprecation warnings... roll on Tomcat 4 and JSDK 2.3!)
+- Added unit test for AWTUtilities
+- Minor bug fixes
+- Minor changes to documentation
+- Binary distribution includes a .war for servlet deployment
+
+
+0.4.0pre5
+19/5/01
+Preparation for major 0.4.0 release that will not be backwardly compatible with the 0.3.x releases.
+- Fixes to ...controller.servlet package
+- Addition of unit tests for ...controller.servlet package
+- Incomplete revision of controller documentation
+
+
+0.4.0pre2
+7/5/01
+Preparation for major 0.4.0 release that will not be backwardly compatible with the 0.3.x releases.
+- Tidy of servlet/controller implementation
+- Addition of ListModel
+- Lots of minor fixes
+
+
+0.4.0pre1
+25/4/01
+Preparation for major 0.4.0 release that will not be backwardly compatible with the 0.3.x releases.
+- Addition of object pooling
+- Refactor of Controller's chain of responsibility for ease of use
+- Refactor of Servlet implementation for ease of use
+
+
+0.3.35
+8/4/01
+- Addition of more documentation
+
+
+0.3.34
+3/4/01
+Interim release.
+- More work on default servlet impl to make sample web app work.
+- Changed toString() impls to use "()" instead of "<>" which confuses XML/HTML output.
+- New improved ModelAction implementation washes whiter.
+
+
+0.3.33
+1/4/01
+Interim release.
+- Minor refactor to servlet impl to allow easier extension by subclassing.
+
+
+0.3.32
+26/3/01
+Interim release.
+- Tidy up of unused imports.
+- Minor servlet fixes.
+- Work on making sample browser app work as a servlet again.
+- Added .war target to build file.
+
+
+0.3.30
+24/3/01
+Interim release.
+- More minor changes to servlet XML/XSL implementation.
+- Changed to using Log4J for all logging.
+- Removed all CVS Log tags.
+
+
+0.3.24
+11/3/01
+Interim release.
+- Start of work on improved documentation.
+
+
+0.3.23
+8/3/01
+Interim release.
+- Subclass ServletXSLView to do debug and funky XML stuff rather than ModelToSAX. Allows more flexibility with including external XML etc.
+
+
+0.3.22
+7/3/01
+Interim release.
+- Allow soft-link to subclass of ModelToSAX
+
+
+0.3.21
+7/3/01
+Interim release.
+- Simpler XML generated by default ModelToSAX
+
+
+0.3.18
+5/3/01
+Interim release.
+- Servlet XML/XSL stuff.
+
+
+0.3.17
+5/3/01
+Interim release.
+- Servlet XML/XSL stuff.
+
+
+0.3.16
+5/3/01
+Interim release.
+- Servlet XML/XSL stuff.
+
+
+0.3.15
+5/3/01
+Interim release.
+- Servlet XML/XSL stuff.
+
+
+0.3.14
+2/3/01
+Interim release.
+- Servlet XML/XSL stuff.
+
+
+0.3.13
+2/3/01
+Interim release.
+- Fixes to servlet and XML/XSL stuff.
+
+
+0.3.12
+Interim release.
+- Fixes to servlet and XML/XSL stuff.
+
+
+0.3.11
+22/02/01
+Interim release.
+
+Summary of changes:
+- XML production for primitive arrays.
+- Compiled XSL template cache.
+- Don't XML-serialise null properties.
+
+
+0.3.10
+21/02/01
+Interim release.
+
+Summary of changes:
+- Minor bug fixes to servlet stuff.
+- Addition of setSystemID() API to allow loading XSL from a base URI.
+
+
+0.3.9
+20/02/01
+Interim release.
+
+Summary of changes:
+- XSL embedding stuff.
+
+
+0.3.8
+18/02/01
+Interim release.
+
+Summary of changes:
+- Refactor of servlet XSL embedded view stuff: can do view containment using ServletXSLView.
+- Tidy up of sample browser application.
+
+
+0.3.7
+17/02/01
+Refactor of Controller/Control stuff for better ease of use 
+and to clarify where commands are executed.
+
+
+0.3.6
+16/02/01
+Fixes to Swing Textfield, servlet stuff, and addition of DateStringConvertor.
+
+
+0.3.5
+14/02/01
+Bugfix to debug code in AbstractSelector.
+
+
+0.3.4
+04/02/01
+Interim release. Includes debugged, unit-tested core 
+APIs and implementations, but the sample application 
+and View subsystem still needs further work.
+
+Summary of changes:
+- Re-introduction of junit tests for most packages.
+- Debugging of the work since 0.3.0.
+- Rework of the XML/XSL implementation for servlets.
+
+
+0.3.3
+28/01/01
+Interim release of just source and documentation.
+
+More work needed in View subsystem, plus unit tests and tidy up/documentation.
+
+Summary of changes:
+- Addition of PropertyEditor support
+- Addition of StringConvertors
+- Rework of XML stuff to use StringConvertors
+- Tidy up of View stuff
+
+
+0.3.2
+18/01/01
+Another interim release of just source and documentation.
+
+Summary of changes:
+- Further tidy up and addition of documentation
+
+
+0.3.1
+16/01/01
+An interim release of just sources and documentation. 
+This has most of a JavaBeans compatibility layer for 
+Models, a new ModelAction concept for invoking arbitrary 
+methods on Models that fixes the design problems with 
+Models implementing collections, major refactoring and 
+simplification of some of the core packages, completely 
+new documentation for those packages aimed at making 
+Scope easy to use.
+
+All the above work is ongoing and while this release builds 
+successfully, some of the unit tests are commented out 
+pending rework to catch up with the refactoring, and 
+therefore the code probably doesn't run successfully.
+
+New interim releases with further increments of this 
+work should follow quite quickly, leading up to a release 
+of stable, well documented core functionality in v0.4.0.
+
+Summary of changes:
+- Partial implementation of JavaBeans compatibility
+- Addition of ModelAction
+- Refactoring of core functionality to simplify and aid ease of use
+- Partial new documentation to aid ease of use
+
+
+0.3.0
+29/12/00
+Another major step forward: this release contains 
+a sample application running as both a Swing application 
+and as a web-based servlet application! The only 
+difference between the two is the views that are 
+used: Swing views versus XSL views. How cool is 
+that?!
+
+Instructions for running the samples are given in 
+the readme, and more details are available in 
+docs/browser.html
+
+The plan now is to complete, document and unit 
+test the current codebase so that v0.4.0 contains 
+a stable core that fully supports Swing and servlets. 
+Full sets of view components, code generators and 
+automatic form layouts will follow in future releases 
+after this consolidation phase.
+
+Summary of changes:
+- Further work on servlet implementation using XSL Views.
+- Removal of XML Views.
+- Upgrade to Xalan v2.0D5 and Xerces 1.2.2.
+- Work on sample file browser application to work in Swing and servlets.
+- Changed name of "Command" classes to be "Control" classes.
+- Added some documentation on the sample browser applications.
+
+
+0.2.0
+17/12/00
+This represents a major release that includes a 
+sample file-browser application written using 
+Scope in a Swing context. Although a very 
+simple demonstration, the sample sources are 
+worth examining -- I believe they demonstrate 
+how effective the Scope framework is in simplifying 
+GUI development and in partitioning presentation, 
+application and business logic. Most of the source 
+code lies in the Model classes that build a simple 
+JavaBeans model to represent the filesystem. The 
+application itself is relatively trivial.
+
+The binary distribution includes an executable jar 
+that runs the filebrowser.
+
+A proof of concept of a servlet implementation is 
+hidden in the source distribution. Although not ready 
+for real use, this code has proved that it will be 
+possible to take a Swing-based application built on 
+Scope, and port it to a web-based application by 
+simply replacing the views.
+
+The core APIs are now almost frozen. I had hoped 
+for a more complete freeze but I've found that I can 
+convert the CollectionModel APIs into a simple generic 
+infrastructure that will enable View components that 
+handle collections in a generic way, eg generic 
+drag-and-drop. There's also some minor tidy-up that 
+needs to be done to consolidate the work so far.
+
+The next releases will concentrate on the CollectionModel 
+APIs, more tidy-up of the core, and a full servlet 
+implementation that will be built around XSL views. 
+The aim is to allow these views to be built from 
+embedded components in exactly the same way as 
+conventional windowing GUI development. Ultimately, 
+it should be possible to generate Swing and Servlet 
+views from the same view description, perhaps 
+expressed in XML.
+
+Sometime soon I would also like to consider 
+code-generation for the Model classes. I'm thinking 
+of a preprocessor that will take standard JavaBeans 
+classes and turn them into full Scope Models with 
+ModelChangeEvent firing etc added automatically.
+
+Summary of changes:
+- Major bugfixing, refactoring and additions to the Swing View classes.
+- Added more unit tests.
+- Additions to Model packages to support conversion to and from character streams for the servlet implementation.
+- Work on Swing-based filebrowser application.
+- Work on servlet implementation.
+
+
+0.1.5
+30/11/00
+- Rewrite of Selectors: it's pretty much there now! Woohoo! (Lacks object pooling however)
+- Added lots of unit tests and fixed lots of minor niggles -- almost complete on the unit test front now
+- ViewCommand and MessageCommand with new idea of top-level Controller that handles view context.  
+- Fixed bugs in ModelChangeEventManager.
+- Test and bugfix for UIStrings
+
+This is an interim release to push the new core APIs out before what I hope will be a major
+0.2.0 release that has a stable core with new documentation and sample code to follow.
+
+
+0.1.4
+12/11/00
+- Addition of Model to SAX convertor.
+- Updated build.xml to use Ant 1.2 and also added readme, license and history files to all distributions.
+- Added unit tests using the JUnit framework. So far only tests the util package but more to come.
+- Refactor of Model Collection stuff.
+- More fixes to Selector infrastructure but it still isn't right.
+
+
+0.1.3
+27/10/00
+This release feels like the basic patterns are in place. 
+Further work on the XML/Servlet implementation and 
+more Swing functionality are next on the todo list.
+
+Changes are:
+- Can specify Selectors on Views either directly or with a String Selector ID.
+- Further work on Commands.
+- Design and document patterns for handling hierarchies of nested Models/Views and related Controllers.
+- Added action Commands on TextField and List.
+- Added ScopeConfig and UIStrings resources.
+- Added some message box handlers to SwingViewManager.
+
+The "lib" package from release 0.1.2 works 
+with this release also: you'll need it to build 
+the sources or run the binaries.
+
+
+0.1.2
+24/10/00
+A new release of Scope (v0.1.2) which includes an improved 
+Controller/Command/Chain of Command infrastructure and 
+the start of a Swing view manager. Test classes for the new 
+code will be included in the next release.
+
+
+0.1.1
+20/10/00
+First full release of Scope includes docs, sources and 
+binaries. Most of the core infrastructure is in place, 
+including embryonic support for both Swing and 
+Servlet/XML presentation layers. Test applications 
+run to demonstrate basic Scope use for Swing and 
+Servlet contexts.
+
+0.1.0
+Initial release

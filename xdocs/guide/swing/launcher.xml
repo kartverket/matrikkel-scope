@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Scope programmer's guide</title>
+  </properties>
+  <body>
+    <section name="Launcher">
+      <subsection name="Writing the Launcher">
+        <p>
+          <a name="writing" />
+          The launcher is the standard startup class for Scope applications. <br/>
+          At a minimum, it creates the application's main controller and calls the controller's startup() method. 
+          You can use it also to configure Scope with your custom configuration file.<br/>
+          Below is an example of a launcher class: 
+          <source><![CDATA[
+import org.scopemvc.util.*;
+
+public class TCDemoLauncher { 
+
+  public TCDemoLauncher() {} 
+
+  public static void main(String[] args) { 
+    // Tell Scope how to load resources (configuration file, images...) from the application jar, 
+    // otherwise it will look for the resources into scope-bin.jar and into the default java libraries.
+    ResourceLoader.setClientClassLoader(TCDemoLauncher.class.getClassLoader());
+    // Use a custom properties file for Scope
+    ScopeConfig.setPropertiesName("tc_config");
+    // Use a custom resource bundle for the localisation of strings
+    UIStrings.setPropertiesName("tc_locale");
+    TCDemoController controller = new TCDemoController(); 
+    controller.startup(); 
+  } 
+}]]></source>
+        </p>
+      </subsection>
+      <subsection name="Starting Scope in an applet">
+        <p>
+          <a name="applet" />
+          Starting the application as an Applet or with Java Web Start is not supported directly by Scope. <br/>
+          But you can do the following:
+          <source><![CDATA[
+public class MyApplet extends JApplet {
+  TCDemoController controller;
+  public void init() {
+    getContentPane().setLayout(new BorderLayout());
+    controller = new TCDemoController(); 
+    getContentPane().add("Center", (Component)controller.getView());
+  }
+  public void stop() {
+    controller.shutdown();
+  }
+}]]></source>
+        </p>
+      </subsection>
+    </section>
+  </body>
+</document>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Presentation of Scope</title>
+  </properties>
+  <body>
+    <section name="Benefits">
+    <ul>
+      <li>
+        An HMVC implementation in which Controllers respond to Control objects issued from Views as a 
+        result of user interaction, or from child Controllers in the chain of responsibility. 
+      </li>
+      <li>
+        Infrastructure for binding models to views with full two-way synchronisation: change the view 
+        and the model is updated, and vice-versa.
+      </li>
+      <li>
+        Wrappers around common Swing components to implement full data binding with validation.
+      </li>
+      <li>
+        Infrastructure that allows Scope to act on arbitrary JavaBean model objects. This infrastructure 
+        is designed to be decoupled in such a way that an alternative can be plugged in, for example to 
+        act on JMX MBeans.
+      </li>
+      <li>
+        An implementation of "active" model objects that broadcast changes in their state to allow views 
+        to update automatically. A set of "active" collection models are also provided. Use of these base 
+        classes is optional but convenient in complex applications that use a rich GUI, eg Swing, in which 
+        fully automated synchronisation between model and view is desirable. However, even where this is 
+        not feasible, Scope's Swing implementation without "active" models enables simple semi-automatic 
+        data-binding -- see the samples. 
+      </li>
+      <li>
+        Support for localisation of user messages. 
+      </li>
+      <li>
+        Support for conversion of arbitrary datatypes to and from their String representation. 
+      </li>
+      <li>
+        A comprehensive unit test suite to ensure a known quality level.
+      </li>
+    </ul>
+    <p/>
+    <p align="right">
+      <a href="hmvc.html">Next &gt;</a>
+    </p>
+    </section>
+  </body>
+</document>

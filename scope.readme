@@ -1,0 +1,109 @@
+SCOPE README FILE
+
+0. INFORMATION
+Version: @VERSION@
+Date: @DATE@
+Time: @TIME@
+Project home: http://scope.sourceforge.net/
+Contact: Steve Meyfroidt <mailto:smeyfroi@users.sourceforge.net>
+         Ludovic Claude  <mailto:ludovicc@users.sourceforge.net>
+
+1. INTRODUCTION
+
+Scope is a framework built around an extensible implementation of
+the Model-View-Controller (MVC) pattern. It provides an easy-to-use Java
+library that can be used as a basis for component-oriented application 
+development following the layered architecture detailed in Sun's J2EE
+and in Cheesman/Daniels: UML Components.
+   
+   
+2. STATUS
+
+Scope is ready for its v1.0 release.
+Javadoc is quite complete, but the documentation still need more work.
+
+A set of samples is provided, covering 
+Swing, XML/XSL Servlet and JSP implementations.
+
+The JSP implementation is new, very basic, and
+meant only as a starting point for further development.
+
+A separate CVS module "scope-inprogress" houses work
+in progress before moving to the stable "scope" module
+for general distribution. Developers can feel free to 
+add any new functionality into this module, even if it 
+doesn't quite work yet.
+
+Supported JDKs are:
+  - JDK 1.3: full support
+  - JDK 1.4: partial support (should work, but the new swing components 
+    in this JDK are not yet supported)
+
+3. DISTRIBUTIONS
+
+Scope is distributed in both source and binary formats as follows:
+
+	3.1 Source distribution (scope-src-1.0.tar.gz)
+        The entire build environment for Scope developers.
+
+	3.2 Documentation distribution (scope-doc-1.0.tar.gz)
+        Scope website and API javadoc.
+
+	3.3 Swing sample distribution (scope-swingsample-1.0.tar.gz)
+        Double-clickable jar (and necessary libraries) for the Swing
+        samples.
+
+	3.3 Servlet sample distribution (scope-servletsample-1.0.tar.gz)
+        Deployable war (and necessary libraries) for the servlet
+        samples (includes Saxon)
+
+	3.4 Debug binary distribution (scope-debug-1.0.tar.gz)
+        Scope jar and necessary libraries, assertions active, debug
+        symbols included in classes, non-optimized build. For 
+        debugging applications using Scope.
+
+	3.5 Runtime binary distribution (scope-bin-1.0.tar.gz)
+        Scope jar and necessary libraries, assertions stripped, no debug,
+        optimized build. For distribution with applications using Scope.
+
+Note that Scope uses Apache's commons-logging facade. This will use
+log4j or jdk1.4 logging if either is available, else logging is thrown away.
+commons-logging can also be configured to use Apache's logkit or a
+built-in logger that dumps output to System.out. See the documentation
+from http://jakarta.apache.org/commons/ for further details.
+
+   
+4. SAMPLES
+
+	4.1 Swing examples
+	
+	The Swing examples can be run individually, or via a "Launcher" application
+	that embeds the examples along with their documentation for easy
+	browsing.
+
+	The Launcher is the main class that will run by double-clicking on
+	the "scope-swingsample" distribution jar.
+
+	4.2 Servlet examples
+	
+	The Servlet examples can be run by deploying the "scope-servletsample" 
+	distribution war and then browsing to (assuming a local Tomcat install):
+        http://localhost:8080/scope
+		
+
+5. THIRD PARTY LIBRARIES
+
+Scope is dependent on the following third-party libraries, available in the
+various Scope distributions:
+	commons-logging prerelease <http://jakarta.apache.org>
+	jsdk 2.2 <http://www.javasoft.com>
+
+The XML/XSLT servlet implementation requires an XML Parser and 
+XSLT Processor. Scope is distributed with Saxon 6.5
+
+The unit tests are dependent on
+	junit 3.7 <http://www.junit.org>
+
+The "filefind" sample is dependent on:
+	jakarta-oro-2.0 <http://jakarta.apache.org>
+

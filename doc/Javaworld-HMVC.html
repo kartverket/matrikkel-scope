@@ -1,0 +1,744 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0065)http://www.javaworld.com/javaworld/jw-07-2000/jw-0721-hmvc_p.html -->
+<HTML><HEAD><TITLE>HMVC: The layered pattern for developing strong client tiers</TITLE>
+<META http-equiv=content-type content="text/html; charset=windows-1252">
+<META 
+content=" client tier, MVC, design pattern, presentation Layer, Swing, Java, framework, Web application &#13;" 
+name=keywords>
+<META 
+content="&#13;&#10;Creating the client tier of an n-tier Web architecture is extremely time-consuming, with an immense chance for error. In this article, Jason Cai, Ranjit Kapila, and Gaurav Pal explain HMVC -- an industrial-strength design pattern that can significantly lower the risks and costs associated with developing a Java-based client tier. The authors outline HMVC's design philosophy and some key aspects of it; they also provide a lucid example of how you can apply it. HMVC is applicable to both Java applets and applications; indeed, any object-oriented language could take advantage of this architecture. (3,000 words)&#13;&#10;" 
+name=description><BASEFONT face="verdana, arial, helvetica" size=2>
+<STYLE type=text/css>CODE {
+	FONT-WEIGHT: normal; FONT-SIZE: 110%; LINE-HEIGHT: normal; FONT-STYLE: normal; FONT-VARIANT: normal
+}
+PRE {
+	FONT-WEIGHT: normal; FONT-SIZE: 100%; LINE-HEIGHT: normal; FONT-STYLE: normal; FONT-VARIANT: normal
+}
+TD {
+	FONT-WEIGHT: normal; FONT-SIZE: 90%; LINE-HEIGHT: normal; FONT-STYLE: normal; FONT-VARIANT: normal
+}
+</STYLE>
+
+<SCRIPT language=JavaScript>
+            <!--
+            function openBrWindow() {
+                win=window.open("http://www.javaworld.com/channel_content/jw-story-feedback.shtml",'Feedback','width=600,height=330,toolbar=no,location=no,directories=no,menubar=no,scrollbars=yes,resizable=yes');
+            }
+            -->
+        </SCRIPT>
+
+<META content="MSHTML 5.50.4919.2200" name=GENERATOR></HEAD>
+<BODY text=#000000 bottomMargin=0 vLink=#990033 aLink=#990033 link=#990033 
+bgColor=#ffffff leftMargin=0 topMargin=0 rightMargin=0 marginwidth="0" 
+marginheight="0">
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width=186 bgColor=#006699 colSpan=2><A 
+      href="http://www.javaworld.com/"><IMG height=81 
+      src="Javaworld-HMVC_files/top_jwlogo.gif" width=186 border=0></A></TD>
+    <TD vAlign=center align=middle width="100%" bgColor=#cccccc><!-- START TOP 468x60 BANNER -->
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD><FONT face=Arial,Helvetica,Sans-serif color=#000000 
+            size=-2>Advertisement: Support JavaWorld, click 
+            here!</FONT><BR><NOLAYER><!--AME SRC="http://ad.doubleclick.net/adi/idg.us.idgnet.javaworld/articles;pos=top;sz=468x60;tile=1;ord=750056?" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no" 
+<A HREF="http://ad.doubleclick.net/jump/idg.us.idgnet.javaworld/articles;abr=!ie;pos=top;sz=468x60;tile=1;ord=750056?" <IMG SRC="http://ad.doubleclick.net/ad/idg.us.idgnet.javaworld/articles;abr=!ie;pos=top;sz=468x60;tile=1;ord=750056?" border="0" height="60" width="468" </A 
+</IFRA--></NOLAYER><ILAYER 
+            id=layer1 height="60" width="468" 
+        visibility="hidden"></ILAYER></TD></TR></TBODY></TABLE><!-- END TOP 468x60 BANNER --></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD width=160 bgColor=#006699><IMG height=8 
+      src="Javaworld-HMVC_files/spacer.gif" width=160 border=0></TD>
+    <TD vAlign=top align=left width=26 bgColor=#ffffff><IMG height=8 
+      src="Javaworld-HMVC_files/c_whtbottom.gif" width=8 border=0></TD>
+    <TD width="100%"><IMG height=1 src="Javaworld-HMVC_files/spacer.gif" 
+      width=8 border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=center noWrap align=middle width=160 
+      bgColor=#006699><NOBR><FONT face="Verdana, Arial, Sans-serif" 
+      color=#ffffff size=1>July 2000</FONT></NOBR><IMG height=1 
+      src="Javaworld-HMVC_files/spacer.gif" width=160 border=0></TD>
+    <TD width=8><IMG height=1 src="Javaworld-HMVC_files/spacer.gif" width=8 
+      border=0></TD>
+    <TD vAlign=top width=8 bgColor=#006699><IMG height=8 
+      src="Javaworld-HMVC_files/c_bltlft.gif" width=8 border=0></TD>
+    <TD vAlign=center align=middle width="100%" bgColor=#006699>
+      <TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>HOME</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/features/index.shtml"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>FEATURED TUTORIALS</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/columns/index.shtml"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>COLUMNS</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/news-reviews/index.shtml"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>NEWS &amp; REVIEWS</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://forums.devworld.com/webx?13@@.ee6b802"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>FORUM</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/resources/index.shtml"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>JW RESOURCES</FONT></A></TD>
+          <TD align=middle bgColor=#006699><A 
+            href="http://www.javaworld.com/info/jw-about-index.shtml"><FONT 
+            face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff 
+            size=1>ABOUT JW</FONT></A></TD></TR></TBODY></TABLE></TD>
+    <TD vAlign=top align=right width=8 bgColor=#006699><IMG height=8 
+      src="Javaworld-HMVC_files/c_bltrt.gif" width=8 border=0></TD>
+    <TD width=8><IMG height=1 src="Javaworld-HMVC_files/spacer.gif" width=8 
+      border=0></TD></TR></TBODY></TABLE><!--        <table align="center" width="100%" cellspacing="0" cellpadding="0" border="0">
+            <tr valign="top">
+                <td bgcolor="#006699" width="160" align="middle" valign="top">
+                    <table width="160" border="0" cellspacing="0" cellpadding="0" bgcolor="#006699" summary=""> --><!-- #include snippets/jw-search-snippet.txt --><!--     <tr>
+                            <td width="8"><img height=1 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8 ></td>
+                            <td><img height=1 alt="" src="http://www.javaworld.com/images/rule_ltblue.gif" width=144 vspace=2 ><br>
+                                <font face="Verdana,Geneva,Arial,Helvetica,sans-serif" size="1" color="#ffffff"><strong>ARCHIVE</strong></font><br>
+                                <img height=1 alt="" src="http://www.javaworld.com/images/rule_ltblue.gif" width=144 vspace=2 ><br>
+                                <strong><a href="http://www.javaworld.com/channel_content/jw-topical-index.shtml"><font face="Verdana,Geneva,Arial,Helvetica,sans-serif" size="1" color="#ffffff">TOPICAL INDEX</font></a></strong></font><br>--><!-- #include snippets/jw-topical-generic.txt --><!--                         <img height=1 alt="" src="http://www.javaworld.com/images/rule_ltblue.gif" width=144 vspace=2 ><br>
+                                <font face="Verdana,Geneva,Arial,Helvetica,sans-serif" size="1" color="#ffffff"><strong>FREE JAVAWORLD NEWSLETTERS</strong></font><br>
+                                 <img height=1 alt="" src="images/rule_ltblue.gif" width=144 vspace=2 ><br></td>
+                            <td width="8"><img height=1 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8 ></td>
+                        </tr>
+                        <tr valign="bottom">
+                            <td width="8"><img height=1 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8 ></td>
+                            <td> </td>
+                            <td width="8"><img height=8 alt="" src="http://www.javaworld.com/images/c_gryblbottom.gif" width=8 ></td>
+                        </tr>
+                        <tr>
+                            <td width="8" bgcolor="#cccccc"> </td>
+                            <td bgcolor="#cccccc"> </td>
+                            <td width="8" bgcolor="#cccccc"> </td>
+                        </tr>
+                        <tr>
+                       <td width="8" bgcolor="#cccccc"><img height=1 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8 ></td>
+                           <td align="middle" bgcolor="#cccccc">  --><!-- #include snippets/jw-articles-left-ad.txt --><!--      </td>
+                       <td width="8" bgcolor="#cccccc"><img height=8 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8></td>
+                        </tr>
+                        <tr>
+                            <td width="8" bgcolor="#cccccc"> </td>
+                            <td bgcolor="#cccccc"> </td>
+                            <td width="8" bgcolor="#cccccc"> </td>
+                        </tr>
+                        <tr valign="top">
+                            <td width="8"><img height=1 alt="" src="http://www.javaworld.com/images/spacer.gif" width=8 ></td>
+                            <td> </td>
+                            <td width="8"><img height=8 alt="" src="http://www.javaworld.com/images/c_grybltop.gif" width=8 ></td>
+                        </tr>
+                    </table> --><IMG height=8 
+src="Javaworld-HMVC_files/spacer.gif" width=160 border=0></TD> <TD 
+width="8"><IMG height=1 alt="" src="Javaworld-HMVC_files/spacer.gif" 
+width=8></TD> <TD width="100%"><!-- ## MAIN CONTENT STARTS HERE ### --><FONT 
+face="verdana, arial, helvetica" size=2>
+<P><STRONG></STRONG></P>
+<P>
+<H1 align=center>HMVC: The layered pattern for developing strong client tiers 
+</H1>
+<H3 align=center>This hierarchical model eases the development of a Java-based 
+client tier </H3>
+<P></P><!--<BLOCKQUOTE><STRONG>Summary</STRONG><BR>-->
+<BLOCKQUOTE><STRONG>Summary</STRONG><BR>Creating the client tier of an n-tier 
+  Web architecture is extremely time-consuming, with an immense chance for 
+  error. In this article, Jason Cai, Ranjit Kapila, and Gaurav Pal explain HMVC 
+  -- an industrial-strength design pattern that can significantly lower the 
+  risks and costs associated with developing a Java-based client tier. The 
+  authors outline HMVC's design philosophy and some key aspects of it; they also 
+  provide a lucid example of how you can apply it. HMVC is applicable to both 
+  Java applets and applications; indeed, any object-oriented language could take 
+  advantage of this architecture. <EM>(3,000 words)</EM> </BLOCKQUOTE><!--</BLOCKQUOTE>--><STRONG>By Jason Cai, Ranjit Kapila, and Gaurav 
+Pal </STRONG>
+<P><IMG height=2 src="Javaworld-HMVC_files/rule_ltblue.gif" width="100%"></P>
+<P><BR></P><!-- #include snippets/jw-articles-336x280.txt -->
+<P>
+<P><IMG height=29 alt=T src="Javaworld-HMVC_files/T.gif" width=24 align=left>he 
+task of designing and developing the client tier of an n-tier Web architecture 
+often challenges developers. This is particularly true in the Web world, where 
+the sheer variety of servers, deployment platforms, and protocols turns the 
+challenge into a headache. A client-tier architect must address a number of 
+questions: 
+<P>
+<UL>
+  <LI>How should I structure my GUI? 
+  <LI>How will users interact with my GUI? 
+  <LI>How should I separate server-side/transport data formats from my GUI? 
+  <LI>How should I provide sound mechanisms for event management, application 
+  flows, and widget control? </LI></UL>
+<P>In order to understand some of these key issues, we must differentiate 
+between the <EM>presentation layer</EM> (or <EM>client tier</EM>) and the 
+<EM>GUI layer</EM>. The GUI layer deals with a small subset of the whole 
+presentation layer, namely the UI widgets and the immediate effects of user 
+actions -- a <CODE>JTextField</CODE> and its <CODE>ActionListener</CODE>, for 
+example. The presentation layer needs to deal with application flows and server 
+interaction in addition to providing GUI services. The terms <EM>presentation 
+layer</EM> and <EM>client tier</EM> are used interchangeably in this article. 
+<P><FONT size=+1><STRONG>Framework-based approach </STRONG></FONT><BR>To 
+mitigate the risk associated with creating a robust client tier, developers have 
+produced several frameworks and design patterns with varying degrees of success. 
+The Model-View-Controller (MVC) paradigm remains one of the more enduring 
+patterns. However, the traditional MVC scope falls short when it comes to the 
+control of GUI elements (widgets). MVC does not handle the complexities of data 
+management, event management, and application flows. As an adaptation of the MVC 
+triad, the HMVC -- Hierarchical-Model-View-Controller -- paradigm seeks to 
+redress some of the above-mentioned issues. We developed this pattern during the 
+course of our work in the field. HMVC provides a powerful yet easy-to-understand 
+layered design methodology for developing a complete presentation layer. While 
+MVC provides an efficient framework for developing GUI interaction, HMVC scales 
+it to the entire client tier. Some key benefits of a responsibility-based, 
+layered architecture include: 
+<P>
+<UL>
+  <LI>Defined intralayer communication and isolation from higher layers 
+  <LI>Defined interlayer communication with minimal coupling 
+  <LI>Localization of exposure to third-party code </LI></UL>
+<P>This article explores the application of the HMVC design pattern in the 
+development of a Java-based client-tier infrastructure. 
+<P><STRONG>Note</STRONG>: The entire source code for this article can be 
+downloaded as a zip file from the <A 
+href="http://www.javaworld.com/javaworld/jw-07-2000/jw-0721-hmvc_p.html#resources">Resources</A> 
+section below. 
+<P><FONT size=+1><STRONG>Model view controller -- MVC 
+</STRONG></FONT><BR>Developers primarily use MVC in Smalltalk for implementing 
+GUI objects. Numerous GUI class libraries and application frameworks have reused 
+and adopted the pattern. As the MVC paradigm offers an elegant and simple means 
+for solving UI-related problems in an object-oriented way, its popularity is 
+justified. MVC provides clearly defined roles and responsibilities for its three 
+constituent elements -- model, view, and controller. The <EM>view</EM> manages 
+the screen layout -- that is, what the user interacts with and sees on the 
+screen. The <EM>model</EM> represents the data underlying the object -- for 
+example, the on-off state of a check box or the text string from a text field. 
+Events cause the data in the model to change. The <EM>controller</EM> determines 
+how the user interacts with the view in the form of commands. 
+<P><FONT size=+1><STRONG>Layered MVC -- HMVC </STRONG></FONT><BR>The HMVC 
+pattern decomposes the client tier into a hierarchy of parent-child MVC layers. 
+The repetitive application of this pattern allows for a structured client-tier 
+architecture, as shown in Figure 1. 
+<P>
+<CENTER>
+<P>
+<TABLE cellPadding=5 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <P>
+      <CENTER>
+      <P><IMG height=264 src="Javaworld-HMVC_files/jw-0721-hmvc1.gif" width=425 
+      vspace=3>
+      <P><BR><FONT size=-1><STRONG>
+      <P>Figure 1. MVC layers </STRONG></FONT></CENTER>
+      <P></P></TD></TR></TBODY></TABLE>
+<P></CENTER>
+<P>The layered MVC approach assembles a fairly complex client tier. Some of the 
+key benefits of using HMVC reveal the benefits of object orientation. An 
+optimally layered architecture: 
+<UL>
+  <LI>Reduces dependencies between disparate parts of the program 
+  <LI>Encourages reuse of code, components, and modules 
+  <LI>Increases extensibility while easing maintainability </LI></UL>
+<P><FONT size=+1><STRONG>Use HMVC to design a client-tier architecture 
+</STRONG></FONT><BR>Though you may find the task daunting, you can effectively 
+manage the development of a presentation layer for an application by 
+incorporating smart development into your strategy -- that is, by using a robust 
+and scalable pattern that can reduce some of the risk and provide a ready-made 
+design foundation on which to build. 
+<P>There are three key aspects of client-tier development: 
+<P>
+<UL>
+  <LI><STRONG>GUI layout code</STRONG>: Widget layout and screen look and feel 
+  <LI><STRONG>GUI feature code</STRONG>: Validations and user-event capture 
+  <LI><STRONG>Application logic code</STRONG>: App flows, navigation, and server 
+  interaction </LI></UL>
+<P>The HMVC design pattern encourages the decomposition of the client tier into 
+developed, distinct layers for implementing GUI and application services. A 
+pattern-based architecture results in standardization; the HMVC pattern 
+standardizes the presentation (user-service) layer of Web applications. 
+Standardization in the presentation layer helps contribute to: 
+<P>
+<UL>
+  <LI><STRONG>UI consistency</STRONG>: The framework divides a visual entity 
+  (view) into panes with specific, consistent responsibilities and 
+  functionalities. 
+  <P></P>
+  <LI><STRONG>Standardized interaction</STRONG>: The interaction between the 
+  various subcomponents within the presentation layer is clearly defined, 
+  providing customizable base classes. 
+  <P></P>
+  <LI><STRONG>Maintainable code</STRONG>: Using a pattern results in 
+  maintainable code that provides a flexible and extensible code base for 
+  developing applications. 
+  <P></P>
+  <LI><STRONG>Application flow support:</STRONG> The framework structures the 
+  presentation service into distinct layers and provides for inter- and 
+  intralayer communication. Such a structure offers a strong, orderly way to 
+  implement application logic and flow. </LI></UL>
+<P><!-- break -->
+<P><FONT size=+1><STRONG>Design principles </STRONG></FONT><BR>The HMVC pattern 
+provides clear delineation of responsibility among the different components and 
+layers. Standard design patterns (Abstract Factories, Composite, Chain of 
+Responsibility, Facade, etc.) can be used to provide a stable design. 
+<P>
+<CENTER>
+<P>
+<TABLE cellPadding=5 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <P>
+      <CENTER>
+      <P><IMG height=387 src="Javaworld-HMVC_files/jw-0721-hmvc2.gif" width=425 
+      vspace=3>
+      <P><BR><FONT size=-1><STRONG>
+      <P>Figure 2. HMVC layers and components </STRONG></FONT></CENTER>
+      <P></P></TD></TR></TBODY></TABLE>
+<P></CENTER>
+<P>Figure 2 illustrates some layers and key components of the HMVC pattern. The 
+horizontal layers specify the hierarchy within the application; the vertical 
+slices refer to the components of the MVC triad. Within a layer, the controller 
+has the overall responsibility of managing the model and view components. For 
+example, the GUIFrame Controller controls the GUIFrame Model and the GUIFrame 
+(the view). The dashed lines between model, controller, and view within a layer 
+signifies clearly defined interfaces for communication. This interaction is 
+achieved through <CODE>AppEvents</CODE>. For intralayer communication, a 
+parent-child controller hierarchy exists, and all intralayer communication can 
+only be routed through this path. Controllers interact by means of 
+<CODE>AppEvents</CODE>. 
+<P><STRONG>View </STRONG><BR>A user interacts with the view, the visible portion 
+of the application. HMVC abstracts views at different levels to provide a clean 
+method for designing the GUI. At the highest level is a GUIContainer, with its 
+associated controller. The container essentially holds potentially multiple 
+views, called GUIFrame(s); each GUIFrame is a visual entity with which a user 
+interacts. The framework defines a GUIFrame as composed of multiple subparts -- 
+that is, a Menu GUIPane, a Navigation GUIPane, Status GUIPane, and a central 
+Content GUIPane (see Figure 3). In most common Web applications, developers 
+usually expect multiple GUIFrames to be unlikely; primarily, it is the Content 
+GUIPane that needs to change. The Content GUIPane area is considered to be the 
+most important part of the GUIFrame; that's where most of the user interaction 
+occurs. The framework assumes that the efficient control of multiple Content 
+GUIPanes will suffice to deliver a very large part of the user experience. 
+<P>
+<CENTER>
+<P>
+<TABLE cellPadding=5 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <P>
+      <CENTER>
+      <P><IMG height=288 src="Javaworld-HMVC_files/jw-0721-hmvc3.gif" width=422 
+      vspace=3>
+      <P><BR><FONT size=-1><STRONG>
+      <P>Figure 3. GUI components </STRONG></FONT></CENTER>
+      <P></P></TD></TR></TBODY></TABLE>
+<P></CENTER>
+<P>Figure 3 illustrates a typical GUI frontend. It breaks into several parts 
+(i.e., GUIPanes). We can apply the MVC triad to each of the composing panes and 
+establish a hierarchy, with the GUIFrame being composed of the Menu, Status, 
+Nav, and Content GUIPanes. Depending on the complexity of the code within each 
+component, we may or may not assign an independent controller and model to a 
+GUIPane. For example, because of its simplicity and lack of any real need for 
+sophisticated control, it is not necessary for the Status GUIPane to have its 
+own controller; we may choose to have the GUIFrame controller run the Status 
+GUIPane instead. However, as the Content GUIPane is an important activity area, 
+we might assign it a separate controller and model. Based on the MVC triad, a 
+GUIFrame has its associated controller and data-holder model, as does the 
+Content GUIPane. The GUIFrame layer has the GUIContainer as its parent triad. 
+The GUIContainer is an invisible part of the architecture; it can potentially 
+hold multiple GUIFrames. 
+<P>A crucial aspect of the design is the isolation of Swing-specific code -- 
+i.e., the Swing components and their listeners (refer back to Figure 2) -- 
+within the lowest rung of the hierarchy. As an illustration, Swing widgets 
+primarily compose the Content GUIPane. This is not a design limitation; a Nav 
+GUIPane could also have a Swing component like, for example, a 
+<CODE>JTree</CODE>. Therefore, the Content GUIPane is also responsible for 
+catering to Swing events like <CODE>ActionEvent</CODE>s. Similarly, an 
+<CODE>ActionEvent</CODE> generated by clicking a <CODE>JMenuItem</CODE> within 
+the Menu GUIPane is heard by the Menu GUIPane itself. Thus, a GUIPane acts as a 
+listener for Swing events. The affected GUIPane can subsequently request further 
+service from its controller by using application-level events. This allows for 
+the localization of Swing-specific code. 
+<P><STRONG>Controller </STRONG><BR>The controller uses the model to coordinate 
+the effects of user events on the view with the model; it also caters to logic 
+flow. HMVC defines layers within the GUI and provides for distributed control of 
+events through a parent-child hierarchy of controllers. Within a layer, the 
+controller is the supreme commander, orchestrating the application flows and 
+user-event responses. The Chain of Responsibility design pattern implements the 
+controllers, wherein they pass on events that they can't cater to. 
+<P>For example, if, as a result of clicking a button within a Content GUIPane, 
+the Menu GUIPane needs to change, then the <CODE>ActionEvent</CODE> would be 
+intercepted by the Content GUIPane itself (as it is the listener for Swing/AWT 
+events). The ContentGUIPane would subsequently make a navigation request to the 
+ContentGUIPane controller, which would, in turn, pass it on to its parent 
+controller, the GUIFrame controller. This results because the change in the Menu 
+GUIPane can be effected only at a higher level, as the Content GUIPane and Menu 
+GUIPane are at the same level in the hierarchy (they are both contained within a 
+GUIFrame). 
+<P><EM>Parent-child relationship</EM><BR>An absolute and clearly defined 
+parent-child relationship is established between a GUIContainer controller at 
+the topmost, or parent, level and its child, the GUIFrame controller. Similarly, 
+there is a parent-child relationship between a GUIFrame controller and a 
+GUIContent Pane controller. The controller within each layer is only responsible 
+for actions limited to its sphere of influence -- that is, the model and view at 
+that level. For all other services, the controller needs to pass actions on to 
+its parent. 
+<P><EM>Communication</EM><BR>If a controller can't handle its event, the Chain 
+of Responsibility pattern signals the controller to pass the event to its 
+parent. Controllers communicate with each other via <CODE>AppEvents</CODE> -- 
+which typically can be navigation events, data-request events, or status events. 
+Navigation events are typically those that change the look and feel of the view. 
+For example, if you click the <CODE>JMenuItem</CODE> within the Menu GUIPane -- 
+which replaces the active Content GUIPane -- the navigation event would make the 
+change. The application developer would need to identify these events and create 
+some basic stereotypes. 
+<P>Controllers can also communicate via data events. If a Content GUIPane needs 
+to display data in some <CODE>JTextField</CODE> objects, then the Content 
+GUIPane would create a data event. The Content GUIPane would then pass it to its 
+controller, which, upon determining that it is a data event, would delegate it 
+to the associated model. The model subsequently would pass a refresh request to 
+the Content GUIPane, which would deliver a clean and well-defined communication 
+path. 
+<P><EM>Responsibility</EM><BR>The controller has multiple responsibilities; it 
+must respond to application-level navigation events and data-request events, for 
+instance. In response to navigation events, a controller provides 
+application-flow logic -- changing screens or disabling/enabling options, for 
+example. For data-request events, the controller delegates the request to an 
+associated model object. 
+<P><STRONG>Model </STRONG><BR>View entities like GUIContainer, GUIFrame(s), and 
+GUIContent Pane(s) have associated models. HMVC makes a provision for models at 
+every layer of the hierarchy, but it is up to the application designer to 
+actually implement them. The GUIContainer model typically contains data or 
+information that affects the whole application, while the GUIFrame model 
+contains information related only to the state of a GUIFrame. The model contains 
+or holds the data objects that are to be displayed or worked upon in a view. 
+Typically, the model receives a delegated data-service request from the 
+controller, fetches the data, and notifies the associated view of the 
+availability of fresh data. 
+<P>The model encapsulates key server-interaction functionality to retrieve data. 
+To accomplish this task, key issues -- SQL requests, data element-mapping 
+between GUI and databases, transport data formats, etc. -- need to be redressed. 
+Design issues, like data-persistence mechanisms in the model need to be ironed 
+out. However, in most thin-client architectures, the role of the model tends to 
+be that of a data conduit that hides the complexity of data fetching and 
+decouples the rest of the client tier from server-side data formats. 
+<P><!-- break -->
+<P><FONT size=+1><STRONG>Let's go for a spin </STRONG></FONT><BR>A simple 
+example will help you grasp key concepts. 
+<CENTER>
+<P>
+<TABLE cellPadding=5 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <P>
+      <CENTER>
+      <P><IMG height=339 src="Javaworld-HMVC_files/jw-0721-hmvc4.gif" width=425 
+      vspace=3>
+      <P><BR><FONT size=-1><STRONG>
+      <P>Figure 4. HMVC client tier instance diagram </STRONG></FONT></CENTER>
+      <P></P></TD></TR></TBODY></TABLE>
+<P></CENTER>
+<P>Figure 4 illustrates an instance diagram of a client tier, with some of its 
+key components and layers. As explained earlier, the hierarchy of MVC triads for 
+GUIContainers, GUIFrames, and GUIPanes are apparent in this diagram. The model 
+classes in each MVC layer encapsulate the details of the data formats and are 
+responsible for interacting with the <CODE>ServerFacade</CODE> to satisfy data 
+requests. The server-side and transport-specific format is mapped to this data 
+format, thereby decoupling the application data formats from its GUI 
+representation. 
+<P><STRONG>The Hello World application </STRONG><BR>In our sample application, 
+we will try to see how the HMVC makes sense in crafting a robust client tier. 
+Our application consists of a <CODE>GUIContainer</CODE>, the highest MVC triad, 
+consisting of <CODE>GUIContainerController</CODE>, 
+<CODE>GUIContainerModel</CODE>, and <CODE>GUIContainer</CODE>. The 
+<CODE>GUIContainer</CODE> is a nonvisual view; it simply provides services to 
+the contained GUIPanes. 
+<P>In terms of importance within the triad, the controller is assumed to be at a 
+higher level of responsibility than the model and view. It is their gatekeeper; 
+the controller has references to the model and view. 
+<CODE>GUIFrameController</CODE>, <CODE>GUIFrame</CODE>, and 
+<CODE>GUIFrameModel</CODE> compose the second rung. A collection of GUIPanes 
+(see Figure 2), namely <CODE>MenuGUIPane</CODE>, <CODE>StatusGUIPane</CODE>, 
+<CODE>NavGUIPane</CODE>, and <CODE>ContentGUIPane</CODE>, make up the 
+<CODE>GUIFrame</CODE>. Since the GUIPanes are fairly trivial 
+(<CODE>ContentGUIPane</CODE> excepted), they don't have their own controller. 
+Instead, the <CODE>GUIFrameController</CODE> controls them. Your needs may be 
+different, however, and each GUIPane could have its own triad if necessary. 
+<P>We must distinguish between an HMVC controller and a Swing listener. In order 
+to isolate Swing code, each GUIPane by itself deals with Swing events. For 
+example, look at the class definition of the <CODE>MenuGUIPane</CODE>: 
+<P><CODE>
+<P><BR>public class MenuGUIPane extends javax.swing.JMenuBar implements 
+ActionListener<BR></CODE>
+<P>
+<CENTER>
+<P>
+<TABLE cellPadding=5 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <P>
+      <CENTER>
+      <P><IMG height=260 src="Javaworld-HMVC_files/jw-0721-hmvc5.gif" width=422 
+      vspace=3>
+      <P><BR><FONT size=-1><STRONG>
+      <P>Figure 5. Sample application screenshot </STRONG></FONT></CENTER>
+      <P></P></TD></TR></TBODY></TABLE>
+<P></CENTER>
+<P>Thus, the <CODE>MenuGUIPane</CODE> listens for the <CODE>ActionEvent</CODE> 
+generated when a user clicks the File, Hello World menu item (Figure 5). The 
+<CODE>MenuGUIPane</CODE> then determines what service it wants from its 
+controller, the <CODE>GUIFrameController</CODE>. In our particular example, the 
+<CODE>ActionEvent</CODE> replaces the <CODE>ContentGUIPane</CODE>, so a 
+navigation service is expected. The code snippet below illustrates the creation 
+of the navigation <CODE>AppEvent</CODE> object and its transmission to the 
+<CODE>GUIFrameController (ctlr_)</CODE>. 
+<P><CODE>
+<P><BR>public class MenuGUIPane ...<BR>{<BR><BR>&nbsp;&nbsp; 
+...<BR><BR><BR>&nbsp;&nbsp; public void actionPerformed(ActionEvent 
+actionEvent)<BR>&nbsp;&nbsp; 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(actionEvent.getActionCommand().equals("HELLO"))<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+...<BR><BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AppEvent ae = new 
+AppEvent(AppEvent.NAV_EVENT);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ae.setMessage("SHOW_HELLO_WORLD");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ctlr_.handleAppEvent(ae);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(actionEvent.getActionCommand().equals("CLOSE"))<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+System.exit(0);&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;}<BR><BR>&nbsp;&nbsp;...<BR><BR>}<BR></CODE>
+<P>Upon receiving the <CODE>AppEvent</CODE>, <CODE>GUIFrameController</CODE> 
+knows what to do in the case of a navigation event. (Our example is fairly 
+trivial, meant to show key behavior and components. In an actual application, 
+more would need to be done!) It creates a new child MVC triad composed of the 
+<CODE>ContentGUIController</CODE>, <CODE>ContentGUIPane</CODE>, and the 
+<CODE>ContentGUIPaneModel</CODE>, and establishes the parent-child hierarchy 
+structure. 
+<P><CODE>
+<P><BR>public class GUIFrameController ...<BR>{<BR>&nbsp;&nbsp; 
+...<BR><BR>&nbsp;&nbsp; public void handleAppEvent(AppEvent ae)<BR>&nbsp;&nbsp; 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ae.getMessage().equals("SHOW_HELLO_WORLD"))<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+createChildTriad();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+childCtlr_.init();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp; 
+}<BR><BR>&nbsp;&nbsp; ...<BR><BR><BR>&nbsp;&nbsp; public void 
+createChildTriad()<BR>&nbsp;&nbsp; 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ContentGUIPane contentPane = new 
+ContentGUIPane(new 
+Dimension(20,20));&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ContentGUIPaneModel 
+contentModel = new 
+ContentGUIPaneModel();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ContentGUIPaneController 
+contentController = new 
+ContentGUIPaneController();<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contentController.setView(contentPane);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contentController.setModel(contentModel);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contentController.setParentController(this);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;setChildController(contentController);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view_.setPane(contentPane);<BR>&nbsp;&nbsp; 
+}<BR><BR>}<BR></CODE>
+<P>
+<CENTER>
+<P>
+<TABLE cellPadding=5 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <P>
+      <CENTER>
+      <P><IMG height=261 src="Javaworld-HMVC_files/jw-0721-hmvc6.gif" width=422 
+      vspace=3>
+      <P><BR><FONT size=-1><STRONG>
+      <P>Figure 6. Sample application screenshot </STRONG></FONT></CENTER>
+      <P></P></TD></TR></TBODY></TABLE>
+<P></CENTER>
+<P>Figure 6 shows the resulting GUIFrame. In order to further illustrate some 
+key concepts behind the responsibility-based controller hierarchy and MVC 
+interaction, let us take a look at intralayer communication like retrieving data 
+-- data-event handling, in other words. 
+<P>
+<CENTER>
+<P>
+<TABLE cellPadding=5 border=0>
+  <TBODY>
+  <TR>
+    <TD>
+      <P>
+      <CENTER>
+      <P><IMG height=260 src="Javaworld-HMVC_files/jw-0721-hmvc7.gif" width=424 
+      vspace=3>
+      <P><BR><FONT size=-1><STRONG>
+      <P>Figure 7. Sample application screenshot </STRONG></FONT></CENTER>
+      <P></P></TD></TR></TBODY></TABLE>
+<P></CENTER>
+<P>Upon clicking the Click button, the text "Hello World!" appears in the 
+<CODE>TextField</CODE>, as in Figure 7. The mechanism for achieving this is 
+similar to what transpired in the <CODE>MenuGUIPane actionPerformed()</CODE> 
+method. However, this time, instead of a navigation service, the 
+<CODE>ContentGUIPane</CODE> controller requests a data service. 
+<P><CODE>
+<P><BR>public class ContentGUIPane ...<BR>{<BR>&nbsp;&nbsp; 
+...<BR><BR>&nbsp;&nbsp; public void actionPerformed(ActionEvent 
+ae)<BR>&nbsp;&nbsp; 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(ae.getActionCommand().equals("CLICK"))<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+...<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; AppEvent ape = new 
+AppEvent(AppEvent.DATA_EVENT);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ape.setMessage("HELLO_WORLD");<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+ctlr_.handleAppEvent(ape);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...<BR><BR>&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp; ...<BR><BR>}<BR></CODE>
+<P>The <CODE>ContentGUIPaneController</CODE> simply delegates a data-service 
+event to its associated model object; status-event or navigation-event service 
+would be passed on to its parent controller, the 
+<CODE>GUIFrameController</CODE>. This establishes a clear chain of 
+responsibility for the controllers. They deal only with events that are within 
+their scope and defer other events to their parents. 
+<P><CODE>
+<P><BR>public class ContentGUIPaneController...<BR>{<BR>&nbsp;&nbsp; 
+...<BR><BR>&nbsp;&nbsp; public void handleAppEvent(AppEvent evt)<BR>&nbsp;&nbsp; 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(evt.isDataEvent())<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+contentModel_.handleAppEvent(evt);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;else<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(evt.isStatusEvent() 
+|| evt.isNavEvent())<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+parentCtlr_.handleAppEvent(evt);<BR>&nbsp;&nbsp; }<BR>&nbsp;&nbsp; 
+...<BR>}<BR></CODE>
+<P>Upon receiving the data-service event, the <CODE>ContentGUIPaneModel</CODE> 
+would engage the <CODE>ServerFacade</CODE> to retrieve data and subsequently 
+request the associated view to refresh itself. (The <CODE>ServerFacade</CODE> is 
+not implemented in the example as it is out of this article's scope.) 
+<P><CODE>
+<P><BR>public class ContentGUIPaneModel ...<BR>{<BR>&nbsp;&nbsp; 
+...<BR><BR>&nbsp;&nbsp; public void handleAppEvent(Sample.controller.AppEvent 
+ae)<BR>&nbsp;&nbsp; {<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String[] stra = new 
+String[1];<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// stra = 
+ServerFacade.getData(xyz...);<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stra[0] = 
+"Hello 
+World!";<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contentPane_.refreshView(stra);<BR>&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp; ...<BR>}<BR></CODE>
+<P>The associated view, the <CODE>ContentGUIPane</CODE>, then displays the data 
+in the appropriate widget. 
+<P><CODE>
+<P><BR>public class ContentGUIPane ...<BR>{<BR>&nbsp;&nbsp; 
+...<BR><BR>&nbsp;&nbsp; public void refreshView(String[] data)<BR>&nbsp;&nbsp; 
+{<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;txtMsg_.setText(data[0]);&nbsp;&nbsp; 
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;validate();<BR>&nbsp;&nbsp; 
+}<BR>&nbsp;&nbsp; ...<BR>}<BR></CODE>
+<P><FONT size=+1><STRONG>Conclusion and further work </STRONG></FONT><BR>The 
+example presented here skips issues like data management, data formats, advanced 
+controller, and view management. Our objective here has been to present a 
+scalable and robust design pattern that you can use to create a client tier in 
+Java. 
+<P>The ability to handle multiple GUIFrames and Content GUIPanes would also need 
+to be included in any eventual solution. A composite pattern that models 
+server-side data can handle the missing data format part. Issues like data 
+persistence and SQL query generation, along with database and UI data maps, will 
+need to be redressed. 
+<P>Currently, we are working on putting together a client-tier framework in Java 
+that leverages the HMVC pattern and hopefully assists the client-tier architect 
+in using an out-of-the-box solution that significantly reduces development time 
+and risk. <IMG height=12 src="Javaworld-HMVC_files/jw-dingbat.gif" width=22>
+<P><BR></P>
+<P><STRONG>About the author</STRONG><BR><A target=_blank 
+href="http://www.javaworld.com/javaworld/feedback/jw-feedback-form.html">Jason 
+Cai</A> is a consultant with <A 
+href="http://www.rdacustomsoftware.com/">RDA</A>, and has over 10 years of 
+software-development experience. He is a Sun-certified Java 2 architect, 
+developer, and programmer; he also is an MCSD and MCSE, and has an MS in 
+electronic engineering and statistics. <A target=_blank 
+href="http://www.javaworld.com/javaworld/feedback/jw-feedback-form.html">Ranjit 
+Kapila</A> is a consultant with <A 
+href="http://www.rdacustomsoftware.com/">RDA</A>. He has BS and MS degrees in 
+computer science, with over seven years of software development experience. He 
+is a Sun-certified Java 2 programmer in addition to having extensive 
+object-oriented experience in C++. <A target=_blank 
+href="http://www.javaworld.com/javaworld/feedback/jw-feedback-form.html">Gaurav 
+Pal</A> is a consultant with <A 
+href="http://www.rdacustomsoftware.com/">RDA</A>. He has a BS in computer 
+science with six years of software-development experience, including over three 
+years in Java. He is a Sun-certified Java 1.1 and 2 programmer and has written 
+extensively for publications like <EM>IEEE Potentials</EM> and <EM>Computer 
+Communications UK.</EM> <BR></P>
+<P>
+<UL><A name=resources></A><STRONG>Resources</STRONG> <BR>
+  <LI>Download the complete source code of this article as a zip file: <BR><A 
+  href="http://www.javaworld.com/jw-07-2000/hmvc/jw-0721-hmvc.zip">http://www.javaworld.com/jw-07-2000/hmvc/jw-0721-hmvc.zip</A><BR>
+  <LI>This article presupposes familiarity with the MVC paradigm, and an 
+  understanding of issues related to developing a Java-based client tier. If you 
+  would like to read more about client-tier frameworks, MVC, and MVC variants, 
+  you may find the following resources helpful: 
+  <UL>
+    <LI>"Application Programming in Smalltalk-80: How to use 
+    Model-View-Controller (MVC)," Steve Burbeck (1992): <BR><A 
+    href="http://st-www.cs.uiuc.edu/users/smarch/st-docs/mvc.html">http://st-www.cs.uiuc.edu/users/smarch/st-docs/mvc.html</A><BR>
+    <LI>"MVP: Model-View-Presenter -- The Taligent Programming Model for C++ and 
+    Java," Mike Potel (1996): <BR><A 
+    href="http://www.ibm.com/java/education/mvp.pdf">http://www.ibm.com/java/education/mvp.pdf</A><BR>
+    <LI>"MVC-Client : Putting Model-View-Controller to Work," Rick Sanderson 
+    (1999): <BR><A 
+    href="http://www.fourbit.com/products/fab/papers/fab_mvc_clients.html">http://www.fourbit.com/products/fab/papers/fab_mvc_clients.html</A><BR></LI></UL>
+  <LI>More on client-side frameworks and other related topics: <BR><A 
+  href="http://www.javapal.com/KBLinks.htm#FRAMEWORKS">http://www.javapal.com/KBLinks.htm#FRAMEWORKS</A><BR></LI></UL><BR>
+<P></P><!-- REPLACE SIDEBAR --></FONT><!-- ## MAIN CONTENT ENDS HERE ### --></TD><TD 
+width="8"><IMG height=1 src="Javaworld-HMVC_files/spacer.gif" width=8 
+border=0></TD> </TR></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle width=186 bgColor=#006699><NOBR><FONT 
+      face=Verdana,Geneva,Arial,Helvetica,sans-serif size=1></FONT></NOBR><A 
+      href="http://www.javaworld.com/"><IMG height=81 
+      src="Javaworld-HMVC_files/top_jwlogo.gif" width=186 border=0></A></TD>
+    <TD vAlign=bottom width=8 bgColor=#cccccc><IMG height=8 
+      src="Javaworld-HMVC_files/c_blgrylftbottom.gif" width=8 border=0></TD>
+    <TD vAlign=center align=middle width="100%" bgColor=#cccccc><!-- BOTTOM 468x60 AD STARTS HERE -->
+      <TABLE cellSpacing=0 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD><FONT face=Arial,Helvetica,Sans-serif color=#000000 
+            size=-2>Advertisement: Support JavaWorld, click 
+            here!</FONT><BR><NOLAYER><!--AME SRC="http://ad.doubleclick.net/adi/idg.us.idgnet.javaworld/articles;pos=bottom;sz=468x60;tile=4;ord=750056?" width="468" height="60" frameborder="no" border="0" MARGINWIDTH="0" MARGINHEIGHT="0" SCROLLING="no" 
+<A HREF="http://ad.doubleclick.net/jump/idg.us.idgnet.javaworld/articles;abr=!ie;pos=bottom;sz=468x60;tile=4;ord=750056?" <IMG SRC="http://ad.doubleclick.net/ad/idg.us.idgnet.javaworld/articles;abr=!ie;pos=bottom;sz=468x60;tile=4;ord=750056?" border=0 height="60" width="468" </A 
+</IFRA--></NOLAYER><ILAYER 
+            id=layer4 height="60" width="468" 
+        visibility="hidden"></ILAYER></TD></TR></TBODY></TABLE><!-- BOTTOM 468x60 AD ENDS HERE --></TD>
+    <TD width=8><IMG height=8 src="Javaworld-HMVC_files/spacer.gif" width=8 
+      border=0></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" align=center bgColor=#006699 
+border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=center align=middle width="100%"><FONT 
+      face=Verdana,Geneva,Arial,Helvetica,sans-serif color=#ffffff size=1>
+      <P><BR><A href="http://www.javaworld.com/"><FONT 
+      color=#ffffff>HOME</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/features/index.shtml"><FONT 
+      color=#ffffff>FEATURED TUTORIALS</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/columns/index.shtml"><FONT 
+      color=#ffffff>COLUMNS</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/news-reviews/index.shtml"><FONT 
+      color=#ffffff>NEWS &amp; REVIEWS</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://forums.devworld.com/webx?13@@.ee6b802"><FONT 
+      color=#ffffff>FORUM</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/resources/index.shtml"><FONT 
+      color=#ffffff>JW RESOURCES</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/info/jw-about-index.shtml"><FONT 
+      color=#ffffff>ABOUT JW</FONT></A>&nbsp;|&nbsp; <A 
+      href="http://www.javaworld.com/feedback"><FONT 
+      color=#ffffff>FEEDBACK</FONT></A> </P>
+      <P><A 
+      href="http://www.javaworld.com/javaworld/common/jw-copyright.html"><FONT 
+      color=#ffffff>Copyright © 2002</FONT></A> JavaWorld.com, an IDG 
+      Communications company </P></FONT></TD>
+    <TD width=8 bgColor=#ffffff><IMG height=8 
+      src="Javaworld-HMVC_files/spacer.gif" width=8 border=0></TD></TR>
+  <TR>
+    <TD vAlign=top align=right width="100%"><IMG height=8 
+      src="Javaworld-HMVC_files/c_blrtbottom.gif" width=8 border=0></TD>
+    <TD width=8 bgColor=#ffffff><IMG height=8 
+      src="Javaworld-HMVC_files/spacer.gif" width=8 
+border=0></TD></TR></TBODY></TABLE><!-- USA JavaWorld.com Pixel --><!--ref="http://ad.doubleclick.net/jump/idg.pixel.usa.jw/5.31.01usajw;sz=1x1;ord=750056?" <img src="http://ad.doubleclick.net/ad/idg.pixel.usa.jw/5.31.01usajw;sz=1x1;ord=750056?" border=0 height="1" width="1" <--><!--TOP_BANNER--><!--ER SRC="http://ad.doubleclick.net/adl/idg.us.idgnet.javaworld/articles;pos=top;sz=468x60;tile=1;ord=750056?" width=468 height=60 visibility="hidden" onLoad="moveToAbsolute(layer1.pageX,layer1.pageY);clip.height=60;clip.width=468;visibility='show';" 
+</LAY--><!--125x125--><!--ER SRC="http://ad.doubleclick.net/adl/idg.us.idgnet.javaworld/articles;pos=med;sz=125x125;tile=2;ord=750056?" width=125 height=125 visibility="hidden" onLoad="moveToAbsolute(layer2.pageX,layer2.pageY);clip.height=125;clip.width=125;visibility='show';" 
+</LAY--><!--SKYSCRAPER--><!--ER SRC="http://ad.doubleclick.net/adl/idg.us.idgnet.javaworld/articles;pos=skyscraper;sz=120x600;tile=3;ord=750056?" width=120 height=600 visibility="hidden" onLoad="moveToAbsolute(layer3.pageX,layer3.pageY);clip.height=600;clip.width=120;visibility='show';" 
+</LAY--><!--BOTTOM_BANNER--><!--ER SRC="http://ad.doubleclick.net/adl/idg.us.idgnet.javaworld/articles;pos=bottom;sz=468x60;tile=4;ord=750056?" width=468 height=60 visibility="hidden" onLoad="moveToAbsolute(layer4.pageX,layer4.pageY);clip.height=60;clip.width=468;visibility='show';" 
+</LAY--><!--Big AD--><!--ER SRC="http://ad.doubleclick.net/adl/idg.us.idgnet.javaworld/articles;pos=rectangle;sz=336x280;tile=5;ord=750056" width=336 height=280 visibility="hidden" onLoad="moveToAbsolute(layer5.pageX,layer5.pageY);clip.height=280;clip.width=336;visibility='show';" 
+</LAY--><!-- stories1.idg.net --><!-- DOCID 692645 --><!-- EX: 951984000 --></BODY></BASEFONT></HTML>

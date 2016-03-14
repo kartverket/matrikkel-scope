@@ -1,0 +1,64 @@
+
+Todo for 1.0
+Done * Tidy up samples and their docs
+Done * Tidy up docs
+Done * Upgrade to common-logging version 1.0
+Done * create SAction
+Done * STextField should fire controls when focus is lost and the text is modified
+Done * Add unit tests for SAction, SModelButton, SModelAction
+Done * All unit tests must pass
+Done * deprecate setStringSelector(String) and replace it with setSelector(String)
+Done * Warn when a selector is not bound to an existing property in the model
+Done * Fix multiple selection in STable
+Done * Fix tests for SList
+
+Todo for 1.1
+* Ensure thread-safety in Swing impl (use foxtrot or spin)
+* create SProgressBar
+* create SModelMenuItem, a menu item than can be disabled by the model
+Done * STextArea doesn't define any controlID - it should be similar to STextField
+* Add a sample for localization and UIStrings
+* Use jakarta commons-beanutils for JavaBean access
+* Check that Scope is fully compatible with JDK1.4
+Done * add support for sorting columns in STable (subclass SSortTable was defined for this)
+* Add support for JInternalFrame in showView()
+* Multiple selection for STable / SList should support other types that HashSet, and handle binding from model to view
+  (changes in the model Hashset doesn't update the selection right now)
+* Models implementing DynamicReadOnly should disable editing in STable, and not disable STable and the selection of rows as it is done currently (andys_77)
+* Swing STree impl: should have a TreeDescriptor containing the selectors for each node, compatible if possible with
+ a dtd model so you can generate java classes from a dtd using another tool, then display the contents of the xml file
+ via its java representation.
+* (JDK1.4) create SFormattedTextField
+* Integrate Command pattern from scope_inprogress
+* Integrate validation from scope_inprogress
+* Integrate NLs from scope_inprogress
+
+Todo for 1.2
+* Support different kinds of selectors, like a selector for BeanUtil properties,
+a selector for XPath / JXPath
+* Support XML models
+* STable, SSortedTable should have a simple way of describing the columns, possibly by enhancing 
+the column model
+* It should be possible to use simply a SComponent as a STable renderer or editor
+* Create ScopeLookAndFeel, a wrapper for the installed look and feel that will by default turn the background of the component pink (or any color defined by the validation_failed_color property)
+when there is an error on the component. Update ValidationHelper to use the L&F functions.
+* disableOnNulls should be deprecated on STextField and similar, it's just another kind of validation
+
+Ideas for v2.0 branch
+
+* Add explicit file upload support to servlet impl
+* Helper for timed refreshable Swing widgets
+Done * Add ModelButton class
+Done * Tidy up STable impl
+* Add a state machine impl for Controllers
+* Code generator for Controllers (on top of state machine) from UML statecharts (see http://www.jstatemachine.org/ for another project using statemachines)
+* Automatic view generation for generic object editor/viewer
+* Complete JSP impl with full taglib
+* Add a Velocity servlet impl
+* Lightweight Scope impl for MIDP/LCDUI
+* Complete the validation strategy for interactive (Swing) UIs
+* Possible integration of servlet impl with JavaServerFaces
+  (may lead to a complete refactor of the servlet impl).
+* Refactor all internal workings of JavaBeans/List/Array property handling
+* Define a SDefaultTableCellRender and SDefaultTableCellEditor that can be initialised with almost any SComponent and use this component to display / edit data, while synchronizing with the model
+* Add a int selector for the background of table rows (in the model, you write Color getRowBackground(int rowIndex))

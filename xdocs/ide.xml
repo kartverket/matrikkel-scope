@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	<properties>
+		<author email="smeyfroi@users.sourceforge.net">Steve Meyfroidt</author>
+		<author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+		<title>FAQ</title>
+	</properties>
+	<body>
+		<section name="General">
+			<br>Scope is delivered with a scope-dt.jar file containing the BeanInfos for the Scope components for Swing. </br>
+			<br>You need to tell your IDE to use the Scope components defined in scope-bin.jar and to get their
+			beaninfos from scope-dt.jar. </br>
+			<p>
+			Please refer to your IDE documentation for how to install new Swing components.
+			</p>
+		</section>
+		<section name="JBuilder">
+			<p>For JBuilder 4 and better, do the following:
+			<ul>
+			  <li>Define a Scope library containing scope-bin.jar and scope-dt.jar in its classpath</li>
+			  <li>Go to the Tools menu, select 'Configure palette...'</li>
+			  <li>Add a new page called ScopeMVC</li>
+			  <li>Select the 'Add Components' tab</li>
+			  <li>Select ScopeMVC in the palette page, and Scope as the library</li>
+			  <li>Press the Install button</li>
+			  <li>Browse the tree and go to the org.scopemvc.view.swing package</li>
+			  <li>Select all classes that have a corresponding BeanInfo class (for example, select the 
+			      SButton class because there is a SButtonBeanInfo class)</li>
+			  <li>Press OK</li>
+			</ul>
+			</p>
+		</section>
+	</body>
+</document>

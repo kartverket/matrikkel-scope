@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Presentation of Scope</title>
+  </properties>
+  <body>
+    <section name="Scope Sub-Controllers">
+      <p>The application main controller creates sub-controllers to control discrete modules.</p>
+      <p>
+        In a main controller, handle a control and then create a subcontroller to handle the functionality:
+        <source><![CDATA[
+protected void doHandleControl(Control inControl) throws ControlException { 
+    if (inControl.matchesID(LAUNCH)) {             
+        doLaunch();         
+    } else if (inControl.matchesID(NavTreeView.PATIENTSEARCH)) { 
+        showPatientSearch();         
+    } 
+protected void showPatientSearch() { 
+    searchcontrol = new PatientSearchController((FoboLauncherView)getView());        
+    this.addChild(searchcontrol);        
+    searchcontrol.startup(); 
+}]]></source>
+      </p>
+    <p/>
+    <p align="right">
+      <a href="model.html">Next &gt;</a>
+    </p>
+    </section>
+  </body>
+</document>

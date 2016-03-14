@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Presentation of Scope</title>
+  </properties>
+  <body>
+    <section name="Table of contents">
+    <ol>
+      <li>
+        <a href="what.html">
+          What is Scope?
+        </a>
+      </li>
+      <li>
+        <a href="benefits.html">
+          Benefits
+        </a>
+      </li>
+      <li>
+        <a href="hmvc.html">
+          HMVC
+        </a>
+      </li>
+      <li>
+        <a href="components.html">
+          Scope components
+        </a>
+      </li>
+      <li>
+        <a href="controller.html">
+          Controller
+        </a>
+      </li>
+      <li>
+        <a href="sub-controllers.html">
+          Sub-Controllers
+        </a>
+      </li>
+      <li>
+        <a href="model.html">
+          Model objects
+        </a>
+      </li>
+      <li>
+        <a href="view.html">
+          View objects
+        </a>
+      </li>
+      <li>
+        <a href="sobjects.html">
+          SObjects
+        </a>
+      </li>
+      <li>
+        <a href="mvc-triangle.html">
+          Making the MVC triangle
+        </a>
+      </li>
+      <li>
+        <a href="mapping-model.html">
+          Mapping Model to View
+        </a>
+      </li>
+      <li>
+        <a href="issue-controls.html">
+          Issuing and Handling Controls
+        </a>
+      </li>
+      <li>
+        <a href="example-app.html">
+          Example Application
+        </a>
+      </li>
+      <li>
+        <a href="scope-is-cool.html">
+          Why Scope is cool
+        </a>
+      </li>
+    </ol>
+    </section>
+    <section name="PowerPoint presentation">
+      <p>
+        You can download the PowerPoint presentation of Scope from <a href="IntroductionToScope.ppt">here</a>
+      </p>
+    </section>
+  </body>
+</document>

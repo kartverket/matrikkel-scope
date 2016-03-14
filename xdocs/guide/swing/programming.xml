@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Scope programmer's guide</title>
+  </properties>
+  <body>
+    <section name="Programming with Scope and Swing">
+      <a name="programming"/> 
+      <p>
+        To start developping a Swing application with Scope, it is recommanded that you try 
+        first to generate the code for the Model/View/Controller cluster with <a href="../../timewarp.html">TimeWarp</a>
+      </p> 
+      <ol>
+        <li>
+          <a href="controller.html">
+            Writing the Controller
+          </a>
+          <ul> 
+            <li>
+              <a href="controller.html#controls">
+                Issuing controls
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="model.html">
+            Writing the Model
+          </a>
+          <br/> 
+        </li>
+        <li>
+          <a href="view.html">
+            Writing the View
+          </a>
+          <ul> 
+            <li>
+              <a href="view.html#sync">
+                Synchronizing the view with the model
+              </a>
+            </li>
+            <li>
+              <a href="view.html#use_scomponent">
+                When to use a Scope component or a Swing component
+              </a>
+            </li>
+            <li>
+              <a href="view.html#event_handling">
+                Complex event handling
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="launcher.html">
+            Writing the Launcher
+          </a>
+          <ul> 
+            <li>
+              <a href="launcher.html#applet">
+                Starting Scope in an applet
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="hmvc.html">
+            Working with the HMVC pattern and Swing
+          </a>
+          <ul> 
+            <li>
+              <a href="hmvc.html#hmvc">
+                Understanding the HMVC pattern
+              </a>
+            </li>
+            <li>
+              <a href="hmvc.html#nesting">
+                Nesting Views
+              </a>
+            </li>
+            <li>
+              <a href="hmvc.html#opening_frame">
+                Opening a new frame from the current frame
+              </a>
+            </li>
+            <li>
+              <a href="hmvc.html#opening_internal_frame">
+                Opening a new internal frame in the current frame
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ol>
+    </section>
+  </body>
+</document>

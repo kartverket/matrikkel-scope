@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Scope programmer's guide</title>
+  </properties>
+  <body>
+    <section name="Scope's SComponents">
+    <ul>
+      <li>
+        <a href="scomponent.html">
+          What is a SComponent?
+        </a>
+      </li>
+      <li>
+        <a href="sbutton.html">
+          Using SButton
+        </a>
+      </li>
+      <li>
+        <a href="scheckbox.html">
+          Using SCheckbox
+        </a>
+      </li>
+      <li>
+        <a href="scombobox.html">
+          Using SComboBox
+        </a>
+      </li>
+      <li>
+        <a href="slabel.html">
+          Using SLabel
+        </a>
+      </li>
+      <li>
+        <a href="slist.html">
+          Using SList
+        </a>
+      </li>
+      <li>
+        <a href="smenuitem.html">
+          Using SMenuItem
+        </a>
+      </li>
+      <li>
+        <a href="spanel.html">
+          Using SPanel
+        </a>
+      </li>
+      <li>
+        <a href="spasswordfield.html">
+          Using SPasswordField
+        </a>
+      </li>
+      <li>
+        <a href="sradiobutton.html">
+          Using SRadioButton
+        </a>
+      </li>
+      <li>
+        <a href="sslider.html">
+          Using SSlider
+        </a>
+      </li>
+      <li>
+        <a href="stable.html">
+          Using STable
+        </a>
+      </li>
+      <li>
+        <a href="stextarea.html">
+          Using STextArea
+        </a>
+      </li>
+      <li>
+        <a href="stextfield.html">
+          Using STextField
+        </a>
+      </li>
+      <li>
+        <a href="sunboundpanel.html">
+          Using SUnboundPanel
+        </a>
+      </li>
+    </ul>
+    </section>
+  </body>
+</document>

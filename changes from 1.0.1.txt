@@ -1,0 +1,5 @@
+Added setActionID(..) and deprecated setControlID(..) for all GUI component classes in the package org.scopemvc.view.swing.
+
+Added setPointer(..)/setXXXPointer(..) and deprecated setSelector()/setXXXPointer(..) for the most used selectors and classes in  org.scopemvc.view.swing. Except: SList, SPanel, SSlider, SSortTable, STextArea.
+
+Create org.scopemvc.model.BasicModel as subclass of org.scopemvc.model.basic.BasicModel with some 2.0 methods delegating to scope 1.0.1 implementation

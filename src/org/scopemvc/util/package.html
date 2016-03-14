@@ -1,0 +1,251 @@
+<HTML>
+
+<HEAD>
+</HEAD>
+
+<BODY>
+
+<P>
+Utility classes that include two main areas of interest to application developers:
+ScopeConfig for configuring the Scope framework, 
+and UIStrings used to look up user-readable Strings from localised
+resources.
+</P>
+
+
+<A NAME="scopeconfig"></A><H1>ScopeConfig</H1>
+<P>
+{@link org.scopemvc.util.ScopeConfig ScopeConfig} 
+is the configuration manager used to configure 
+various aspects of Scope. Default configuration is provided by the
+{@link org.scopemvc.util.DefaultScopeConfig}
+ResourceBundle.
+</P>
+<P>
+Scope can be configured by supplying an 
+application-specific ResourceBundle and calling
+{@link org.scopemvc.util.ScopeConfig#setPropertiesName setPropertiesName}
+during application startup.
+Any properties defined in a custom config in this way
+will override the defaults.
+</P>
+<P>
+Scope configuration includes the following:
+<UL>
+<LI>
+<B>org.scopemvc.controller.swing.SwingContext.window_icon</B>
+defines the image resource used as the icon for JDialogs and JFrames.
+Default: /org/scopemvc/images/window_icon.gif
+</LI>
+<LI>
+<B>org.scopemvc.controller.swing.SwingContext.progress_start_delay</B>
+defines the milliseconds delay before ViewContext.startBusy() is called 
+(ie delay before busy cursor shows in Swing if a Controller takes a long
+time to handle a Control).
+Default: 500
+</LI>
+<li><b>org.scopemvc.view.swing.SFields.control_on_lost_focus</b> <font color="red">deprecated, 
+  use org.scopemvc.view.swing.XXX.control_settings instead</font>
+  determines whether the following components: STextField, STextArea, SPasswordfield
+  fire a Control when they lose focus and their content has changed. <br/>
+  Default: true <br/>
+</li>
+<li><b>org.scopemvc.view.swing.STextField.control_settings</b> 
+  coma-separated list that determines whether the STextField component
+  fires a Control. Possible values are:
+  <ul>
+    <li>onEnter: fires a control when the user presses the Enter key</li>
+    <li>onLostFocus: fires a control when the component loses the focus</li>
+    <li>onlyOnChange: fires a control only if the value of the component changed 
+      and there was an event (enter pressed or lost focus) on the component</li>
+  </ul> 
+  or a combination of those values
+  <br/>
+  Default: onEnter,onLostFocus <br/>
+</li>
+<li><b>org.scopemvc.view.swing.SPasswordField.control_settings</b> 
+  coma-separated list that determines whether the SPasswordField component
+  fires a Control. Possible values are:
+  <ul>
+    <li>onEnter: fires a control when the user presses the Enter key</li>
+    <li>onLostFocus: fires a control when the component loses the focus</li>
+    <li>onlyOnChange: fires a control only if the value of the component changed 
+      and there was an event (enter pressed or lost focus) on the component</li>
+  </ul> 
+  or a combination of those values
+  <br/>
+  Default: onEnter,onLostFocus <br/>
+</li>
+<li><b>org.scopemvc.view.swing.STextArea.control_settings</b> 
+  coma-separated list that determines whether the STextField component
+  fires a Control. Possible values are:
+  <ul>
+    <li>onEnter: not used here</li>
+    <li>onLostFocus: fires a control when the component loses the focus</li>
+    <li>onlyOnChange: fires a control only if the value of the component changed 
+      and there was an event (enter pressed or lost focus) on the component</li>
+  </ul> 
+  or a combination of those values
+  <br/>
+  Default: onLostFocus <br/>
+</li>
+<li><b>org.scopemvc.view.swing.SLabel.use_labelFor_component_enabled_state</b>
+  defines if the SLabel enabled state should be synchronized with the enabled state 
+  of the component associated to a SLabel with the setLabelFor() method <br/>
+  Values are true or false. <br/>
+  Default: true <br/>
+</li>
+<li><b>org.scopemvc.view.swing.ValidationHelper-validation.failed.color</b>
+  Property that defines the background color of a component in case of failure. <br>
+  Values are instances of the Color class, or numeric value of the RGB color code, parsable by {link Intege#decode Integer.decode()}, eg. 0xB2B <br>
+  Default: Color.PINK
+</li>
+<LI>
+List of <B>StringConvertor.{datatype}</B>
+defines the StringConvertor classes used to convert
+datatypes to and from their String representation.
+Defaults: the convertors in {@llink org.scopemvc.util.convertor}
+for all basic Java datatypes.
+</LI>
+<LI>
+<B>org.scopemvc.util.convertor.DateStringConvertor.formatter</B>
+defines either a DateFormat or a String used to create a SimpleDateFormat
+that will be used by DateStringConvertors to format Dates.
+</LI>
+<LI>
+List of <B>org.scopemvc.util.convertor.DateStringConvertor.formatter.{number}</B>
+defines the DateFormat objects used to parse Dates. If Strings
+are supplied in the config they are used to create SimpleDateFormats.
+The list of keys must be suffixed with sequential integers from 0 to n.
+</LI>
+<LI>
+<B>org.scopemvc.util.convertor.TimeStringConvertor.formatter</B>
+defines either a DateFormat or a String used to create a SimpleDateFormat
+that will be used by TimeStringConvertors to format Times.
+</LI>
+<LI>
+List of <B>org.scopemvc.util.convertor.TimeStringConvertor.formatter.{number}</B>
+defines the DateFormat objects used to parse Times. If Strings
+are supplied in the config they are used to create SimpleDateFormats.
+The list of keys must be suffixed with sequential integers from 0 to n.
+</LI>
+<LI>
+<B>org.scopemvc.util.convertor.DateTimeStringConvertor.formatter</B>
+defines either a DateFormat or a String used to create a SimpleDateFormat
+that will be used by DateTimeStringConvertors to format DateTimes.
+</LI>
+<LI>
+List of <B>org.scopemvc.util.convertor.DateTimeStringConvertor.formatter.{number}</B>
+defines the DateFormat objects used to parse DateTimes. If Strings
+are supplied in the config they are used to create SimpleDateFormats.
+The list of keys must be suffixed with sequential integers from 0 to n.
+</LI>
+<LI>
+List of <B>PropertyViewer.{viewtype}-{datatype}</B>
+defines the Views that BeansEditorManager returns to view
+specific datatypes.
+Defaults: viewers from {@link org.scopemvc.view.swing} 
+for basic Java datatypes for the Swing viewtype.
+</LI>
+<LI>
+List of <B>PropertyEditor.{viewtype}-{datatype}</B>
+defines the Views that BeansEditorManager returns to edit
+specific datatypes.
+Defaults: editors from {@link org.scopemvc.view.swing} 
+for basic Java datatypes for the Swing viewtype.
+</LI>
+<LI>
+<B>PropertyManager</B> defines the concrete PropertyManager
+implementation returned from <CODE>PropertyManager#getInstance</CODE>.
+Default: {@link org.scopemvc.model.beans.BeansPropertyManager}.
+</LI>
+<LI>
+<B>ActionManager</B> defines the concrete ActionManager
+implementation returned from <CODE>ActionManager#getInstance</CODE>.
+Default: {@link org.scopemvc.model.beans.BeansActionManager}.
+</LI>
+<LI>
+<B>EditorManager</B> defines the concrete EditorManager
+implementation returned from <CODE>EditorManager#getInstance</CODE>.
+Default: {@link org.scopemvc.model.beans.BeansEditorManager}.
+</LI>
+<LI>
+<B>org.scopemvc.controller.servlet.ScopeServlet.ControlParam</B>
+defines the HTTP parameter used to specify ControlID in an incoming
+request to ScopeServlet.
+Default: action
+</LI>
+<LI>
+<B>org.scopemvc.controller.servlet.ScopeServlet.ViewIDParam</B>
+defines the HTTP parameter used to specify ViewID in an incoming
+request to ScopeServlet.
+Default: view
+</LI>
+<LI>
+<B>ServletFormParameter.propertyIDPrefix</B>
+defines the prefix used to identify HTTP parameters
+that ScopeServlet will use to repopulate a ServletView's
+bound model.
+</LI>
+<LI>
+<B>ServletFormParameter.viewIDSuffix</B>
+defines the separator between viewID and propertyID
+in an HTTP parameter used to repopulate a ServletView's
+bound model.
+</LI>
+<LI>
+<B>org.scopemvc.view.servlet.xml.AbstractServletXSLView.shouldCacheTemplates</B>
+determines whether {@link org.scopemvc.view.servlet.xml.AbstractServletXSLView}
+caches compiled XSLTs. "1" means templates are cached. "0" means templates
+are not cached: useful during development when XSLT edits need to be seen
+immediately without restarting the web application.
+Default: 1 (templates are cached)
+</LI>
+<LI>
+<B>org.scopemvc.view.servlet.xml.AbstractServletXSLView.debugXMLDirectory</B>
+determines whether {@link org.scopemvc.view.servlet.xml.AbstractServletXSLView}
+writes the XML produced from a bound model as a file. If "" then XML is not
+written to the filesystem, else a file is written every time a view is shown. The XML
+is put into the directory specified by this config.
+Default: ""
+</LI>
+<LI>
+</LI>
+<LI>
+</LI>
+<LI>
+</LI>
+<LI>
+</LI>
+</UL>
+</P>
+        { "org.scopemvc.view.servlet.xml.ServletXSLView.ModelElement", "data" },
+        { "org.scopemvc.view.servlet.xml.ServletXSLView.ElementElement", "element" },
+        { "org.scopemvc.view.servlet.xml.ServletXSLView.IDAttribute", "id" },
+        { "org.scopemvc.view.servlet.xml.ServletXSLView.IndexElement", "index" },
+
+        { "org.scopemvc.controller.servlet.ScopeServlet.maxControllerPoolSize", new Integer(10) },
+
+
+
+
+<A NAME="uistrings"></A><H1>UIStrings</H1>
+<P>
+A dictionary that uses localised ResourceBundle(s) to look up
+user-readable Strings by a key. This is used by the default
+ControlException handler in 
+{@link org.scopemvc.controller.basic.BasicController BasicController}
+treating the message in the exception as a key to look up a
+localised String from UIStrings.
+</P>
+<P>
+The property resource used for an application must be set up
+by calling {@link org.scopemvc.util.UIStrings#setPropertiesName}
+at application startup. The usual ResourceBundle localisation 
+applies to the resource specified.
+</P>
+
+
+</BODY>
+</HTML>
+

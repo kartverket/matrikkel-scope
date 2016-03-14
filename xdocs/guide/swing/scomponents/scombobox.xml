@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Scope programmer's guide</title>
+  </properties>
+  <body>
+    <section name="Using SComboBox">
+      <p>
+        Create an SComboBox and associate it with an ArrayList in the model, which will hold 
+        the list of items that the SCombobox will contain. <br/> 
+        The ArrayList is populated with value objects. In the model, create a getter method for 
+        a specific instance of the member value objects, so that the model can be aware of which 
+        object is selected in the view. <br/>
+        Below is an example of how to initially create the SComboBox: 
+        <source><![CDATA[
+// In the view: 
+  countryCombo = new SComboBox(); 
+  // Set the selector to the ArrayList of items. 
+  countryCombo.setSelector("countryList");
+  // Set renderer selector to the field within the item model that you want to display. 
+  countryCombo.setRendererSelector("countryName");
+  // Set the selection selector to the item variable from the Item Model. 
+  countryCombo.setSelectionSelector("selectedCountry");
+
+// In the model
+TODO
+]]></source>
+        In the above example, there should be a public String getCountryName(){} method in the ItemModel value object. 
+      </p>
+    </section>
+  </body>
+</document>

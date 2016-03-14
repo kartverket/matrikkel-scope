@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="scope" basedir="." default="default">
+
+   <!-- Den opprinnelige build.xml fra scope var erstattet av en matrikkelbyggefil. Siden matrikkelen ikke bygges med
+   ant, har innholdet blitt fjernet, da det opprinnelige innholdet aldri ble med over i Perforce. -->
+
+</project>
+

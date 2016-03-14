@@ -1,0 +1,43 @@
+<project default="scope:jar"
+  xmlns:j="jelly:core"
+  xmlns:m="maven"
+  xmlns:reactor="reactor"
+  xmlns:maven="jelly:org.apache.maven.jelly.tags.project.MavenTagLibrary">
+
+  <goal name="scope:jar">
+    <attainGoal name="java:jar"/>
+  </goal>
+
+  <preGoal name="xdoc:transform">
+    <attainGoal name="license"/>
+    <attainGoal name="scope:complete-xdocs"/>
+  </preGoal>
+
+  <postGoal name="xdoc:transform">
+    <attainGoal name="scope:doc-files"/>
+  </postGoal>
+
+  <goal name="scope:complete-xdocs">
+    <!-- Build the history -->
+    <!-- Remove characters than may break xml in history.txt -->
+    <copy file="history.txt" tofile="${maven.build.dir}/history.txt" overwrite="true" />
+    <replace dir="${maven.build.dir}" includes="history.txt" token="&lt;" value="&amp;lt;" />
+    <replace dir="${maven.build.dir}" includes="history.txt" token="&gt;" value="&amp;gt;" />
+    <ant antfile="maven-helper.xml">
+       <property name="maven.build.dir" value="${maven.build.dir}"/>
+    </ant>
+  </goal>
+
+  <goal name="scope:doc-files">
+    <!-- Copy the additional files used in the documentation -->
+    <copy todir="${basedir}/target/docs">
+        <fileset dir="${basedir}/xdocs">
+            <include name="**/*.ppt"/>
+            <include name="**/*.gif"/>
+            <include name="**/*.png"/>
+        </fileset>
+    </copy>
+  </goal>
+
+
+</project>

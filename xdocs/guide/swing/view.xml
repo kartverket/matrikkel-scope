@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Scope programmer's guide</title>
+  </properties>
+  <body>
+    <section name="View">
+      <subsection name="Writing the view">
+        <p> 
+          <a name="writing" />
+          Scope Views extend the Scope base class org.scopemvc.view.swing.SPanel in order to bind 
+          Scope SComponents to data in the model class. <br/>
+          There is no event handling in Scope Views. Scope view components issue controls which are intercepted 
+          by controllers and executed in models. <br/>
+          For more information about Scope views, see <a href="scomponents/spanel.html">Using SPanel.</a>
+        </p>
+        <p>
+          In your SPanel, you can put either standard Swing components or Scope's SComponents.
+          It's also possible to add a JPanel containing other components, including Scope's SComponents. <br/>
+          When the SPanel is bound to a Controller and a Model object, it browses automatically all the 
+          components it contains at any level of nesting, and bind that component if it's a SComponent 
+          to the appropriate property in the bound model.
+        </p>
+      </subsection>
+      <subsection name="Synchronizing the view with the model">
+        <p>
+          <a name="sync" />
+          The synchronization is done automatically if the model extends BasicModel and fires the appropriate ModelChangeEvents,
+          otherwise you have to explicitely call refresh() on the SPanel.
+        </p>
+      </subsection>
+      <subsection name="When to use a Scope component or a Swing component">
+        <p> 
+          <a name="use_scomponent" />
+          When you are building a GUI screen, you need to choose for each component if it’s a Scope SComponent, 
+          or a standard Swing component. <br/>
+          The following flowchart gives some guidelines about when to use or not to use SComponents. <br/>
+          <img src="../../images/swing-flowchart.gif"/> <br/>
+          Additional rules are:
+          <ul>
+            <li>Don’t use SPanels if you don’t have to bind them with a model independent of the parent; use JPanel instead.</li>
+            <li>If there is not yet a Scope version for a Swing component, use the Swing version and do the model binding manually or wait for a Scope version...</li>
+          </ul>
+        </p>
+      </subsection>
+      <subsection name="Complex event handling">
+        <p> 
+          <a name="event_handling" />
+          Scope provides by default an event handling for most common GUI events, like ActionPerformedEvent on buttons, ListSelectionChangeEvent on lists. 
+          Those events are caught by Scope and forwarded to the controller as controls. <br/>
+          Those controls are then handled by the Controller in the doSomething() methods. Those methods should contain only business logic or presentation 
+          logic calling some business logic.
+        </p>
+        <p>
+          In some cases, there are some events fired by the Swing components that are not handled by Scope. In that case, you need first to determine if the 
+          event will use only the view or if it will interact with the model and the application logic. <br/>
+          For the first case, you can implement the event listener as in a normal Swing application. <br/>
+          In the second case, the recommanded solution is to write in your SPanel subclass a listener to that 
+          event, then create a Control with an ID unique to that event and optionally containing the parameters from that event, 
+          then issue the control to the controller with the issueControl() method. <br/>
+          For example, you will have:
+<source><![CDATA[
+TODO: write the sample (catch an event, issue  control)
+]]></source>
+          Then the last step is to handle the Control in your controller, as this is the only place where you can put logic without breaking the MVC pattern.
+        </p>
+      </subsection>
+    </section>
+  </body>
+</document>

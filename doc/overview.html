@@ -1,0 +1,152 @@
+<HTML>
+
+<HEAD>
+    <TITLE>Introduction</TITLE>
+    <LINK REL="STYLESHEET" TYPE="text/css" HREF="scope.css" />
+</HEAD>
+
+<BODY>
+
+<IMG SRC="images/scope_logo_big.gif" />
+
+<H1>Overview</H1>
+
+<P>
+Scope is a framework built around an extensible implementation of
+the Hierarchical Model-View-Controller (HMVC) pattern similar to the
+pattern described in
+<A HREF="http://www.javaworld.com/javaworld/jw-07-2000/jw-0721-hmvc_p.html">
+HMVC: The layered pattern for developing strong client tiers
+</A>. It provides an easy-to-use Java
+library that can be used as a basis for component-oriented application 
+development following the layered architecture detailed in Sun's J2EE
+and in
+<A href="http://www.amazon.co.uk/exec/obidos/ASIN/0201708515">
+Cheesman/Daniels: UML Components
+</A>.
+</P>
+
+<P>
+Applications developed using Scope are "view-agnostic": a Swing
+application uses the same infrastructure and patterns as a web application
+that happens to use XML/XSLT to generate HTML, or a JSP-based application. 
+The framework has been used
+in production systems built using the default Swing and XML/XSL Servlet
+implementations, as well as proprietary VoiceXML, ColdFusion and custom 
+XML/XSLT implementations.
+</P>
+
+<P>
+Scope provides the following major subsystems:
+<UL>
+<LI>
+An HMVC implementation in which Controllers respond to 
+Control objects issued from Views as a result of user interaction, 
+or from child Controllers in the chain of responsibility.
+</LI>
+<LI>
+Infrastructure for binding models to views with full two-way
+synchronisation: change the view and the model is updated, 
+and vice-versa. (Obvious limitations exist with web
+applications that cannot update HTML when a model on 
+the web server updates.)
+</LI>
+<LI>
+Wrappers around common Swing components to implement
+full data binding with validation.
+</LI>
+<LI>
+A servlet implementation using XSLT to transform model XML
+into HTML. The servlet implementation supports persistent
+per-user application state if required, and automatic repopulation
+of model objects from form parameters in an HTTP request.
+</LI>
+<LI>
+An early implementation using JSP Views to suck data from
+models into an HTML layout. This also supports automatic
+repopulation of model data from HTTP requests.
+</LI>
+<LI>
+Infrastructure that allows Scope to act on arbitrary JavaBean 
+model objects. This infrastructure is designed to be decoupled
+in such a way that an alternative can be plugged in, for example
+to act on JMX MBeans.
+</LI>
+<LI>
+An implementation of "active" model objects that broadcast changes in
+their state to allow views to update automatically. A set of "active"
+collection models are also provided. Use of these base classes is 
+optional but convenient in complex applications that use a rich GUI,
+eg Swing, in which fully automated synchronisation between model and
+view is desirable. However, even where this is not feasible, Scope's
+Swing implementation without "active" models enables simple semi-automatic
+data-binding -- see the samples.
+</LI>
+<LI>
+Support for localisation of user messages.
+</LI>
+<LI>
+Support for conversion of arbitrary datatypes to and from 
+their String representation.
+</LI>
+<LI>
+A comprehensive unit test suite to ensure a known quality level.
+</LI>
+</UL>
+</P>
+
+<P>
+Scope is distributed with a set of samples designed to act as tutorials 
+in the use of various features of the framework. A Swing based Launcher
+allows documentation to be viewed while running the Swing examples from 
+a simple GUI:
+<BR />
+<IMG SRC="images/launcher.gif" />
+</P>
+<P>
+The sample code also includes web-based
+applications using the XML/XSL and JSP Servlet implementations. 
+The "servletsamples" distribution includes a deployable
+war that allows the servlet examples to be run.
+</P>
+
+<P>
+A Yahoo eGroup has been set up by Scope users to discuss their experiences.
+A FAQ is also being compiled by list members -- a useful resource
+for all users. For further information:
+<A TARGET="_parent" HREF="http://groups.yahoo.com/group/scope-dev-framework">
+http://groups.yahoo.com/group/scope-dev-framework
+</A>
+</P>
+
+<P>
+An independent 
+<A TARGET = "_parent" HREF="introduction/frame.htm">Introduction to Scope</A>
+presentation is distributed as part
+of the documentation, courtesy of Julia Reynolds at InPhact.
+</P>
+
+<P>
+The source for Scope is released under the
+BSD Open Source License, which allows commercial 
+development projects built with Scope to
+be distributed under non-Open Source licenses.
+</P>
+
+<H1>Feedback</H1>
+
+<P>
+Feedback on any aspect of Scope is welcome. Offers of help on any aspect of Scope is
+even more welcome! I'm Steve Meyfroidt, based in Kendal, UK but currently working
+in Mumbai, India for a few months. My email address is: 
+<A HREF="mailto:smeyfroi@users.sourceforge.net">smeyfroi@users.sourceforge.net</A>.
+</P>
+
+<H6>
+Copyright (C) 2000-2002 <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
+</H6>
+
+</BODY>
+
+</HTML>
+

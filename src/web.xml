@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN" "http://java.sun.com/j2ee/dtds/web-app_2_2.dtd">
+
+<web-app>
+
+    <servlet>
+		<servlet-name>
+			webform
+		</servlet-name>
+		<servlet-class>
+			samples.servlet.xml.webform.FormServlet
+		</servlet-class>
+    </servlet>
+	<!--servlet-mapping>
+		<servlet-name>
+			webform
+		</servlet-name>
+		<url-pattern>
+			/webform
+		</url-pattern>
+	</servlet-mapping-->
+
+    <servlet>
+		<servlet-name>
+			validation
+		</servlet-name>
+		<servlet-class>
+			samples.servlet.xml.validation.ValidationServlet
+		</servlet-class>
+    </servlet>
+	
+    <servlet>
+		<servlet-name>
+			login
+		</servlet-name>
+		<servlet-class>
+			samples.servlet.xml.login.LoginAppServlet
+		</servlet-class>
+    </servlet>
+	
+    <servlet>
+		<servlet-name>
+			jspwebform
+		</servlet-name>
+		<servlet-class>
+			samples.servlet.jsp.webform.JSPFormServlet
+		</servlet-class>
+    </servlet>
+    
+	<taglib>
+		<taglib-uri>
+			http://scopemvc.org/taglib
+		</taglib-uri>
+		<taglib-location>
+			/WEB-INF/jsp/scope-taglib.tld
+		</taglib-location>
+    </taglib>
+
+</web-app>

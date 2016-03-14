@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Presentation of Scope</title>
+  </properties>
+  <body>
+    <section name="Scope Controller Objects">
+    <p>
+      Controllers are created by extending the Scope API's Basic Controller
+    </p>
+    <p>
+      Controllers have three responsibilities:
+      <ol> 
+        <li>
+          Set the model and the view (usually in the constructor) <br/>
+          <source><![CDATA[
+public LoginController() {         
+    setModel(new CheckoutModel());         
+    setView(mainView);     
+}]]></source>
+        </li>
+        <li>
+          Handle controls in the doHandleControl method <br/>
+          <source><![CDATA[
+protected void doHandleControl(Control inControl) throws ControlException { 
+    if (inControl.matchesID(VALIDATE_LOGIN)) { 
+        doValidateLogin();         
+    } 
+}]]></source>
+          Controllers respond to Control objects from two sources: 
+          <ul>
+            <li>Issued from Views as a result of user interaction</li>
+            <li>Issued from child Sub-Controllers in the chain of responsibility</li>
+            <li>Issued locally using the handleControl command</li>
+          </ul> 
+        </li>
+        <li>
+          Startup
+          <source><![CDATA[
+public void startup() {         
+    LoginView myView = (LoginView)getView();         
+    myView.setViewBounds(myView.CENTRED);         
+    showView(myView);     
+}]]></source>
+        </li>
+      </ol>
+    </p>
+    <p/>
+    <p align="right">
+      <a href="sub-controllers.html">Next &gt;</a>
+    </p>
+    </section>
+  </body>
+</document>

@@ -1,0 +1,122 @@
+<HTML>
+
+<HEAD>
+</HEAD>
+
+<BODY>
+
+<P>
+A servlet implementation that provides a simple implementation
+of the HMVC pattern for HTTP request handling. It provides 
+a single servlet that handles <!-- session-based application state persistence,-->
+despatch of Controls into the chain of responsiblity and 
+can optionally repopulate Models with values sent in the HTTP request
+(two-way data binding).
+</P>
+
+
+<A NAME="HTTPRequest"></A><H1>HTTP Request Handling</H1>
+
+<P>
+Incoming requests for a web application are sent to 
+{@link org.scopemvc.controller.servlet.ScopeServlet ScopeServlet}
+or (more likely) a subclass of it that specialises certain functionality.
+The servlet uses a form parameter to determine which View the user
+interacted with (<CODE>view=foo</CODE>).
+This View will issue a Control into the chain of responsibility via its Controller.
+</P>
+<P>
+The Control to describe the user's interaction is constructed from 
+a form parameter (<CODE>action=bar</CODE>). The Control's parameter
+is a HashMap containing the form parameters left after stripping the 
+automatic model repopulation parameters described below.
+</P>
+<P>
+Form parameters with a '.' prefix are treated by 
+the active View as instructions to repopulate
+the Model: the parameter key is stripped of the '.' prefix 
+and treated as a property description.
+eg the form parameter
+<CODE>.name=Fred</CODE> will populate the "name" property
+of the model bound to a View.
+</P>
+<P>
+The doPost method is implemented as follows:<BR/>
+<A HREF="../../../../../images/api/ScopeServlet.doPost.gif">
+<IMG SRC="../../../../../images/api/ScopeServlet.doPost.gif" WIDTH="240" HEIGHT="240">
+</A>
+</P>
+
+
+<A NAME="MVCStructure"></A><H1>MVC Structure enforced by this implementation</H1>
+
+<P>
+A number of basic consequences follow from the current implementation
+of ScopeServlet and the accompanying ServletView classes. In part this
+is due to the adoption of MVC strategies that are well proven in the 
+environment of rich desktop GUI implementations.
+</P>
+
+<H2>Controller hierarchy and the chain of responsiblity</H2>
+<P>
+Controllers throughout Scope are arranged in a tree hierarchy
+with more "global" Controllers parenting more specific ones. This enforces
+a one-way dependency from a parent to the children it creates to handle
+specific areas of functionality.
+</P>
+<P>
+In a servlet, the top-most Controller is the root of the application. This should
+provide application-level Control handling and one-stop application initialisation which will
+probably involve creating child Controllers to handle related sets of functionality.
+</P>
+<P>
+The entire structure might be similar to this:<BR/>
+<IMG SRC="../../../../../images/api/ApplicationControllerHierarchy.gif"/>
+</P>
+
+<H2>Internal redirects</H2>
+<P>
+A Controller is able to redirect the flow by constructing a HashMap
+of form parameters for the new request then calling 
+{@link org.scopemvc.controller.servlet.ScopeServlet#redirect}.
+</P>
+
+<A NAME="ErrorHandler"></A><H1>Implementing an Error Handler</H1>
+Errors are handled by {@link org.scopemvc.controller.servlet.ScopeServlet#doPost} 
+by calling
+{@link org.scopemvc.controller.servlet.ServletContext#showError}. 
+The default showError implementation is
+very simple and will need to be overridden in real applications. To do this,
+override showError in a subclass of ServletContext, then override 
+createServletContext in a subclass of ScopeServlet to return an 
+instance of your new ServletContext subclass.
+
+
+<A NAME="StateManagement"></A><H1>State Management</H1>
+
+<P>
+In practice, it has been found useful to consider the
+state changes allowed as the user navigates
+between Views. This factor has emerged as crucial in building 
+web applications in which users can change application flow by
+using the browser's "back" button or bookmark feature, in which
+case it becomes necessary to cope with unexpected changes
+in state. State management for web applications can be 
+bolted into a Scope application by hooking into the
+ScopeServlet class. No implementations are known to date,
+though some work has been considered in line with the work
+described in this paper:
+<A HREF="http://www.uidesign.net/1999/papers/webmvc_part1.html">
+Server-side MVC Architecture
+</A>
+An implementation of this strategy is currently under way at:
+<A HREF="http://sourceforge.net/projects/jstatemachine/">
+Java State Machine
+</A>
+and this may prove to be a fruitful project to investigate further.
+</P>
+
+
+</BODY>
+</HTML>
+

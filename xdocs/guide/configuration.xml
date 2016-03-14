@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Scope programmer's guide</title>
+  </properties>
+  <body>
+<!-- TODO: Generate this file directly from DefaultScopeConfig -->
+    <section name="Configuration">
+      <p>
+        <a href="../apidocs/org/scopemvc/util/ScopeConfig.html"><code>ScopeConfig</code></a> 
+        is the configuration manager used to configure various aspects of Scope. The default configuration 
+        is provided by the <A HREF="/apidocs/org/scopemvc/util/DefaultScopeConfig.html"><code>DefaultScopeConfig</code></A>
+        ResourceBundle.
+      </p>
+      <p>
+        Scope can be configured by supplying an application-specific ResourceBundle, called scope.properties, to put in the root classpath. The name of the
+        application-specific bundle can be changed by calling 
+        <a href="../apidocs/org/scopemvc/util/ScopeConfig.html#setPropertiesName(java.lang.String)"><code>setPropertiesName</code></a>
+        during application startup.
+        Any properties defined in a custom config in this way
+        will override the defaults. <br/>
+        If the application-specific ResourceBundle cannot be loaded at startup, try to define the classloader used by your application
+        because using any Scope functionalities. See <A HREF="../apidocs/org/scopemvc/util/ResourceLoader.html#setClientClassLoader(java.lang.ClassLoader)"><code>ResourceLoader.setClientClassLoader()</code></A> for more informations.
+      </p>
+      <p>
+        Scope configuration includes the following:
+        <ul>
+          <li><b>org.scopemvc.controller.swing.SwingContext.window_icon</b>
+            defines the image resource used as the icon for JDialogs and JFrames. <br/>
+            Default: /org/scopemvc/images/window_icon.gif <br/>
+          </li>
+          <li><b>org.scopemvc.controller.swing.SwingContext.progress_start_delay</b>
+            defines the milliseconds delay before ViewContext.startBusy() is called 
+            (ie delay before busy cursor shows in Swing if a Controller takes a long
+            time to handle a Control). <br/>
+            Default: 500 <br/>
+          </li>
+          <li><b>org.scopemvc.view.swing.SFields.control_on_lost_focus</b> <font color="red">deprecated, 
+            use org.scopemvc.view.swing.XXX.control_settings instead</font>
+            determines whether the following components: STextField, STextArea, SPasswordfield
+            fire a Control when they lose focus and their content has changed. <br/>
+            Default: true <br/>
+          </li>
+          <li><b>org.scopemvc.view.swing.STextField.control_settings</b> 
+            coma-separated list that determines whether the STextField component
+            fires a Control. Possible values are:
+            <ul>
+              <li>onEnter: fires a control when the user presses the Enter key</li>
+              <li>onLostFocus: fires a control when the component loses the focus</li>
+              <li>onlyOnChange: fires a control only if the value of the component changed 
+                and there was an event (enter pressed or lost focus) on the component</li>
+            </ul> 
+            or a combination of those values
+            <br/>
+            Default: onEnter,onLostFocus <br/>
+          </li>
+          <li><b>org.scopemvc.view.swing.SPasswordField.control_settings</b> 
+            coma-separated list that determines whether the SPasswordField component
+            fires a Control. Possible values are:
+            <ul>
+              <li>onEnter: fires a control when the user presses the Enter key</li>
+              <li>onLostFocus: fires a control when the component loses the focus</li>
+              <li>onlyOnChange: fires a control only if the value of the component changed 
+                and there was an event (enter pressed or lost focus) on the component</li>
+            </ul> 
+            or a combination of those values
+            <br/>
+            Default: onEnter,onLostFocus <br/>
+          </li>
+          <li><b>org.scopemvc.view.swing.STextArea.control_settings</b> 
+            coma-separated list that determines whether the STextField component
+            fires a Control. Possible values are:
+            <ul>
+              <li>onLostFocus: fires a control when the component loses the focus</li>
+              <li>onlyOnChange: fires a control only if the value of the component changed 
+                and there was an event (enter pressed or lost focus) on the component</li>
+            </ul> 
+            or a combination of those values
+            <br/>
+            Default: onLostFocus <br/>
+          </li>
+          <li><b>org.scopemvc.view.swing.SLabel.use_labelFor_component_enabled_state</b>
+            defines if the SLabel enabled state should be synchronized with the enabled state 
+            of the component associated to a SLabel with the setLabelFor() method <br/>
+            Values are true or false. <br/>
+            Default: true <br/>
+          </li>
+          <li><b>org.scopemvc.view.swing.ValidationHelper-validation.failed.color</b>
+            Property that defines the background color of a component in case of failure. <br/>
+            Values are instances of the Color class, or numeric value of the RGB color code, parsable by {link Intege#decode Integer.decode()}, eg. 0xB2B <br/>
+            Default: Color.PINK
+          </li>
+          <li>List of <b>StringConvertor.{datatype}</b>
+            defines the StringConvertor classes used to convert
+            datatypes to and from their String representation. <br/>
+            Defaults: the convertors for all basic Java datatypes. <br/>
+          </li>
+          <li><b>org.scopemvc.util.convertor.DateStringConvertor.formatter</b>
+            defines either a DateFormat or a String used to create a SimpleDateFormat
+            that will be used by DateStringConvertors to format Dates. 
+            <br/>
+          </li>
+          <li>List of <b>org.scopemvc.util.convertor.DateStringConvertor.formatter.{number}</b>
+            defines the DateFormat objects used to parse Dates. If Strings
+            are supplied in the config they are used to create SimpleDateFormats.
+            The list of keys must be suffixed with sequential integers from 0 to n. 
+            <br/>
+          </li>
+          <li><b>org.scopemvc.util.convertor.TimeStringConvertor.formatter</b>
+            defines either a DateFormat or a String used to create a SimpleDateFormat
+            that will be used by TimeStringConvertors to format Times.
+            <br/>
+          </li>
+          <li>List of <b>org.scopemvc.util.convertor.TimeStringConvertor.formatter.{number}</b>
+            defines the DateFormat objects used to parse Times. If Strings
+            are supplied in the config they are used to create SimpleDateFormats.
+            The list of keys must be suffixed with sequential integers from 0 to n.
+            <br/>
+          </li>
+          <li><b>org.scopemvc.util.convertor.DateTimeStringConvertor.formatter</b>
+            defines either a DateFormat or a String used to create a SimpleDateFormat
+            that will be used by DateTimeStringConvertors to format DateTimes.
+            <br/>
+          </li>
+          <li>List of <b>org.scopemvc.util.convertor.DateTimeStringConvertor.formatter.{number}</b>
+            defines the DateFormat objects used to parse DateTimes. If Strings
+            are supplied in the config they are used to create SimpleDateFormats.
+            The list of keys must be suffixed with sequential integers from 0 to n.
+            <br/> 
+          </li>
+          <li>List of <b>PropertyViewer.{viewtype}-{datatype}</b>
+            defines the Views that BeansEditorManager returns to view
+            specific datatypes. <br/>
+            Defaults: viewers from <A HREF="../apidocs/org/scopemvc/view/swing/package-summary.html">org.scopemvc.view.swing</A> 
+            for basic Java datatypes for the Swing viewtype. <br/>
+          </li>
+          <li>List of <b>PropertyEditor.{viewtype}-{datatype}</b>
+            defines the Views that BeansEditorManager returns to edit
+            specific datatypes. <br/>
+            Defaults: editors from <A HREF="../apidocs/org/scopemvc/view/swing/package-summary.html">org.scopemvc.view.swing</A> 
+            for basic Java datatypes for the Swing viewtype. <br/>
+          </li>
+          <li><b>PropertyManager</b> defines the concrete PropertyManager
+            implementation returned from <code>PropertyManager#getInstance</code>. <br/>
+            Default: <A HREF="../apidocs/org/scopemvc/model/beans/BeansPropertyManager.html"><code>BeansPropertyManager</code></A>. <br/>
+          </li>
+          <li><b>ActionManager</b> defines the concrete ActionManager
+            implementation returned from <code>ActionManager#getInstance</code>. <br/>
+            Default: <A HREF="../apidocs/org/scopemvc/model/beans/BeansActionManager.html"><code>BeansActionManager</code></A>. <br/>
+          </li>
+          <li><b>EditorManager</b> defines the concrete EditorManager
+            implementation returned from <code>EditorManager#getInstance</code>. <br/>
+            Default: <A HREF="../apidocs/org/scopemvc/model/beans/BeansEditorManager.html"><code>BeansEditorManager</code></A>. <br/>
+          </li>
+          <li><b>org.scopemvc.controller.servlet.ScopeServlet.ControlParam</b>
+            defines the HTTP parameter used to specify ControlID in an incoming
+            request to ScopeServlet. <br/>
+            Default: action <br/>
+          </li>
+          <li><b>org.scopemvc.controller.servlet.ScopeServlet.ViewIDParam</b>
+            defines the HTTP parameter used to specify ViewID in an incoming
+            request to ScopeServlet. <br/>
+            Default: view <br/>
+          </li>
+          <li><b>ServletFormParameter.propertyIDPrefix</b>
+            defines the prefix used to identify HTTP parameters
+            that ScopeServlet will use to repopulate a ServletView's bound model.
+            <br/>
+          </li>
+          <li><b>ServletFormParameter.viewIDSuffix</b>
+            defines the separator between viewID and propertyID
+            in an HTTP parameter used to repopulate a ServletView's bound model.
+            <br/>
+          </li>
+          <li><b>org.scopemvc.view.servlet.xml.AbstractServletXSLView.shouldCacheTemplates</b>
+            determines whether <code>org.scopemvc.view.servlet.xml.AbstractServletXSLView</code>
+            caches compiled XSLTs. "1" means templates are cached. "0" means templates
+            are not cached: useful during development when XSLT edits need to be seen
+            immediately without restarting the web application. <br/>
+            Default: 1 (templates are cached) <br/>
+          </li>
+          <li><b>org.scopemvc.view.servlet.xml.AbstractServletXSLView.debugXMLDirectory</b>
+            determines whether <code>org.scopemvc.view.servlet.xml.AbstractServletXSLView</code>
+            writes the XML produced from a bound model as a file. If "" then XML is not
+            written to the filesystem, else a file is written every time a view is shown. The XML
+            is put into the directory specified by this config. <br/>
+            Default: "" <br/>
+          </li>
+          <li><b>org.scopemvc.view.servlet.xml.ServletXSLView.ModelElement</b>
+            TODO
+          </li>
+          <li><b>org.scopemvc.view.servlet.xml.ServletXSLView.ElementElement</b>
+            TODO
+          </li>
+          <li><b>org.scopemvc.view.servlet.xml.ServletXSLView.IDAttribute</b>
+            TODO
+          </li>
+          <li><b>org.scopemvc.view.servlet.xml.ServletXSLView.IndexElement</b>
+            TODO
+          </li>
+          <li><b>org.scopemvc.controller.servlet.ScopeServlet.maxControllerPoolSize</b>
+            TODO <br/>
+            Default: 10 <br/>
+          </li>
+        </ul>
+      </p>
+    </section>
+  </body>
+</document>

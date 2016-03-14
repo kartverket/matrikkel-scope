@@ -1,0 +1,35 @@
+<HTML>
+
+<HEAD>
+</HEAD>
+
+<BODY>
+
+<P>
+Contains
+{@link org.scopemvc.view.servlet.ServletView ServletView}, 
+a "container" used to hold
+a set of 
+{@link org.scopemvc.view.servlet.Page Page}s
+that a Controller in a web application manages.
+</P>
+<P>
+The user can navigate independently
+to any view that a controller can present 
+by using the browser controls (back, forward, 
+history, bookmarks), so a Controller
+within a web application needs to make all 
+its possible views available in order to be
+able to receive Controls from any view that
+it can possibly present.
+</P>
+<P>
+A Page implementation must be able to stream the view
+to a Writer, and can optionally populate its
+bound model by parsing incoming request parameters.
+</P>
+
+
+</BODY>
+</HTML>
+

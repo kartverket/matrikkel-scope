@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Scope programmer's guide</title>
+  </properties>
+  <body>
+    <section name="Model">
+      <p>
+      </p>
+      <subsection name="Writing the model">
+        <p>
+          <a name="writing" />
+          A model object represents an object in the application's "business domain", for example, 
+          a Product object in a sales application. A model can be implemented simply as a regular 
+          Javabean (with the default implementation). Scope accesses the properties of such a bean 
+          using the BeansPropertyManager, which will in turn use the Javabean APIs to invoke the 
+          model's public getters and setters when it needs access to the properties (for example 
+          when updating a View with the current state of the model to which it is bound). 
+        </p> 
+        <p> 
+          The properties of a model are identified and accessed via Selectors: either with a 
+          string name or an integer index. This provides Scope with a generic, decoupled means 
+          to access the properties of model objects, although application code will usually use 
+          a model's public accessors directly. 
+        </p> 
+        <p> 
+          An "active" model can implement the ModelChangeEventSource interface in which case it 
+          will fire events whenever its internal state changes. This allows (for example) a 
+          Swing GUI to automatically update to show the latest state of the models that it 
+          presents. 
+        </p> 
+      </subsection>
+      <subsection name="Selectors">
+        <p>
+          <a name="selector" />
+          Selectors are identifiers for model properties. They are created by the factory methods 
+          Selector.fromString(java.lang.String) and Selector.fromInt(int). Properties can be 
+          identified by a String name (eg the "address" property of a Customer) or an integer 
+          index (eg element 1 of a List). 
+        </p> 
+        <p> 
+          Selectors can be assembled in a list to identify a property in a model contained 
+          within another model. For example, the name of the pet of a Person. This Selector 
+          would be created by Selector.fromString("pet.name") and applied to a Person model 
+          object. Similarly, the name of a Person's first pet could be identified using 
+          Selector.fromString("pets.0.name") assuming that Person contains a List or array of 
+          Pets that contain a name property. 
+        </p> 
+      </subsection>
+      <subsection name="Model change events">
+        <p>
+          <a name="events" />
+          Model change events notify their listeners that the model has changed. 
+          The listeners are typically components in an interactive View like a Swing GUI, or other models 
+          used as parent of the current model to have propagation of change events to the top-level model object.
+        </p>
+      </subsection>
+      <subsection name="Basic model">
+        <p>
+          <a name="basic" />
+          Scope can use a simple JavaBean as its model, or even a basic datatype (String, Integer).
+          You have the following choices at your disposal:
+          <ul>
+            <li>If your view displays a JavaBean, and if this bean is fully initialised and 
+                won't change while it is displayed in the view, you can use the JavaBean 
+                directly as the model.
+                In the controller, write: <br/> 
+                <code>setModel(javabean); </code>
+            </li> 
+            <li>If your want to update a bean being displayed and immediately see the change on 
+                the view, you need to subclass your bean from org.scopemvc.model.basic.BasicBean, 
+                and fire a model change event (using the fireModelChange method) when a property 
+                is modified.</li>
+            <li>In all cases, if there is a modification on a model and you want to see the 
+                latest changes in your view, you can always call explicitly the refresh() method 
+                on the view to refresh it with the latest model data.</li>
+          </ul>
+        </p>
+      </subsection>
+    </section>
+    <section name="Complex models">
+      <p>
+        <a name="complex" />
+        Scope supports the use of complex models, thanks to its Selector capabilities. A Scope 
+        Selector is used to identify a property in a model. They can also be compounded, so 
+        you can write Selector.fromString("pet.name") to access the name of the pet for a Person. <br/>
+      </p>
+      <subsection name="Lists, arrays and collection used as models">
+        <p>
+          <a name="lists" />
+          Scope provides wrappers for most standard java.util Collection classes and also for object arrays. <br/>
+          See the <a href="../apidocs/org/scopemvc/model/collection/package-summary.html">org.scopemvc.model.collection</a> package for more details.
+        </p>
+      </subsection>
+      <subsection name="Models containing sub-models">
+        <p>
+          <a name="sub-models" />
+          Here also, you can use a standard JavaBean as a property in your model, but changes to this bean 
+          won't be reflected automatically in the view. <br/>
+          To automatically refresh the view with the latest data coming from the model and its sub-models, 
+          you need to subclass all your models from org.scopemvc.model.basic.BasicBean, and follow the following pattern:
+<source><![CDATA[
+public class PersonModel extends BasicModel {
+  public final static Selector PET_SELECTOR = Selector.fromString("pet");
+  private PetModel pet;
+  private PetModel getPet() { return pet; }
+
+  private void setPet(PetModel value) throws ModelException {
+    if (pet == value)
+      return;
+    // don't listen to the old child model
+    unlistenOldSubmodel(PET_SELECTOR); 		
+    pet = value;
+    // parent model listens to the changes in the child model
+    listenNewSubmodel(PET_SELECTOR);		
+    fireModelChange(VALUE_CHANGE, PET_SELECTOR);
+  }
+}
+public class PetModel extends BasicModel {
+  public final static Selector NAME_SELECTOR = Selector.fromString("name");
+  private String name;
+  public String getName() { return name; }
+
+  public void setName(String value) {
+    name = value;
+    this.fireModelChange(ModelChangeEvent.VALUE_CHANGED, NAME_SELECTOR);
+  }
+}]]></source>
+
+          With this configuration, you can have in your view:
+<source><![CDATA[
+Selector PET_NAME = Selector.fromString("pet.name");
+STextField petNameField = new STextField();
+petNameField.setSelector(PET_NAME);
+]]></source>
+
+          Changes to the name property in the PetModel will be immediately displayed in the petNameField.
+        </p>
+      </subsection>
+      <subsection name="Read-only models">
+        <p>
+          <a name="read-only-models" />
+          TODO: readonly properties in a bean, DynamicReadOnly interface
+        </p>
+      </subsection>
+      <subsection name="Model actions">
+        <p>
+          <a name="model-actions" />
+          TODO: model actions, DynamicInvokable interface
+        </p>
+      </subsection>
+    </section>
+  </body>
+</document>

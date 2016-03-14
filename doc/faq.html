@@ -1,0 +1,363 @@
+
+<HTML>
+
+<HEAD>
+    <TITLE>Documentation</TITLE>
+    <LINK REL="STYLESHEET" TYPE="text/css" HREF="scope.css" />
+</HEAD>
+
+<BODY>
+
+
+
+<H1>Scope FAQ</H1>
+
+
+
+<H2>General</H2>
+
+
+
+<H3>How do I enable Scope's logging?</H3>
+
+<P>
+Scope uses the Apache Jakarta commons-logging facade
+which uses log4j or jdk1.4 logging if either is available, else
+it discards all log output. To see log output, use jdk1.4 or
+put log4j on the classpath: in either case, logging will be
+enabled.
+</P>
+
+
+
+<H3>What are Selectors?</H3>
+
+<P>
+The idea of Selectors is to identify a property in a
+model. They allow access to properties without
+compile-time binding to the model's public interface.
+</P>
+
+<P>
+Selectors are not intended for direct use by application 
+developers (who use the public interface of their
+model objects to access properties). However, Selectors 
+exist to support the framework and are typically used indirectly
+to setup the View to Model binding (eg to bind an STextField to 
+the "name" property of a "CustomerModel":
+<PRE>
+    textfield.setSelectorString("name");
+</PRE>
+</P>
+
+
+
+<H3>When do I use BasicModel, and must I subclass it to use Scope?</H3>
+
+<P>
+<CODE>BasicModel</CODE> is an abstract implementation of 
+<CODE>ModelChangeEventSource</CODE>. It allows subclasses to 
+notify listeners of changes in their state using fireModelChanged().
+(See also the "Collection wrappers" question following).
+</P>
+
+<P>
+This is useful for Swing applications in which it
+is desirable for the GUI to reflect any changes in 
+the state of models automatically. However, it is not
+a necessity if the application developer is willing
+to call <P>SPanel.refresh()</P> in order to manually force 
+the view to synchronise with the current state of its
+bound model.
+</P>
+
+<P>
+Implementing ModelChangeEventSource is not necessary
+to support the default implementation of servlet views
+since they have no way of updating when the model changes
+(on the server).
+</P>
+
+
+
+<H3>What are the Collection wrappers?</H3>
+
+<P>
+The collection models in
+<CODE>org.scopemvc.model.collection.*</CODE>
+are full <CODE>BasicModel</CODE> implementations that fire
+ModelChangeEvents when their contents change.
+</P>
+
+<P>
+They should be used in applications that use
+BasicModel to implement ModelChangeEventSource.
+</P>
+
+
+
+<H3>Do I need to know JavaBeans in detail to use Scope?</H3>
+
+<P>
+You don't need any great knowledge but note that the
+default implementation expects model properties to be
+presented as public accessors as per the JavaBeans
+spec.
+</P>
+
+<P>
+For example, a model implementing:
+<PRE>
+    public String getName();
+    public void setName(String);
+</PRE>
+has a read-write String property called "name"
+according to the JavaBeans spec.
+</P>
+
+<P>
+Similarly, a model implementing:
+<PRE>
+    public int getAge();
+</PRE>
+has a read-only int property called "age".
+</P>
+
+<P>
+Scope understands JavaBeans indexed properties, and
+can also work with java.util.List and Object[] models.
+</P>
+
+
+
+<H3>Does Scope use my getters and setters?</H3>
+
+Yes, Scope uses public accessors to access model properties.
+
+
+
+<H3>How do I decide what to put in a Controller?</H3>
+
+<P>
+In a Swing context, think of each Controller 
+looking after a single View. It seems to work 
+out that way very well, although it is possible
+for a Controller to handle multiple views (see
+<CODE>samples.swing.multiview</CODE>).
+</P>
+
+<P>
+Controllers are responsible for the sequencing of
+application functionality in response to user
+interaction. Controllers are the entities that
+decide which view a user should see next. For 
+example, a Controller will respond to a
+<CODE>FIND_CUSTOMER</CODE> Control 
+by asking its model to do the search,
+and then showing a <CODE>Search Results View</CODE> 
+if some results were found, else a message view if no results
+were found, else an error screen if something bad
+happened while doing the search.
+</P>
+
+<P>
+Controllers are therefore very lightweight, with all
+the hard processing going on in the models,
+and all the hard look and feel work going on in 
+the views.
+</P>
+
+<P>
+In a servlet application, a Controller looks after a single
+ServletView which contains a set of Pages that represent
+all the individual HTML pages that the Controller manages.
+This is slightly different to the Swing case because Scope
+models a servlet application as having all its views
+accessible (since the user is free to bookmark pages
+etc and the Controller is not necessarily in control of
+which page the user is interacting with). However, the
+principle that a Controller is responsible for a small
+area of self-contained functionality still holds, and the
+source code is very similar in either case.
+</P>
+
+
+
+<H3>How do I configure Scope?</H3>
+
+<P>
+There are a few interesting config options available (check the defaults in 
+<CODE>org.scopemvc.util.DefaultScopeConfig</CODE>). Any of these 
+defaults can be overriden by application code:
+<OL>
+<LI>In your application's startup call: <CODE>ScopeConfig.setPropertiesName("myConfig");
+</CODE> with the name of your custom config resource bundle,</LI>
+<LI>Provide your custom resource bundle (eg "myConfig.properties") 
+on your application's classpath,</LI>
+<LI>Add your own definitions of any config property: your definition 
+overrides the default.</LI>
+</OL>
+</P>
+
+
+
+<H2>Swing</H2>
+
+
+
+<H3>How do I set the size of my Scope Swing Application?</H3>
+
+<P>
+One method is to call <CODE>setViewBounds()</CODE> in the primary view SPanel.
+For example:
+<PRE>
+    this.setViewBounds(new Rectangle(1024,768));
+</PRE>
+</P>
+
+<P>
+Since the default behaviour (in the SwingContext class) is to
+pack the view being shown to its preferred size, another method 
+is to set a Border of the desired size and apply it to the main SPanel 
+view of your application. For example:
+<PRE>
+    public class PrimaryView extends SPanel {
+    
+    private JPanel mainpanel;
+    private JLabel lab;
+    
+      public PrimaryView () {
+    
+          Border b = new EmptyBorder(200,200,200,200);//set the desired size
+          this.setBorder(b);//assign the sized border to the main view
+        
+          lab = new JLabel("TEST");
+          mainpanel = new JPanel();
+          mainpanel.setLayout(new BorderLayout());
+          mainpanel.add(lab);
+        
+          this.add(mainpanel);
+      }
+    }
+</PRE>
+</P>
+
+
+
+<H3>How do I make a view's window appear in the default location all the time?</H3>
+
+<P>
+Override <CODE>getViewBounds()</CODE> in the view/SPanel to return null. 
+Otherwise the default implementation saves the state of the view when it is 
+hidden so it can restore it to the same state when next shown.
+</P>
+
+
+
+<H3>How do I validate a textfield according a specific Java type?</H3>
+
+<P>    
+STextField and all view components automatically validate entries against the 
+bound property type. In the model for a view, set the variable type for your STextField's 
+bound property to the datatype you want to validate for.  If you bind to a 
+BigDecimal, the STextfield will validate for numeric values and report an error
+if the entered data is incorrect.  If you enter something wrong it should turn 
+pink and the tooltip should also be pink and describe the validation error.  
+</P>
+
+<P>
+STextfield uses the StringConvertor objects of the framework: you can see 
+the available convertors in <CODE>org.scopemvc.util.convertor.*</CODE>.
+You can also add new StringConvertors by adding custom convertor classes to
+the ScopeConfig.
+</P>
+
+
+
+<H3>How do I set the default window closing behavior to exit the application
+if I close the application window?</H3>
+
+<P>
+In the application's SPanel override <CODE>getCloseControl()</CODE>
+as follows:
+<PRE>
+    public Control getCloseControl() { 
+        return new Control(BasicController.EXIT_CONTROL_ID); 
+    } 
+</PRE>
+</P>
+
+<P>
+<CODE>EXIT_CONTROL_ID</CODE> is recognised by 
+<CODE>BasicController</CODE> to perform a reasonable default
+implementation to shut down an application if sent into a
+Controller.
+</P>
+
+<P>
+When a sub-controller issues this Control, the default implementation
+will propogate it up the chain of responsibility, and if unhandled the 
+application will exit when the Control reaches the topmost Controller
+by calling the current <CODE>ViewContext.exit()</CODE>, which
+for <CODE>SwingContext</CODE> simply calls 
+<CODE>System.exit(0)</CODE> (and is ignored by the <CODE>ServletContexts</CODE>).
+So if you want to use this Control to simply shut down a subcontroller
+rather than the whole application, recognise it and handle it yourself
+(for instance to make the subcontroller commit suicide and remove itself
+from the chain of responsibility).
+</P>
+
+
+
+<H3>How do I change the window icon from the built-in Scope icon to my own icon?</H3>
+
+<P>
+The icon used for JFrames/JDialogs is picked up from Scope's 
+configuration. The config key is 
+<CODE>org.scopemvc.controller.swing.SwingContext.window_icon</CODE>
+and the default value is 
+<CODE>/org/scopemvc/images/window_icon.gif</CODE>
+which is supplied in the Scope distribution.
+</P>
+<P>
+To change this default icon, change the value from the above config key in scope.properties, 
+and put the icon image in your jar. <br>
+Then you need to tell Scope how to locate the jar containing the image resource, by calling 
+org.scopemvc.util.ResourceLoader.setClientClassLoader(getClass().getClassLoader()) from your application code,
+and package the images in the same jar as your application classes.
+</P>
+
+
+
+<H3>How do I sort Swing Tables, Lists or Combos?</H3>
+
+<P>
+Sorting is handled by the underlying 
+<CODE>org.scopemvc.view.swing.SAbstractListModel</CODE>
+from which <CODE>SListModel</CODE>, 
+<CODE>SComboBoxModel</CODE> and <CODE>STableModel</CODE>
+are derived. Call
+<PRE>
+    setSorted(boolean)
+</PRE>
+to enable/disable sorting
+if the objects being shown in the list implement
+<CODE>java.util.Comparable</CODE>,
+else provide a custom <CODE>java.util.Comparator</CODE> to 
+<PRE>
+    setSorted(Comparator)
+</PRE>.
+</P>
+
+<P>
+For an example, see the SearchResultsView of the "filefind" sample.
+</P>
+
+
+
+<H6>Copyright (C) 2000-2002 <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve
+Meyfroidt</A></H6>
+
+</BODY>
+</HTML>
+

@@ -1,0 +1,229 @@
+<HTML>
+
+<HEAD>
+    <TITLE>Tools</TITLE>
+    <LINK REL="STYLESHEET" TYPE="text/css" HREF="scope.css" />
+</HEAD>
+
+<BODY>
+
+<H1>Tools</H1>
+
+<P>
+The toolset I use for Scope development under Windows98 is listed below. All
+these tools are free to use.
+<UL>
+    <LI>
+        <A HREF="http://www.slickedit.com/">Visual Slickedit</A> for editing sources, 
+        launching compiles etc.
+    </LI>
+    <LI>
+        <A HREF="http://www.eclipse.org/">Eclipse</A> for refactoring and some 
+        editing.
+    </LI>
+    <LI>
+        <A href="http://www.javasoft.com/">JDK 1.3.1</A> for java class libraries,
+        runtime environment and javadoc.
+    </LI>
+    <LI>
+        <A href="http://jakarta.apache.com/">Tomcat 4.0.1</A>: a servlet container to 
+        to run web apps.
+    </LI>
+    <LI>
+        <A href="http://www.alphaworks.ibm.com/">Jikes 1.14</A> for java compilation.
+    </LI>
+    <LI>
+        <A href="http://www.apache.org/">Ant 1.4.1</A> for java builds.
+    </LI>
+    <LI>
+        <A href="http://www.cvsgui.org/">WinCVS 1.2</A> for SourceForge CVS access.
+    </LI>
+    <LI>
+        <A href="http://www.junit.org/">JUnit 3.7</A> for unit testing.
+    </LI>
+</UL>
+</P>
+
+<H1>Directory structure</H1>
+
+<P>
+Under the top level project directory called &quot;scope&quot; (in &quot;D:\usr\&quot;
+in my case) lie the following directories:
+<UL>
+    <LI>
+        <B>ant</B><BR/>
+        ant libs and build batch files for Windows.
+        <FONT color="#FF0000"><B>SourceForge CVS.</B></FONT>
+    </LI>
+    <LI>
+        <B>bin</B><BR/>
+        target for build.
+    </LI>
+    <LI>
+        <B>dist</B><BR/>
+        build final distributions in here.
+    </LI>
+    <LI>
+        <B>doc</B><BR/>
+        documentation source directory -- the project web site.
+        <FONT color="#FF0000"><B>SourceForge CVS.</B></FONT>
+    </LI>
+    <LI>
+        <B>doc/api</B><BR/>
+        build javadoc documentation in here.
+    </LI>
+    <LI>
+        <B>home</B><BR/>
+        private junk: editor and project files, background documentation, image files for diagrams etc.
+    </LI>
+    <LI>
+        <B>lib</B><BR/>
+        third party libraries to link and run against.
+        <FONT color="#FF0000"><B>SourceForge CVS.</B></FONT>
+    </LI>
+    <LI>
+        <B>src</B><BR/>
+        build file, sources, and javadoc global and package-level HTML files.
+        <FONT color="#FF0000"><B>SourceForge CVS.</B></FONT>
+    </LI>
+    <LI>
+        <B>tmp</B><BR/>
+        build logs etc.
+    </LI>
+</UL>
+</P>
+
+<P>
+This structure is assumed by the build.xml file that Ant uses to build the
+project.
+</P>
+<P>
+There is also an ant property "deploy.dir" that specifies the directory a 
+.war should be dropped into to deploy web applications with the "deploy"
+target. This may need to be changed to point to your servlet container.
+</P>
+
+<H1>Build</H1>
+
+<P>
+Scope is built using Ant invoked using the Windows build.bat file that lives in the
+scope/ant directory:
+</P>
+
+<P>
+This .bat file expects the build target name as its only argument. The following
+targets are defined in build.xml (checked into CVS):
+<UL>
+    <LI>
+        <B>init</B><BR>
+    </LI>
+    <LI>
+        <B>compile</B><BR>
+        Builds classes from java sources into bin/classes. Does not copy libraries.
+    </LI>
+    <LI>
+        <B>unittest</B><BR>
+        Runs the JUnit test suite in com.smeyfroi.scope.test.SuiteScope which collects
+        together all other unit tests in a single suite.
+    </LI>
+    <LI>
+        <B>javadoc</B><BR>
+        Cleans existing javadocs in doc/api, then
+        runs javadoc over all sources, building into doc/api.
+    </LI>
+    <LI>
+        <B>src_dist</B><BR>
+        Packages the src directory for distribution as a tar.gz archive.
+    </LI>
+    <LI>
+        <B>doc_dist</B><BR>
+        Packages the doc directory for distribution as a tar.gz archive.
+    </LI>
+    <LI>
+        <B>swingsample_dist</B><BR>
+        Creates the Swing samples distribution.
+    </LI>
+    <LI>
+        <B>servletsample_dist</B><BR>
+        Creates the servlet samples distribution.
+    </LI>
+    <LI>
+        <B>runtime_dist</B><BR>
+        Creates the non-debug, optimized runtime distribution.
+    </LI>
+    <LI>
+        <B>dist</B><BR>
+        Runs unittest, src_dist, doc_dist, swingsample_dist, servletsample_dist, and runtime_dist.
+    </LI>
+    <LI>
+        <B>run</B><BR>
+        Runs the class specified by "-Dclass=org.foo.Class".
+    </LI>
+    <LI>
+        <B>deploy</B><BR>
+        Builds a war then copies it into the "deploy.dir".
+    </LI>
+</UL>
+</P>
+
+<H1>Source code format</H1>
+
+<P>
+A standard header must be included in all Java sources as follows:
+<PRE>
+/*
+ * Scope: a generic MVC framework.
+ * Copyright (c) 2000-2002, Steve Meyfroidt
+ * All rights reserved.
+ * Email: smeyfroi@users.sourceforge.net
+ * 
+ * 
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 
+ * Redistributions of source code must retain the above copyright
+ * notice, this list of conditions and the following disclaimer.
+ * 
+ * Redistributions in binary form must reproduce the above copyright
+ * notice, this list of conditions and the following disclaimer in the
+ * documentation and/or other materials provided with the distribution.
+ * 
+ * Neither the name "Scope" nor the names of its contributors
+ * may be used to endorse or promote products derived from this software
+ * without specific prior written permission.
+ * 
+ * 
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ * A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR
+ * CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+ * EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ * PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ * 
+ *
+ * &#036;Id: $
+ */
+</PRE>
+Amend the copyright line as appropriate. The following lines must also
+appear at the end of the class javadoc comments (with appropriate author
+information):
+<PRE>
+ *
+ * @author &lt;A HREF="mailto:smeyfroi@users.sourceforge.net"&gt;Steve Meyfroidt&lt;/A&gt;
+ * @version &#036;Revision: $ &#036;Date: $
+</PRE>
+</P>
+
+
+<H6>Copyright (C) 2000-2002 <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve
+Meyfroidt</A></H6>
+
+</BODY>
+</HTML>
+

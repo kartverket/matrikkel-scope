@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Scope Site" href="http://scope.sf.net">
+
+  <title>Scope</title>
+
+  <body>
+    <menu name="Essentials">
+        <item name="Introduction"               href="index.html"/>
+        <item name="Download"                   href="http://www.sourceforge.net/project/showfiles.php?group_id=4776"/>
+        <item name="License"                    href="LICENSE.scope.html"/>
+        <item name="Resources"                  href="resources.html"/>
+        <item name="Who Are We?"                href="whoarewe.html"/>
+    </menu>
+    <menu name="Advanced">
+        <item name="IDE Integration"            href="ide.html"/>
+        <item name="Samples"                    href="samples.html"/>
+    </menu>
+    <menu name="Documentation">
+        <item name="Presentation"               href="presentation/index.html">
+          <item name="What is Scope?"           href="presentation/what.html"/>
+          <item name="Benefits"                 href="presentation/benefits.html"/>
+          <item name="HMVC"                     href="presentation/hmvc.html"/>
+          <item name="Scope components"         href="presentation/components.html"/>
+          <item name="Controller"               href="presentation/controller.html"/>
+          <item name="Sub-Controllers"          href="presentation/sub-controllers.html"/>
+          <item name="Model objects"            href="presentation/model.html"/>
+          <item name="View objects"             href="presentation/view.html"/>
+          <item name="SObjects"                 href="presentation/sobjects.html"/>
+          <item name="Making the MVC triangle"  href="presentation/mvc-triangle.html"/>
+          <item name="Mapping Model to View"    href="presentation/mapping-model.html"/>
+          <item name="Issuing and Handling Controls" href="presentation/issue-controls.html"/>
+          <item name="Example Application"      href="presentation/example-app.html"/>
+          <item name="Why Scope is cool"        href="presentation/why-scope-is-cool.html"/>
+        </item> 
+        <item name="Programmer's Guide"         href="guide/index.html">
+          <item name="Using Scope with servlets" href="guide/servlets.html"/>
+          <item name="Using Scope with Swing"   href="guide/swing/index.html">
+            <item name="Getting started"        href="guide/swing/getting-started.html"/>
+            <item name="Advanced tutorial"      href="guide/swing/advanced.html">
+              <item name="The HMVC pattern"     href="guide/swing/hmvc-pattern.html"/>
+              <item name="Working with models"     href="guide/swing/working-models.html"/>
+              <item name="Working with controllers" href="guide/swing/working-controllers.html"/>
+              <item name="Working with views" href="guide/swing/working-views.html"/>
+            </item> 
+            <item name="SComponents Guide"      href="guide/swing/scomponents.html"/>
+          </item>  
+          <item name="Scope configuration"      href="guide/config.html"/>
+          <item name="Scope utility classes"    href="guide/utility.html"/>
+          <item name="Internationalization"     href="guide/i18n.html"/>
+        </item>
+        <item name="JavaDoc"                    href="api/index.html"/>
+        <item name="FAQ"                        href="faq.html"/>
+    </menu>
+    <menu name="Development">
+        <item name="CVS Repository"             href="http://www.sourceforge.net/cvs/?group_id=4776"/>
+        <item name="Task manager"               href="http://www.sourceforge.net/pm/?group_id=4776"/>
+        <item name="TODO"                       href="todo.html"/>
+        <item name="Changes History"            href="changes.html"/>
+        <item name="Tools"                      href="tools.html"/>
+    </menu>
+    <menu name="Collaboration">
+        <item name="Mailing list / eGroup"      href="http://groups.yahoo.com/group/scope-dev-framework"/>
+        <item name="Feedback"                   href="feedback.html"/>
+        <item name="Sourceforge Project"        href="http://www.sourceforge.net/project/?group_id=4776"/>
+        <item name="Message Forums"             href="http://www.sourceforge.net/forum/?group_id=4776"/>
+        <item name="Bug tracking"               href="http://www.sourceforge.net/tracker/?group_id=4776&amp;atid=104776"/>
+    </menu>
+  </body>
+</project>

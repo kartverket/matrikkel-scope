@@ -1,0 +1,54 @@
+<HTML>
+
+<HEAD>
+</HEAD>
+
+<BODY>
+
+<P>
+This package contains an extensible mechanism used to 
+convert arbitrary types to and from a String representation.
+</P>
+
+<A NAME="stringconvertors"></A><H1>StringConvertors</H1>
+
+<P>
+When presenting model properties to the user it is often necessary
+to convert native datatypes to a String representation. For example, 
+is an STextField is used to edit a Float property, the Float must be
+convertible to and from a String.
+</P>
+<P>
+This work is done by 
+{@link org.scopemvc.util.convertor.StringConvertor StringConvertor} 
+classes created by 
+{@link org.scopemvc.util.convertor.StringConvertors#forClass StringConvertors.forClass}.
+</P>
+<P>
+A StringConvertor is type-specific, for example 
+{@link org.scopemvc.util.convertor.FloatStringConvertor FloatStringConvertor},
+and has two methods:
+{@link org.scopemvc.util.convertor.StringConvertor#valueAsString valueAsString}
+and
+{@link org.scopemvc.util.convertor.StringConvertor#stringAsValue stringAsValue},
+both of which throw IllegalArgumentException if the conversion fails.
+</P>
+<P>
+The factory is configured using 
+{@link org.scopemvc.util.ScopeConfig}
+so that custom convertors can be registered in application-specific
+configuration (see {@link org.scopemvc.util.ScopeConfig#setPropertiesName}).
+</P>
+<P>
+Note that DateTimeStringConvertor is associated with the 
+{@link org.scopemvc.util.DateTime}
+datatype (an empty/marker subclass of java.util.Date),
+and TimeStringConvertor is associated with the 
+{@link org.scopemvc.util.Time}
+datatype (an empty/marker subclass of java.util.Date).
+</P>
+
+
+</BODY>
+</HTML>
+

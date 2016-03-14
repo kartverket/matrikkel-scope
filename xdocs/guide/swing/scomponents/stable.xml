@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Scope programmer's guide</title>
+  </properties>
+  <body>
+    <section name="Usign STable">
+      <p>
+        In the view: 
+        <ol>
+          <li>Create the STable.
+            <source><![CDATA[
+STable rosterTable = new STable(); 
+]]></source>
+          </li>
+          <li>Set the STable selector string to the name of the arraylist in the model: 
+            <source><![CDATA[
+rosterTable.setSelector("rosterEntries"); 
+]]></source>
+          </li>
+          <li>Set the column selector strings to show which fields in the ItemModel to display in the STable: 
+            <source><![CDATA[
+String[] columnSelects = {"name","position","number"}; 
+rosterTable.setColumnSelectors(columnSelects); 
+]]></source>
+          </li>
+          <li>Set the column names: 
+            <source><![CDATA[
+String[] columnNames = {"Name","Position","Number"};//set the column names/column header values 
+rosterTable.setColumnNames(columnNames); 
+]]></source>
+          </li>
+        </ol>
+        If any of the column selectors map to boolean getter methods, the Scope framework will automatically render 
+        that column as a checkbox. You may also create a specific cell editor or renderer for an STable, just as with a JTable.
+      </p>
+      <p>
+        In the model: 
+        <ol>
+          <li>Create a value object for the type of item to be displayed in the STable. </li>
+          <li>Create an ArrayList to hold the ItemModel objects to be displayed in the STable. </li>
+          <li>Populate the ArrayList with ItemModel objects. </li>
+          <li>Create a public final static selector constant that maps to the ArrayList of ItemModel objects, so when it changes the view can be updated: 
+            <source><![CDATA[
+public final static Selector ROSTER = Selector.fromString("rosterEntries"); 
+]]></source>
+          </li>
+          <li>Create getter and setter methods for the ArrayList. </li>
+          <li>If your model extends BasicModel, then in the setter method of the ArrayList, fire a ModelChangeEvent to automatically refresh the view when the model data changes: 
+            <source><![CDATA[
+this.fireModelChange(ModelChangeEvent.VALUE_CHANGED, this.ROSTER); 
+]]></source>
+          </li>
+        </ol>
+      </p>
+      <subsection name="Using STableModel">
+        <p>
+          Setting editable columns using the STableModel: 
+          <ol>
+            <li>Define in a boolean array if columns are to be editable.
+              <source><![CDATA[
+boolean[] b = {true, false, false, false, true};
+]]></source>
+            </li>
+            <li>Extract the STableModel from the STable and call the setEditableColumns method. <br/>
+              <source><![CDATA[
+STableModel tableModel = (STableModel)examTable.getModel(); 
+tableModel.setEditableColumns(b); 
+]]></source>
+            </li>
+          </ol>
+        </p>
+      </subsection> 
+    </section>
+  </body>
+</document>

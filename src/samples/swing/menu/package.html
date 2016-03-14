@@ -1,0 +1,75 @@
+<HTML>
+
+<HEAD>
+</HEAD>
+
+<BODY>
+
+<P>
+Simple example based on "Hello World" to demonstrate 
+the use of menus in Scope SPanels. The application allows
+actions to be taken via buttons as in the original application
+or via the menubar.
+</P>
+
+
+<A NAME="Application"></A><H1>The Application</H1>
+
+<P>
+The application is exactly the same as "Hello World" except
+that on the first view, a menu presents "Got Name" and
+"Exit" as alternatives to using the push button or closing
+the window (for exit). The second view presents a menu
+with an "Exit" menuitem as an alternative to closing the window.
+</P>
+
+
+<A NAME="View1"></A><H1>The MenuView1</H1>
+
+<P>
+The same as HelloView1 with the addition of the following:
+</P>
+<PRE>
+    public JMenuBar getMenuBar() {
+        JMenu menu = new JMenu("Test");
+        menu.add(new SMenuItem(MenuController.GOT_NAME, this));
+        menu.add(new SMenuItem(MenuController.EXIT_CONTROL_ID, this));
+
+        JMenuBar menubar = new JMenuBar();
+        menubar.add(menu);
+
+        return menubar;
+    }
+</PRE>
+<P>
+This override of SwingView.getMenuBar() is used by the SwingContext to
+provide a menu when this view is shown. SMenuItems
+are built from a Control ID, and also have an owning SwingView:
+it is the owning view that will issue a Control when the menuitem
+is selected. In this way, menuitems act in exactly the same way
+as a button in the owning view.
+</P>
+
+
+<A NAME="View2"></A><H1>The MenuView2</H1>
+
+<P>
+The same as HelloView2 with the addition of the following:
+</P>
+<PRE>
+    public JMenuBar getMenuBar() {
+        JMenu menu = new JMenu("Test");
+        menu.add(new SMenuItem(MenuController.EXIT_CONTROL_ID, this));
+
+        JMenuBar menubar = new JMenuBar();
+        menubar.add(menu);
+
+        return menubar;
+    }
+</PRE>
+
+
+</BODY>
+
+</HTML>
+

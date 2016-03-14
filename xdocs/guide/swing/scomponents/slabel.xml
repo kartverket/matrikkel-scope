@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Scope programmer's guide</title>
+  </properties>
+  <body>
+    <section name="Usign SLabel">
+      <p>
+        Using the SLabel is very simple. <br/>
+        In the model, create a getter method which returns a string to be displayed on the label. 
+          <source><![CDATA[
+public String getName() { 
+    return name; 
+}]]></source> 
+        In the view, create the label and set its selector. 
+          <source><![CDATA[
+SLabel bl = new SLabel(); 
+bl.setSelector("name"); 
+]]></source>
+      </p>
+    </section>
+  </body>
+</document>

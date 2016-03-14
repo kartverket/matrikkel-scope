@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<document>
+
+  <properties>
+    <author email="smeyfroi@users.sourceforge.net">Steve Meyfroidt</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Resources</title>
+  </properties>
+
+<body>
+  <section name="Scope Resources">
+    <dl>
+      <dt>
+        <A HREF="http://www.javaworld.com/javaworld/jw-07-2000/jw-0721-hmvc_p.html">
+          HMVC: The layered pattern for developing strong client tiers
+        </A>
+      </dt>
+      <dd>
+        Gives a good insight into the Scope architecture and the recommended patterns.
+      </dd>
+    </dl>
+  </section>
+  <section name="Projects powered by Scope">
+    <dl>
+      <dt>
+        <A HREF="http://resmedicinae.sourceforge.net/">
+          Res Medicinae - Information in Medicine
+        </A>
+      </dt>
+      <dd>
+        Res Medicinae is the attempt to overcome high pricing in the realm of medical information systems 
+        and to provide users with a stable, platform independent, extensive system using latest technology 
+        and being open to many other medical systems.
+      </dd>
+      <dt>
+        <A HREF="http://txt2xml.sourceforge.net/">
+          Txt2Xml
+        </A>
+      </dt>
+      <dd>
+        txt2xml is a simple Java library for parsing arbitrarily structured text input into well-formed 
+        XML output as SAX, DOM, JDOM, or through an OutputStream.
+      </dd>
+      <dt>
+        <A HREF="http://artoflife.sourceforge.net/">
+          ArtOfLife
+        </A>
+      </dt>
+      <dd>
+         Art Of Life is a Java platform for interactive evolution of creative images using an extensible genetic programming 
+         framework and a rich Swing-based GUI. <br/>
+         The primary aim is to provide a rich environment for computer artists to develop their own visual language expressed 
+         as an Art Of Life genotype/phenotype, which can be manipulated within the GUI platform to explore an image space. 
+      </dd>
+    </dl>
+  </section>
+  <section name="Other MVC frameworks">
+    <dl>
+      <dt>
+        <a href="http://jakarta.apache.org/struts">Struts</a>
+      </dt> 
+      <dd>
+        Focuses on Web application, supports Servlets and JSP.
+      </dd>
+      <dt>
+        <a href="http://www.opensymphony.com/webwork/">WebWork</a>
+      </dt>
+      <dd>
+        HMVC framework like Scope, claims independance from View type but only server-side technologies are supported (Servlet, JSP, Velocity, Jasper) 
+      </dd>
+      <dt>
+        <a href="http://www.crionics.com/products/opensource/hmvc/hmvc.html">H-MVC Framework</a>
+      </dt>
+      <dd>
+        Lightweight HMVC framework for Swing.
+      </dd>
+    </dl>    
+  </section>
+</body>
+
+</document>

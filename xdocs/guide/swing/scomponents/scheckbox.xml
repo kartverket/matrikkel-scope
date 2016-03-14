@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Scope programmer's guide</title>
+  </properties>
+  <body>
+    <section name="Using SCheckBox">
+      <p>
+        Create an SCheckBox in the view and associate it with a boolean getter method in the model. <br/>
+        Below is an example of how to create the SCheckBox: 
+<source><![CDATA[ 
+// In the view: 
+SCheckBox trueOrFalse = new SCheckBox(); 
+trueOrFalse.setSelectorString("isChecked"); 
+
+// In the model: 
+private boolean isChecked = true; 
+public boolean getIsChecked(){ 
+  return isChecked; 
+} 
+public void setIsChecked(boolean check){ 
+  isChecked = check; 
+} 
+]]></source>
+      </p>
+    </section>
+  </body>
+</document>

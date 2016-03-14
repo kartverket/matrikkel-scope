@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Scope programmer's guide</title>
+  </properties>
+  <body>
+    <section name="Common Scope concepts, patterns and classes">
+      <p>
+        Scope contains a set of core classes and concepts independant of the type of view used (Swing or Servlet or other). <br/>
+        Have a look to the <a href="../images/api/core.gif">UML diagram</a> for the core package.
+      </p>
+      <ol>
+        <li>
+          <a href="controller.html">
+            Writing the Controller
+          </a>
+          <ul> 
+            <li>
+              <a href="controller.html#responsabilities">
+                Controller responsabilities
+              </a>
+            </li>
+            <li>
+              <a href="controller.html#controls">
+                Controls
+              </a>
+            </li>
+            <li>
+              <a href="controller.html#hierarchy">
+                Hierarchy of controllers
+              </a>
+            </li>
+            <li>
+              <a href="controller.html#specific">
+                View-specific Controllers
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="model.html">
+            Writing the model
+          </a>
+          <ul> 
+            <li>
+              <a href="model.html#selector">
+                Selectors
+              </a>
+            </li>
+            <li>
+              <a href="model.html#events">
+                Model events
+              </a>
+            </li>
+            <li>
+              <a href="model.html#basic">
+                Basic model
+              </a>
+            </li>
+            <li>
+              <a href="model.html#complex">
+                Complex models
+              </a>
+            </li>
+            <li>
+              <a href="model.html#lists">
+                Lists used as models
+              </a>
+            </li>
+            <li>
+              <a href="model.html#sub-models">
+                Models containing sub-models
+              </a>
+            </li>
+            <li>
+              <a href="model.html#read-only-models">
+                Read-only models
+              </a>
+            </li>
+            <li>
+              <a href="model.html#model-actions">
+                Model actions
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="views.html">
+            Writing the View
+          </a>
+          <ul> 
+            <li>
+              <a href="view.html#responsabilities">
+                View responsabilities
+              </a>
+            </li>
+            <li>
+              <a href="view.html#binding">
+                Binding a view to a model
+              </a>
+            </li>
+            <li>
+              <a href="view.html#specific">
+                The different types of views implemented in Scope
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <a href="configuration.html">
+            Configuration
+          </a>
+        </li>
+        <li>
+          <a href="utility.html">
+            Utility classes
+          </a>
+        </li>
+        <li>
+          <a href="i18n.html">
+            Internationalization
+          </a>
+        </li>
+      </ol>
+    </section>
+  </body>
+</document>

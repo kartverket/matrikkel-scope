@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Presentation of Scope</title>
+  </properties>
+  <body>
+    <section name="Example application">
+      <p>
+        <img src="images/login.png" />
+      </p>
+      <p>
+        <img src="images/enterpatient.png" />
+      </p>
+      <p>
+        <img src="images/uml.png" />
+      </p>
+    <p/>
+    <p align="right">
+      <a href="why-scope-is-cool.html">Next &gt;</a>
+    </p>
+    </section>
+  </body>
+</document>

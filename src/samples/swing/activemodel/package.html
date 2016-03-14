@@ -1,0 +1,52 @@
+<HTML>
+
+<HEAD>
+</HEAD>
+
+<BODY>
+
+<P>
+A trivial example of an active model that implements
+ModelChangeEventSource by subclassing BasicModel.
+This is the same application as "helloworld2". The changes
+are to the model and to the Controller which no longer
+needs to manually force its view to refresh whenever the
+model changes state (since it fires a ModelChangeEvent
+that the view reacts to).
+</P>
+
+
+<A NAME="Model"></A><H1>The ActivemodelModel</H1>
+
+<P>
+This is exactly the same as the Hello2Model except that
+the setName method includes a line to fire a ModelChangeEvent:
+</P>
+<PRE>
+    public void setName(String inName) {
+        name = inName;
+        fireModelChange(VALUE_CHANGED, Selector.fromString("name"));
+    }
+</PRE>
+
+
+<A NAME="Controller"></A><H1>The ActivemodelController</H1>
+
+<P>
+This is the same as the Hello2Controller except that it no longer
+includes code to refresh its view after changes to the model's state
+have occured. The refresh is now taken care of with the 
+ModelChangeEvent firing.
+</P>
+
+
+<A NAME="Views"></A><H1>The Views</H1>
+
+<P>
+The Views are exactly the same as in "helloworld2".
+</P>
+
+
+</BODY>
+
+</HTML>

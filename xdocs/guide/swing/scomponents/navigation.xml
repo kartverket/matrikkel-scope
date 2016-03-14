@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Scope" href="http://scope.sourceforge.net">
+
+  <title>Scope</title>
+
+  <body>
+    <links>
+      <item name="Sourceforge.net Project page" href="http://sourceforge.net/projects/scope/"/>
+      <item name="Hosted by SourceForge"        href="http://sourceforge.net/"/>
+    </links>
+    <menu name="Overview">
+        <item name="Introduction"               href="/index.html"/>
+        <item name="Download"                   href="http://www.sourceforge.net/project/showfiles.php?group_id=4776"/>
+        <item name="License"                    href="/LICENSE.html"/>
+        <item name="Resources"                  href="/resources.html"/>
+        <item name="Who Are We?"                href="/whoarewe.html"/>
+        <item name="Feedback"                   href="/feedback.html"/>
+    </menu>
+    <menu name="Advanced">
+        <item name="IDE Integration"            href="/ide.html"/>
+        <item name="Samples"                    href="/samples.html"/>
+        <item name="Code generator"             href="/timewarp.html"/>
+        <item name="Tools"                      href="/tools.html"/>
+    </menu>
+    <menu name="Documentation">
+        <item name="Presentation"               href="/presentation/index.html" />
+        <item name="Programmer's Guide"         href="/guide/index.html">
+          <item name="Common Scope concepts, patterns and classes" href="/guide/common.html"/>
+          <item name="Servlet guide"            href="/guide/servlet/index.html"/>
+          <item name="Swing guide"              href="/guide/swing/index.html">
+            <item name="Programming with Scope and Swing" href="/guide/swing/programming.html"/>
+            <item name="Scope SComponents for Swing" href="/guide/swing/scomponents/index.html">
+              <item name="What is a SComponent?" href="/guide/swing/scomponents/scomponent.html"/>
+              <item name="SAction"              href="/guide/swing/scomponents/saction.html"/>
+              <item name="SButton"              href="/guide/swing/scomponents/sbutton.html"/>
+              <item name="SCheckbox"            href="/guide/swing/scomponents/scheckbox.html"/>
+              <item name="SComboBox"            href="/guide/swing/scomponents/scombobox.html"/>
+              <item name="SLabel"               href="/guide/swing/scomponents/slabel.html"/>
+              <item name="SList"                href="/guide/swing/scomponents/slist.html"/>
+              <item name="SMenuItem"            href="/guide/swing/scomponents/smenuitem.html"/>
+              <item name="SPanel"               href="/guide/swing/scomponents/spanel.html"/>
+              <item name="SPasswordField"       href="/guide/swing/scomponents/spasswordfield.html"/>
+              <item name="SRadioButton"         href="/guide/swing/scomponents/sradiobutton.html"/>
+              <item name="SSlider"              href="/guide/swing/scomponents/sslider.html"/>
+              <item name="STable"               href="/guide/swing/scomponents/stable.html"/>
+              <item name="STextArea"            href="/guide/swing/scomponents/stextarea.html"/>
+              <item name="STextField"           href="/guide/swing/scomponents/stextfield.html"/>
+              <item name="SUnboundPanel"        href="/guide/swing/scomponents/sunboundpanel.html"/>
+            </item>
+          </item> 
+        </item> 
+        <item name="FAQ"                        href="/faq.html"/>
+        <item name="Changes"                    href="/changes.html"/>
+    </menu>
+  </body>
+</project>

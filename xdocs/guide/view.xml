@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Scope programmer's guide</title>
+  </properties>
+  <body>
+    <section name="View">
+      <subsection name="Writing the view">
+        <p>
+          <a name="writing" />
+          The view interacts directly with the user. In Scope, all views can be bound to a model
+          and issue controls. Depending on the environment, the actual implementation of a view can 
+          change a lot.
+        </p>
+      </subsection>
+      <subsection name="View responsabilities">
+        <p>
+          <a name="responsabilities" />
+          The view is responsible for:
+          <ul>
+            <li>presenting the information stored in the bound model to the user.</li>
+            <li>allowing the user to interact with this information, and to change the data in the model.</li>
+            <li>transforming the user actions into Controls to be interpreted by the Controller.</li>
+          </ul>
+        </p>
+      </subsection>
+      <subsection name="Binding a view to a model">
+        <p>
+          <a name="binding" />
+          To bind a view to a model, you need to write in the Controller the following code:
+          <source><![CDATA[
+setModel(model);
+setView(view);
+]]></source>
+        </p>
+      </subsection>
+      <subsection name="The different types of views implemented in Scope">
+        <p>
+          <a name="specific" />
+          Scope provides the following support for the different types of views:
+          <table>
+            <tr>
+              <th>View type</th>
+              <th>Main view class to use</th>
+            </tr> 
+            <tr>
+              <td>Swing</td>
+              <td>org.scopemvc.view.swing.SPanel</td>
+            </tr> 
+            <tr>
+              <td>Servlet</td>
+              <td>org.scopemvc.view.servlet.Page</td>
+            </tr> 
+            <tr>
+              <td>JSP</td>
+              <td>org.scopemvc.view.servlet.jsp.JSPPage</td>
+            </tr> 
+            <tr>
+              <td>XML+XSLT</td>
+              <td>org.scopemvc.view.servlet.xml.XSLPPage</td>
+            </tr> 
+          </table>
+        </p>
+      </subsection>
+    </section>
+  </body>
+</document>

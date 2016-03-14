@@ -1,0 +1,100 @@
+<HTML>
+
+<HEAD>
+</HEAD>
+
+<BODY>
+
+<P>
+An implementation of Controller that
+responds to {@link org.scopemvc.core.Control Control}s 
+issued by its View in response to user interaction,
+or from child Controllers as a result of the hierarchical chain of responsiblity
+(see
+<A HREF="http://www.javaworld.com/javaworld/jw-07-2000/jw-0721-hmvc_p.html">
+HMVC: The layered pattern for developing strong client tiers
+</A>
+for a general discussion of this pattern
+).
+</P>
+
+
+
+<A NAME="BasicController"></A><H1>BasicController and the chain of responsibility</H1>
+
+<P>
+Controllers are responsible for determining application flow: ie they
+implement the system's use cases and transitions between them. This
+can be modelled as a statechart in which each state is a View and each
+state transition is represented by a Control.
+</P>
+<P>
+A Controller can have a parent Controller, a single Model and a single View
+(by default -- multiple models and views can be handled manually), 
+and can also create child Controllers to handle areas of functionality.
+(See {@link org.scopemvc.controller.basic.BasicController#setParent}).
+</P>
+<P>
+A common pattern is to implement an application-level Controller that can take care
+of "global" use cases such as starting and ending a user session, and allow
+this Controller to create child Controllers that take care of self-contained 
+subsystems (related sets of use cases). These subsystems can influence
+the "global" state of the application by simply issuing global Controls 
+into the chain of responsiblity where they will bubble up
+to the application-level Controller through any intermediate Controllers.
+</P>
+<P>
+<A HREF="../../../../../images/api/ApplicationControllerHierarchy.gif">
+<IMG SRC="../../../../../images/api/ApplicationControllerHierarchy.gif" WIDTH="120" HEIGHT="120">
+</P>
+<P>
+The implementation of this bubbling is part of 
+{@link org.scopemvc.controller.basic.BasicController#handleControl handleControl}
+and
+{@link org.scopemvc.controller.basic.BasicController#doHandleControl doHandleControl}
+:
+<A HREF="../../../../../images/api/BasicController.handleControl.gif">
+<IMG SRC="../../../../../images/api/BasicController.handleControl.gif" WIDTH="120" HEIGHT="120">
+</A>
+</P>
+
+
+
+
+<A NAME="ChildControllers"></A><H1>Initialisation of child Controllers</H1>
+
+<P>
+As a result of this pattern, a Controller may be initialised with a specific
+View and Model passed to it by its parent, or it may be allowed to create
+its own View and Model.
+</P>
+<P>
+Typically a parent will pass a View/Model pair
+into a child that is responsible for a part of the parent's state.
+For example, a CustomerManagementController
+may delegate Address Management to a child Controller that is used in
+other contexts within the application. In this case, the parent
+may have a CustomerManagementView that already 
+contains an AddressManagementView.
+The child Controller will therefore be passed a reference to the subview by
+its parent. It would also be required in this case to use the AddressModel bound to
+its View rather than creating a new AddressModel.
+***** INSERT DIAGRAM
+</P>
+<P>
+Note that the BasicController implementation includes a mechanism for the child Controller
+in this case to keep track of the current Model behind its View even when that
+Model is changed as a result of the parent binding a new CustomerModel
+to the AddressManagementView. See the internal implementation of
+{@link org.scopemvc.controller.basic.BasicController#handleControl handleControl}
+to see the handling of
+{@link org.scopemvc.controller.basic.BasicController#CHANGE_MODEL_CONTROL_ID CHANGE_MODEL_CONTROL_ID}
+which is correctly issued by the
+{@link org.scopemvc.view.swing.SwingView SwingView}
+implementation.
+</P>
+
+
+</BODY>
+</HTML>
+

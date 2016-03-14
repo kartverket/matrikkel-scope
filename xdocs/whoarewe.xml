@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<document>
+
+  <properties>
+    <author email="smeyfroi@users.sourceforge.net">Steve Meyfroidt</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Who are we?</title>
+  </properties>
+
+<body>
+  <section name="Who Are We?">
+    <p>
+      Special credit goes to Steve Meyfroidt who started the original project.
+    </p>
+    <p>
+      All contributions are welcome, and may be discussed and posted on the mailing lists. The final decision of what becomes part of the official distribution is made by a group of Committers.
+    </p>
+  </section>
+  <section name="Active Commiters">
+    <ul>
+      <li><strong>Steve Meyfroidt</strong> (<a href="mailto:smeyfroi@users.sourceforge.net">smeyfroi@users.sourceforge.net</a>)</li> Project manager and lead developer
+      <li><strong>Ludovic Claude</strong> (<a href="mailto:ludovicc@users.sourceforge.net">ludovicc@users.sourceforge.net</a>, <a href="http://ludo.blog-city.com/">weblog</a>)</li> Release 1.0, documentation
+      <li><strong>Julia Reynolds</strong> (<a href="mailto:jjreynolds9@users.sourceforge.net">jjreynolds9@users.sourceforge.net</a>)</li> Bug reports, suggestions, founder of the Yahoo Scope Users' eGroup and author of the fabulous Introduction to Scope and How to use STable presentations.
+      <li><strong>Patrick Nordwall</strong> (<a href="mailto:nordwall@users.sourceforge.net">nordwall@users.sourceforge.net</a>)</li> Ideas and code for version 2.0.
+    </ul>
+  </section>
+  <section name="Contributors">
+    <ul>
+      <li>Daniel Michalik - Made numerous additions to the Swing implementation, rewrote the StringConvertors, adding the "FileFind" sample among other activities.</li>
+      <li>Steve Jones - Bug fixes, lots of suggestions, the Timesheet sample.</li>
+      <li>Simon Harris - Lots of bug fixes and the object pooling mechanism.</li>   
+      <li>Alex Roytman - Bug reports and suggestions, as well as the ListModel adapter code.</li>   
+      <li>Markus Schmidt - Bug reports and feedback in the early days.</li>   
+      <li>Kevin Rector - Began the Timewarp code generator</li>
+      <li>Beat Glattfelder</li>
+      <li>Dania Kodeih</li>
+      <li>Andrei Lenkei</li>
+      <li>Rob Newsome</li>
+    </ul>
+  </section>
+</body>
+
+</document>

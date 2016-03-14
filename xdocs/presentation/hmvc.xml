@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Presentation of Scope</title>
+  </properties>
+  <body>
+    <section name="Hierarchical Model-View-Controller">
+    <p>
+      The HMVC pattern decomposes the client tier into a hierarchy of parent-child MVC layers. 
+      The repetitive application of this pattern allows for a structured client-tier architecture. 
+    </p>
+    <p>
+      <img src="images/hmvc.gif" />
+    </p>
+    <p/>
+    <p align="right">
+      <a href="components.html">Next &gt;</a>
+    </p>
+    </section>
+  </body>
+</document>

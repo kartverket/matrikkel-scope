@@ -1,0 +1,140 @@
+<HTML>
+
+<HEAD>
+</HEAD>
+
+<BODY>
+
+
+<A NAME="abstract"><H1>Abstract</H1></A>
+
+<P>
+Scope is a framework built around an extensible implementation of
+the Hierarchical Model-View-Controller (HMVC) pattern similar to the
+pattern described in
+<A HREF="http://www.javaworld.com/javaworld/jw-07-2000/jw-0721-hmvc_p.html">
+HMVC: The layered pattern for developing strong client tiers
+</A>. It provides an easy-to-use Java
+library that can be used as a basis for component-oriented application 
+development following the layered architecture detailed in Sun's J2EE
+and in
+<A href="http://www.amazon.co.uk/exec/obidos/ASIN/0201708515">
+Cheesman/Daniels: UML Components
+</A>.
+</P>
+
+<P>
+Applications developed using Scope are "view-agnostic": a Swing
+application uses the same infrastructure and patterns as a web application
+that happens to use XML/XSLT to generate HTML. The framework has been used
+in production systems built using the default Swing and Servlet
+implementations, as well as proprietary VoiceXML, ColdFusion and custom 
+XML/XSLT implementations.
+</P>
+
+<P>
+Scope provides the following major subsystems:
+<UL>
+<LI>
+An HMVC implementation in which Controllers respond to 
+Control objects issued from Views as a result of user interaction, 
+or from child Controllers in the chain of responsibility. 
+See {@link org.scopemvc.core.Controller Controller} and
+{@link org.scopemvc.core.Control Control}. This infrastructure acts
+as a layer of abstraction from low-level user interface
+handling (eg Swing's various Events, and web-apps'
+HTTP request/response mechanism).
+</LI>
+<LI>
+Infrastructure for binding models to views with full two-way
+synchronisation: change the view and the model is updated, 
+and vice-versa. (Obvious limitations exist with web
+applications that cannot update HTML when a model on 
+the web server updates.)
+</LI>
+<LI>
+Wrappers around common Swing components to implement
+two-way data binding with validation.
+See {@link org.scopemvc.view.swing}.
+</LI>
+<LI>
+A servlet implementation using XSLT to transform model XML
+into HTML. The servlet implementation supports persistent
+per-user application state if required, and automatic repopulation
+of model objects from form parameters in an HTTP request.
+See {@link org.scopemvc.view.servlet.xml} and
+{@link org.scopemvc.controller.servlet.ScopeServlet ScopeServlet}.
+</LI>
+<LI>
+Infrastructure that allows Scope to act on arbitrary JavaBean 
+model objects. This infrastructure is designed to be decoupled
+in such a way that an alternative can be plugged in, for example
+to act on JMX MBeans.
+Refer to base classes:
+{@link org.scopemvc.core.ModelManager ModelManager}, 
+{@link org.scopemvc.core.PropertyManager PropertyManager}, 
+{@link org.scopemvc.core.ActionManager ActionManager}, 
+{@link org.scopemvc.core.EditorManager EditorManager}.
+And then see the JavaBeans implementation:
+{@link org.scopemvc.model.beans.BeansPropertyManager BeansPropertyManager}, 
+{@link org.scopemvc.model.beans.BeansActionManager BeansActionManager}, 
+{@link org.scopemvc.model.beans.BeansEditorManager BeansEditorManager}.
+See examples for use of JavaBean model objects, for example
+<CODE>samples.helloworld.HelloModel</CODE>.
+</LI>
+<LI>
+An implementation of "active" model objects that broadcast changes in
+their state to allow views to update automatically. 
+See {@link org.scopemvc.model.basic.BasicModel BasicModel}.
+A set of "active"
+collection models are also provided.
+See {@link org.scopemvc.model.collection}.
+Use of these base classes is 
+optional but convenient in complex applications that use a rich GUI,
+eg Swing, in which fully automated synchronisation between model and
+view is desirable. However, even where this is not feasible, Scope's
+Swing implementation without "active" models greatly simplifies the 
+developer's job -- see the samples.
+</LI>
+<LI>
+Support for localisation of user messages.
+See {@link org.scopemvc.util.UIStrings UIStrings} and
+{@link org.scopemvc.util.LocalizedException LocalizedException} and
+{@link org.scopemvc.controller.basic.BasicController#handleControlException BasicController.handleControlException}
+for the default exception handling behaviour.
+</LI>
+<LI>
+Support for conversion of arbitrary datatypes to and from 
+their String representation.
+See {@link org.scopemvc.util.convertor.StringConvertor StringConvertor}.
+</LI>
+<LI>
+A comprehensive jUnit unit test suite to ensure a known quality level.
+The test suite is: <CODE>test.SuiteScope</CODE>.
+</LI>
+</UL>
+</P>
+
+<P>
+Scope is distributed with a growing set of examples designed to act as tutorials 
+in the use of various features of the framework. A Swing based Launcher
+allows documentation to be browser while running the Swing examples from a simple
+GUI (see <CODE>samples.LaunchpadLauncher</CODE>):
+<BR />
+<IMG SRC="images/launcher.gif" />
+</P>
+<P>
+The examples will be expanded to include further tutorials based around web-based
+applications using the Servlet implementation. A "readme" in the binary distribution
+describes how to run all examples.
+</P>
+
+<P>
+The overall structure of Scope's packages is as follows:
+<A TARGET="_parent" HREF="../images/api/scopemvc.gif"><IMG SRC="../images/api/scopemvc.gif" WIDTH="320" /></A>
+</P>
+
+
+</BODY>
+</HTML>
+

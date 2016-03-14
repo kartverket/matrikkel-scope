@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+	<properties>
+		<author email="smeyfroi@users.sourceforge.net">Steve Meyfroidt</author>
+		<author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+		<title>Samples</title>
+	</properties>
+	<body>
+		<section name="Samples">
+			<p>Scope is distributed with a set of samples designed to act as tutorials 
+			in the use of various features of the framework. A Swing based Launcher
+			allows documentation to be viewed while running the Swing examples from 
+			a simple GUI: <br>
+			<IMG SRC="images/launcher.gif" /></br></p>
+			<p>The sample code also includes web-based
+			applications using the XML/XSL and JSP Servlet implementations. 
+			The "servletsamples" distribution includes a deployable
+			war that allows the servlet examples to be run.
+			</p>
+		</section>
+		<section name="Servlet samples launcher">
+			<p>
+			The servlet samples
+			can be accessed with the links below, assuming that the "deploy"
+			target of Scope's build.xml Ant file has been run to deploy the
+			.war into a suitable servlet container. The container should be
+			accessible at <CODE>http://localhost:8080/</CODE> for the
+			following links to work:
+			</p>
+			<UL>
+
+			<LI>
+			<A HREF="http://localhost:8080/scope/servlet/webform">
+			A simple XSL form
+			</A>
+			</LI>
+			
+			<LI>
+			<A HREF="http://localhost:8080/scope/servlet/validation">
+			Validation of form entry
+			</A>
+			</LI>
+			
+			<LI>
+			<A HREF="http://localhost:8080/scope/servlet/login">
+			A simple form with mandatory login
+			</A>
+			</LI>
+			
+			<LI>
+			<A HREF="http://localhost:8080/scope/servlet/jspwebform">
+			A simple JSP form
+			</A>
+			</LI>
+			
+			</UL>
+
+		</section>
+	</body>
+</document>

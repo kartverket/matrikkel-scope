@@ -1,0 +1,62 @@
+group = groupId
+version = projectVersion
+
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+sourceSets {
+  main {
+    java.srcDirs = ['src']
+    resources.srcDirs = [] //ingen ekstra resources på classpath
+  }
+
+  test {
+    java.srcDirs = ['src.test']
+    resources.srcDirs = [] //ingen ekstra resources på classpath
+  }
+}
+
+dependencies {
+  compile 'commons-logging:commons-logging:1.0.4'
+  compile 'javax.servlet:servlet-api:2.5'
+  compile 'javax.servlet.jsp:jsp-api:2.1'
+  compile 'oro:oro:2.0.8'
+
+  testCompile 'junit:junit:3.8.1'
+  testCompile files('lib/jfcunit.jar')
+}
+
+repositories {
+  maven {
+    url NEXUS_BASE_URL + "/snapshots/"
+    credentials {
+      username NEXUS_USERNAME
+      password NEXUS_PASSWORD
+    }
+  }
+  maven {
+    url NEXUS_BASE_URL + "/releases/"
+    credentials {
+      username NEXUS_USERNAME
+      password NEXUS_PASSWORD
+    }
+  }
+  mavenCentral()
+}
+
+publishing {
+  publications {
+    mavenJava(MavenPublication) {
+      from components.java
+    }
+  }
+  repositories {
+    maven {
+      url NEXUS_BASE_URL + "/${project.version.endsWith('-SNAPSHOT') ? 'snapshots' : 'releases'}/"
+      credentials {
+        username NEXUS_USERNAME
+        password NEXUS_PASSWORD
+      }
+    }
+  }
+}

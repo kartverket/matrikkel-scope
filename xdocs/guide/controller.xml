@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document>
+  <properties>
+    <author email="julia9911@yahoo.com">Julia Reynolds</author>
+    <author email="ludovicc@users.sourceforge.net">Ludovic Claude</author>
+    <title>Scope programmer's guide</title>
+  </properties>
+  <body>
+    <section name="Controller">
+      <subsection name="Writing the Controller">
+        <p>
+          <a name="writing" />
+          The controller is the object which binds the model and the view together.  
+        </p>
+        <p>
+          The following code shows the typical usage for a controller, and how to do the bidding.
+          <source><![CDATA[
+Controller myController = new MyController();
+myController.setView(new MyView());
+myController.setModel(new MyModel());
+]]></source>
+        </p>
+      </subsection>
+      <subsection name="Controller responsabilities">
+        <p>
+          <a name="responsabilities" />
+          Controllers have three responsibilities: 
+          <ol> 
+            <li><strong>Set the model and the view (usually in the constructor)</strong>
+              <source><![CDATA[
+public LoginController() { 
+    setModel(new LoginModel()); 
+    setView(new LoginView()); 
+}]]></source></li> 
+            <li><strong>Handle controls in the doHandleControl method</strong>
+              <source><![CDATA[
+protected void doHandleControl(Control inControl) throws ControlException { 
+  if (inControl.matchesID(VALIDATE_LOGIN_CONTROL_ID)) { 
+    doValidateLogin(); 
+  } 
+}]]></source> 
+              Controllers respond to Control objects from multiple sources, including: 
+              <ul>
+                <li>Issued from Views as a result of user interaction via an issueControl() command</li> 
+                <li>Issued from child Sub-Controllers in the chain of responsibility using a handleControl() command</li>
+                <li>Issued locally using the handleControl() command</li>
+              </ul>
+            </li> 
+            <li><strong>Startup and shutdown</strong><br/>
+            startup() executes any actions necessary to begin operation of this controller/model/view cluster: 
+              <source><![CDATA[
+public void startup() { 
+    LoginView myView = (LoginView)getView(); 
+    myView.setViewBounds(myView.CENTRED); 
+    showView(myView); 
+}]]></source>
+             shutdown() executes any actions necessary to end operation of the controller/model/view cluster and cleanup the resources.
+              <source><![CDATA[
+public void stutdown() { 
+    databaseConnection.release();
+    super.shutdown();
+}]]></source>
+             The startup() and the shutdown() method are never called by the Scope framework, the user has the responsability to call those methods.
+            </li> 
+          </ol> 
+        </p>
+      </subsection>
+      <subsection name="Controls">
+        <p>
+          <a name="controls" />
+          Controls are used by the Scope framework to transmit String constants representing commands 
+          from Views, SubControllers and Controllers to a Controller. <br/>
+          <dl>
+           <dt>
+             Setting up a Control: 
+           </dt> 
+           <dd>
+             Declare the control's String constant either in the control that will handle it or in the 
+             view that will issue the Control. 
+             <source><![CDATA[
+/** 
+ * A Control ID. 
+ */ 
+public static final String VALIDATE_LOGIN_CONTROL_ID = "Login";
+]]></source>
+             NOTE: Each Controller that extends BasicController will have a built in Control String constant 
+             called EXIT_CONTROL_ID . Views can issue this Control to exit the application when the view 
+            is closed. 
+          </dd>
+         </dl>
+         <dl>
+           <dt>
+             Triggering the Control: 
+           </dt> 
+           <dd>
+             issueControl(Control c) can be called from a View. <br/>
+             For Swing, a common way to trigger an issue control is to attach the Control to an SComponent. 
+          </dd>
+         </dl>
+         <dl>
+           <dt>
+             Handling the Control: 
+           </dt> 
+           <dd>
+             handleControl(Control c) can be called from a sub-controller or locally within a controller. <br/>
+             If a subcontroller calls handleControl(Control c) on a Control that is not handled 
+             locally in the subcontroller's doHandleControl() method the Control is automatically 
+             forwarded to the parent controller.
+          </dd>
+         </dl>
+        </p>
+      </subsection>
+      <subsection name="Hierarchy of controllers">
+        <p>
+          <a name="hierarchy" />
+          The following code is a typical implementation for a controller and a child controller. <br/>
+          The child controller will handle the processing of controls it doesn't know to its parent 
+          controller, thus this hierarchy of controllers forms a Chain of responsability.
+          <source><![CDATA[
+public class ParentController extends BasicController {
+	public ParentController() {
+		ParentView view = new ParentView();
+		setModel(new ParentModel());
+		setView(view);
+		ChildController childController = new ChildController(view.getChildView());
+		this.addChild(childController);
+	}
+}
+public class ChildController extends BasicController {
+	public ChildController(ChildView view) {
+		setModel(new ChildModel());
+		setView(view);
+	}
+}]]></source>
+        </p> 
+      </subsection>
+      <subsection name="View-specific Controllers">
+        <p>
+          <a name="specific" />
+          Depending on the type of view used in your application, you will have to use different types of controllers.
+        </p> 
+        <p>
+          The following base classes are provided in Scope:
+          <table>
+            <tr>
+              <th>View type</th>
+              <th>Base class for the controller</th>
+            </tr>
+            <tr>
+              <td>Swing</td>
+              <!-- TODO: create a SwingController and update this doc -->
+              <td>org.scopemvc.controller.basic.BasicController</td>
+            </tr>
+            <tr>
+              <td>Servlet/JSP/XML+XSLT</td>
+              <td>org.scopemvc.controller.servlet.ServletController</td>
+            </tr>
+          </table> 
+        </p>
+      </subsection>
+    </section>
+  </body>
+</document>
