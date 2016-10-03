@@ -35,12 +35,21 @@ repositories {
   }
 }
 
+task sourceJar(type: Jar) {
+  from sourceSets.main.allJava
+}
+
 publishing {
   publications {
     mavenJava(MavenPublication) {
       from components.java
+
+      artifact sourceJar {
+        classifier 'sources'
+      }
     }
   }
+
   repositories {
     maven {
       url NEXUS_BASE_URL + "/${project.version.endsWith('-SNAPSHOT') ? 'snapshots' : 'releases'}/"
