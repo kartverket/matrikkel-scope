@@ -1,20 +1,33 @@
 group = 'org.scopemvc'
-version = projectVersion
+version = projectVersion + System.getProperty('suffix', '-SNAPSHOT')
 
 apply plugin: 'java'
+apply plugin: 'idea'
 apply plugin: 'maven-publish'
 
 sourceCompatibility = '1.7'
 
+idea.project {
+  jdkName = '1.7'
+  languageLevel = '1.7'
+  vcs = 'Perforce'
+}
+
 sourceSets {
   main {
     java.srcDirs = ['src']
-    resources.srcDirs = [] //ingen ekstra resources på classpath
+    resources {
+      srcDirs = ['src']
+      exclude '**/*.java'
+    }
   }
 
   test {
     java.srcDirs = ['src.test']
-    resources.srcDirs = [] //ingen ekstra resources på classpath
+    resources {
+      srcDirs = ['src.test']
+      exclude '**/*.java'
+    }
   }
 }
 
@@ -31,32 +44,41 @@ dependencies {
 repositories {
   maven {
     name = 'public'
-    url project.ext.properties.get('MAVEN_REPO', 'http://nexus.statkart.no:8090/nexus/content/groups/public')
+    url MAVEN_REPO
   }
 }
 
 task sourceJar(type: Jar) {
   from sourceSets.main.allJava
+  classifier 'sources'
 }
 
 publishing {
   publications {
     mavenJava(MavenPublication) {
       from components.java
-
-      artifact sourceJar {
-        classifier 'sources'
-      }
-    }
-  }
-
-  repositories {
-    maven {
-      url NEXUS_BASE_URL + "/${project.version.endsWith('-SNAPSHOT') ? 'snapshots' : 'releases'}/"
-      credentials {
-        username NEXUS_USERNAME
-        password NEXUS_PASSWORD
-      }
+      artifact sourceJar
     }
   }
 }
+
+
+jar.manifest {
+    attributes([
+            'Specification-Title'   : project.name,
+            'Specification-Vendor'  : 'Statens kartverk',
+            'Specification-Version' : (gradle.startParameter.projectProperties.get('projectVersion') ?: projectVersion).replace('-SNAPSHOT', ''),
+
+            //misc build info
+            'Build-By'              : System.getProperty('user.name'),
+            'Build-Machine'         : java.net.InetAddress.localHost.hostName,
+            'Build-Repo'            : MAVEN_REPO,
+            'Build-Gradle'          : gradle.gradleVersion,
+            'Build-JDK'             : System.getProperty("java.version"),
+
+            'Implementation-Title'  : "${project.name} bygget for ${(version == null || version.contains('-SNAPSHOT') || version.contains('-build')) ? 'TEST' : 'Produksjon'}",
+            'Implementation-Vendor' : 'Statens kartverk',
+            'Implementation-Version': project.version,
+    ])
+}
+

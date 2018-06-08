@@ -10,5 +10,12 @@ Lisensen må inkluderes ved bruk og [finnes her](./licence.txt).
  * Enable version control (Perforce)
 
 
-## Gradle
-Prosjektet er satt opp til bruk av gradle wrapper.
+
+# Versjonering og branching
+Denne modulen har single branch oppsett og deployer versjoner fra trunk (master).
+Test-versjoner publiseres automatisk med versjonsnummer etterfulgt av `-rc-X`; f.eks. `1.0.4-rc-3` 
+
+
+# Publisering
+Publish av ny versjon gjøres av jenkins jobb [`matrikkel-wsclient-publish`](config/jenkins-publish/Jenkinsfile). 
+Jobben trigges manuelt og leser versjon fra [gradle properties](gradle.properties).
