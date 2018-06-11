@@ -17,5 +17,5 @@ Test-versjoner publiseres automatisk med versjonsnummer etterfulgt av `-rc-X`; f
 
 
 # Publisering
-Publish av ny versjon gjøres av jenkins jobb [`matrikkel-wsclient-publish`](config/jenkins-publish/Jenkinsfile). 
+Publish av ny versjon gjøres av [jenkins jobb](config/jenkins-publish/Jenkinsfile). 
 Jobben trigges manuelt og leser versjon fra [gradle properties](gradle.properties).
