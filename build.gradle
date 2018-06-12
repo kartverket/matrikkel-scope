@@ -1,5 +1,6 @@
 group = 'org.scopemvc'
-version = projectVersion + System.getProperty('suffix', '-SNAPSHOT')
+//version = projectVersion + System.getProperty('suffix', '-SNAPSHOT')
+version = projectVersion
 
 apply plugin: 'java'
 apply plugin: 'idea'

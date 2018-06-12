@@ -107,7 +107,7 @@ public class BeansPropertyManager extends PropertyManager {
             return null;
         } catch (IllegalArgumentException e2){
            LOG.error("Could not locate the property using selector " + Selector.asString(inSelector) + " in model " + inModel);
-           return null;
+           throw new RuntimeException("Implementasjonsfeil i bruk av matrikkel-scope.", e2);
         }
     }
 
@@ -322,7 +322,7 @@ public class BeansPropertyManager extends PropertyManager {
      * set to the new value, even if it equals() the old value. </P> <P>
      *
      * Usually, a {@link org.scopemvc.core.ModelChangeEvent} for {@link
-     * ModelChangeEvent#VALUE_CHANGED} should be broadcast by the model when the
+     * org.scopemvc.core.ModelChangeEvent#VALUE_CHANGED} should be broadcast by the model when the
      * property is set so that interested listeners know that the model's state
      * has changed. </P> <P>
      *
@@ -455,7 +455,7 @@ public class BeansPropertyManager extends PropertyManager {
      * set to the new value, even if it equals() the old value. </P> <P>
      *
      * Usually, a {@link org.scopemvc.core.ModelChangeEvent} for {@link
-     * ModelChangeEvent#VALUE_CHANGED} should be broadcast by the model when the
+     * org.scopemvc.core.ModelChangeEvent#VALUE_CHANGED} should be broadcast by the model when the
      * property is set so that interested listeners know that the model's state
      * has changed. </P> <P>
      *
