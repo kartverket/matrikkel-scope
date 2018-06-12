@@ -40,6 +40,7 @@ package org.scopemvc.view.util;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.scopemvc.IncorrectImplementationException;
 import org.scopemvc.core.ModelChangeEvent;
 import org.scopemvc.core.ModelChangeEventSource;
 import org.scopemvc.core.ModelChangeListener;
@@ -148,13 +149,20 @@ public class ActiveBoundModel extends BoundModel implements ModelChangeListener 
                     Debug.assertTrue(manager != null, "null manager");
                 }
                 result = manager.get(getBoundModel(), getSelector());
+            } catch(IncorrectImplementationException e) {
+                debugLogCouldNotGetProperty(e);
+                throw e;
             } catch (Exception e) {
-                LOG.debug("Could not get property value for selector " + Selector.asString(getSelector())
-                        + " in model " + getBoundModel() + " because: " + e.getMessage());
+                debugLogCouldNotGetProperty(e);
                 // ignore and leave result == null
             }
         }
         return result;
+    }
+
+    private void debugLogCouldNotGetProperty(Exception e) {
+        LOG.debug("Could not get property value for selector " + Selector.asString(getSelector())
+                + " in model " + getBoundModel() + " because: " + e.getMessage());
     }
 
 

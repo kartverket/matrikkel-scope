@@ -46,6 +46,7 @@ import java.util.Iterator;
 import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.scopemvc.IncorrectImplementationException;
 import org.scopemvc.core.IntIndexSelector;
 import org.scopemvc.core.PropertyManager;
 import org.scopemvc.core.Selector;
@@ -98,19 +99,19 @@ public class BeansPropertyManager extends PropertyManager {
             return inModel;
         }
 
+        String selectorAsString = Selector.asString(inSelector);
         try {
             Accessor accessor = findTerminalAccessor(inModel, inSelector);
             accessor.traverseProperty();
             return accessor.model;
         } catch (NullPropertyException e) {
-            LOG.debug("Could not locate the property using selector " + Selector.asString(inSelector) + " in model " + inModel);
+            LOG.debug("Could not locate the property using selector " + selectorAsString + " in model " + inModel);
             return null;
         } catch (IllegalArgumentException e2){
-           LOG.error("Could not locate the property using selector " + Selector.asString(inSelector) + " in model " + inModel);
-           throw new RuntimeException("Implementasjonsfeil i bruk av matrikkel-scope.", e2);
+           LOG.error("Could not locate the property using selector " + selectorAsString + " in model " + inModel);
+           throw new IncorrectImplementationException(selectorAsString, inModel.getClass().getName(), e2);
         }
     }
-
 
     /**
      * <P>

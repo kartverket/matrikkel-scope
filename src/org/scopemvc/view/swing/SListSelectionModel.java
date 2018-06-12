@@ -241,7 +241,7 @@ public class SListSelectionModel extends DefaultListSelectionModel
      */
     public void updateFromProperty(Object inValue, boolean inReadOnly) {
         if (LOG.isDebugEnabled()) {
-            LOG.debug("updateFromProperty: " + inValue + ", " + inReadOnly, new Throwable());
+            LOG.debug("updateFromProperty: " + inValue + ", " + inReadOnly);
         }
 
         if (isSelectorMandatory()) {
@@ -410,7 +410,7 @@ public class SListSelectionModel extends DefaultListSelectionModel
      */
     protected void fireValueChanged(int inFirstIndex, int inLastIndex, boolean inAdjusting) {
         if (LOG.isDebugEnabled()) {
-            LOG.debug("fireValueChanged: " + inFirstIndex + "," + inLastIndex + "," + inAdjusting, new Throwable());
+            LOG.debug("fireValueChanged: " + inFirstIndex + "," + inLastIndex + "," + inAdjusting);
         }
 
         super.fireValueChanged(inFirstIndex, inLastIndex, inAdjusting);
