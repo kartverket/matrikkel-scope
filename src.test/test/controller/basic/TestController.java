@@ -184,6 +184,7 @@ public final class TestController extends TestCase {
      * The JUnit setup method
      */
     protected void setUp() {
+        ViewContext.clearThreadContext();
         ViewContext.setGlobalContext(new DummyContext());
     }
 

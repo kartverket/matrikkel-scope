@@ -218,6 +218,7 @@ public final class TestBasicController extends TestCase {
      */
     protected void setUp() {
         context = new DummyContext();
+        ViewContext.clearThreadContext();
         ViewContext.setGlobalContext(context);
 
         model1 = new DummyModel("Model1");
