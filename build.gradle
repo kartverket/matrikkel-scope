@@ -48,6 +48,18 @@ repositories {
   }
 }
 
+test {
+  useJUnit()
+
+  //testoppsettet setter disse, mens rammeverket støtter ikke endringer av dette i runtime
+  // se bruk av Locale.setDefault(Locale.UK)
+  systemProperty('user.language', 'en')
+  systemProperty('user.timezone', 'GMT')
+  systemProperty('user.region', 'GB')
+//  systemProperty('user.country', 'GB')
+//  systemProperty('user.country.format', 'GB')
+}
+
 task sourceJar(type: Jar) {
   from sourceSets.main.allJava
   classifier 'sources'
