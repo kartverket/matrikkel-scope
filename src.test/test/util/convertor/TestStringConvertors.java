@@ -66,6 +66,8 @@ public final class TestStringConvertors extends TestCase {
     static {
         Locale.setDefault(Locale.UK);
         TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
+        System.out.println("Default medium format " + DateFormat.getDateInstance(DateFormat.MEDIUM).format(new Date(0)));
+        System.out.println("Default locale " + Locale.getDefault());
     }
 
 
