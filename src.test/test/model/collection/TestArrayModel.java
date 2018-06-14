@@ -55,7 +55,7 @@ import test.model.basic.BasicTestModel;
  */
 public final class TestArrayModel extends TestCase implements ModelChangeListener {
 
-    private ArrayModel arrayModel;
+    private ArrayModel<Object> arrayModel;
     private BasicTestModel model, submodel;
     private Object[] array;
 
@@ -221,6 +221,31 @@ public final class TestArrayModel extends TestCase implements ModelChangeListene
         }
     }
 
+    /**
+     * A unit test for JUnit
+     *
+     * @throws Exception Any abnormal exception
+     */
+    public void testArrayModelArrayConstructorWithouthGenerics() throws Exception {
+        ArrayModel m = new ArrayModel(array);
+        assertTrue(m.getSize() == array.length);
+        for (int i = 0; i < m.getSize(); ++i) {
+            assertEquals(m.get(i), array[i]);
+        }
+        try {
+            m.get(array.length + 1);
+        } catch (IndexOutOfBoundsException e) {
+            // We expect this
+            try {
+                m.set(-1, "test");
+            } catch (ArrayIndexOutOfBoundsException e1) {
+                // We expect this
+                return;
+            }
+        }
+        fail("get/set beyond bounds of array");
+    }
+
 
     /**
      * A unit test for JUnit
@@ -228,7 +253,7 @@ public final class TestArrayModel extends TestCase implements ModelChangeListene
      * @throws Exception Any abnormal exception
      */
     public void testArrayModelArrayConstructor() throws Exception {
-        ArrayModel m = new ArrayModel(array);
+        ArrayModel m = new ArrayModel<>(array);
         assertTrue(m.getSize() == array.length);
         for (int i = 0; i < m.getSize(); ++i) {
             assertEquals(m.get(i), array[i]);
@@ -326,7 +351,7 @@ public final class TestArrayModel extends TestCase implements ModelChangeListene
      * @throws Exception Any abnormal exception
      */
     public void testArrayModelSetArray() throws Exception {
-        Object[] o = new Object[]{
+        Integer[] o = new Integer[]{
                 new Integer(99),
                 };
         arrayModel.setArray(o);
@@ -370,7 +395,7 @@ public final class TestArrayModel extends TestCase implements ModelChangeListene
      * @throws Exception Any abnormal exception
      */
     protected void setUp() throws Exception {
-        arrayModel = new ArrayModel(10);
+        arrayModel = new ArrayModel<>(10);
         for (int i = 0; i < arrayModel.getSize(); ++i) {
             arrayModel.set(i, new Integer(i));
         }
@@ -379,7 +404,7 @@ public final class TestArrayModel extends TestCase implements ModelChangeListene
         submodel = new BasicTestModel("submodel");
         model.setSubModel(submodel);
 
-        array = new String[10];
+        array = new Object[10];
         for (int i = 0; i < array.length; ++i) {
             array[i] = "test" + i;
         }

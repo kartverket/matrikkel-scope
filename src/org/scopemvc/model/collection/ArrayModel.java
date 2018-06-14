@@ -47,6 +47,7 @@ import org.scopemvc.model.basic.BasicModel;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.util.Arrays;
 import java.util.Collection;
@@ -148,7 +149,14 @@ public class ArrayModel<E> extends BasicModel implements List<E> {
             throw new IllegalArgumentException("Can't create ArrayModel with size < 0: " + inSize);
         }
        TypeVariable<? extends Class<? extends ArrayModel>>[] typeParameters = getClass().getTypeParameters();
-       setArray((E[]) Array.newInstance(typeParameters[0].getClass(), inSize));
+        Class arrayType = Object.class;
+        if (typeParameters.length == 1) {
+            Type[] bounds = typeParameters[0].getBounds();
+            if (bounds.length == 1) {
+                arrayType = Class.class.cast(bounds[0]);
+            }
+        }
+       setArray((E[]) Array.newInstance(arrayType, inSize));
     }
 
 
