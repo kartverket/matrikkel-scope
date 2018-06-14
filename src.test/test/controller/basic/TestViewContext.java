@@ -67,6 +67,7 @@ public final class TestViewContext extends TestCase {
      * @throws Exception Any abnormal exception
      */
     public void testGlobalViewContext() throws Exception {
+        ViewContext.clearThreadContext();
         ViewContext m = new DummyContext();
         ViewContext.setGlobalContext(m);
         assertSame(m, ViewContext.getViewContext());
