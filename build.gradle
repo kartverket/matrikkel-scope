@@ -1,7 +1,7 @@
 group = 'org.scopemvc'
 version = projectVersion + System.getProperty('suffix', '-SNAPSHOT')
 
-apply plugin: 'java'
+apply plugin: 'java-library'
 apply plugin: 'idea'
 apply plugin: 'maven-publish'
 
@@ -32,13 +32,13 @@ sourceSets {
 }
 
 dependencies {
-  compile 'commons-logging:commons-logging:1.0.4'
-  compile 'javax.servlet:servlet-api:2.5'
-  compile 'javax.servlet.jsp:jsp-api:2.1'
-  compile 'oro:oro:2.0.8'
+  implementation 'commons-logging:commons-logging:1.0.4'
+  compileOnly 'javax.servlet:servlet-api:2.5' // provided
+  compileOnly 'javax.servlet.jsp:jsp-api:2.1' // provided
+  compileOnly 'oro:oro:2.0.8'                 // for compiling samples.*
 
-  testCompile 'junit:junit:3.8.1'
-  testCompile files('lib/jfcunit.jar')
+  testImplementation 'junit:junit:3.8.1'
+  testImplementation files('lib/jfcunit.jar')
 }
 
 repositories {
