@@ -33,7 +33,7 @@ sourceSets {
 
 dependencies {
   implementation 'commons-logging:commons-logging:1.0.4'
-  compileOnly 'javax.servlet:servlet-api:2.5' // provided
+  compile 'javax.servlet:servlet-api:2.5' // provided
   compileOnly 'javax.servlet.jsp:jsp-api:2.1' // provided
   compileOnly 'oro:oro:2.0.8'                 // for compiling samples.*
 
