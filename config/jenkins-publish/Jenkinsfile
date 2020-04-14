@@ -1,23 +1,10 @@
 #!groovy
-
-@Library('common@matrikkel') _
-
-/*
- Pipeline for Continuous integration (CI) prosess i Jenkins.
- Dette bygget trigges manuelt og skal ikke trigges fra SCM.
- Er tenkt satt opp mot kun en branch.
-
- For jenkins pipeline documentation https://jenkins.io/doc/book/pipeline/
- TIP: Import DSL into your IntelliJ from http://jenkins.statkart.no:8021/jenkins/pipeline-syntax/gdsl
-
- Multibranch oppsett sjekker ut kodebasen automatisk. Denne havner som i roten til hvert workspace (som default).
-*/
+@Library('common@master') _
 
 pipeline { //declarative pipeline syntax
     // agent defines where the pipeline will run.
     agent {
-        // This could also have been 'agent any' - which has the same meaning as: label "".
-        label ""
+        label 'matrikkelen'
     }
 
     tools {
@@ -29,8 +16,6 @@ pipeline { //declarative pipeline syntax
     }
 
     environment {
-        GRADLE_OPTS = '-Xmx1g'
-
         //for publisering til sentralt maven repo bindes opp via jenkins credential (secret text)
         MAVEN_PUBLISH = credentials('MAVEN_DEPLOY_RELEASES')
     }
@@ -38,12 +23,12 @@ pipeline { //declarative pipeline syntax
     stages {
         stage('Prepare') {
             steps {
-                bat "gradlew clean assemble --refresh-dependencies --profile ${gradleOptions(this)}"
+                sh "./gradlew clean assemble --refresh-dependencies --profile ${gradleOptions(this)}"
             }
         }
         stage('Publish') {
             steps {
-                bat "gradlew publish ${gradleOptions(this)} --init-script config/gradle/scripts/mavenPublish.gradle"
+                sh "./gradlew publish ${gradleOptions(this)} --init-script config/gradle/scripts/mavenPublish.gradle"
             }
         }
 
@@ -68,7 +53,11 @@ pipeline { //declarative pipeline syntax
 
 
     post {
-        always {
+        success {
+            echo 'Deleting workspace on success to preserve disk space'
+            deleteDir()
+        }
+        cleanup {
             pushBuildFeed()
         }
     }
