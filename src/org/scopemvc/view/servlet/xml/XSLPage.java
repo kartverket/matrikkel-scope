@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: XSLPage.java,v 1.7 2002/09/05 15:41:45 ludovicc Exp $
  */
 package org.scopemvc.view.servlet.xml;
 
@@ -64,8 +64,8 @@ import org.scopemvc.view.servlet.ValidationFailure;
  * Handles circular references using the "ID" and "IDREF" pattern. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.7 $ $Date: 2002/09/05 15:41:45 $
  * @created 05 September 2002
+ * @version $Revision: 1.7 $ $Date: 2002/09/05 15:41:45 $
  */
 public class XSLPage extends AbstractXSLPage {
 
@@ -80,7 +80,7 @@ public class XSLPage extends AbstractXSLPage {
      */
     static char PROPERTY_ID_PREFIX;
 
-    private static final Log LOG = LogFactory.getLog(XSLPage.class);
+    private final static Log LOG = LogFactory.getLog(XSLPage.class);
 
     /**
      * Optional setting for whether the SAX convertor should write all the

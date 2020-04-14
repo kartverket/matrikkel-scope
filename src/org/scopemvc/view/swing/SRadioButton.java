@@ -33,7 +33,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: SRadioButton.java,v 1.13 2002/10/30 09:13:08 ludovicc Exp $
+ * Changes:
+ *  - added setPointer(pointer) in deprecation of setSetlector(selector) (scope 2.0)
+ *  - added setActionID(id) in deprecation of setControlID(id) (scope 2.0)
  */
 package org.scopemvc.view.swing;
 

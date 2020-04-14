@@ -1,7 +1,8 @@
 /*
  * Scope: a generic MVC framework.
- * Copyright (c) 2000-2002, The Scope team
+ * Copyright (c) 2000-2002, Steve Meyfroidt
  * All rights reserved.
+ * Email: smeyfroi@users.sourceforge.net
  *
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,8 +34,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: TestDateStringConvertors.java,v 1.7 2002/08/05 13:16:45 ludovicc Exp $
  */
+
+
 package test.util.convertor;
 
 
@@ -43,27 +46,24 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
 import java.util.TimeZone;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import junit.framework.TestCase;
+import org.apache.commons.logging.LogFactory;import org.apache.commons.logging.Log;
 import org.scopemvc.util.ScopeConfig;
 import org.scopemvc.util.convertor.DateStringConvertor;
 
+
 /**
  * <P>
- *
  * </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
  * @version $Revision: 1.7 $ $Date: 2002/08/05 13:16:45 $
- * @created October 7, 2003
  */
 public final class TestDateStringConvertors extends TestCase {
 
+
     private static final Log LOG = LogFactory.getLog(TestDateStringConvertors.class);
 
-    private Date jan1_1970;
-    private GregorianCalendar cal = new GregorianCalendar();
 
     /**
      * Must set a known default locale for the tests.
@@ -75,21 +75,21 @@ public final class TestDateStringConvertors extends TestCase {
         System.out.println("Default locale " + Locale.getDefault());
     }
 
-    /**
-     * Constructor for the TestDateStringConvertors object
-     *
-     * @param inName TODO: Describe the Parameter
-     */
+    private Date jan1_1970;
+    private GregorianCalendar cal = new GregorianCalendar();
+
     public TestDateStringConvertors(String inName) {
         super(inName);
     }
 
 
-    /**
-     * A unit test for JUnit
-     *
-     * @throws Exception TODO: Describe the Exception
-     */
+    protected void setUp() {
+        cal.clear();
+        cal.set(1970, 0, 1, 0, 0, 0);
+        jan1_1970 = cal.getTime();
+    }
+
+
     public void testDefaultDateStringConvertor() throws Exception {
 
         DateStringConvertor c = new DateStringConvertor();
@@ -106,30 +106,17 @@ public final class TestDateStringConvertors extends TestCase {
         // don't use string constants as date formats depend on the JVM version.
         assertEquals(mediumFormat, c.valueAsString(jan1_1970));
 
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Try " + shortFormat);
-        }
+        if (LOG.isDebugEnabled()) LOG.debug("Try " + shortFormat);
         assertEquals(jan1_1970, c.stringAsValue(shortFormat));
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Try " + mediumFormat);
-        }
+        if (LOG.isDebugEnabled()) LOG.debug("Try " + mediumFormat);
         assertEquals(jan1_1970, c.stringAsValue(mediumFormat));
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Try " + longFormat);
-        }
+        if (LOG.isDebugEnabled()) LOG.debug("Try " + longFormat);
         assertEquals(jan1_1970, c.stringAsValue(longFormat));
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Try " + fullFormat);
-        }
+        if (LOG.isDebugEnabled()) LOG.debug("Try " + fullFormat);
         assertEquals(jan1_1970, c.stringAsValue(fullFormat));
     }
 
 
-    /**
-     * A unit test for JUnit
-     *
-     * @throws Exception TODO: Describe the Exception
-     */
     public void testConfigDateStringConvertor() throws Exception {
 
         ScopeConfig.setPropertiesName("test.util.convertor.ConvertorScopeConfig");
@@ -144,20 +131,10 @@ public final class TestDateStringConvertors extends TestCase {
         assertEquals(jan1_1970, c.stringAsValue("01011970"));
 
         // Is it just me or is the Java calendar API impenetrable?
-        Date d = (Date) c.stringAsValue("2-2-2001");
+        Date d = (Date)c.stringAsValue("2-2-2001");
         cal.setTime(d);
         assertEquals("Date: " + d, 2001, cal.get(cal.YEAR));
         assertEquals("Date: " + d, 1, cal.get(cal.MONTH));
         assertEquals("Date: " + d, 2, cal.get(cal.DAY_OF_MONTH));
-    }
-
-
-    /**
-     * The JUnit setup method
-     */
-    protected void setUp() {
-        cal.clear();
-        cal.set(1970, 0, 1, 0, 0, 0);
-        jan1_1970 = cal.getTime();
     }
 }

@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: Selector.java,v 1.13 2002/09/19 15:18:00 ludovicc Exp $
  */
 package org.scopemvc.core;
 
@@ -60,8 +60,8 @@ import org.scopemvc.util.Debug;
  * a List or array of Pets that contain a name property. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.13 $ $Date: 2002/09/19 15:18:00 $
  * @created 05 August 2002
+ * @version $Revision: 1.13 $ $Date: 2002/09/19 15:18:00 $
  */
 public abstract class Selector {
 

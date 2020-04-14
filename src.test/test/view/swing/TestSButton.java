@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: TestSButton.java,v 1.4 2002/09/12 19:09:37 ludovicc Exp $
  */
 package test.view.swing;
 
@@ -49,8 +49,8 @@ import org.scopemvc.view.swing.SPanel;
  * </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net>Steve Meyfroidt</A>
- * @version $Revision: 1.4 $ $Date: 2002/09/12 19:09:37 $
  * @created 05 September 2002
+ * @version $Revision: 1.4 $ $Date: 2002/09/12 19:09:37 $
  */
 public final class TestSButton extends TestCase {
 

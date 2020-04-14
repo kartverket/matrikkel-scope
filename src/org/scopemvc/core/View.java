@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: View.java,v 1.5 2002/09/06 16:11:47 ludovicc Exp $
  */
 package org.scopemvc.core;
 
@@ -60,8 +60,8 @@ package org.scopemvc.core;
  * application/presentation logic. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.5 $ $Date: 2002/09/06 16:11:47 $
  * @created 05 August 2002
+ * @version $Revision: 1.5 $ $Date: 2002/09/06 16:11:47 $
  * @see Controller
  * @see org.scopemvc.view.swing
  * @see org.scopemvc.view.servlet.xml

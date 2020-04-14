@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: AWTUtilities.java,v 1.7 2002/09/13 17:04:38 ludovicc Exp $
  */
 package org.scopemvc.view.awt;
 
@@ -55,8 +55,8 @@ import org.scopemvc.util.Debug;
  * Utilities dependent on Java AWT and Scope core packages only. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.7 $ $Date: 2002/09/13 17:04:38 $
  * @created 05 September 2002
+ * @version $Revision: 1.7 $ $Date: 2002/09/13 17:04:38 $
  */
 public final class AWTUtilities {
 

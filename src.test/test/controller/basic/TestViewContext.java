@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: TestViewContext.java,v 1.6 2002/11/20 00:19:58 ludovicc Exp $
  */
 package test.controller.basic;
 
@@ -46,8 +46,8 @@ import org.scopemvc.controller.basic.*;
  * </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.6 $ $Date: 2002/11/20 00:19:58 $
  * @created 05 September 2002
+ * @version $Revision: 1.6 $ $Date: 2002/11/20 00:19:58 $
  */
 public final class TestViewContext extends TestCase {
 
@@ -67,7 +67,7 @@ public final class TestViewContext extends TestCase {
      * @throws Exception Any abnormal exception
      */
     public void testGlobalViewContext() throws Exception {
-        ViewContext.clearThreadContext();
+        ViewContext.clearThreadContext(); //flaky test fix
         ViewContext m = new DummyContext();
         ViewContext.setGlobalContext(m);
         assertSame(m, ViewContext.getViewContext());

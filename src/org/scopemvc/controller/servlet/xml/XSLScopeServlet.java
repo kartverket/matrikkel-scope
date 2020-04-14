@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: XSLScopeServlet.java,v 1.7 2002/09/05 15:41:51 ludovicc Exp $
  */
 package org.scopemvc.controller.servlet.xml;
 
@@ -60,12 +60,12 @@ import org.scopemvc.controller.servlet.ServletContext;
  *
  * @author Beat Glattfelder
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.7 $ $Date: 2002/09/05 15:41:51 $
  * @created 05 September 2002
+ * @version $Revision: 1.7 $ $Date: 2002/09/05 15:41:51 $
  */
 public abstract class XSLScopeServlet extends ScopeServlet {
 
-    private static final Log LOG = LogFactory.getLog(XSLScopeServlet.class);
+    private final static Log LOG = LogFactory.getLog(XSLScopeServlet.class);
 
 
     /**

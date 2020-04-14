@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: STableModel.java,v 1.17 2002/10/31 12:41:46 ludovicc Exp $
  */
 package org.scopemvc.view.swing;
 
@@ -266,7 +266,8 @@ public class STableModel extends SAbstractListModel
         Selector selector = getColumnSelector(inColumnIndex);
         PropertyManager manager = getItemsManager();
         if (manager == null || row == null || selector == null) {
-            LOG.warn("getValueAt(" + inRowIndex + "," + inColumnIndex + "): found no manager or row or selector");
+            LOG.warn("getValueAt(" + inRowIndex + "," + inColumnIndex
+                    + "): found no manager or row or selector");
             return null;
         }
         try {
@@ -276,7 +277,7 @@ public class STableModel extends SAbstractListModel
             }
             return manager.get(row, selector);
         } catch (Exception e) {
-            LOG.debug("Can't get column " + inColumnIndex + " from row " + inRowIndex, e);
+            LOG.warn("Can't get column " + inColumnIndex + " from row " + inRowIndex, e);
         }
         return null;
     }

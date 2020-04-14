@@ -33,7 +33,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: DummyHTTPRequest.java,v 1.3 2002/09/05 15:41:48 ludovicc Exp $
+ * Changes:
+ *  - Added Servlet 2.5/3.2 compatibility
  */
 package test.controller.servlet;
 
@@ -57,8 +59,8 @@ import javax.servlet.http.HttpSession;
  * An HTTPRequest used in testing the servlet controller/view impl. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.3 $ $Date: 2002/09/05 15:41:48 $
  * @created 05 September 2002
+ * @version $Revision: 1.3 $ $Date: 2002/09/05 15:41:48 $
  */
 class DummyHTTPRequest implements HttpServletRequest {
 

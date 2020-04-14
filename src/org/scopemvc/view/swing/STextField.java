@@ -33,12 +33,15 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: STextField.java,v 1.32 2002/11/20 01:36:58 ludovicc Exp $
  */
 package org.scopemvc.view.swing;
 
 
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.beans.Beans;
 
 import javax.swing.Action;
@@ -617,12 +620,12 @@ public class STextField extends JTextField
      * @param inReadOnly true if the bound property is read-only in the model
      */
     protected void setReadOnly(boolean inReadOnly) {
-       readOnly = inReadOnly;
-       boolean enabled = userEnabled && !readOnly;
-       if("true".equalsIgnoreCase(ScopeConfig.getString("org.scopemvc.view.swing.STextField.allowEnabledStateOnNoProperty"))) {
-          enabled = userEnabled;
-       }
-       super.setEnabled(enabled);
+        readOnly = inReadOnly;
+        boolean enabled = userEnabled && !readOnly;
+        if ("true".equalsIgnoreCase(ScopeConfig.getString("org.scopemvc.view.swing.STextField.allowEnabledStateOnNoProperty"))) {
+            enabled = userEnabled;
+        }
+        super.setEnabled(enabled);
     }
 
 
@@ -642,7 +645,7 @@ public class STextField extends JTextField
                 return StringConvertors.forClass(clazz);
             }
         } catch (Exception e) {
-            LOG.debug("createDefaultStringConvertor", e);
+            LOG.warn("createDefaultStringConvertor", e);
         }
         return null;
     }
@@ -708,9 +711,6 @@ public class STextField extends JTextField
                     // need to force an update of the model
                     textField.viewChanged();
                 }
-            } else if (target instanceof  JTextField) {
-               //TODO: Fix Scope such that STextField$NotifyActions are only sent for STextFields instead of for all types of JTextField
-               enabled =((JTextField)target).getActionListeners().length!=0;
             }
             return enabled;
         }
@@ -725,12 +725,7 @@ public class STextField extends JTextField
             if (target instanceof STextField) {
                 STextField field = (STextField) target;
                 field.postActionEvent();
-            } else if (target instanceof JTextField) {
-               //TODO: Fix Scope such that STextField$NotifyActions are only sent for STextFields instead of for all types of JTextField 
-                JTextField field = (JTextField) target;
-                field.postActionEvent();
             }
-
         }
     }
 

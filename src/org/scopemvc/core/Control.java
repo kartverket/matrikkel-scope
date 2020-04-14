@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: Control.java,v 1.10 2002/10/11 15:47:08 ludovicc Exp $
  */
 package org.scopemvc.core;
 

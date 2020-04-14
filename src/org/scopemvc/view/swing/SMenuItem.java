@@ -33,7 +33,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: SMenuItem.java,v 1.14 2002/09/25 13:53:09 ludovicc Exp $
+ * Changes:
+ *  - added setActionID(id) in deprecation of setControlID(id) (scope 2.0)
  */
 package org.scopemvc.view.swing;
 

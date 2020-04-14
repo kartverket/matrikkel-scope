@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: PropertyIDGenerator.java,v 1.5 2002/09/05 15:41:45 ludovicc Exp $
  */
 package org.scopemvc.view.servlet.xml;
 
@@ -52,8 +52,8 @@ import org.scopemvc.core.Selector;
  * XSLPage}. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.5 $ $Date: 2002/09/05 15:41:45 $
  * @created 05 September 2002
+ * @version $Revision: 1.5 $ $Date: 2002/09/05 15:41:45 $
  */
 public abstract class PropertyIDGenerator {
 

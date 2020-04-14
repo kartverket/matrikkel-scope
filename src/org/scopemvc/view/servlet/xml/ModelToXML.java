@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: ModelToXML.java,v 1.7 2002/09/05 15:41:45 ludovicc Exp $
  */
 package org.scopemvc.view.servlet.xml;
 
@@ -77,8 +77,8 @@ import org.xml.sax.helpers.AttributesImpl;
  * </PRE> </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.7 $ $Date: 2002/09/05 15:41:45 $
  * @created 05 September 2002
+ * @version $Revision: 1.7 $ $Date: 2002/09/05 15:41:45 $
  */
 public class ModelToXML {
 
@@ -86,23 +86,23 @@ public class ModelToXML {
     /**
      * TODO: describe of the Field
      */
-    protected static final String ID_ATTRIBUTE = "id";
+    protected final static String ID_ATTRIBUTE = "id";
     /**
      * TODO: describe of the Field
      */
-    protected static final String IDREF_ATTRIBUTE = "idref";
+    protected final static String IDREF_ATTRIBUTE = "idref";
     /**
      * TODO: describe of the Field
      */
-    protected static final String CDATA_TYPE = "CDATA";
+    protected final static String CDATA_TYPE = "CDATA";
     /**
      * TODO: describe of the Field
      */
-    protected static final String PATH_ATTRIBUTE = "id";
+    protected final static String PATH_ATTRIBUTE = "id";
     /**
      * TODO: describe of the Field
      */
-    protected static final Attributes EMPTY_ATTRIBUTES = new AttributesImpl();
+    protected final static Attributes EMPTY_ATTRIBUTES = new AttributesImpl();
 
     /**
      * Element to contain contents of a collection model.
@@ -119,7 +119,7 @@ public class ModelToXML {
      */
     protected static String MODEL_ELEMENT = "data";
 
-    private static final Log LOG = LogFactory.getLog(ModelToXML.class);
+    private final static Log LOG = LogFactory.getLog(ModelToXML.class);
 
     // Reuse these Attributes to avoid object creation (initialised in init()).
     /**

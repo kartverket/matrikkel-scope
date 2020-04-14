@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: SwingDummyModelNoMCE.java,v 1.8 2002/09/12 18:26:54 ludovicc Exp $
  */
 package test.view.swing;
 
@@ -48,8 +48,8 @@ import org.apache.commons.logging.LogFactory;
  * A model for testing that doesn't fire ModelChangeEvents (MCE) </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.8 $ $Date: 2002/09/12 18:26:54 $
  * @created 12 September 2002
+ * @version $Revision: 1.8 $ $Date: 2002/09/12 18:26:54 $
  */
 public final class SwingDummyModelNoMCE {
 

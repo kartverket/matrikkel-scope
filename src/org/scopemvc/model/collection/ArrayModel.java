@@ -33,20 +33,14 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: ArrayModel.java,v 1.7 2002/09/12 10:51:03 ludovicc Exp $
+ * Changes:
+ *  - Added generics to class signature (see content field)
  */
 package org.scopemvc.model.collection;
 
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.scopemvc.core.ModelChangeEvent;
-import org.scopemvc.core.ModelChangeEventSource;
-import org.scopemvc.core.Selector;
-import org.scopemvc.model.basic.BasicModel;
-
 import java.lang.reflect.Array;
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
 import java.util.Arrays;
@@ -54,6 +48,12 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.scopemvc.core.ModelChangeEvent;
+import org.scopemvc.core.ModelChangeEventSource;
+import org.scopemvc.core.Selector;
+import org.scopemvc.model.basic.BasicModel;
 
 /**
  * <P>
@@ -70,8 +70,8 @@ import java.util.ListIterator;
  * </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.7 $ $Date: 2002/09/12 10:51:03 $
  * @created 05 September 2002
+ * @version $Revision: 1.7 $ $Date: 2002/09/12 10:51:03 $
  */
 public class ArrayModel<E> extends BasicModel implements List<E> {
 

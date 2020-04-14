@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: JSPPage.java,v 1.8 2002/09/05 15:41:48 ludovicc Exp $
  */
 package org.scopemvc.view.servlet.jsp;
 
@@ -60,8 +60,8 @@ import org.scopemvc.view.servlet.ValidationFailure;
  * populateModel stuff yet </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.8 $ $Date: 2002/09/05 15:41:48 $
  * @created 05 September 2002
+ * @version $Revision: 1.8 $ $Date: 2002/09/05 15:41:48 $
  */
 public class JSPPage extends Page {
 
@@ -76,7 +76,7 @@ public class JSPPage extends Page {
      */
     static char PROPERTY_ID_PREFIX;
 
-    private static final Log LOG = LogFactory.getLog(JSPPage.class);
+    private final static Log LOG = LogFactory.getLog(JSPPage.class);
 
     private String path;
 

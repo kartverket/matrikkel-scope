@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: TestPage.java,v 1.6 2002/11/20 00:19:57 ludovicc Exp $
  */
 package test.view.servlet;
 

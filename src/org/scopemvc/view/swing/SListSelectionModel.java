@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: SListSelectionModel.java,v 1.13 2002/10/23 12:38:46 ludovicc Exp $
  */
 package org.scopemvc.view.swing;
 
@@ -241,7 +241,7 @@ public class SListSelectionModel extends DefaultListSelectionModel
      */
     public void updateFromProperty(Object inValue, boolean inReadOnly) {
         if (LOG.isDebugEnabled()) {
-            LOG.debug("updateFromProperty: " + inValue + ", " + inReadOnly);
+            LOG.debug("updateFromProperty: " + inValue + ", " + inReadOnly, new Throwable());
         }
 
         if (isSelectorMandatory()) {
@@ -410,7 +410,7 @@ public class SListSelectionModel extends DefaultListSelectionModel
      */
     protected void fireValueChanged(int inFirstIndex, int inLastIndex, boolean inAdjusting) {
         if (LOG.isDebugEnabled()) {
-            LOG.debug("fireValueChanged: " + inFirstIndex + "," + inLastIndex + "," + inAdjusting);
+            LOG.debug("fireValueChanged: " + inFirstIndex + "," + inLastIndex + "," + inAdjusting, new Throwable());
         }
 
         super.fireValueChanged(inFirstIndex, inLastIndex, inAdjusting);

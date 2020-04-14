@@ -33,7 +33,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: ListModel.java,v 1.14 2002/11/20 01:36:58 ludovicc Exp $
+ * Changes:
+ *  - Added generic signature to this class
  */
 package org.scopemvc.model.collection;
 
@@ -54,14 +56,17 @@ import java.util.ListIterator;
 
 /**
  * <P>
+ *
  * A BasicModel wrapper for an <CODE>List</CODE> that can propagate changes to
  * contained Models up the Model hierarchy. The list itself is exposed via the
  * "list" property, however, changes to this list must be made through this
  * class's public API in order to maintain the event propagation. </P> <P>
+ *
  * By default ListModel registers itself as a listener to Models that are added
  * to the list and deregisters when those Models are removed. This behaviour can
  * be changed at creation so that ModelChangeEvent propagation is disabled. </P>
  * <P>
+ *
  * ListModel implements the List interface, and it exposes some List methods as
  * Javabean-compliant methods (eg. size() is also available as getSize()), so it
  * can be used by Selectors (eg. you can have a selector on the 'size'
@@ -756,11 +761,4 @@ public class ListModel<E> extends BasicModel implements List<E> {
       return result.toString();
    }
 
-
-
-
-
-
-
 }
-

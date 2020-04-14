@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: ListModelAdaptor.java,v 1.6 2002/09/12 10:51:03 ludovicc Exp $
  */
 package org.scopemvc.model.collection;
 
@@ -66,8 +66,8 @@ import org.scopemvc.model.basic.BasicModel;
  *
  * @author Roytman, Alex
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.6 $ $Date: 2002/09/12 10:51:03 $
  * @created 05 September 2002
+ * @version $Revision: 1.6 $ $Date: 2002/09/12 10:51:03 $
  */
 public class ListModelAdaptor extends BasicModel
          implements ModelChangeListener {

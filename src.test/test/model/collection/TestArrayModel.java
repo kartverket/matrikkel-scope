@@ -33,7 +33,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: TestArrayModel.java,v 1.6 2002/09/12 19:09:35 ludovicc Exp $
+ * Changes:
+ *  - added generics signature to ArrayModel
  */
 package test.model.collection;
 
@@ -50,8 +52,8 @@ import test.model.basic.BasicTestModel;
  * </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.6 $ $Date: 2002/09/12 19:09:35 $
  * @created 05 September 2002
+ * @version $Revision: 1.6 $ $Date: 2002/09/12 19:09:35 $
  */
 public final class TestArrayModel extends TestCase implements ModelChangeListener {
 

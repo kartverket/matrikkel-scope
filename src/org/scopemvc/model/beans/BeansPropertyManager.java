@@ -33,7 +33,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: BeansPropertyManager.java,v 1.12 2002/11/06 00:30:10 ludovicc Exp $
+ * Changes:
+ * - added IncorrectImplementationException
  */
 package org.scopemvc.model.beans;
 
@@ -99,17 +101,18 @@ public class BeansPropertyManager extends PropertyManager {
             return inModel;
         }
 
-        String selectorAsString = Selector.asString(inSelector);
         try {
             Accessor accessor = findTerminalAccessor(inModel, inSelector);
             accessor.traverseProperty();
             return accessor.model;
         } catch (NullPropertyException e) {
-            LOG.debug("Could not locate the property using selector " + selectorAsString + " in model " + inModel);
+            String selectorAsString = Selector.asString(inSelector);
+            LOG.warn("Could not locate the property using selector " + selectorAsString + " in model " + inModel);
             return null;
-        } catch (IllegalArgumentException e2){
-           LOG.error("Could not locate the property using selector " + selectorAsString + " in model " + inModel);
-           throw new IncorrectImplementationException(selectorAsString, inModel.getClass().getName(), e2);
+        } catch (IllegalArgumentException e2) {
+            String selectorAsString = Selector.asString(inSelector);
+            LOG.error("Could not locate the property using selector " + selectorAsString + " in model " + inModel);
+            throw new IncorrectImplementationException(selectorAsString, inModel.getClass().getName(), e2);
         }
     }
 
@@ -504,7 +507,8 @@ public class BeansPropertyManager extends PropertyManager {
      * @return The terminal accessor
      * @throws Exception if the Accessor could not be found for any reason
      */
-    Accessor findTerminalAccessor(Object inModel, Selector inSelector) throws Exception {
+    Accessor findTerminalAccessor(Object inModel, Selector inSelector)
+             throws Exception {
         if (LOG.isDebugEnabled()) {
             LOG.debug("findTerminalAccessor: " + inModel + ", " + inSelector);
         }

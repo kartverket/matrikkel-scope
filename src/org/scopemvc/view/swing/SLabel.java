@@ -33,7 +33,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: SLabel.java,v 1.16 2002/11/20 00:19:59 ludovicc Exp $
+ * Changes:
+ *  - added setPointer(pointer) in deprecation of setSelector(selector) (scope 2.0)
  */
 package org.scopemvc.view.swing;
 

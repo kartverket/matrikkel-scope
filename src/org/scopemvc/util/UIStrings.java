@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: UIStrings.java,v 1.8 2002/11/11 00:38:34 ludovicc Exp $
  */
 package org.scopemvc.util;
 
@@ -71,11 +71,11 @@ public final class UIStrings {
      * Get the localized string for the given key
      *
      * @param inKey The key in the dictionary, not dependent on locale
-     * @return The localized string, user-readable, or inKey if the key was not
-     *      found.
+     * @return The localized string, user-readable, or inKey if the 
+     * key was not found.
      */
     public static String get(String inKey) {
-        return get(inKey, inKey);
+    	return get(inKey, inKey);
     }
 
 
@@ -111,7 +111,7 @@ public final class UIStrings {
             }
             return result;
         } catch (Throwable e) {
-            LOG.debug("Could not read key " + inKey + " from UIStrings");
+        	LOG.debug("Could not read key " + inKey + " from UIStrings");
             if (inKey == null) {
                 return "";
             }

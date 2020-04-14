@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: BasicModelChangeEvent.java,v 1.4 2002/09/05 15:41:46 ludovicc Exp $
  */
 package org.scopemvc.model.basic;
 
@@ -49,8 +49,8 @@ import org.scopemvc.core.Selector;
  * ModelChangeEvent}. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.4 $ $Date: 2002/09/05 15:41:46 $
  * @created 05 August 2002
+ * @version $Revision: 1.4 $ $Date: 2002/09/05 15:41:46 $
  */
 public final class BasicModelChangeEvent implements ModelChangeEvent {
 

@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: XSLServletContext.java,v 1.9 2002/09/05 15:41:51 ludovicc Exp $
  */
 package org.scopemvc.controller.servlet.xml;
 
@@ -58,12 +58,12 @@ import org.scopemvc.controller.servlet.ServletContext;
  * that shows {@link org.scopemvc.view.servlet.xml.AbstractXSLPage}s. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.9 $ $Date: 2002/09/05 15:41:51 $
  * @created 05 September 2002
+ * @version $Revision: 1.9 $ $Date: 2002/09/05 15:41:51 $
  */
 public class XSLServletContext extends ServletContext {
 
-    private static final Log LOG = LogFactory.getLog(XSLServletContext.class);
+    private final static Log LOG = LogFactory.getLog(XSLServletContext.class);
 
 
     /**

@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: SComboBoxModel.java,v 1.17 2002/11/06 00:31:57 ludovicc Exp $
  */
 package org.scopemvc.view.swing;
 

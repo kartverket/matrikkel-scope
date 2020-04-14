@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: SwingDummyModel.java,v 1.11 2002/09/12 18:26:54 ludovicc Exp $
  */
 package test.view.swing;
 
@@ -53,8 +53,8 @@ import org.scopemvc.model.collection.ListModel;
  * </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.11 $ $Date: 2002/09/12 18:26:54 $
  * @created 10 September 2002
+ * @version $Revision: 1.11 $ $Date: 2002/09/12 18:26:54 $
  */
 public final class SwingDummyModel extends BasicModel {
 

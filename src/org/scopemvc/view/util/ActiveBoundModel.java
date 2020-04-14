@@ -33,7 +33,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: ActiveBoundModel.java,v 1.20 2002/11/20 01:36:58 ludovicc Exp $
+ * Changes:
+ *  - Added IncorrectImplementationException handling in getPropertyValue() to detect binding errors.
  */
 package org.scopemvc.view.util;
 
@@ -161,7 +163,7 @@ public class ActiveBoundModel extends BoundModel implements ModelChangeListener 
     }
 
     private void debugLogCouldNotGetProperty(Exception e) {
-        LOG.debug("Could not get property value for selector " + Selector.asString(getSelector())
+        LOG.warn("Could not get property value for selector " + Selector.asString(getSelector())
                 + " in model " + getBoundModel() + " because: " + e.getMessage());
     }
 
@@ -326,7 +328,7 @@ public class ActiveBoundModel extends BoundModel implements ModelChangeListener 
             }
             view.validationSuccess();
         } catch (Exception e) {
-            LOG.debug("Exception when updating model on view " + view, e);
+            LOG.warn("Exception when updating model on view " + view, e);
             view.validationFailed(e);
         }
     }

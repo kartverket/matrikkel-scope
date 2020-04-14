@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: SwingSubView.java,v 1.3 2002/09/19 18:08:33 ludovicc Exp $
  */
 package org.scopemvc.view.swing;
 
@@ -54,8 +54,8 @@ import org.scopemvc.core.View;
  * automatically by the parent SPanel.
  *
  * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
- * @version $Revision: 1.3 $ $Date: 2002/09/19 18:08:33 $
  * @created 18 June 2002
+ * @version $Revision: 1.3 $ $Date: 2002/09/19 18:08:33 $
  */
 
 public interface SwingSubView extends View {

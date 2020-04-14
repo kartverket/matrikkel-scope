@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: Controller.java,v 1.6 2002/09/06 16:11:45 ludovicc Exp $
  */
 package org.scopemvc.core;
 
@@ -70,8 +70,8 @@ package org.scopemvc.core;
  * org.scopemvc.controller.basic.BasicController BasicController}</P> </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.6 $ $Date: 2002/09/06 16:11:45 $
  * @created 05 August 2002
+ * @version $Revision: 1.6 $ $Date: 2002/09/06 16:11:45 $
  */
 public interface Controller {
 

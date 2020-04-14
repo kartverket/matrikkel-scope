@@ -1,7 +1,8 @@
 /*
  * Scope: a generic MVC framework.
- * Copyright (c) 2000-2002, The Scope team
+ * Copyright (c) 2000-2002, Steve Meyfroidt
  * All rights reserved.
+ * Email: smeyfroi@users.sourceforge.net
  *
  *
  * Redistribution and use in source and binary forms, with or without
@@ -33,8 +34,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: ServletTestController.java,v 1.1 2002/08/05 13:17:17 ludovicc Exp $
  */
+
 package test.view.servlet;
 
 import org.scopemvc.controller.basic.BasicController;
@@ -44,21 +46,14 @@ import org.scopemvc.core.ControlException;
 /**
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
  * @version $Revision: 1.1 $ $Date: 2002/08/05 13:17:17 $
- * @created October 7, 2003
  */
 final class ServletTestController extends BasicController {
     boolean handledControl = false;
-
-    /**
-     * TODO: document the method
-     *
-     * @param inControl TODO: Describe the Parameter
-     * @throws ControlException TODO: Describe the Exception
-     */
     protected void doHandleControl(Control inControl) throws ControlException {
         if (inControl.matchesID("TestControl")) {
             handledControl = true;
         }
     }
 }
+
 

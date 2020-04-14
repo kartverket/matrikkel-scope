@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: ModelAction.java,v 1.6 2002/09/11 14:35:07 ludovicc Exp $
  */
 package org.scopemvc.core;
 
@@ -52,8 +52,8 @@ import org.scopemvc.util.Debug;
  * likely call a model object's methods directly. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.6 $ $Date: 2002/09/11 14:35:07 $
  * @created 05 August 2002
+ * @version $Revision: 1.6 $ $Date: 2002/09/11 14:35:07 $
  * @see ActionManager#doAction
  * @see ActionManager#canDoAction
  */

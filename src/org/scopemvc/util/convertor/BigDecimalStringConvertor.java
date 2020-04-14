@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: BigDecimalStringConvertor.java,v 1.6 2002/10/31 12:15:53 ludovicc Exp $
  */
 package org.scopemvc.util.convertor;
 

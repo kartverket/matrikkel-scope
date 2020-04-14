@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: TestSModelAction.java,v 1.1 2002/09/13 17:12:11 ludovicc Exp $
  */
 package test.view.swing;
 
@@ -48,7 +48,6 @@ import org.scopemvc.view.swing.SPanel;
  * TODO: document the class
  *
  * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
- * @version $Revision: 1.4 $
  * @created 12 September 2002
  */
 public class TestSModelAction extends TestCase {

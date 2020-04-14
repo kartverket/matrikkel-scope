@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: IntIndexSelector.java,v 1.6 2002/09/11 19:12:29 ludovicc Exp $
  */
 package org.scopemvc.core;
 
@@ -49,8 +49,8 @@ package org.scopemvc.core;
  * Selector#fromString(String)}. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.6 $ $Date: 2002/09/11 19:12:29 $
  * @created 05 August 2002
+ * @version $Revision: 1.6 $ $Date: 2002/09/11 19:12:29 $
  */
 public final class IntIndexSelector extends Selector {
 

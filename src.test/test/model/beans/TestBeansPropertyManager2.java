@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: TestBeansPropertyManager2.java,v 1.5 2002/09/12 19:09:35 ludovicc Exp $
  */
 package test.model.beans;
 
@@ -50,8 +50,8 @@ import org.scopemvc.model.beans.BeansPropertyManager;
  * </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.5 $ $Date: 2002/09/12 19:09:35 $
  * @created 05 September 2002
+ * @version $Revision: 1.5 $ $Date: 2002/09/12 19:09:35 $
  */
 public final class TestBeansPropertyManager2 extends TestCase {
 

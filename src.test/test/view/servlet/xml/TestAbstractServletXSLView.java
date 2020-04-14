@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: TestAbstractServletXSLView.java,v 1.9 2002/11/20 00:19:59 ludovicc Exp $
  */
 package test.view.servlet.xml;
 
@@ -49,8 +49,8 @@ import org.xml.sax.ContentHandler;
  * </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net>Steve Meyfroidt</A>
- * @version $Revision: 1.9 $ $Date: 2002/11/20 00:19:59 $
  * @created 05 September 2002
+ * @version $Revision: 1.9 $ $Date: 2002/11/20 00:19:59 $
  */
 public final class TestAbstractServletXSLView extends TestCase {
 

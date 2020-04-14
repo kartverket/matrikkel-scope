@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: BeanInfos.java,v 1.7 2002/09/05 15:41:45 ludovicc Exp $
  */
 package org.scopemvc.model.beans;
 
@@ -54,12 +54,12 @@ import org.scopemvc.util.Debug;
  * objects. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.7 $ $Date: 2002/09/05 15:41:45 $
  * @created 05 September 2002
+ * @version $Revision: 1.7 $ $Date: 2002/09/05 15:41:45 $
  */
 final class BeanInfos {
 
-    private static final Log LOG = LogFactory.getLog(BeanInfos.class);
+    private final static Log LOG = LogFactory.getLog(BeanInfos.class);
 
     private static HashMap beanInfos = new HashMap();
     private static HashMap propertyDescriptors = new HashMap();

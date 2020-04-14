@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: DummyHTTPResponse.java,v 1.7 2002/09/19 18:09:34 ludovicc Exp $
  */
 package test.controller.servlet;
 
@@ -56,8 +56,8 @@ import org.scopemvc.util.Debug;
  * streamed output to be returned as a String from getContent(). </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.7 $ $Date: 2002/09/19 18:09:34 $
  * @created 18 September 2002
+ * @version $Revision: 1.7 $ $Date: 2002/09/19 18:09:34 $
  */
 class DummyHTTPResponse implements HttpServletResponse {
 

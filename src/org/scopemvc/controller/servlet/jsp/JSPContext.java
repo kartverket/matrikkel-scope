@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: JSPContext.java,v 1.8 2002/09/05 15:41:48 ludovicc Exp $
  */
 package org.scopemvc.controller.servlet.jsp;
 
@@ -58,8 +58,8 @@ import org.scopemvc.controller.servlet.ServletContext;
  * handles showView() for JSPView implementations by redirecting to a JSP. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.8 $ $Date: 2002/09/05 15:41:48 $
  * @created 05 September 2002
+ * @version $Revision: 1.8 $ $Date: 2002/09/05 15:41:48 $
  * @see org.scopemvc.controller.servlet.ServletContext
  */
 public class JSPContext extends ServletContext {
@@ -68,9 +68,9 @@ public class JSPContext extends ServletContext {
      * Key that the JSP's bound model is stored under in the HTTPRequest for
      * access by the JSP.
      */
-    public static final String BOUND_MODEL = "org.scopemvc.model";
+    public final static String BOUND_MODEL = "org.scopemvc.model";
 
-    private static final Log LOG = LogFactory.getLog(JSPContext.class);
+    private final static Log LOG = LogFactory.getLog(JSPContext.class);
 
 
     /**

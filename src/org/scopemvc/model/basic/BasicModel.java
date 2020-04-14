@@ -33,7 +33,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: BasicModel.java,v 1.13 2002/11/20 01:36:58 ludovicc Exp $
+ * Changes:
+ *  - Added isActive()
  */
 package org.scopemvc.model.basic;
 
@@ -89,7 +91,6 @@ import org.scopemvc.util.Debug;
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
  * @version $Revision: 1.13 $ $Date: 2002/11/20 01:36:58 $
  * @created 05 August 2002
- * @deprecated Use org.scopemvc.model.BasicModel and the methods defined there
  */
 public abstract class BasicModel implements ModelChangeEventSource, ModelChangeTypes {
 
@@ -125,7 +126,6 @@ public abstract class BasicModel implements ModelChangeEventSource, ModelChangeT
      *      org.scopemvc.core.ModelChangeTypes} values
      * @param inSelector The Selector for the property of the model affected by
      *      the change
-     * @deprecated Will be removed in Scope 2.0
      */
     public void fireModelChange(int inChangeType, Selector inSelector) {
         mceSupport.fireModelChange(inChangeType, inSelector);
@@ -141,8 +141,7 @@ public abstract class BasicModel implements ModelChangeEventSource, ModelChangeT
      * there is no need to continue propagating the event. </P>
      *
      * @param inEvent the event received from a child ModelChangeEventSource.
-     * @deprecated Will be removed in Scope 2.0
-s     */
+     */
     public void modelChanged(ModelChangeEvent inEvent) {
         if (Debug.ON) {
             Debug.assertTrue(inEvent != null);
@@ -174,7 +173,7 @@ s     */
 
    /**
     * Checks if this model is activated, that is broadcasts ModelChangeEvents.
-    * 
+    *
     * @return <code>true</code> if this model broadcasts ModelChangeEvents.
     */
    public boolean isActive(){
@@ -192,7 +191,6 @@ s     */
      * BasicModel properties if necessary. </P>
      *
      * @param inActive true to activate this model, false to desactivate it
-     * @deprecated Will be removed in Scope 2.0
      */
     public void makeActive(boolean inActive) {
         if (inActive) {
@@ -239,7 +237,6 @@ s     */
      * propagation.
      *
      * @param inSelector The Selector for the submodel
-     * @deprecated Will be removed in Scope 2.0
      */
     protected void listenNewSubmodel(Selector inSelector) {
         try {

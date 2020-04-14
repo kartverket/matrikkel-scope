@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: JSPScopeServlet.java,v 1.6 2002/10/04 23:30:11 ludovicc Exp $
  */
 package org.scopemvc.controller.servlet.jsp;
 
@@ -52,8 +52,8 @@ import org.scopemvc.controller.servlet.ServletContext;
  * JSPContext}. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.6 $ $Date: 2002/10/04 23:30:11 $
  * @created 05 September 2002
+ * @version $Revision: 1.6 $ $Date: 2002/10/04 23:30:11 $
  */
 public abstract class JSPScopeServlet extends ScopeServlet {
 

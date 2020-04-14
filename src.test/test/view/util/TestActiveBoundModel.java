@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: TestActiveBoundModel.java,v 1.4 2002/09/12 19:09:37 ludovicc Exp $
  */
 package test.view.util;
 
@@ -53,8 +53,8 @@ import test.model.basic.BasicTestModel;
  * </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net>Steve Meyfroidt</A>
- * @version $Revision: 1.4 $ $Date: 2002/09/12 19:09:37 $
  * @created 05 September 2002
+ * @version $Revision: 1.4 $ $Date: 2002/09/12 19:09:37 $
  */
 public final class TestActiveBoundModel extends TestCase {
 
@@ -67,7 +67,7 @@ public final class TestActiveBoundModel extends TestCase {
      */
     public static TestView testView;
 
-    private static final long WAIT_FOR_MCE = 200;
+    private final static long WAIT_FOR_MCE = 200;
     /**
      * TODO: describe of the Field
      */
@@ -233,7 +233,6 @@ public final class TestActiveBoundModel extends TestCase {
      * TODO: document the class
      *
      * @author lclaude
-     * @version $Revision: 1.4 $
      * @created 05 September 2002
      */
     public class TestView implements View, ModelBindable {

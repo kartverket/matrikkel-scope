@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: TestController.java,v 1.6 2002/11/20 00:19:58 ludovicc Exp $
  */
 package test.controller.basic;
 
@@ -184,7 +184,7 @@ public final class TestController extends TestCase {
      * The JUnit setup method
      */
     protected void setUp() {
-        ViewContext.clearThreadContext();
+        ViewContext.clearThreadContext(); //flaky test fix
         ViewContext.setGlobalContext(new DummyContext());
     }
 

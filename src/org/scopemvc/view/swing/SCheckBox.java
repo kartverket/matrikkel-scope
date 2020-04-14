@@ -33,7 +33,10 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: SCheckBox.java,v 1.12 2002/10/24 00:31:56 ludovicc Exp $
+ * Changes:
+ *  - added setActionID(String actionID) in deprecatation of setControlID(actionID) (scope 2.0)
+ *  - added setPointer(.) (scope 2.0)
  */
 package org.scopemvc.view.swing;
 

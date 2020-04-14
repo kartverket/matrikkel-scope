@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: ConvertorScopeConfig.java,v 1.6 2002/11/20 00:19:57 ludovicc Exp $
  */
 package test.util.convertor;
 
@@ -46,12 +46,12 @@ import java.util.ListResourceBundle;
  * </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.6 $ $Date: 2002/11/20 00:19:57 $
  * @created 05 September 2002
+ * @version $Revision: 1.6 $ $Date: 2002/11/20 00:19:57 $
  */
 public class ConvertorScopeConfig extends ListResourceBundle {
 
-    static final Object[][] contents = {
+    final static Object[][] contents = {
             {"org.scopemvc.util.convertor.DateStringConvertor.formatter", new SimpleDateFormat("MM-dd-yyyy")},
             {"org.scopemvc.util.convertor.DateStringConvertor.parser.0", new SimpleDateFormat("MM-dd-yyyy")},
             {"org.scopemvc.util.convertor.DateStringConvertor.parser.1", new SimpleDateFormat("MM/dd/yyyy")},

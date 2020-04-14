@@ -33,7 +33,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: STextArea.java,v 1.25 2002/11/12 00:27:25 ludovicc Exp $
+ * Changes:
+ *  - added setPointer(pointer) in deprecation of setSelector(selector) (scope 2.0)
  */
 package org.scopemvc.view.swing;
 
@@ -361,6 +363,7 @@ public class STextArea extends JTextArea implements PropertyView, ModelBindable,
      *
      * @param inSelectorString The string representation of the selector
      * @see Selector#fromString
+     * @deprecated Will be removed in Scope 2.0
      */
     public void setSelector(String inSelectorString) {
         boundModel.setSelector(inSelectorString);

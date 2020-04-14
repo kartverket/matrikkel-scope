@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: TestSTextArea.java,v 1.14 2002/11/20 00:16:30 ludovicc Exp $
  */
 package test.view.swing;
 

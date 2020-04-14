@@ -33,7 +33,9 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: SPanel.java,v 1.10 2002/09/25 13:53:08 ludovicc Exp $
+ * Changes:
+ *  - added setPointer(pointer) in deprecation of setSelector(selector) (scope 2.0)
  */
 package org.scopemvc.view.swing;
 

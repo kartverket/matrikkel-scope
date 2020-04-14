@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: SuiteCore.java,v 1.3 2002/09/05 15:41:51 ludovicc Exp $
  */
 package test.core;
 
@@ -48,8 +48,8 @@ import junit.framework.TestSuite;
  * JUnit TestCase that collects all the core tests into a suite. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.3 $ $Date: 2002/09/05 15:41:51 $
  * @created 05 September 2002
+ * @version $Revision: 1.3 $ $Date: 2002/09/05 15:41:51 $
  */
 public final class SuiteCore extends TestCase {
 

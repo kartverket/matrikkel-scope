@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: Page.java,v 1.9 2002/09/05 15:41:50 ludovicc Exp $
  */
 package org.scopemvc.view.servlet;
 
@@ -68,12 +68,12 @@ import org.scopemvc.core.View;
  * ServletXSLPage offers a different API to the XSLServletContext. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.9 $ $Date: 2002/09/05 15:41:50 $
  * @created 05 September 2002
+ * @version $Revision: 1.9 $ $Date: 2002/09/05 15:41:50 $
  */
 public abstract class Page implements View {
 
-    private static final Log LOG = LogFactory.getLog(Page.class);
+    private final static Log LOG = LogFactory.getLog(Page.class);
 
     /**
      * Unique ID.

@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: PropertyManager.java,v 1.8 2002/09/11 19:12:29 ludovicc Exp $
  */
 package org.scopemvc.core;
 
@@ -47,8 +47,8 @@ import java.util.Iterator;
  * provided in org.scopemvc.model.beans.BeansPropertyManager. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.8 $ $Date: 2002/09/11 19:12:29 $
  * @created 05 August 2002
+ * @version $Revision: 1.8 $ $Date: 2002/09/11 19:12:29 $
  */
 public abstract class PropertyManager extends ModelManager {
 

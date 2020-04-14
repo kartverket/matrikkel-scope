@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: ResourceLoader.java,v 1.7 2002/11/11 00:31:42 ludovicc Exp $
  */
 package org.scopemvc.util;
 

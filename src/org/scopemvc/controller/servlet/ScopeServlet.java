@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: ScopeServlet.java,v 1.16 2002/09/06 16:11:48 ludovicc Exp $
  */
 package org.scopemvc.controller.servlet;
 
@@ -92,8 +92,8 @@ import org.scopemvc.controller.basic.ViewContext;
  * See the various XML/XSLT and JSP servlet samples for examples of use. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.16 $ $Date: 2002/09/06 16:11:48 $
  * @created 05 August 2002
+ * @version $Revision: 1.16 $ $Date: 2002/09/06 16:11:48 $
  * @see ServletContext
  * @see org.scopemvc.controller.servlet.xml.XSLScopeServlet
  * @see org.scopemvc.controller.servlet.jsp.JSPScopeServlet
@@ -106,7 +106,7 @@ public abstract class ScopeServlet extends HttpServlet {
      * the properties of the {@link org.scopemvc.controller.basic.ViewContext}
      * under this key for later retrieval by a Controller.
      */
-    public static final String VALIDATION_FAILURES = "org.scopemvc.controller.servlet.ValidationFailures";
+    public final static String VALIDATION_FAILURES = "org.scopemvc.controller.servlet.ValidationFailures";
 
     /**
      * The key used to identify the Control ID in the request parameters for
@@ -128,7 +128,7 @@ public abstract class ScopeServlet extends HttpServlet {
      */
     public static String VIEW_ID_PARAM;
 
-    private static final Log LOG = LogFactory.getLog(ScopeServlet.class);
+    private final static Log LOG = LogFactory.getLog(ScopeServlet.class);
 
     /**
      * Pool of shared application Controllers for this servlet instance.
@@ -631,7 +631,6 @@ public abstract class ScopeServlet extends HttpServlet {
 
     /**
      * @author smefroi
-     * @version $Revision: 1.4 $
      * @created 05 August 2002
      * @todo document the class
      */

@@ -33,7 +33,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: SComboBox.java,v 1.20 2002/11/06 00:31:57 ludovicc Exp $
+ * Changes:
+ *  - added setPointer() (scope 2.0)
+ *  - added setRendererPointer() (scope 2.0)
+ *  - added setSelectionPointer() (scope 2.0)
+ *  - added setSizePointer() (scope 2.0)
  */
 package org.scopemvc.view.swing;
 
@@ -347,9 +352,10 @@ public class SComboBox extends JComboBox
             View editor = manager.getEditor(VIEW_TYPE, comboBoxModel.getBoundSelectionModel(),
                     comboBoxModel.getSelectionSelector());
             if (editor == null) {
-                LOG.debug("Combobox editor not found for property " + Selector.asString(comboBoxModel.getSelectionSelector()));
+                LOG.warn("Combobox editor not found for property "
+                        + Selector.asString(comboBoxModel.getSelectionSelector()));
             } else if (!(editor instanceof ComboBoxEditor)) {
-                LOG.error("Editor of class " + editor.getClass() + " doesn't implement ComboBoxEditor");
+                LOG.warn("Editor of class " + editor.getClass() + " doesn't implement ComboBoxEditor");
             } else {
                 setEditor((ComboBoxEditor) editor);
             }

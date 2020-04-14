@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: BeansActionManager.java,v 1.8 2002/09/12 10:51:03 ludovicc Exp $
  */
 package org.scopemvc.model.beans;
 
@@ -54,8 +54,8 @@ import org.scopemvc.util.Debug;
  * the actions (invokable methods) of JavaBean model objects. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.8 $ $Date: 2002/09/12 10:51:03 $
  * @created 05 September 2002
+ * @version $Revision: 1.8 $ $Date: 2002/09/12 10:51:03 $
  */
 public class BeansActionManager extends ActionManager {
 

@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: SListModel.java,v 1.10 2002/10/04 23:30:11 ludovicc Exp $
  */
 package org.scopemvc.view.swing;
 

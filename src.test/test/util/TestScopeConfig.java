@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: TestScopeConfig.java,v 1.6 2002/09/12 19:09:36 ludovicc Exp $
  */
 package test.util;
 
@@ -49,8 +49,8 @@ import org.scopemvc.util.ScopeConfig;
  * statically. ***** Need to extend for new config overrides. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.6 $ $Date: 2002/09/12 19:09:36 $
  * @created 05 September 2002
+ * @version $Revision: 1.6 $ $Date: 2002/09/12 19:09:36 $
  */
 public final class TestScopeConfig extends TestCase {
 

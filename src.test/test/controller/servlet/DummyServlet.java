@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: DummyServlet.java,v 1.6 2002/09/05 15:41:48 ludovicc Exp $
  */
 package test.controller.servlet;
 
@@ -52,8 +52,8 @@ import org.scopemvc.view.servlet.Page;
  * exposes the doPost method. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.6 $ $Date: 2002/09/05 15:41:48 $
  * @created 05 September 2002
+ * @version $Revision: 1.6 $ $Date: 2002/09/05 15:41:48 $
  */
 class DummyServlet extends XSLScopeServlet {
     /**

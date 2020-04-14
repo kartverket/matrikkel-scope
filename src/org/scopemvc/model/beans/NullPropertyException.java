@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: NullPropertyException.java,v 1.4 2002/09/12 10:51:03 ludovicc Exp $
  */
 package org.scopemvc.model.beans;
 
@@ -44,8 +44,8 @@ package org.scopemvc.model.beans;
  * Internal Exception to mark traversal of properties that are null. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.4 $ $Date: 2002/09/12 10:51:03 $
  * @created 05 September 2002
+ * @version $Revision: 1.4 $ $Date: 2002/09/12 10:51:03 $
  */
 final class NullPropertyException extends Exception {
 

@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: ModelChangeTypes.java,v 1.5 2002/09/16 10:49:17 ludovicc Exp $
  */
 package org.scopemvc.core;
 
@@ -44,8 +44,8 @@ package org.scopemvc.core;
  * Constants for types of model change used in {@link ModelChangeEvent}. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.5 $ $Date: 2002/09/16 10:49:17 $
  * @created 05 August 2002
+ * @version $Revision: 1.5 $ $Date: 2002/09/16 10:49:17 $
  */
 public interface ModelChangeTypes {
 

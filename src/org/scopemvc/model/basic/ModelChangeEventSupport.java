@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: ModelChangeEventSupport.java,v 1.13 2002/11/12 00:41:12 ludovicc Exp $
  */
 package org.scopemvc.model.basic;
 

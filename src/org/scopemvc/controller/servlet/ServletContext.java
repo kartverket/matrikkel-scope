@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: ServletContext.java,v 1.11 2002/09/05 15:41:51 ludovicc Exp $
  */
 package org.scopemvc.controller.servlet;
 
@@ -70,14 +70,14 @@ import org.scopemvc.controller.basic.ViewContext;
  * to return an instance of the custom ServletContext. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.11 $ $Date: 2002/09/05 15:41:51 $
  * @created 05 September 2002
+ * @version $Revision: 1.11 $ $Date: 2002/09/05 15:41:51 $
  * @see org.scopemvc.controller.servlet.jsp.JSPContext
  * @see org.scopemvc.controller.servlet.xml.XSLServletContext
  */
 public abstract class ServletContext extends ViewContext {
 
-    private static final Log LOG = LogFactory.getLog(ServletContext.class);
+    private final static Log LOG = LogFactory.getLog(ServletContext.class);
 
     /**
      * The HttpServletResponse to use on showView. Set on creation then nulled

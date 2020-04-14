@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: ListModelSource.java,v 1.3 2002/09/05 15:41:46 ludovicc Exp $
  */
 package org.scopemvc.model.collection;
 
@@ -53,8 +53,8 @@ import org.scopemvc.core.Selector;
  * org.scopemvc.view.swing.SList} with a static list of data.
  *
  * @author Roytman, Alex
- * @version $Revision: 1.3 $ $Date: 2002/09/05 15:41:46 $
  * @created 05 September 2002
+ * @version $Revision: 1.3 $ $Date: 2002/09/05 15:41:46 $
  */
 public class ListModelSource {
 

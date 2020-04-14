@@ -33,7 +33,12 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: SButton.java,v 1.13 2002/10/11 15:46:07 ludovicc Exp $
+ * Changes:
+ *  - added constructor SButton(String s, Icon icon)
+ *  - added constructor SButton(Action action)
+ *  - added constructor SButton(Icon icon)
+ *  - added setActionID(id) in deprecation of setControlID(id) (scope 2.0)
  */
 package org.scopemvc.view.swing;
 
@@ -70,13 +75,18 @@ public class SButton extends JButton implements View {
         this((String) null);
     }
 
+    /**
+     * Constructor for the SButton object
+     *
+     * @param inControlID The ID of the control to be issued when this button is
+     *      pressed.
+     */
+    public SButton(String inControlID) {
+        setControlID(inControlID);
+    }
 
     public SButton(Icon icon) {
         super(icon);
-    }
-
-    public SButton(String s) {
-        super(s);
     }
 
     public SButton(Action action) {
@@ -103,7 +113,6 @@ public class SButton extends JButton implements View {
      * Constructor for the SButton object
      *
      * @param inAction The action to attach to this button.
-     * @deprecated Will be removed in Scope 2.0
      */
     public SButton(SAction inAction) {
         super(inAction);

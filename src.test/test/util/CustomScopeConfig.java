@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: CustomScopeConfig.java,v 1.6 2002/11/20 00:19:58 ludovicc Exp $
  */
 package test.util;
 
@@ -45,12 +45,12 @@ import java.util.ListResourceBundle;
  * </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @version $Revision: 1.6 $ $Date: 2002/11/20 00:19:58 $
  * @created 05 September 2002
+ * @version $Revision: 1.6 $ $Date: 2002/11/20 00:19:58 $
  */
 public class CustomScopeConfig extends ListResourceBundle {
 
-    static final Object[][] contents = {
+    final static Object[][] contents = {
     // test.util.TestScopeConfig
             {"org.scopemvc.view.servlet.xml.AbstractXSLPage.shouldCacheTemplates", "0"},
             {"classTest.1", "java.lang.Integer"},

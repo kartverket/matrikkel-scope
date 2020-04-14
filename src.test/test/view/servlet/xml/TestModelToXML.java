@@ -33,7 +33,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *
  *
- * $Id: pretty.settings,v 1.4 2002/09/19 18:10:27 ludovicc Exp $
+ * $Id: TestModelToXML.java,v 1.6 2002/09/12 19:09:36 ludovicc Exp $
  */
 package test.view.servlet.xml;
 
@@ -49,8 +49,8 @@ import org.scopemvc.view.servlet.xml.PropertyIDGenerator;
  * ***** This is all dependent on Xalan's XPath API. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net>Steve Meyfroidt</A>
- * @version $Revision: 1.6 $ $Date: 2002/09/12 19:09:36 $
  * @created 05 September 2002
+ * @version $Revision: 1.6 $ $Date: 2002/09/12 19:09:36 $
  */
 public final class TestModelToXML extends TestCase {
 
