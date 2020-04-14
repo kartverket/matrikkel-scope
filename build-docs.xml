@@ -90,16 +90,15 @@
                  author="yes"
                  version="yes"
                  use="yes"
+                 source="1.8"
                  private="false"
                  windowtitle="${Name} API"
                  doctitle="${Name}"
                  bottom="${javadoc.copyright}"
                  overview="${src.dir}/overview.html">
             <classpath refid="doc.class.path"/>
-            <link href="http://java.sun.com/j2se/1.3/docs/api/"/>
-            <!--<link href="http://jakarta.apache.org/ant/manual/api/"/>-->
+            <link href="https://docs.oracle.com/javase/8/docs/api/"/>
             <link href="http://java.sun.com/j2ee/j2sdkee/techdocs/api/"/>
-            <link href="http://www.junit.org/junit/javadoc/3.7/"/>
         </javadoc>
     </target>
 

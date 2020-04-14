@@ -26,7 +26,7 @@ pipeline { //declarative pipeline syntax
     }
 
     environment {
-        GRADLE_OPTS = "-Xms128m -Xmx1g"
+        GRADLE_OPTS = '-Xmx1g'
 
         //for publisering til sentralt maven repo bindes opp via jenkins credential (secret text)
         MAVEN_PUBLISH = credentials('MAVEN_DEPLOY_RELEASE_CANDIDATE')

@@ -1,12 +1,17 @@
+plugins {
+  id 'java-library'
+  id 'idea'
+  id 'maven-publish'
+}
+
 group = 'org.scopemvc'
 version = projectVersion + System.getProperty('suffix', '-SNAPSHOT')
 
-apply plugin: 'java-library'
-apply plugin: 'idea'
-apply plugin: 'maven-publish'
 
+java {
   sourceCompatibility = JavaVersion.VERSION_1_8
   targetCompatibility = JavaVersion.VERSION_1_8
+}
 
 sourceSets {
   main {
@@ -26,26 +31,30 @@ sourceSets {
   }
 }
 
+repositories {
+  maven {
+    name = 'public'; url = MAVEN_REPO
+  }
+}
+
 dependencies {
   implementation 'commons-logging:commons-logging:1.0.4'
   compileOnly 'javax.servlet:servlet-api:2.5' // provided
   compileOnly 'javax.servlet.jsp:jsp-api:2.1' // provided
 
   testImplementation 'junit:junit:3.8.2'
-  testImplementation 'org.assertj:assertj-core:3.15.0'
+  testImplementation 'org.assertj:assertj-core:3.16.1'
   testImplementation files('lib/jfcunit.jar')
   testImplementation 'javax.servlet:servlet-api:2.5'
 }
 
-repositories {
-  maven {
-    name = 'public'
-    url MAVEN_REPO
-  }
-}
 
 test {
   useJUnit()
+}
+
+tasks.withType(JavaCompile).configureEach {
+  options.encoding = 'UTF-8'
 }
 
 task sourceJar(type: Jar) {
@@ -63,7 +72,7 @@ publishing {
 }
 
 
-jar.manifest {
+manifest {
     attributes([
             'Specification-Title'   : project.name,
             'Specification-Vendor'  : 'Statens kartverk',
@@ -74,7 +83,7 @@ jar.manifest {
             'Build-Machine'         : java.net.InetAddress.localHost.hostName,
             'Build-Repo'            : MAVEN_REPO,
             'Build-Gradle'          : gradle.gradleVersion,
-            'Build-JDK'             : System.getProperty("java.version"),
+            'Build-JDK'             : System.getProperty('java.version'),
 
             'Implementation-Title'  : "${project.name} bygget for ${(version == null || version.contains('-SNAPSHOT') || version.contains('-build')) ? 'TEST' : 'Produksjon'}",
             'Implementation-Vendor' : 'Statens kartverk',
