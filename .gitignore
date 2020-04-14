@@ -2,3 +2,11 @@
 *.iml
 *.ipr
 *.iws
+
+.gradle/
+build/
+
+xdocs/
+target/
+*.log
+*.bak
