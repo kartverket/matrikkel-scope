@@ -58,7 +58,7 @@ import org.apache.commons.logging.LogFactory;
  * User code needs to set the client classloader with <code>ResourceLoader.setClientClassLoader</code>
  * before Scope can load the client resources.
  *
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.7 $ $Date: 2002/11/11 00:31:42 $
  * @created 17. juin 2002
  * @see #setClientClassLoader

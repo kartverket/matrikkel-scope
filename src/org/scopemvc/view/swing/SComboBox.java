@@ -149,7 +149,7 @@ import org.scopemvc.Pointer;
  *
  * @author <A HREF="mailto:daniel.michalik@autel.cz">Daniel Michalik</A>
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.20 $ $Date: 2002/11/06 00:31:57 $
  * @created 05 September 2002
  * @see SComboBoxModel
@@ -641,12 +641,12 @@ public class SComboBox extends JComboBox
     }
 
     /**
-     * Sets the look and feel (L&F) object that renders this component. <br>
+     * Sets the look and feel (L&amp;F) object that renders this component. <br>
      * Overriden here because there is no createDefaultCellRenderer() method in
      * JComboBox.
      *
-     * @param inUI the ComboBoxUI L&F object
-     * @see UIDefaults#getUI
+     * @param inUI the ComboBoxUI L&amp;F object
+     * @see javax.swing.UIDefaults#getUI
      */
     public void setUI(ComboBoxUI inUI) {
         if (getRenderer() == null) {
@@ -774,7 +774,7 @@ public class SComboBox extends JComboBox
      * used.
      *
      * @return The tooltip for the component
-     * @see #validationFailure
+     * @see #validationFailed(Exception)
      */
     public JToolTip createToolTip() {
         return validationHelper.createToolTip(super.createToolTip());

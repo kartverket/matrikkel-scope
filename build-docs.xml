@@ -93,11 +93,13 @@
                  use="yes"
                  source="1.8"
                  private="false"
+                 additionalparam="-Xdoclint:none"
                  windowtitle="${Name} API"
                  doctitle="${Name}"
                  bottom="${javadoc.copyright}"
                  overview="${src.dir}/overview.html">
             <classpath refid="doc.class.path"/>
+            <tag name="created" description="Creation time of java class" enabled="false" />
             <link href="https://docs.oracle.com/javase/8/docs/api/"/>
             <link href="http://java.sun.com/j2ee/j2sdkee/techdocs/api/"/>
         </javadoc>

@@ -298,7 +298,7 @@ public abstract class ServletContext extends ViewContext {
 
 
     /**
-     * Replace all low ASCII chars (&lt;32) in the message with &lt;BR />.
+     * Replace all low ASCII chars (&lt;32) in the message with '{@code <BR />}'.
      *
      * @param inMessage TODO: Describe the Parameter
      * @return TODO: Describe the Return Value

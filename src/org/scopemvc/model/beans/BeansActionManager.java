@@ -108,7 +108,7 @@ public class BeansActionManager extends ActionManager {
 
     /**
      * Utility method to determine if a given class matches another class,
-     * taking into account primitive<->class mapping and inheritance.
+     * taking into account primitive--class mapping and inheritance.
      *
      * @param inPrototypeClass TODO: Describe the Parameter
      * @param inParameterClass TODO: Describe the Parameter

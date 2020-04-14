@@ -67,7 +67,7 @@ import org.scopemvc.core.View;
  * SListModel and SListSelectionModel. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.17 $ $Date: 2002/10/23 12:38:46 $
  * @created 05 September 2002
  * @see SListModel
@@ -491,11 +491,11 @@ public class SList extends JList
     }
 
     /**
-     * Sets the look and feel (L&F) object that renders this component. <br>
+     * Sets the look and feel (L&amp;F) object that renders this component. <br>
      * Overriden here because there is no createDefaultCellRenderer() method in
      * JList.
      *
-     * @param inUI the ListUI L&F object
+     * @param inUI the ListUI L&amp;F object
      * @see javax.swing.UIDefaults#getUI
      */
     public void setUI(ListUI inUI) {
@@ -685,7 +685,7 @@ public class SList extends JList
      * used.
      *
      * @return The tooltip for the component
-     * @see #validationFailure
+     * @see #validationFailed(Exception)
      */
     public JToolTip createToolTip() {
         return validationHelper.createToolTip(super.createToolTip());

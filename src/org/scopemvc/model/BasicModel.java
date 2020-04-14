@@ -139,7 +139,7 @@ public class BasicModel extends org.scopemvc.model.basic.BasicModel implements M
      *
      * @param relativePointer The pointer to the property from this model
      * @param changeType The type of the change, one of the {@link
-     *      org.scopemvc.impl.model.ModelChangeTypes ModelChangeTypes} values
+     *      org.scopemvc.impl.model.ModelChangeSource ModelChangeTypes} values
      */
     protected void valueChanged(Pointer relativePointer, int changeType) {
         fireModelChange(changeType, relativePointer.getSelector());

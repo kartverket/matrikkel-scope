@@ -66,8 +66,8 @@ import org.scopemvc.view.util.ModelBindable;
  * If the comparison fails because of an exception coming from the Comparable
  * test, then this button is disabled. </P>
  *
- * @author <a href="mailto:steve.jones@netdecisions.co.uk>Steve Jones</a>
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:steve.jones@netdecisions.co.uk">Steve Jones</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.5 $ $Date: 2002/11/11 00:48:15 $
  * @created 03 September 2002
  */

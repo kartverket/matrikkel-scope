@@ -62,7 +62,7 @@ import org.scopemvc.view.util.ModelBindable;
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
  * @author <A HREF="mailto:patrik_nordwall@yahoo.se">Patrik Nordwall</A>
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.13 $ $Date: 2002/10/23 12:38:46 $
  * @created 05 September 2002
  * @see SList

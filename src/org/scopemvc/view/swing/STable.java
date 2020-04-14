@@ -94,7 +94,7 @@ import org.scopemvc.util.ScopeConfig;
  *
  * @author <A HREF="mailto:daniel.michalik@autel.cz">Daniel Michalik</A>
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.30 $ $Date: 2002/10/31 12:41:46 $
  * @created 05 September 2002
  * @todo The table renderers and editors should be configurable with ScopeConfig
@@ -786,7 +786,7 @@ public class STable extends JTable
      * used.
      *
      * @return The tooltip for the component
-    * @see #validationFailure
+    * @see #validationFailed(Exception)
      */
     public JToolTip createToolTip() {
         return validationHelper.createToolTip(super.createToolTip());

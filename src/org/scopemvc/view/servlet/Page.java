@@ -59,7 +59,7 @@ import org.scopemvc.core.View;
  * contains all possible {@link Page}s that the Controller can show. </P> <P>
  *
  * Pages must be created with unique View IDs to allow incoming requests to be
- * linked to the correct parent View instance in ScopeServlet. eg <PRE>http://localhost/scope/servlet/Test?view=TestView&action=TestControl</PRE>
+ * linked to the correct parent View instance in ScopeServlet. eg {@code http://localhost/scope/servlet/Test?view=TestView&action=TestControl}
  * causes the View with ID "TestView" to issue a Control whose ID is
  * "TestControl". </P> <P>
  *

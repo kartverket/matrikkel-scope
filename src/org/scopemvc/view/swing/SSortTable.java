@@ -67,7 +67,7 @@ import org.apache.commons.logging.LogFactory;
  * It creates a SSortTableModel, which wraps the original STableModel. </p>
  *
  * @author Patrik Nordwall
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.4 $
  * @created 29 October 2002
  * @see SSortTableModel

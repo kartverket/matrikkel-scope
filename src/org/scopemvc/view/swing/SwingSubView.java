@@ -53,7 +53,7 @@ import org.scopemvc.core.View;
  * discovered automatically by its parent SPanel and have its bound model set
  * automatically by the parent SPanel.
  *
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @created 18 June 2002
  * @version $Revision: 1.3 $ $Date: 2002/09/19 18:08:33 $
  */

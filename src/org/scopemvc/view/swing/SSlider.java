@@ -307,7 +307,7 @@ public class SSlider extends JSlider
      * used.
      *
      * @return The tooltip for the component
-     * @see #validationFailure
+     * @see #validationFailed(Exception)
      */
     public JToolTip createToolTip() {
         return validationHelper.createToolTip(super.createToolTip());

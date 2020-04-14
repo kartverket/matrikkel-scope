@@ -50,7 +50,7 @@ import org.scopemvc.util.ScopeConfig;
 /**
  * Helper class for managing the way controls are issued in some SComponents.
  *
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.5 $
  * @created 29 October 2002
  */

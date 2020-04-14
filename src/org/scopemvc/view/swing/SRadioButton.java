@@ -74,7 +74,7 @@ import org.scopemvc.Pointer;
  * comes from UIStrings keyed against the Control ID. </P>
  *
  * @author <A HREF="mailto:daniel.michalik@autel.cz">Daniel Michalik</A>
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.13 $ $Date: 2002/10/30 09:13:08 $
  * @created 05 September 2002
  */
@@ -414,7 +414,7 @@ public class SRadioButton extends JRadioButton implements PropertyView, ItemList
      * used.
      *
      * @return The tooltip for the component
-     * @see #validationFailure
+     * @see #validationFailed(Exception)
      */
     public JToolTip createToolTip() {
         return validationHelper.createToolTip(super.createToolTip());

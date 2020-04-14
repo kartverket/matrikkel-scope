@@ -43,7 +43,7 @@ import java.beans.*;
 /**
  * Base class for the component BeanInfos
  *
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.3 $
  * @created May 28, 2002
  */

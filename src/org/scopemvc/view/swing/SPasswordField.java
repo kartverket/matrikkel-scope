@@ -73,7 +73,7 @@ import org.scopemvc.Pointer;
  * an interface... doh!). </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.25 $ $Date: 2002/11/20 01:36:58 $
  * @created 05 September 2002
  * @see STextField
@@ -548,7 +548,7 @@ public class SPasswordField extends JPasswordField
      * used.
      *
      * @return The tooltip for the component
-     * @see #validationFailure
+     * @see #validationFailed(Exception)
      */
     public JToolTip createToolTip() {
         return validationHelper.createToolTip(super.createToolTip());

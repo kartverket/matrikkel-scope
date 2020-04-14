@@ -80,7 +80,7 @@ import org.scopemvc.Pointer;
  * #setDisableOnNull}. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.25 $ $Date: 2002/11/12 00:27:25 $
  * @created 05 September 2002
  * @see SwingView
@@ -507,7 +507,7 @@ public class STextArea extends JTextArea implements PropertyView, ModelBindable,
      * used.
      *
      * @return The tooltip for the component
-     * @see #validationFailure
+     * @see #validationFailed(Exception)
      */
     public JToolTip createToolTip() {
         return validationHelper.createToolTip(super.createToolTip());

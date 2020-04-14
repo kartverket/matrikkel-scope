@@ -55,7 +55,7 @@ import org.scopemvc.view.swing.*;
 /**
  * Unit test for SSortTable
  *
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.12 $ $Date: 2002/09/25 13:53:10 $
  * @created 18 September 2002
  */

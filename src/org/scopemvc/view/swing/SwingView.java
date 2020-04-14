@@ -79,7 +79,7 @@ import org.scopemvc.core.View;
  * when its current model changes. </P>
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.14 $ $Date: 2002/11/20 01:36:58 $
  * @created 18 June 2002
  */

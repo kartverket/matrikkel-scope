@@ -68,7 +68,7 @@ import org.scopemvc.util.UIStrings;
  * </ul>
  *
  *
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.9 $
  * @created June 6, 2002
  * @see org.scopemvc.util.ResourceLoader for more explanation on own to load

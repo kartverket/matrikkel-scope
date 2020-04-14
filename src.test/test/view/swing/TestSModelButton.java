@@ -47,7 +47,7 @@ import org.scopemvc.view.swing.SPanel;
 /**
  * TODO: document the class
  *
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @created 12 September 2002
  */
 

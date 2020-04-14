@@ -97,17 +97,7 @@ public class SButton extends JButton implements View {
         super(s, icon);
     }
 
-    /**
-     * Constructor for the SButton object
-     *
-     * @param inControlID The ID of the control to be issued when this button is
-     *      pressed.
-     * @deprecated Will be removed in Scope 2.0
-     */
-    /* Commented out because of clash with JButton(String text)
-    public SButton(String inControlID) {
-        setControlID(inControlID);
-    }
+
 
     /**
      * Constructor for the SButton object

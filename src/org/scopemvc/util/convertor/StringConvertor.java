@@ -48,7 +48,7 @@ package org.scopemvc.util.convertor;
  * </p>
  *
  * @author <A HREF="mailto:danmi@users.sourceforge.net">Daniel Michalik</A>
- * @author <a href="mailto:ludovicc@users.sourceforge.net>Ludovic Claude</a>
+ * @author <a href="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</a>
  * @version $Revision: 1.7 $ $Date: 2002/10/17 02:07:00 $
  * @created 05 September 2002
  * @see StringConvertors

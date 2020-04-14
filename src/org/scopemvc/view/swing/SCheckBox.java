@@ -386,7 +386,7 @@ public class SCheckBox extends JCheckBox implements PropertyView, ItemListener, 
      * used.
      *
      * @return The tooltip for the component
-     * @see #validationFailure
+     * @see #validationFailed(Exception)
      */
     public JToolTip createToolTip() {
         return validationHelper.createToolTip(super.createToolTip());
