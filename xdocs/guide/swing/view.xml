@@ -34,13 +34,13 @@
       <subsection name="When to use a Scope component or a Swing component">
         <p> 
           <a name="use_scomponent" />
-          When you are building a GUI screen, you need to choose for each component if it’s a Scope SComponent, 
+          When you are building a GUI screen, you need to choose for each component if itâ€™s a Scope SComponent,
           or a standard Swing component. <br/>
           The following flowchart gives some guidelines about when to use or not to use SComponents. <br/>
           <img src="../../images/swing-flowchart.gif"/> <br/>
           Additional rules are:
           <ul>
-            <li>Don’t use SPanels if you don’t have to bind them with a model independent of the parent; use JPanel instead.</li>
+            <li>Donâ€™t use SPanels if you donâ€™t have to bind them with a model independent of the parent; use JPanel instead.</li>
             <li>If there is not yet a Scope version for a Swing component, use the Swing version and do the model binding manually or wait for a Scope version...</li>
           </ul>
         </p>

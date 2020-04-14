@@ -63,7 +63,7 @@ public class ChildController extends BasicController {
 	}
 }]]></source>
           And you can benefit from the power of the Hirerchical MVC pattern because that now that you have a hierarchy of controllers,
-          the sub controllers don’t have to handle themselves all the controls they receive, and they can delegate some of the controls 
+          the sub controllers donâ€™t have to handle themselves all the controls they receive, and they can delegate some of the controls
           to their parent controllers.
         </p> 
       </subsection>

@@ -60,6 +60,7 @@
             includes="**/*.xml"
             lastModifiedCheck="true"
             templatePath="${docs.src.dir}/stylesheets"
+            encoding="utf-8"
             
             sflogosrc="${docs.sflogo.src}"
         >
