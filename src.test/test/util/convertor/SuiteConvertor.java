@@ -41,6 +41,7 @@ import junit.framework.Test;
 import junit.framework.TestCase;
 
 import junit.framework.TestSuite;
+import org.scopemvc.util.convertor.TestDateStringConvertors;
 
 /**
  * <P>

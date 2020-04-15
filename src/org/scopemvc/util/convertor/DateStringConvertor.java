@@ -90,16 +90,16 @@ public class DateStringConvertor extends NullStringConvertor {
     private static final Log LOG = LogFactory.getLog(DateStringConvertor.class);
 
     // ------------- Defaults if no config specified ----------------
-    private static final DateFormat DEFAULT_PARSERS[] = new DateFormat[4];
+    static final DateFormat[] DEFAULT_PARSERS = {
+            DateFormat.getDateInstance(DateFormat.FULL),
+            DateFormat.getDateInstance(DateFormat.LONG),
+            DateFormat.getDateInstance(DateFormat.MEDIUM),
+            DateFormat.getDateInstance(DateFormat.SHORT),
+    };
 
-    private DateFormat formatter;
-    private DateFormat parsers[];
-    static {
-        DEFAULT_PARSERS[3] = DateFormat.getDateInstance(DateFormat.SHORT);
-        DEFAULT_PARSERS[2] = DateFormat.getDateInstance(DateFormat.MEDIUM);
-        DEFAULT_PARSERS[1] = DateFormat.getDateInstance(DateFormat.LONG);
-        DEFAULT_PARSERS[0] = DateFormat.getDateInstance(DateFormat.FULL);
-    }
+
+    DateFormat formatter;
+    DateFormat[] parsers;
 
     // ------------------------------------------------------------------
 
@@ -255,9 +255,7 @@ public class DateStringConvertor extends NullStringConvertor {
 
         List parserList = new ArrayList();
         for (Iterator i = ScopeConfig.getKeysMatching(getClass().getName() + ".parser"); i.hasNext(); ) {
-
             parserList.add(ScopeConfig.getObject((String) i.next()));
-
         }
         if (parserList.size() < 1) {
             setParsers(getDefaultParsers());

@@ -77,41 +77,25 @@ public class DateTimeStringConvertor extends DateStringConvertor {
     // ------------- Defaults if no config specified ----------------
     private static final DateFormat DEFAULT_PARSERS[] = new DateFormat[16];
     static {
-        DEFAULT_PARSERS[15] = DateFormat.getDateTimeInstance(
-                DateFormat.SHORT, DateFormat.SHORT);
-        DEFAULT_PARSERS[14] = DateFormat.getDateTimeInstance(
-                DateFormat.SHORT, DateFormat.MEDIUM);
-        DEFAULT_PARSERS[13] = DateFormat.getDateTimeInstance(
-                DateFormat.SHORT, DateFormat.LONG);
-        DEFAULT_PARSERS[12] = DateFormat.getDateTimeInstance(
-                DateFormat.SHORT, DateFormat.FULL);
+        DEFAULT_PARSERS[15] = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.SHORT);
+        DEFAULT_PARSERS[14] = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.MEDIUM);
+        DEFAULT_PARSERS[13] = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.LONG);
+        DEFAULT_PARSERS[12] = DateFormat.getDateTimeInstance(DateFormat.SHORT, DateFormat.FULL);
 
-        DEFAULT_PARSERS[11] = DateFormat.getDateTimeInstance(
-                DateFormat.MEDIUM, DateFormat.SHORT);
-        DEFAULT_PARSERS[10] = DateFormat.getDateTimeInstance(
-                DateFormat.MEDIUM, DateFormat.MEDIUM);
-        DEFAULT_PARSERS[9] = DateFormat.getDateTimeInstance(
-                DateFormat.MEDIUM, DateFormat.LONG);
-        DEFAULT_PARSERS[8] = DateFormat.getDateTimeInstance(
-                DateFormat.MEDIUM, DateFormat.FULL);
+        DEFAULT_PARSERS[11] = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.SHORT);
+        DEFAULT_PARSERS[10] = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM);
+        DEFAULT_PARSERS[9] = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.LONG);
+        DEFAULT_PARSERS[8] = DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.FULL);
 
-        DEFAULT_PARSERS[7] = DateFormat.getDateTimeInstance(
-                DateFormat.LONG, DateFormat.SHORT);
-        DEFAULT_PARSERS[6] = DateFormat.getDateTimeInstance(
-                DateFormat.LONG, DateFormat.MEDIUM);
-        DEFAULT_PARSERS[5] = DateFormat.getDateTimeInstance(
-                DateFormat.LONG, DateFormat.LONG);
-        DEFAULT_PARSERS[4] = DateFormat.getDateTimeInstance(
-                DateFormat.LONG, DateFormat.FULL);
+        DEFAULT_PARSERS[7] = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.SHORT);
+        DEFAULT_PARSERS[6] = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.MEDIUM);
+        DEFAULT_PARSERS[5] = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG);
+        DEFAULT_PARSERS[4] = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.FULL);
 
-        DEFAULT_PARSERS[3] = DateFormat.getDateTimeInstance(
-                DateFormat.FULL, DateFormat.SHORT);
-        DEFAULT_PARSERS[2] = DateFormat.getDateTimeInstance(
-                DateFormat.FULL, DateFormat.MEDIUM);
-        DEFAULT_PARSERS[1] = DateFormat.getDateTimeInstance(
-                DateFormat.FULL, DateFormat.LONG);
-        DEFAULT_PARSERS[0] = DateFormat.getDateTimeInstance(
-                DateFormat.FULL, DateFormat.FULL);
+        DEFAULT_PARSERS[3] = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.SHORT);
+        DEFAULT_PARSERS[2] = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.MEDIUM);
+        DEFAULT_PARSERS[1] = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.LONG);
+        DEFAULT_PARSERS[0] = DateFormat.getDateTimeInstance(DateFormat.FULL, DateFormat.FULL);
     }
 
     // ------------------------------------------------------------------

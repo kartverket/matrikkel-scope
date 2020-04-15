@@ -38,18 +38,21 @@
  */
 
 
-package test.util.convertor;
+package org.scopemvc.util.convertor;
 
 
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Locale;
-import java.util.TimeZone;
 import junit.framework.TestCase;
 import org.apache.commons.logging.LogFactory;import org.apache.commons.logging.Log;
 import org.scopemvc.util.ScopeConfig;
-import org.scopemvc.util.convertor.DateStringConvertor;
+
+import static java.text.DateFormat.FULL;
+import static java.text.DateFormat.LONG;
+import static java.text.DateFormat.MEDIUM;
+import static java.text.DateFormat.SHORT;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 /**
@@ -61,42 +64,56 @@ import org.scopemvc.util.convertor.DateStringConvertor;
  */
 public final class TestDateStringConvertors extends TestCase {
 
-
     private static final Log LOG = LogFactory.getLog(TestDateStringConvertors.class);
+
+    static final DateFormat[] DEFAULT_PARSERS = new DateFormat[4];
+    static {
+        DEFAULT_PARSERS[3] = DateFormat.getDateInstance(SHORT);
+        DEFAULT_PARSERS[2] = DateFormat.getDateInstance(MEDIUM);
+        DEFAULT_PARSERS[1] = DateFormat.getDateInstance(LONG);
+        DEFAULT_PARSERS[0] = DateFormat.getDateInstance(FULL);
+    }
 
 
     /**
      * Must set a known default locale for the tests.
      */
+    private static final Date jan1_1970;
     static {
-        Locale.setDefault(Locale.UK);
-        TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
-        System.out.println("Default medium format " + DateFormat.getDateInstance(DateFormat.MEDIUM).format(new Date(0)));
-        System.out.println("Default locale " + Locale.getDefault());
+        GregorianCalendar cal = new GregorianCalendar();
+        cal.clear();
+        cal.set(1970, 0, 1, 0, 0, 0);
+        jan1_1970 = cal.getTime();
     }
-
-    private Date jan1_1970;
-    private GregorianCalendar cal = new GregorianCalendar();
 
     public TestDateStringConvertors(String inName) {
         super(inName);
     }
 
 
-    protected void setUp() {
-        cal.clear();
-        cal.set(1970, 0, 1, 0, 0, 0);
-        jan1_1970 = cal.getTime();
+    /**
+     * Default parsers are constructed at class loading of ScopeProperties.
+     * This test expects same default Locale as when ScopeProperties is initialized.
+     * @see ScopeConfig#DEFAULT_CONFIG_NAME
+     */
+    public void testDefaultParsers() throws Exception {
+        DateStringConvertor c = new DateStringConvertor();
+        for (int i = 0; i < c.parsers.length; i++) {
+            DateFormat defaultParser = DEFAULT_PARSERS[i];
+            DateFormat parser = c.parsers[i];
+            assertThat(parser.format(jan1_1970))
+                    .isEqualTo(defaultParser.format(jan1_1970));
+        }
+        assertThat(c.parsers).hasSameSizeAs(DEFAULT_PARSERS);
     }
-
 
     public void testDefaultDateStringConvertor() throws Exception {
 
         DateStringConvertor c = new DateStringConvertor();
-        String shortFormat = DateFormat.getDateInstance(DateFormat.SHORT).format(jan1_1970);
-        String mediumFormat = DateFormat.getDateInstance(DateFormat.MEDIUM).format(jan1_1970);
-        String longFormat = DateFormat.getDateInstance(DateFormat.LONG).format(jan1_1970);
-        String fullFormat = DateFormat.getDateInstance(DateFormat.FULL).format(jan1_1970);
+        String shortFormat = c.parsers[SHORT].format(jan1_1970);
+        String mediumFormat = c.parsers[MEDIUM].format(jan1_1970);
+        String longFormat = c.parsers[LONG].format(jan1_1970);
+        String fullFormat = c.parsers[FULL].format(jan1_1970);
 
         System.out.println("shortFormat " + shortFormat);
         System.out.println("mediumFormat " + mediumFormat);
@@ -132,9 +149,61 @@ public final class TestDateStringConvertors extends TestCase {
 
         // Is it just me or is the Java calendar API impenetrable?
         Date d = (Date)c.stringAsValue("2-2-2001");
-        cal.setTime(d);
-        assertEquals("Date: " + d, 2001, cal.get(cal.YEAR));
-        assertEquals("Date: " + d, 1, cal.get(cal.MONTH));
-        assertEquals("Date: " + d, 2, cal.get(cal.DAY_OF_MONTH));
+        assertThat(d)
+                .hasYear(2001)
+                .hasMonth(2)
+                .hasDayOfMonth(2);
     }
+
+    /**
+     * A unit test for JUnit
+     */
+    public void testDateStringConvertor() {
+        DateStringConvertor c = new DateStringConvertor();
+
+        // don't use string constants as date formats depend on the JVM version.
+        String dateFormat = c.parsers[MEDIUM].format(jan1_1970);
+
+        assertEquals("", c.valueAsString(null));
+        assertEquals(dateFormat, c.valueAsString(jan1_1970));
+        try {
+            c.valueAsString("");
+            fail("DateStringConvertor took an empty String");
+        } catch (Exception e) {
+            // expected
+        }
+
+        assertNull(c.stringAsValue(""));
+        assertNull(c.stringAsValue(null));
+
+        assertTrue(c.stringAsValue(dateFormat) instanceof Date);
+        assertEquals(jan1_1970, c.stringAsValue(dateFormat));
+
+        try {
+            c.stringAsValue("1x");
+            fail("DateStringConvertor converted nonsense");
+        } catch (Exception e) {
+            // expected
+        }
+        try {
+            c.stringAsValue("(null)");
+            fail("DateStringConvertor parsed '(null)'");
+        } catch (Exception e) {
+            // expected
+        }
+
+        c.setNullAsString("(null)");
+        assertNull(c.stringAsValue("(null)"));
+        assertNull(c.stringAsValue(""));
+        assertEquals("(null)", c.valueAsString(null));
+        try {
+            c.stringAsValue("xyz");
+            fail("DateStringConvertor parsed 'xyz'");
+        } catch (Exception e) {
+            // expected
+        }
+    }
+
+
+
 }

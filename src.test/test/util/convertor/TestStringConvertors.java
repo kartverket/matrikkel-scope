@@ -61,13 +61,12 @@ import org.scopemvc.util.convertor.*;
  */
 public final class TestStringConvertors extends TestCase {
 
-    private Date jan1_1970;
-
+    private static final Date jan1_1970;
     static {
-        Locale.setDefault(Locale.UK);
-        TimeZone.setDefault(TimeZone.getTimeZone("GMT"));
-        System.out.println("Default medium format " + DateFormat.getDateInstance(DateFormat.MEDIUM).format(new Date(0)));
-        System.out.println("Default locale " + Locale.getDefault());
+        GregorianCalendar cal = new GregorianCalendar();
+        cal.clear();
+        cal.set(1970, 0, 1, 0, 0, 0);
+        jan1_1970 = cal.getTime();
     }
 
 
@@ -191,6 +190,7 @@ public final class TestStringConvertors extends TestCase {
      * A unit test for JUnit
      */
     public void testDoubleStringConvertor() {
+        Locale.setDefault(Locale.UK);
         DoubleStringConvertor c = new DoubleStringConvertor();
 
         assertEquals("", c.valueAsString(null));
@@ -230,6 +230,7 @@ public final class TestStringConvertors extends TestCase {
      * A unit test for JUnit
      */
     public void testFloatStringConvertor() {
+        Locale.setDefault(Locale.UK);
         FloatStringConvertor c = new FloatStringConvertor();
 
         assertEquals("", c.valueAsString(null));
@@ -259,55 +260,6 @@ public final class TestStringConvertors extends TestCase {
         try {
             c.stringAsValue("xyz");
             fail("FloatStringConvertor parsed 'xyz'");
-        } catch (Exception e) {
-            // expected
-        }
-    }
-
-
-    /**
-     * A unit test for JUnit
-     */
-    public void testDateStringConvertor() {
-        DateStringConvertor c = new DateStringConvertor();
-        // don't use string constants as date formats depend on the JVM version.
-        String dateFormat = DateFormat.getDateInstance(DateFormat.MEDIUM).format(jan1_1970);
-
-        assertEquals("", c.valueAsString(null));
-        assertEquals(dateFormat, c.valueAsString(jan1_1970));
-        try {
-            c.valueAsString("");
-            fail("DateStringConvertor took an empty String");
-        } catch (Exception e) {
-            // expected
-        }
-
-        assertNull(c.stringAsValue(""));
-        assertNull(c.stringAsValue(null));
-
-        assertTrue(c.stringAsValue(dateFormat) instanceof Date);
-        assertEquals(jan1_1970, c.stringAsValue(dateFormat));
-
-        try {
-            c.stringAsValue("1x");
-            fail("DateStringConvertor converted nonsense");
-        } catch (Exception e) {
-            // expected
-        }
-        try {
-            c.stringAsValue("(null)");
-            fail("DateStringConvertor parsed '(null)'");
-        } catch (Exception e) {
-            // expected
-        }
-
-        c.setNullAsString("(null)");
-        assertNull(c.stringAsValue("(null)"));
-        assertNull(c.stringAsValue(""));
-        assertEquals("(null)", c.valueAsString(null));
-        try {
-            c.stringAsValue("xyz");
-            fail("DateStringConvertor parsed 'xyz'");
         } catch (Exception e) {
             // expected
         }
@@ -516,14 +468,4 @@ public final class TestStringConvertors extends TestCase {
         assertTrue(StringConvertors.forClass(java.math.BigDecimal.class) instanceof BigDecimalStringConvertor);
     }
 
-
-    /**
-     * The JUnit setup method
-     */
-    protected void setUp() {
-        GregorianCalendar cal = new GregorianCalendar();
-        cal.clear();
-        cal.set(1970, 0, 1, 0, 0, 0);
-        jan1_1970 = cal.getTime();
-    }
 }
