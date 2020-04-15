@@ -50,6 +50,8 @@ import org.scopemvc.model.collection.ListModel;
 import org.scopemvc.model.util.CompoundSelectorIterator;
 import org.scopemvc.model.util.IntIndexSelectorIterator;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * <P>
  *
@@ -189,16 +191,20 @@ public final class TestBeansPropertyManager3 extends TestCase {
         Iterator i = manager.getSelectorIterator(lm);
         assertTrue(i instanceof CompoundSelectorIterator);
 
-        Set names = new HashSet();
+        Set<String> names = new HashSet<>();
         while (i.hasNext()) {
             names.add(((Selector) i.next()).getName());
         }
 
-        assertTrue("Not size: " + (lm.getSize() + 3) + ", " + names.toString(), names.size() == lm.getSize() + 3);
-
-        assertTrue("Can't find size property", names.contains("size"));
-        assertTrue("Can't find empty property", names.contains("empty"));
-        assertTrue("Can't find list property", names.contains("list"));
+        assertThat(names)
+                .describedAs("Selector names")
+                .containsOnly(
+                        "size",
+                        "empty",
+                        "list",
+                        "active",
+                        "0",
+                        "1");
     }
 
 
