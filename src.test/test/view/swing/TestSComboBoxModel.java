@@ -190,6 +190,7 @@ public class TestSComboBoxModel extends TestCase {
         assertNotNull(comboModel.getSelectedItem());
 
         comboModel.setBoundModel(null);
+        SuiteViewSwing.waitForAWT();
 
         assertNull(comboModel.getBoundModel());
         assertNull(comboModel.getSelectedItem());
