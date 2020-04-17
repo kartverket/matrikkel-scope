@@ -122,7 +122,7 @@ public final class TestWeakSet extends TestCase {
     /**
      * A unit test for JUnit
      */
-    public void testGC() {
+    public void testGC() throws Exception {
         Set set = new WeakSet();
         List list = new LinkedList();
 
@@ -141,10 +141,12 @@ public final class TestWeakSet extends TestCase {
 
         refHolder = null;
         System.gc();
+        Thread.sleep(100); //mitigate flaky tests
         assertTrue("size not correct after gc", set.size() == 10);
 
         list.clear();
         System.gc();
+        Thread.sleep(100); //mitigate flaky tests
         assertTrue("size not correct after gc", set.size() == 0);
     }
 
