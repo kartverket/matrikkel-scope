@@ -5,13 +5,8 @@ apply plugin: 'java-library'
 apply plugin: 'idea'
 apply plugin: 'maven-publish'
 
-sourceCompatibility = '1.7'
-
-idea.project {
-  jdkName = '1.7'
-  languageLevel = '1.7'
-  vcs = 'Perforce'
-}
+  sourceCompatibility = JavaVersion.VERSION_1_8
+  targetCompatibility = JavaVersion.VERSION_1_8
 
 sourceSets {
   main {
@@ -33,11 +28,12 @@ sourceSets {
 
 dependencies {
   implementation 'commons-logging:commons-logging:1.0.4'
-  compile 'javax.servlet:servlet-api:2.5' // provided
+  compileOnly 'javax.servlet:servlet-api:2.5' // provided
   compileOnly 'javax.servlet.jsp:jsp-api:2.1' // provided
 
   testImplementation 'junit:junit:3.8.1'
   testImplementation files('lib/jfcunit.jar')
+  testImplementation 'javax.servlet:servlet-api:2.5'
 }
 
 repositories {
