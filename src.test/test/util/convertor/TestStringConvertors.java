@@ -41,10 +41,10 @@ package test.util.convertor;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.DateFormat;
+import java.text.NumberFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
-import java.util.TimeZone;
 import junit.framework.TestCase;
 import org.scopemvc.util.ScopeConfig;
 import org.scopemvc.util.convertor.*;
@@ -190,8 +190,8 @@ public final class TestStringConvertors extends TestCase {
      * A unit test for JUnit
      */
     public void testDoubleStringConvertor() {
-        Locale.setDefault(Locale.UK);
         DoubleStringConvertor c = new DoubleStringConvertor();
+        c.setNumberFormat(NumberFormat.getInstance(Locale.UK));
 
         assertEquals("", c.valueAsString(null));
         assertEquals("1.1", c.valueAsString(new Double(1.1)));
@@ -230,8 +230,8 @@ public final class TestStringConvertors extends TestCase {
      * A unit test for JUnit
      */
     public void testFloatStringConvertor() {
-        Locale.setDefault(Locale.UK);
         FloatStringConvertor c = new FloatStringConvertor();
+        c.setNumberFormat(NumberFormat.getInstance(Locale.UK));
 
         assertEquals("", c.valueAsString(null));
         assertEquals("1.1", c.valueAsString(new Float(1.1)));
@@ -324,7 +324,7 @@ public final class TestStringConvertors extends TestCase {
         String timeFormat = DateFormat.getTimeInstance(DateFormat.MEDIUM).format(jan1_1970);
 
         assertEquals("", c.valueAsString(null));
-        assertEquals(timeFormat, c.valueAsString(new Date(0)));
+        assertEquals(timeFormat, c.valueAsString(jan1_1970));
         try {
             c.valueAsString("");
             fail("DateTimeStringConvertor took a String");

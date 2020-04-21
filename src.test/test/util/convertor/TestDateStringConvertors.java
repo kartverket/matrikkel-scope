@@ -44,6 +44,8 @@ package org.scopemvc.util.convertor;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.Locale;
+
 import junit.framework.TestCase;
 import org.apache.commons.logging.LogFactory;import org.apache.commons.logging.Log;
 import org.scopemvc.util.ScopeConfig;
@@ -84,6 +86,9 @@ public final class TestDateStringConvertors extends TestCase {
         cal.clear();
         cal.set(1970, 0, 1, 0, 0, 0);
         jan1_1970 = cal.getTime();
+
+        System.out.println("Default medium format " + DateFormat.getDateInstance(DateFormat.MEDIUM).format(jan1_1970));
+        System.out.println("Default locale " + Locale.getDefault());
     }
 
     public TestDateStringConvertors(String inName) {
