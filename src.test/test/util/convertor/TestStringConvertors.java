@@ -449,23 +449,28 @@ public final class TestStringConvertors extends TestCase {
      * A unit test for JUnit
      */
     public void testStringConvertorFactory() {
-        ScopeConfig.setPropertiesName("test.util.CustomScopeConfig");
+        try {
+            ScopeConfig.setPropertiesName("test.util.convertor.ConvertorScopeConfig");
 
-        assertNull(StringConvertors.forClass(java.util.Enumeration.class));
-        assertTrue(StringConvertors.forClass(java.lang.String.class) instanceof StringStringConvertor);
-        assertTrue(StringConvertors.forClass(java.lang.Integer.class) instanceof IntegerStringConvertor);
-        assertTrue(StringConvertors.forClass(java.lang.Integer.TYPE) instanceof IntegerStringConvertor);
-        assertTrue(StringConvertors.forClass(java.lang.Long.class) instanceof LongStringConvertor);
-        assertTrue(StringConvertors.forClass(java.lang.Long.TYPE) instanceof LongStringConvertor);
-        assertTrue(StringConvertors.forClass(java.lang.Double.class) instanceof DoubleStringConvertor);
-        assertTrue(StringConvertors.forClass(java.lang.Double.TYPE) instanceof DoubleStringConvertor);
-        assertTrue(StringConvertors.forClass(java.lang.Float.class) instanceof FloatStringConvertor);
-        assertTrue(StringConvertors.forClass(java.lang.Float.TYPE) instanceof FloatStringConvertor);
-        assertTrue(StringConvertors.forClass(java.util.Date.class) instanceof DateStringConvertor);
-        assertTrue(StringConvertors.forClass(org.scopemvc.util.Time.class) instanceof TimeStringConvertor);
-        assertTrue(StringConvertors.forClass(org.scopemvc.util.DateTime.class) instanceof DateTimeStringConvertor);
-        assertTrue(StringConvertors.forClass(java.math.BigInteger.class) instanceof BigIntegerStringConvertor);
-        assertTrue(StringConvertors.forClass(java.math.BigDecimal.class) instanceof BigDecimalStringConvertor);
+            assertNull(StringConvertors.forClass(java.util.Enumeration.class));
+            assertTrue(StringConvertors.forClass(java.lang.String.class) instanceof StringStringConvertor);
+            assertTrue(StringConvertors.forClass(java.lang.Integer.class) instanceof IntegerStringConvertor);
+            assertTrue(StringConvertors.forClass(java.lang.Integer.TYPE) instanceof IntegerStringConvertor);
+            assertTrue(StringConvertors.forClass(java.lang.Long.class) instanceof LongStringConvertor);
+            assertTrue(StringConvertors.forClass(java.lang.Long.TYPE) instanceof LongStringConvertor);
+            assertTrue(StringConvertors.forClass(java.lang.Double.class) instanceof DoubleStringConvertor);
+            assertTrue(StringConvertors.forClass(java.lang.Double.TYPE) instanceof DoubleStringConvertor);
+            assertTrue(StringConvertors.forClass(java.lang.Float.class) instanceof FloatStringConvertor);
+            assertTrue(StringConvertors.forClass(java.lang.Float.TYPE) instanceof FloatStringConvertor);
+            assertTrue(StringConvertors.forClass(java.util.Date.class) instanceof DateStringConvertor);
+            assertTrue(StringConvertors.forClass(org.scopemvc.util.Time.class) instanceof TimeStringConvertor);
+            assertTrue(StringConvertors.forClass(org.scopemvc.util.DateTime.class) instanceof DateTimeStringConvertor);
+            assertTrue(StringConvertors.forClass(java.math.BigInteger.class) instanceof BigIntegerStringConvertor);
+            assertTrue(StringConvertors.forClass(java.math.BigDecimal.class) instanceof BigDecimalStringConvertor);
+
+        } finally {
+            ScopeConfig.setPropertiesName(org.scopemvc.util.DefaultScopeConfig.class.getName());
+        }
     }
 
 }

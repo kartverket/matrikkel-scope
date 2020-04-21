@@ -140,24 +140,28 @@ public final class TestDateStringConvertors extends TestCase {
 
 
     public void testConfigDateStringConvertor() throws Exception {
+        try {
+            ScopeConfig.setPropertiesName("test.util.convertor.ConvertorScopeConfig");
 
-        ScopeConfig.setPropertiesName("test.util.convertor.ConvertorScopeConfig");
+            DateStringConvertor c = new DateStringConvertor();
 
-        DateStringConvertor c = new DateStringConvertor();
+            assertEquals("01-01-1970", c.valueAsString(jan1_1970));
 
-        assertEquals("01-01-1970", c.valueAsString(jan1_1970));
+            assertEquals(jan1_1970, c.stringAsValue("01-01-1970"));
+            assertEquals(jan1_1970, c.stringAsValue("01/01/1970"));
+            assertEquals(jan1_1970, c.stringAsValue("01.01.1970"));
+            assertEquals(jan1_1970, c.stringAsValue("01011970"));
 
-        assertEquals(jan1_1970, c.stringAsValue("01-01-1970"));
-        assertEquals(jan1_1970, c.stringAsValue("01/01/1970"));
-        assertEquals(jan1_1970, c.stringAsValue("01.01.1970"));
-        assertEquals(jan1_1970, c.stringAsValue("01011970"));
+            // Is it just me or is the Java calendar API impenetrable?
+            Date d = (Date)c.stringAsValue("2-2-2001");
+            assertThat(d)
+                    .hasYear(2001)
+                    .hasMonth(2)
+                    .hasDayOfMonth(2);
 
-        // Is it just me or is the Java calendar API impenetrable?
-        Date d = (Date)c.stringAsValue("2-2-2001");
-        assertThat(d)
-                .hasYear(2001)
-                .hasMonth(2)
-                .hasDayOfMonth(2);
+        } finally {
+            ScopeConfig.setPropertiesName(org.scopemvc.util.DefaultScopeConfig.class.getName());
+        }
     }
 
     /**

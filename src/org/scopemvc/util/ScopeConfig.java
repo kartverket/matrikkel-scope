@@ -357,8 +357,8 @@ public final class ScopeConfig {
     // ------------------ Set custom properties API -------------------------
 
     /**
-     * Set name of custom properties that will override the DefaultScopeConfig
-     * and "scope.properties", but not override any System properties.
+     * Set name of custom properties that will override the {@value #DEFAULT_CONFIG_NAME}
+     * and {@value #DEFAULT_CUSTOM_CONFIG_NAME} + ".properties", but not override any System properties.
      *
      * @param inName The new propertiesName value
      */
@@ -371,6 +371,7 @@ public final class ScopeConfig {
         }
 
         ResourceBundle bundle = ResourceLoader.getProperties(inName);
+        getInstance().initialise();
         if (bundle != null) {
             getInstance().putAll(bundle);
         }
@@ -424,6 +425,7 @@ public final class ScopeConfig {
      * Initialises the class by loading in the configuration.
      */
     protected void initialise() {
+        properties.clear();
         loadDefaultConfig();
         loadCustomConfig();
         loadSystemConfig();

@@ -67,10 +67,15 @@ public final class TestScopeConfig extends TestCase {
     /**
      * The JUnit setup method
      */
+    @Override
     public void setUp() {
         ScopeConfig.setPropertiesName("test.util.CustomScopeConfig");
     }
 
+    @Override
+    protected void tearDown() {
+        ScopeConfig.setPropertiesName(org.scopemvc.util.DefaultScopeConfig.class.getName());
+    }
 
     /**
      * A unit test for JUnit
