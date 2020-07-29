@@ -22,11 +22,11 @@ pipeline { //declarative pipeline syntax
     }
 
     tools {
-        jdk 'Java 8 Latest' //spesifisert java versjon for bygging av release
+        jdk 'Java 14 Latest' //spesifisert java versjon for bygging av release
     }
 
     environment {
-        GRADLE_OPTS = "-Xms128m -Xmx1g -XX:MaxPermSize=256m -XX:ReservedCodeCacheSize=128m"
+        GRADLE_OPTS = "-Xms128m -Xmx1g"
 
         //for publisering til sentralt maven repo bindes opp via jenkins credential (secret text)
         MAVEN_PUBLISH = credentials('MAVEN_DEPLOY_RELEASE_CANDIDATE')
