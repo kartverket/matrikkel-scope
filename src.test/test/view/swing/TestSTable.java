@@ -38,25 +38,32 @@
 package test.view.swing;
 
 
-import java.awt.Dimension;
-import java.util.ArrayList;
-import javax.swing.DefaultListSelectionModel;
-import javax.swing.JScrollPane;
+import junit.extensions.jfcunit.JFCTestCase;
+import junit.extensions.jfcunit.JFCTestHelper;
+import junit.extensions.jfcunit.JTableMouseEventData;
+import junit.extensions.jfcunit.TestHelper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import junit.extensions.jfcunit.JFCTestCase;
-import junit.extensions.jfcunit.JTableMouseEventData;
-import junit.extensions.jfcunit.RobotTestHelper;
-import junit.extensions.jfcunit.TestHelper;
 import org.scopemvc.core.Control;
 import org.scopemvc.core.Selector;
 import org.scopemvc.model.collection.ListModel;
-import org.scopemvc.view.swing.*;
+import org.scopemvc.view.swing.SListSelectionModel;
+import org.scopemvc.view.swing.SPanel;
+import org.scopemvc.view.swing.STable;
+import org.scopemvc.view.swing.STableModel;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * <P>
  *
  * </P>
+ *
+ * Changes:
+ *  - Not using RobotTestHelper fixes flaky test {@link #testControlIssue()}
+ *
  *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net>Steve Meyfroidt</A>
  * @author <A HREF="mailto:daniel.michalik@autel.cz">Daniel Michalik</A>
@@ -377,7 +384,7 @@ public final class TestSTable extends JFCTestCase {
 
         Thread.sleep(1000);
         helper.enterClickAndLeave(new JTableMouseEventData(this, table, 1, 0, 2));
-        awtSleep();
+
         SuiteViewSwing.waitForAWT();
         Thread.sleep(1000);
 
@@ -429,8 +436,7 @@ public final class TestSTable extends JFCTestCase {
      * @throws Exception Any abnormal exception
      */
     protected void setUp() throws Exception {
-        //helper = new JFCTestHelper();
-        helper = new RobotTestHelper();
+        helper = new JFCTestHelper();
 
         table = new STable();
         table.setPreferredSize(new Dimension(100, 60));
@@ -508,3 +514,5 @@ public final class TestSTable extends JFCTestCase {
 //    }
 
 }
+
+
