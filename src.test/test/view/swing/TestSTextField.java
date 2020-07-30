@@ -587,11 +587,12 @@ public final class TestSTextField extends JFCTestCase {
         assertEquals(Selector.fromString("stringProperty"), textfield.getSelector());
 
         controller.setModel(model);
+        SuiteViewSwing.waitForAWT();
         model.setStringProperty(null);
         SuiteViewSwing.waitForAWT();
         assertSame(view.getBoundModel(), model);
         assertSame(textfield.getBoundModel(), model);
-//        assertTrue(textfield.isEnabled());
+        assertTrue(textfield.isEnabled());
         assertEquals("xyz", textfield.getText());
 
         model.setStringProperty("abc");
