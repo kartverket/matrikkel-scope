@@ -50,6 +50,9 @@ import org.scopemvc.controller.swing.SwingContext;
  *
  * </P>
  *
+ * Changes:
+ *  - Improved thread synchronization in {@link #waitForAWT()} used in tests - this reduced running time from 6 minutes to 4 minutes for the tests.
+ *
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net>Steve Meyfroidt</A>
  * @version $Revision: 1.10 $ $Date: 2002/10/24 00:31:56 $
  * @created 12 September 2002
@@ -106,26 +109,27 @@ public final class SuiteViewSwing extends TestCase {
      * @throws Exception TODO: Describe the Exception
      */
     public static void waitForAWT() throws Exception {
-        waitForAWT(100, 2000);
-        waitForAWT(100, 8000);
+        waitForAWT2();
+        waitForAWT2();
     }
 
-    private static void waitForAWT(final long startDelay, final long timeout) throws Exception {
-        final Object lock = new Object();
+    //MAT-14871: Ignoring delays and timeouts. No point in making tests run slower..
+    private static void waitForAWT2() throws Exception {
+        boolean[] awtDoneStuff = new boolean[] {false};
+        Object lock = new Object() {};
         SwingUtilities.invokeLater(
-            new Runnable() {
-                public void run() {
-                    synchronized (lock) {
-                        try {
-                            lock.wait(startDelay);
-                        } catch (Exception ignore) {}
-                        lock.notifyAll();
+                new Runnable() {
+                    public void run() {
+                        synchronized (lock) {
+                            awtDoneStuff[0] = true;
+                            lock.notifyAll();
+                        }
                     }
-                }
-            });
+                });
         synchronized (lock) {
-            lock.notifyAll();
-            lock.wait(timeout);
+            while (!awtDoneStuff[0]) {
+                lock.wait();
+            }
         }
     }
 
