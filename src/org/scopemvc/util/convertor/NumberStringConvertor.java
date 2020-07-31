@@ -38,6 +38,8 @@
 package org.scopemvc.util.convertor;
 
 
+import org.scopemvc.util.ScopeConfig;
+
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
@@ -55,7 +57,8 @@ import java.text.ParseException;
 public abstract class NumberStringConvertor extends NullStringConvertor {
 
     private NumberFormat format;
-    private boolean substituteMinusSign = true;
+    private boolean substituteMinusSign = (boolean)
+            ScopeConfig.getObject("org.scopemvc.util.convertor.NumberStringConvertor.substituteMinusSign");
 
 
     /**

@@ -155,6 +155,7 @@ public class DefaultScopeConfig extends ListResourceBundle {
             DateFormat.getTimeInstance(DateFormat.MEDIUM)},
             {"org.scopemvc.util.convertor.DateTimeStringConvertor.formatter",
             DateFormat.getDateTimeInstance()},
+            {"org.scopemvc.util.convertor.NumberStringConvertor.substituteMinusSign", true},
             };
 
 
