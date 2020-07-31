@@ -57,11 +57,11 @@ public class DoubleStringConvertor extends NumberStringConvertor {
      * @throws IllegalArgumentException can't convert from String using current
      *      NumberFormat.
      */
-    public Object stringAsValue(String inString) throws IllegalArgumentException {
-        Number result = (Number) super.stringAsValue(inString);
+    public Double stringAsValue(String inString) throws IllegalArgumentException {
+        Number result = super.stringAsValue(inString);
         if ((result instanceof Double) || (result == null)) {
-            return result;
+            return (Double) result;
         }
-        return new Double(result.doubleValue());
+        return result.doubleValue();
     }
 }

@@ -57,11 +57,11 @@ public class LongStringConvertor extends NumberStringConvertor {
      * @throws IllegalArgumentException can't convert from String using current
      *      NumberFormat.
      */
-    public Object stringAsValue(String inString) throws IllegalArgumentException {
-        Number result = (Number) super.stringAsValue(inString);
+    public Long stringAsValue(String inString) throws IllegalArgumentException {
+        Number result = super.stringAsValue(inString);
         if ((result instanceof Long) || (result == null)) {
-            return result;
+            return (Long) result;
         }
-        return new Long(result.longValue());
+        return result.longValue();
     }
 }

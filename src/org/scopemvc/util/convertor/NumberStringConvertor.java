@@ -104,7 +104,7 @@ public abstract class NumberStringConvertor extends NullStringConvertor {
      * strings are converted into <code>null</code>. </p>
      *
      * @param inString The string to parse
-     * @return An object of the supported type initialised with the parsed
+     * @return A number object of the supported type initialised with the parsed
      *      string
      * @see DoubleStringConvertor
      * @see FloatStringConvertor
@@ -113,7 +113,7 @@ public abstract class NumberStringConvertor extends NullStringConvertor {
      * @throws IllegalArgumentException can't convert from String using current
      *      NumberFormat.
      */
-    public Object stringAsValue(String inString)
+    public Number stringAsValue(String inString)
              throws IllegalArgumentException {
         if (isNull(inString)) {
             return null;

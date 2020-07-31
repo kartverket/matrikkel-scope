@@ -56,11 +56,11 @@ public class IntegerStringConvertor extends NumberStringConvertor {
      * @throws IllegalArgumentException can't convert from String using current
      *      NumberFormat.
      */
-    public Object stringAsValue(String inString) throws IllegalArgumentException {
-        Number result = (Number) super.stringAsValue(inString);
+    public Integer stringAsValue(String inString) throws IllegalArgumentException {
+        Number result = super.stringAsValue(inString);
         if ((result instanceof Integer) || (result == null)) {
-            return result;
+            return (Integer) result;
         }
-        return new Integer(result.intValue());
+        return result.intValue();
     }
 }

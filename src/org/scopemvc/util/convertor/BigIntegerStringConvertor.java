@@ -60,12 +60,12 @@ public class BigIntegerStringConvertor extends NumberStringConvertor {
      *      string
      * @throws IllegalArgumentException can't convert from String.
      */
-    public Object stringAsValue(String inString) throws IllegalArgumentException {
+    public BigInteger stringAsValue(String inString) throws IllegalArgumentException {
         if (isNull(inString)) {
             return null;
         }
         try {
-            Object result = new BigInteger(inString);
+            BigInteger result = new BigInteger(inString);
             return result;
         } catch (NumberFormatException ex) {
             throw new IllegalArgumentException("Illegal value: "
