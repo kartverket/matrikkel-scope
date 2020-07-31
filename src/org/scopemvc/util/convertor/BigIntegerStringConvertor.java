@@ -38,7 +38,9 @@
 package org.scopemvc.util.convertor;
 
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.text.DecimalFormat;
 
 /**
  * String convertor for type <code>BigInteger</code>.
@@ -48,6 +50,11 @@ import java.math.BigInteger;
  * @created 05 September 2002
  */
 public class BigIntegerStringConvertor extends NumberStringConvertor {
+
+    public BigIntegerStringConvertor() {
+        super();
+        ((DecimalFormat) getNumberFormat()).setParseBigDecimal(true);
+    }
 
     /**
      * Returns parsed number as object of type <code>BigInteger</code>. <p>
@@ -64,12 +71,7 @@ public class BigIntegerStringConvertor extends NumberStringConvertor {
         if (isNull(inString)) {
             return null;
         }
-        try {
-            BigInteger result = new BigInteger(inString);
-            return result;
-        } catch (NumberFormatException ex) {
-            throw new IllegalArgumentException("Illegal value: "
-                    + ex.getMessage());
-        }
+        final BigDecimal bigDecimal = (BigDecimal) super.stringAsValue(inString);
+        return bigDecimal.toBigInteger();
     }
 }

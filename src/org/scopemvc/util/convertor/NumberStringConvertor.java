@@ -38,6 +38,7 @@
 package org.scopemvc.util.convertor;
 
 
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
 
@@ -54,6 +55,7 @@ import java.text.ParseException;
 public abstract class NumberStringConvertor extends NullStringConvertor {
 
     private NumberFormat format;
+    private boolean substituteMinusSign = true;
 
 
     /**
@@ -118,11 +120,29 @@ public abstract class NumberStringConvertor extends NullStringConvertor {
         if (isNull(inString)) {
             return null;
         }
+
+        if (substituteMinusSign) {
+            inString = substituteMinus(inString, ((DecimalFormat) format).getNegativePrefix());
+            inString = substituteMinus(inString, ((DecimalFormat) format).getNegativeSuffix());
+        }
+
         try {
             return format.parse(inString);
         } catch (ParseException ex) {
             throw new IllegalArgumentException(ex.getMessage());
         }
+    }
+
+    protected static String substituteMinus(String inString, String token) {
+        if (!token.isEmpty()) {
+            inString = inString.replaceFirst("^\\s*\\u002D", token); //Hyphen-minus
+            inString = inString.replaceFirst("^\\s*\\u2212", token); //Minus (mathematical)
+            inString = inString.replaceFirst("^\\s*\\uFE63", token); //Small Hyphen-minus
+            inString = inString.replaceFirst("^\\s*\\uFF0D", token); //Full-width Hyphen-minus
+            inString = inString.replaceFirst("^\\s*\\u2010", token); //Hyphen
+            inString = inString.replaceFirst("^\\s*\\u2012", token); //Hyphen
+        }
+        return inString;
     }
 
     /**

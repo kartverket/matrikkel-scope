@@ -41,9 +41,12 @@ package test.util.convertor;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.DateFormat;
+import java.text.DecimalFormat;
 import java.text.NumberFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 import java.util.Locale;
 import junit.framework.TestCase;
 import org.scopemvc.util.ScopeConfig;
@@ -105,6 +108,29 @@ public final class TestStringConvertors extends TestCase {
         assertEquals("(null)", c.valueAsString(null));
     }
 
+
+
+    public void testNegativeNumbers() {
+        final List<NumberStringConvertor> numberStringConvertors = Arrays.asList(
+                new IntegerStringConvertor()
+                , new LongStringConvertor()
+                , new DoubleStringConvertor()
+                , new FloatStringConvertor()
+                , new BigIntegerStringConvertor()
+        );
+
+        for (NumberStringConvertor c : numberStringConvertors) {
+            ((DecimalFormat) c.getNumberFormat()).setNegativePrefix("minus ");
+            assertEquals(-2, c.stringAsValue("minus 2").intValue());
+            assertEquals(-2, c.stringAsValue("-2").intValue());
+            assertEquals(-2, c.stringAsValue("\u002d2").intValue());
+            assertEquals(-2, c.stringAsValue("\u22122").intValue());
+            assertEquals(-2, c.stringAsValue("\uFE632").intValue());
+            assertEquals(-2, c.stringAsValue("\uFF0D2").intValue());
+            assertEquals(-2, c.stringAsValue("\u20102").intValue());
+            assertEquals(-2, c.stringAsValue("\u20122").intValue());
+        }
+    }
 
     /**
      * A unit test for JUnit
