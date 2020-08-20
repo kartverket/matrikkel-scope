@@ -65,6 +65,7 @@ import java.util.List;
 import java.util.Locale;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 /**
  * <P>
@@ -527,6 +528,21 @@ public final class TestStringConvertors extends TestCase {
     private void changeStringConvertorsLocale(Locale locale) {
         Locale.setDefault(Locale.Category.FORMAT, locale);
         StringConvertors.updateLocale();
+    }
+
+    public void testStrictParsing() {
+        TestUtils.withScopeProperty("org.scopemvc.util.convertor.NumberStringConvertor.strict", false, () -> {
+            assertThat(new IntegerStringConvertor().stringAsValue("1F")).isEqualTo(1);
+            assertThat(new IntegerStringConvertor().stringAsValue("2_")).isEqualTo(2);
+            assertThat(new IntegerStringConvertor().stringAsValue("3 ")).isEqualTo(3);
+            assertThat(new IntegerStringConvertor().stringAsValue("4")).isEqualTo(4);
+        });
+        TestUtils.withScopeProperty("org.scopemvc.util.convertor.NumberStringConvertor.strict", true, () -> {
+            assertThatCode(() -> new IntegerStringConvertor().stringAsValue("1F")).isInstanceOf(IllegalArgumentException.class);
+            assertThatCode(() -> new IntegerStringConvertor().stringAsValue("2_")).isInstanceOf(IllegalArgumentException.class);
+            assertThatCode(() -> new IntegerStringConvertor().stringAsValue("3 ")).isInstanceOf(IllegalArgumentException.class);
+            assertThatCode(() -> new IntegerStringConvertor().stringAsValue("4")).doesNotThrowAnyException();
+        });
     }
 
 }

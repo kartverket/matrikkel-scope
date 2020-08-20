@@ -44,7 +44,7 @@ import org.scopemvc.util.ScopeConfig;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.text.ParseException;
+import java.text.ParsePosition;
 import java.util.Locale;
 
 /**
@@ -52,6 +52,10 @@ import java.util.Locale;
  *
  * It uses default <code>java.text.Number</code> format. New format can be set.
  * </p>
+ *
+ * Changes:
+ *  - Added parsing support for unicode variants for minus signs (default)
+ *  - Added strict parsing of input string (default)
  *
  * @author <A HREF="mailto:danmi@users.sourceforge.net">Daniel Michalik</A>
  * @version $Revision: 1.6 $ $Date: 2002/09/25 13:53:06 $
@@ -63,6 +67,8 @@ public abstract class NumberStringConvertor extends NullStringConvertor {
     private NumberFormat format;
     private boolean substituteMinusSign = (boolean)
             ScopeConfig.getObject("org.scopemvc.util.convertor.NumberStringConvertor.substituteMinusSign");
+    private boolean strict = (boolean)
+            ScopeConfig.getObject("org.scopemvc.util.convertor.NumberStringConvertor.strict");
 
 
     /**
@@ -138,11 +144,13 @@ public abstract class NumberStringConvertor extends NullStringConvertor {
             inString = substituteMinus(inString, ((DecimalFormat) format).getNegativeSuffix());
         }
 
-        try {
-            return format.parse(inString);
-        } catch (ParseException ex) {
-            throw new IllegalArgumentException(ex.getMessage());
+        ParsePosition parsePosition = new ParsePosition(0);
+        Number result = format.parse(inString, parsePosition);
+        if ((strict && parsePosition.getIndex() != inString.length())
+                || parsePosition.getIndex() == 0) {
+            throw new IllegalArgumentException("Unparseable number: \"" + inString + '"');
         }
+        return result;
     }
 
     protected static String substituteMinus(String inString, String token) {
