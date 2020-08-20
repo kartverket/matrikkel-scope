@@ -38,6 +38,8 @@
 package org.scopemvc.util.convertor;
 
 
+import java.util.Locale;
+
 /**
  * String convertor for type {@link java.lang.Float java.lang.Float}.
  *
@@ -47,6 +49,14 @@ package org.scopemvc.util.convertor;
  * @see NumberStringConvertor
  */
 public class FloatStringConvertor extends NumberStringConvertor {
+
+    public FloatStringConvertor() {
+        this(Locale.getDefault(Locale.Category.FORMAT));
+    }
+
+    public FloatStringConvertor(Locale locale) {
+        super(locale);
+    }
 
     /**
      * Returns parsed number as object of type <code>Float</code>

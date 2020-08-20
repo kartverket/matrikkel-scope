@@ -38,11 +38,14 @@
 package org.scopemvc.util.convertor;
 
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.scopemvc.util.ScopeConfig;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
+import java.util.Locale;
 
 /**
  * Abstract base class for numeric StringConvertors. <p>
@@ -55,6 +58,7 @@ import java.text.ParseException;
  * @created 05 September 2002
  */
 public abstract class NumberStringConvertor extends NullStringConvertor {
+    private static final Log LOG = LogFactory.getLog(NumberStringConvertor.class);
 
     private NumberFormat format;
     private boolean substituteMinusSign = (boolean)
@@ -67,7 +71,12 @@ public abstract class NumberStringConvertor extends NullStringConvertor {
      * @see java.text.NumberFormat#getInstance()
      */
     public NumberStringConvertor() {
-        format = NumberFormat.getInstance();
+        this(Locale.getDefault(Locale.Category.FORMAT));
+    }
+
+    public NumberStringConvertor(Locale locale) {
+        this.format = NumberFormat.getInstance(locale);
+        LOG.debug("Using " + getClass().getName());
     }
 
     /**

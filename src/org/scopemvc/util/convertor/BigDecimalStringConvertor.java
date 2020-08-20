@@ -40,6 +40,7 @@ package org.scopemvc.util.convertor;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 /**
  * String convertor for type <code>BigDecimal</code>.
@@ -50,14 +51,19 @@ import java.text.DecimalFormatSymbols;
  */
 public class BigDecimalStringConvertor extends NullStringConvertor {
 
-    private DecimalFormatSymbols symbols = new DecimalFormatSymbols();
-    private boolean convertDot;
+    private final DecimalFormatSymbols symbols;
+    private final boolean convertDot;
 
 
     /**
      * Constructor for the BigDecimalStringConvertor object
      */
     public BigDecimalStringConvertor() {
+        this(Locale.getDefault(Locale.Category.FORMAT));
+    }
+
+    public BigDecimalStringConvertor(Locale locale) {
+        symbols = new DecimalFormatSymbols(locale);
         convertDot = (symbols.getDecimalSeparator() == '.');
     }
 

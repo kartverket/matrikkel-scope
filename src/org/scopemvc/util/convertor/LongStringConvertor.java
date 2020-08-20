@@ -38,6 +38,8 @@
 package org.scopemvc.util.convertor;
 
 
+import java.util.Locale;
+
 /**
  * String convertor for type java.lang.Long.
  *
@@ -47,6 +49,14 @@ package org.scopemvc.util.convertor;
  * @see NumberStringConvertor
  */
 public class LongStringConvertor extends NumberStringConvertor {
+
+    public LongStringConvertor() {
+        this(Locale.getDefault(Locale.Category.FORMAT));
+    }
+
+    public LongStringConvertor(Locale locale) {
+        super(locale);
+    }
 
     /**
      * Returns parsed number as object of type <code>Long</code>

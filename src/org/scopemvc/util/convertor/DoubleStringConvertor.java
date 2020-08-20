@@ -38,6 +38,8 @@
 package org.scopemvc.util.convertor;
 
 
+import java.util.Locale;
+
 /**
  * String convertor for type java.lang.Double.
  *
@@ -47,6 +49,14 @@ package org.scopemvc.util.convertor;
  * @see NumberStringConvertor
  */
 public class DoubleStringConvertor extends NumberStringConvertor {
+
+    public DoubleStringConvertor() {
+        this(Locale.getDefault(Locale.Category.FORMAT));
+    }
+
+    public DoubleStringConvertor(Locale locale) {
+        super(locale);
+    }
 
     /**
      * Returns parsed number as object of type <code>Double</code>

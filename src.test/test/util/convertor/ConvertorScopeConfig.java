@@ -57,7 +57,9 @@ public class ConvertorScopeConfig extends ListResourceBundle {
             {"org.scopemvc.util.convertor.DateStringConvertor.parser.1", new SimpleDateFormat("MM/dd/yyyy")},
             {"org.scopemvc.util.convertor.DateStringConvertor.parser.2", new SimpleDateFormat("MM.dd.yyyy")},
             {"org.scopemvc.util.convertor.DateStringConvertor.parser.3", new SimpleDateFormat("MMddyyyy")},
-            };
+
+            {"StringConvertors", StringConvertorsConfig.class.getName()},
+    };
 
 
     /**

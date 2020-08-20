@@ -38,6 +38,21 @@
 package test.util.convertor;
 
 
+import junit.framework.TestCase;
+import org.scopemvc.util.convertor.BigDecimalStringConvertor;
+import org.scopemvc.util.convertor.BigIntegerStringConvertor;
+import org.scopemvc.util.convertor.DateTimeStringConvertor;
+import org.scopemvc.util.convertor.DoubleStringConvertor;
+import org.scopemvc.util.convertor.FloatStringConvertor;
+import org.scopemvc.util.convertor.IntegerStringConvertor;
+import org.scopemvc.util.convertor.LongStringConvertor;
+import org.scopemvc.util.convertor.NumberStringConvertor;
+import org.scopemvc.util.convertor.StringConvertor;
+import org.scopemvc.util.convertor.StringConvertors;
+import org.scopemvc.util.convertor.StringStringConvertor;
+import org.scopemvc.util.convertor.TimeStringConvertor;
+import test.TestUtils;
+
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.DateFormat;
@@ -48,9 +63,8 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
-import junit.framework.TestCase;
-import org.scopemvc.util.ScopeConfig;
-import org.scopemvc.util.convertor.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * <P>
@@ -475,28 +489,44 @@ public final class TestStringConvertors extends TestCase {
      * A unit test for JUnit
      */
     public void testStringConvertorFactory() {
-        try {
-            ScopeConfig.setPropertiesName("test.util.convertor.ConvertorScopeConfig");
-
+        TestUtils.withScopeConfig(test.util.convertor.ConvertorScopeConfig.class, () -> {
             assertNull(StringConvertors.forClass(java.util.Enumeration.class));
-            assertTrue(StringConvertors.forClass(java.lang.String.class) instanceof StringStringConvertor);
-            assertTrue(StringConvertors.forClass(java.lang.Integer.class) instanceof IntegerStringConvertor);
-            assertTrue(StringConvertors.forClass(java.lang.Integer.TYPE) instanceof IntegerStringConvertor);
             assertTrue(StringConvertors.forClass(java.lang.Long.class) instanceof LongStringConvertor);
             assertTrue(StringConvertors.forClass(java.lang.Long.TYPE) instanceof LongStringConvertor);
-            assertTrue(StringConvertors.forClass(java.lang.Double.class) instanceof DoubleStringConvertor);
-            assertTrue(StringConvertors.forClass(java.lang.Double.TYPE) instanceof DoubleStringConvertor);
-            assertTrue(StringConvertors.forClass(java.lang.Float.class) instanceof FloatStringConvertor);
-            assertTrue(StringConvertors.forClass(java.lang.Float.TYPE) instanceof FloatStringConvertor);
-            assertTrue(StringConvertors.forClass(java.util.Date.class) instanceof DateStringConvertor);
-            assertTrue(StringConvertors.forClass(org.scopemvc.util.Time.class) instanceof TimeStringConvertor);
-            assertTrue(StringConvertors.forClass(org.scopemvc.util.DateTime.class) instanceof DateTimeStringConvertor);
-            assertTrue(StringConvertors.forClass(java.math.BigInteger.class) instanceof BigIntegerStringConvertor);
-            assertTrue(StringConvertors.forClass(java.math.BigDecimal.class) instanceof BigDecimalStringConvertor);
+        });
+    }
+
+    public void testCustomStringConvertorsStrategy() {
+        TestUtils.withScopeConfig(test.util.convertor.ConvertorScopeConfig.class, () -> {
+            assertThat(StringConvertors.getInstance()).isInstanceOf(StringConvertorsConfig.class);
+        });
+    }
+
+    public void testReloadDefaultConvertors() {
+        final Locale previousDefault = Locale.getDefault(Locale.Category.FORMAT);
+        try {
+            final StringConvertor firstStringConvertor = StringConvertors.forClass(long.class);
+
+            changeStringConvertorsLocale(Locale.CANADA);
+            assertThat(StringConvertors.forClass(long.class))
+                    .isSameAs(StringConvertors.forClass(long.class))
+                    .isNotSameAs(firstStringConvertor);
+
+            changeStringConvertorsLocale(Locale.CANADA);
+            assertThat(StringConvertors.forClass(long.class).valueAsString(1_000L)).isEqualTo("1,000");
+
+            changeStringConvertorsLocale(new Locale("no", "NO"));
+            char noneBreakingSpace = 160; //&nbsp;\u00A0
+            assertThat(StringConvertors.forClass(long.class).valueAsString(1_000L)).isEqualTo("1" + noneBreakingSpace + "000");
 
         } finally {
-            ScopeConfig.setPropertiesName(org.scopemvc.util.DefaultScopeConfig.class.getName());
+            changeStringConvertorsLocale(previousDefault);
         }
+    }
+
+    private void changeStringConvertorsLocale(Locale locale) {
+        Locale.setDefault(Locale.Category.FORMAT, locale);
+        StringConvertors.updateLocale();
     }
 
 }

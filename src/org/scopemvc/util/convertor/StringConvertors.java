@@ -40,6 +40,8 @@ package org.scopemvc.util.convertor;
 
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Locale;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.util.ScopeConfig;
@@ -50,6 +52,10 @@ import org.scopemvc.util.ScopeConfig;
  * convertors. For that, put the class name of your factory in the
  * StringConvertors property in the Scope configuration.
  *
+ * Changes:
+ *  - Added {@link #updateLocale()} for ability to change locale based format for registered StringConvertor types.
+ *  - Added {@link #initConvertors()} to use in subclasses for custom strategies.
+ *
  * @author <A HREF="mailto:danmi@users.sourceforge.net">Daniel Michalik</A>
  * @version $Revision: 1.8 $ $Date: 2002/10/31 12:15:53 $
  * @created 15 July 2002
@@ -59,34 +65,56 @@ public class StringConvertors {
     private static final Log LOG = LogFactory.getLog(StringConvertors.class);
     private static final String CONVERTORS_PROPERTY = "StringConvertors";
     private static final String CONVERTOR_PROPERTY_PREFIX = "StringConvertor.";
-    private static StringConvertors instance;
+    private static volatile StringConvertors instance;
 
-    private HashMap defaultConvertors;
+    private final HashMap<String, StringConvertor> defaultConvertors = new HashMap<>();
 
     /**
      * Load convertors from ScopeConfig.
      */
-    static {
-        try {
-            Class scClass = Class.forName(ScopeConfig.getString(CONVERTORS_PROPERTY));
-            instance = (StringConvertors) scClass.newInstance();
-        } catch (Exception ex) {
-            LOG.error("Could not create the StringConvertors factory of class "
-                    + ScopeConfig.getString(CONVERTORS_PROPERTY), ex);
-            instance = new StringConvertors();
+    public static StringConvertors getInstance() {
+        if (instance == null) {
+            synchronized (StringConvertors.class) {
+                try {
+                    Class<?> scClass = Class.forName(ScopeConfig.getString(CONVERTORS_PROPERTY));
+                    instance = (StringConvertors) scClass.getDeclaredConstructor().newInstance();
+                } catch (Exception ex) {
+                    LOG.error("Could not create the StringConvertors factory of class "
+                            + ScopeConfig.getString(CONVERTORS_PROPERTY), ex);
+                    instance = new StringConvertors();
+                }
+            }
         }
+        return instance;
     }
+
+    /**
+     * Updates convertors with default format locale.
+     * <p>
+     *    Before calling this method, make sure to set default locale: <br><br>
+     *    {@code Locale.setDefault(Locale.Category.FORMAT, locale);}
+     */
+    public static void updateLocale() {
+        getInstance().initConvertors();
+    }
+
 
     /**
      * Load convertors from ScopeConfig.
      */
     public StringConvertors() {
         // this constructor needs to be public for reflection
-        defaultConvertors = new HashMap();
-        for (Iterator iter = ScopeConfig.getKeysMatching(CONVERTOR_PROPERTY_PREFIX);
+        initConvertors();
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("StringConvertors.<clinit>: " + defaultConvertors.size());
+        }
+    }
+
+    protected void initConvertors() {
+        for (Iterator<?> iter = ScopeConfig.getKeysMatching(CONVERTOR_PROPERTY_PREFIX);
                 iter.hasNext(); ) {
             String key = (String) iter.next();
-            Class convertorClass = ScopeConfig.getClass(key);
+            Class<?> convertorClass = ScopeConfig.getClass(key);
             if (convertorClass == null) {
                 LOG.error("Null StringConvertor class in config for: " + key);
                 continue;
@@ -94,13 +122,10 @@ public class StringConvertors {
             try {
                 defaultConvertors.put(key.substring(
                         CONVERTOR_PROPERTY_PREFIX.length()),
-                        convertorClass.newInstance());
+                        (StringConvertor) convertorClass.getDeclaredConstructor().newInstance());
             } catch (Exception e) {
                 LOG.error("Failed to create StringConvertor for: " + key, e);
             }
-        }
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("StringConvertor.<clinit>: " + defaultConvertors.size());
         }
     }
 
@@ -113,8 +138,8 @@ public class StringConvertors {
      * @param inValueClass Description of the Parameter
      * @return Description of the Return Value
      */
-    public static StringConvertor forClass(Class inValueClass) {
-        return instance.findConvertor(inValueClass);
+    public static StringConvertor forClass(Class<?> inValueClass) {
+        return getInstance().findConvertor(inValueClass);
     }
 
     /**
@@ -126,8 +151,8 @@ public class StringConvertors {
      * @param inValueClass Description of the Parameter
      * @return Description of the Return Value
      */
-    protected StringConvertor findConvertor(Class inValueClass) {
-        return (StringConvertor) defaultConvertors.get(inValueClass.getName());
+    protected StringConvertor findConvertor(Class<?> inValueClass) {
+        return defaultConvertors.get(inValueClass.getName());
     }
 
     /**
@@ -136,7 +161,7 @@ public class StringConvertors {
      * @param inValueClass The value class with the convertor to register
      * @param inConvertor The StringConvertor instance for the value class.
      */
-    protected void registerConvertor(Class inValueClass, StringConvertor inConvertor) {
-        defaultConvertors.put(inValueClass.toString(), inConvertor);
+    protected void registerConvertor(Class<?> inValueClass, StringConvertor inConvertor) {
+        defaultConvertors.put(inValueClass.getName(), inConvertor);
     }
 }

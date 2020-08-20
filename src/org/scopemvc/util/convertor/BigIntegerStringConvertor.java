@@ -41,6 +41,7 @@ package org.scopemvc.util.convertor;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.DecimalFormat;
+import java.util.Locale;
 
 /**
  * String convertor for type <code>BigInteger</code>.
@@ -52,7 +53,11 @@ import java.text.DecimalFormat;
 public class BigIntegerStringConvertor extends NumberStringConvertor {
 
     public BigIntegerStringConvertor() {
-        super();
+        this(Locale.getDefault(Locale.Category.FORMAT));
+    }
+
+    public BigIntegerStringConvertor(Locale locale) {
+        super(locale);
         ((DecimalFormat) getNumberFormat()).setParseBigDecimal(true);
     }
 

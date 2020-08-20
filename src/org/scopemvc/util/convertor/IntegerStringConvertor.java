@@ -37,6 +37,8 @@
  */
 package org.scopemvc.util.convertor;
 
+import java.util.Locale;
+
 /**
  * String convertor for type {@link java.lang.Integer java.lang.Integer}.
  *
@@ -46,6 +48,14 @@ package org.scopemvc.util.convertor;
  * @see NumberStringConvertor
  */
 public class IntegerStringConvertor extends NumberStringConvertor {
+
+    public IntegerStringConvertor() {
+        this(Locale.getDefault(Locale.Category.FORMAT));
+    }
+
+    public IntegerStringConvertor(Locale locale) {
+        super(locale);
+    }
 
     /**
      * Returns parsed number as object of type <code>Integer</code>
