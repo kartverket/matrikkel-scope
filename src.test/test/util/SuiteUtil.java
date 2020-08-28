@@ -70,7 +70,6 @@ public final class SuiteUtil extends TestCase {
      */
     public static Test suite() {
         TestSuite suite = new TestSuite();
-        suite.addTest(new TestSuite(TestWeakSet.class));
         suite.addTest(new TestSuite(TestScopeConfig.class));
         suite.addTest(new TestSuite(TestUIStrings.class));
         suite.addTest(new TestSuite(TestLocalizedException.class));
