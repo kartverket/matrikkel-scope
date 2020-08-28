@@ -56,7 +56,7 @@ public class CustomScopeConfig extends ListResourceBundle {
             {"classTest.1", "java.lang.Integer"},
             {"classTest.2", java.lang.Integer.class},
             {"integerTest.1", "99"},
-            {"integerTest.2", new Integer(99)},
+            {"integerTest.2", 99},
             };
 
 

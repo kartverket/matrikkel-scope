@@ -88,7 +88,7 @@ public final class TestBeansPropertyManager2 extends TestCase {
      * @throws Exception Any abnormal exception
      */
     public void testSet1() throws Exception {
-        manager.set(m, Selector.fromString("intProperty"), new Integer(68));
+        manager.set(m, Selector.fromString("intProperty"), 68);
         assertTrue(68 == m.getIntProperty());
     }
 

@@ -78,11 +78,11 @@ public final class TestWeakSet extends TestCase {
         Set set = new WeakSet();
         Integer[] refHolder = new Integer[20];
         for (int i = 0; i < 20; i++) {
-            refHolder[i] = new Integer(i);
+            refHolder[i] = i;
             set.add(refHolder[i]);
         }
         for (int i = 0; i < 20; i++) {
-            assertTrue("Entry not found: " + i, set.contains(new Integer(i)));
+            assertTrue("Entry not found: " + i, set.contains(i));
         }
     }
 
@@ -93,14 +93,14 @@ public final class TestWeakSet extends TestCase {
         Set set = new WeakSet();
         Integer[] refHolder = new Integer[20];
         for (int i = 0; i < 20; i++) {
-            refHolder[i] = new Integer(i);
+            refHolder[i] = i;
             set.add(refHolder[i]);
         }
 
         assertTrue("size not correct", set.size() == 20);
 
         for (int i = 0; i < 20; i++) {
-            assertTrue("Entry not found" + i, set.remove(new Integer(i)));
+            assertTrue("Entry not found" + i, set.remove(i));
         }
         assertTrue("remove failed", set.isEmpty());
     }
@@ -112,7 +112,7 @@ public final class TestWeakSet extends TestCase {
         Set set = new WeakSet();
         Integer[] refHolder = new Integer[20];
         for (int i = 0; i < 20; i++) {
-            refHolder[i] = new Integer(i);
+            refHolder[i] = i;
             set.add(refHolder[i]);
         }
         set.clear();
@@ -128,12 +128,12 @@ public final class TestWeakSet extends TestCase {
 
         Integer[] refHolder = new Integer[20];
         for (int i = 0; i < 10; i++) {
-            refHolder[i] = new Integer(i);
+            refHolder[i] = i;
             set.add(refHolder[i]);
         }
 
         for (int i = 10; i < 20; i++) {
-            Integer integer = new Integer(i);
+            Integer integer = i;
             set.add(integer);
             list.add(integer);
         }
@@ -157,7 +157,7 @@ public final class TestWeakSet extends TestCase {
         Set set = new WeakSet();
         List list = new LinkedList();
         for (int i = 0; i < 20; i++) {
-            Integer integer = new Integer(i);
+            Integer integer = i;
             set.add(integer);
             list.add(integer);
         }

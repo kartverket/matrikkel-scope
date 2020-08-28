@@ -112,7 +112,7 @@ public class TestSModelAction extends TestCase {
         controller.setModel(model);
 
         // should be enabled if the bound value is an integer less than 1
-        action.setValueTest(new Integer(1));
+        action.setValueTest(1);
 
         model.setIntProperty(0);
         SuiteViewSwing.waitForAWT();

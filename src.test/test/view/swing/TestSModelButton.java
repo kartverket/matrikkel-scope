@@ -116,7 +116,7 @@ public class TestSModelButton extends TestCase {
         controller.setModel(model);
 
         // should be enabled if the bound value is an integer less than 1
-        button.setValueTest(new Integer(1));
+        button.setValueTest(1);
 
         model.setIntProperty(0);
         SuiteViewSwing.waitForAWT();

@@ -108,7 +108,7 @@ public final class TestStringConvertors extends TestCase {
         assertEquals("", c.valueAsString(null));
         assertEquals("abc", c.valueAsString("abc"));
         try {
-            c.valueAsString(new Integer(1));
+            c.valueAsString(1);
             fail("StringStringConvertor took an Integer");
         } catch (Exception e) {
             // expected
@@ -155,7 +155,7 @@ public final class TestStringConvertors extends TestCase {
         IntegerStringConvertor c = new IntegerStringConvertor();
 
         assertEquals("", c.valueAsString(null));
-        assertEquals("1", c.valueAsString(new Integer(1)));
+        assertEquals("1", c.valueAsString(1));
         try {
             c.valueAsString("");
             fail("IntegerStringConvertor took a String");
@@ -165,8 +165,7 @@ public final class TestStringConvertors extends TestCase {
 
         assertNull(c.stringAsValue(""));
         assertNull(c.stringAsValue(null));
-        assertTrue(c.stringAsValue("1") instanceof Integer);
-        assertEquals(new Integer(1), c.stringAsValue("1"));
+        assertEquals(Integer.valueOf(1), c.stringAsValue("1"));
 
         try {
             c.stringAsValue("(null)");
@@ -195,7 +194,7 @@ public final class TestStringConvertors extends TestCase {
         LongStringConvertor c = new LongStringConvertor();
 
         assertEquals("", c.valueAsString(null));
-        assertEquals("1", c.valueAsString(new Long(1)));
+        assertEquals("1", c.valueAsString(1L));
         try {
             c.valueAsString("");
             fail("LongStringConvertor took a String");
@@ -205,8 +204,7 @@ public final class TestStringConvertors extends TestCase {
 
         assertNull(c.stringAsValue(""));
         assertNull(c.stringAsValue(null));
-        assertTrue(c.stringAsValue("1") instanceof Long);
-        assertEquals(new Long(1), c.stringAsValue("1"));
+        assertEquals(Long.valueOf(1), c.stringAsValue("1"));
 
         try {
             c.stringAsValue("(null)");
@@ -235,7 +233,7 @@ public final class TestStringConvertors extends TestCase {
         c.setNumberFormat(NumberFormat.getInstance(Locale.UK));
 
         assertEquals("", c.valueAsString(null));
-        assertEquals("1.1", c.valueAsString(new Double(1.1)));
+        assertEquals("1.1", c.valueAsString(1.1d));
         try {
             c.valueAsString("");
             fail("DoubleStringConvertor took a String");
@@ -245,8 +243,7 @@ public final class TestStringConvertors extends TestCase {
 
         assertNull(c.stringAsValue(""));
         assertNull(c.stringAsValue(null));
-        assertTrue(c.stringAsValue("1.1") instanceof Double);
-        assertEquals(new Double(1.1), c.stringAsValue("1.1"));
+        assertEquals(1.1d, c.stringAsValue("1.1"));
 
         try {
             c.stringAsValue("(null)");
@@ -275,7 +272,7 @@ public final class TestStringConvertors extends TestCase {
         c.setNumberFormat(NumberFormat.getInstance(Locale.UK));
 
         assertEquals("", c.valueAsString(null));
-        assertEquals("1.1", c.valueAsString(new Float(1.1)));
+        assertEquals("1.1", c.valueAsString(1.1f));
         try {
             c.valueAsString("");
             fail("FloatStringConvertor took a String");
@@ -285,8 +282,7 @@ public final class TestStringConvertors extends TestCase {
 
         assertNull(c.stringAsValue(""));
         assertNull(c.stringAsValue(null));
-        assertTrue(c.stringAsValue("1.1") instanceof Float);
-        assertEquals(new Float(1.1), c.stringAsValue("1.1"));
+        assertEquals(1.1f, c.stringAsValue("1.1"));
 
         try {
             c.stringAsValue("(null)");
@@ -423,7 +419,6 @@ public final class TestStringConvertors extends TestCase {
 
         assertNull(c.stringAsValue(""));
         assertNull(c.stringAsValue(null));
-        assertTrue(c.stringAsValue("1") instanceof BigInteger);
         assertEquals(BigInteger.valueOf(1L), c.stringAsValue("1"));
 
         try {
@@ -453,7 +448,7 @@ public final class TestStringConvertors extends TestCase {
         BigDecimalStringConvertor c = new BigDecimalStringConvertor();
 
         assertEquals("", c.valueAsString(null));
-        assertTrue(c.valueAsString(new BigDecimal(1.1)).startsWith("1.1000"));
+        assertTrue(c.valueAsString(new BigDecimal(1.1d)).startsWith("1.1000"));
         // rounding errors!
         try {
             c.valueAsString("");

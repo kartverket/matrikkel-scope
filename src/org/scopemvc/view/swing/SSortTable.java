@@ -358,7 +358,7 @@ public class SSortTable extends STable {
             if (inColumn < 0) {
                 columnStates.clear();
             }
-            Integer column = new Integer(inColumn);
+            Integer column = inColumn;
             State state = (State) columnStates.get(column);
             if (state == null) {
                 state = noneState;
@@ -385,7 +385,7 @@ public class SSortTable extends STable {
          * @return the state of a column
          */
         private State getState(int inColumn) {
-            State state = (State) columnStates.get(new Integer(inColumn));
+            State state = (State) columnStates.get(inColumn);
             if (state == null) {
                 return noneState;
             } else {

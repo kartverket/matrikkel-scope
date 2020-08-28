@@ -229,13 +229,13 @@ public final class TestListModel extends TestCase implements ModelChangeListener
      */
     public void testListModelSelectors() throws Exception {
         for (int i = 0; i < listModel.size(); ++i) {
-            assertEquals(listModel.get(i), new Integer(i));
+            assertEquals(listModel.get(i), i);
         }
         for (int i = 0; i < listModel.size(); ++i) {
-            listModel.set(i, new Integer(i + 100));
+            listModel.set(i, i + 100);
         }
         for (int i = 0; i < listModel.size(); ++i) {
-            assertEquals(listModel.get(i), new Integer(i + 100));
+            assertEquals(listModel.get(i), i + 100);
         }
         listModel.setList(list);
         assertEquals(listModel.getList(), list);
@@ -248,12 +248,12 @@ public final class TestListModel extends TestCase implements ModelChangeListener
      * @throws Exception Any abnormal exception
      */
     public void testListModelSetList() throws Exception {
-        List o = new ArrayList(1);
-        o.add(new Integer(99));
+        List<Integer> o = new ArrayList(1);
+        o.add(99);
 
         listModel.setList(o);
         assertTrue(listModel.getSize() == 1);
-        assertEquals(listModel.get(0), new Integer(99));
+        assertEquals(listModel.get(0), 99);
     }
 
 
@@ -425,7 +425,7 @@ public final class TestListModel extends TestCase implements ModelChangeListener
     protected void setUp() throws Exception {
         listModel = new ListModel(new LinkedList());
         for (int i = 0; i < 10; ++i) {
-            listModel.add(new Integer(i));
+            listModel.add(i);
         }
 
         model = new BasicTestModel("model");

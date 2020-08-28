@@ -116,7 +116,7 @@ public final class TestBeansActionManager extends TestCase {
             // expected
         }
 
-        manager.doAction(m, ma, new Object[]{new Integer(99)});
+        manager.doAction(m, ma, new Object[]{99});
         assertTrue(m.action2 == 99);
     }
 
@@ -128,7 +128,7 @@ public final class TestBeansActionManager extends TestCase {
      */
     public void testReturnAction() throws Exception {
         ModelAction ma = new ModelAction("action3", Long.TYPE);
-        Long l = new Long(999);
+        Long l = 999L;
         assertEquals(l, manager.doAction(m, ma, new Object[]{l}));
     }
 

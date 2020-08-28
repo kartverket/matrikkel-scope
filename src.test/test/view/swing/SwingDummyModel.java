@@ -70,7 +70,7 @@ public final class SwingDummyModel extends BasicModel {
     private String stringProperty = "sp";
     private String readOnlyStringProperty = "rosp";
     private int intProperty = 1;
-    private Integer intProperty2 = new Integer(1);
+    private Integer intProperty2 = 1;
     private int invalidIntProperty = 0;
     private boolean booleanProperty = false;
     private Boolean booleanProperty1 = Boolean.FALSE;

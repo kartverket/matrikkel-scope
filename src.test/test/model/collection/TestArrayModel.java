@@ -334,13 +334,13 @@ public final class TestArrayModel extends TestCase implements ModelChangeListene
      */
     public void testArrayModelSelectors() throws Exception {
         for (int i = 0; i < arrayModel.size(); ++i) {
-            assertEquals(arrayModel.get(i), new Integer(i));
+            assertEquals(arrayModel.get(i), i);
         }
         for (int i = 0; i < arrayModel.size(); ++i) {
-            arrayModel.set(i, new Integer(i + 100));
+            arrayModel.set(i, i + 100);
         }
         for (int i = 0; i < arrayModel.size(); ++i) {
-            assertEquals(arrayModel.get(i), new Integer(i + 100));
+            assertEquals(arrayModel.get(i), i + 100);
         }
         arrayModel.setArray(array);
         assertSame(arrayModel.getArray(), array);
@@ -354,11 +354,11 @@ public final class TestArrayModel extends TestCase implements ModelChangeListene
      */
     public void testArrayModelSetArray() throws Exception {
         Integer[] o = new Integer[]{
-                new Integer(99),
+                99,
                 };
         arrayModel.setArray(o);
         assertTrue(arrayModel.getSize() == 1);
-        assertEquals(arrayModel.get(0), new Integer(99));
+        assertEquals(arrayModel.get(0), 99);
     }
 
 
@@ -399,7 +399,7 @@ public final class TestArrayModel extends TestCase implements ModelChangeListene
     protected void setUp() throws Exception {
         arrayModel = new ArrayModel<>(10);
         for (int i = 0; i < arrayModel.getSize(); ++i) {
-            arrayModel.set(i, new Integer(i));
+            arrayModel.set(i, i);
         }
 
         model = new BasicTestModel("model");

@@ -162,7 +162,7 @@ public class TestSAbstractListModel extends TestCase {
      * @throws Exception Any abnormal exception
      */
     public void testBadBind() throws Exception {
-        listModel.setBoundModel(new Integer(1));
+        listModel.setBoundModel(1);
         SuiteViewSwing.waitForAWT();
 
         try {

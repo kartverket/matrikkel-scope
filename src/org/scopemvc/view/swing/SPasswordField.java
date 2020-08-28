@@ -149,9 +149,9 @@ public class SPasswordField extends JPasswordField
                     // use only the hashCode of the password in order to not compromise security
                     Object value = getViewValue();
                     if (value != null) {
-                        return new Integer(value.hashCode());
+                        return value.hashCode();
                     }
-                    return new Integer(0);
+                    return 0;
                 } catch (Exception ignore) {
                     return null;
                 }

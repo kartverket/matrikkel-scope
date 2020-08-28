@@ -106,8 +106,8 @@ public final class TestScopeConfig extends TestCase {
      * A unit test for JUnit
      */
     public void testScopeConfigInteger() {
-        assertEquals(new Integer(99), ScopeConfig.getInteger("integerTest.1"));
-        assertEquals(new Integer(99), ScopeConfig.getInteger("integerTest.2"));
+        assertEquals(Integer.valueOf(99), ScopeConfig.getInteger("integerTest.1"));
+        assertEquals(Integer.valueOf(99), ScopeConfig.getInteger("integerTest.2"));
     }
 
 

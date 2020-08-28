@@ -255,7 +255,7 @@ final class Accessor {
                     Debug.assertTrue(selector.getNext() instanceof IntIndexSelector, "not IntIndexSelector: " + selector.getNext());
                 }
                 Method getter = ((IndexedPropertyDescriptor) descriptor).getIndexedReadMethod();
-                params[0] = new Integer(((IntIndexSelector) selector.getNext()).getIndex());
+                params[0] = ((IntIndexSelector) selector.getNext()).getIndex();
                 if (getter == null) {
                     throw new IllegalArgumentException("No indexed getter for selector: " + Selector.asString(selector));
                 }

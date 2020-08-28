@@ -151,8 +151,8 @@ public final class TestSetModel extends TestCase implements ModelChangeListener 
      * @throws Exception Any abnormal exception
      */
     public void testSetModelSetSet() throws Exception {
-        Set o = new HashSet();
-        o.add(new Integer(99));
+        Set<Integer> o = new HashSet();
+        o.add(99);
         setModel.addModelChangeListener(this);
         modelChanged = false;
 
@@ -287,7 +287,7 @@ public final class TestSetModel extends TestCase implements ModelChangeListener 
     protected void setUp() throws Exception {
         setModel = new SetModel();
         for (int i = 0; i < 10; ++i) {
-            setModel.add(new Integer(i));
+            setModel.add(i);
         }
 
         model = new BasicTestModel("model");

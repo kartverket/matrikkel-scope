@@ -150,7 +150,7 @@ public class SSlider extends JSlider
             return null;
         }
 
-        return new Integer(getModel().getValue());
+        return getModel().getValue();
     }
 
 

@@ -409,7 +409,7 @@ public class BeansPropertyManager extends PropertyManager {
                 if (Debug.ON) {
                     Debug.assertTrue(accessor.selector.getNext() instanceof IntIndexSelector, "not IntIndexSelector: " + accessor.selector);
                 }
-                Integer index = new Integer(((IntIndexSelector) accessor.selector.getNext()).getIndex());
+                Integer index = ((IntIndexSelector) accessor.selector.getNext()).getIndex();
                 Object[] params = {index, inValue};
                 setter.invoke(accessor.model, params);
 

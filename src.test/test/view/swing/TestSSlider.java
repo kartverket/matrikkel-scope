@@ -156,12 +156,12 @@ public final class TestSSlider extends TestCase {
         assertTrue(slider.isEnabled());
         assertTrue(model.getIntProperty2().intValue() == slider.getValue());
 
-        model.setIntProperty2(new Integer(50));
+        model.setIntProperty2(50);
         SuiteViewSwing.waitForAWT();
         assertTrue(slider.isEnabled());
         assertTrue(model.getIntProperty2().intValue() == slider.getValue());
 
-        model.setIntProperty2(new Integer(105));
+        model.setIntProperty2(105);
         SuiteViewSwing.waitForAWT();
         assertTrue(slider.isEnabled());
         assertTrue(model.getIntProperty2().intValue() == slider.getValue());

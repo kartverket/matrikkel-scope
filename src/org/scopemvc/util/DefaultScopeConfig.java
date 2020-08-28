@@ -58,7 +58,7 @@ public class DefaultScopeConfig extends ListResourceBundle {
     static final Object[][] CONTENTS = {
     // **** Swing stuff ****
             {ScopeConfig.SWINGCONTEXT_WINDOW_ICON_PROPERTY, "/org/scopemvc/images/window_icon.gif"},
-            {ScopeConfig.SWINGCONTEXT_PROGRESS_START_DELAY_PROPERTY, new Integer(500)},
+            {ScopeConfig.SWINGCONTEXT_PROGRESS_START_DELAY_PROPERTY, 500},
             {ScopeConfig.STEXTFIELD_CONTROL_SETTINGS_PROPERTY, "onEnter,onLostFocus"},
             {ScopeConfig.SPASSWORDFIELD_CONTROL_SETTINGS_PROPERTY, "onEnter,onLostFocus"},
             {ScopeConfig.STEXTAREA_CONTROL_SETTINGS_PROPERTY, "onEnter"},
@@ -124,7 +124,7 @@ public class DefaultScopeConfig extends ListResourceBundle {
     // or "0" during development
             {"org.scopemvc.view.servlet.xml.AbstractXSLPage.debugXMLDirectory", ""},
     // or "/tmp/xml/" during development to see XML files before XSL processing
-            {"org.scopemvc.controller.servlet.ScopeServlet.maxControllerPoolSize", new Integer(10)},
+            {"org.scopemvc.controller.servlet.ScopeServlet.maxControllerPoolSize", 10},
     // **** Model stuff ****
 
             {"PropertyManager", "org.scopemvc.model.beans.BeansPropertyManager"},
