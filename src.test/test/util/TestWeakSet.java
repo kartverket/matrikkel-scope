@@ -119,6 +119,12 @@ public final class TestWeakSet extends TestCase {
         assertTrue("set not cleared", set.isEmpty());
     }
 
+
+    //Integer objects are cached internally by java.
+    //Higher absolute int values have to be chosen in order to avoid references to Integers held by the cache.
+    //See Integer.IntegerCache
+    static final int MAX_INT_START_VALUE = -129;
+
     /**
      * A unit test for JUnit
      */
@@ -128,12 +134,12 @@ public final class TestWeakSet extends TestCase {
 
         Integer[] refHolder = new Integer[20];
         for (int i = 0; i < 10; i++) {
-            refHolder[i] = i;
+            refHolder[i] = MAX_INT_START_VALUE - i;
             set.add(refHolder[i]);
         }
 
         for (int i = 10; i < 20; i++) {
-            Integer integer = i;
+            Integer integer = MAX_INT_START_VALUE - i;
             set.add(integer);
             list.add(integer);
         }
@@ -157,7 +163,7 @@ public final class TestWeakSet extends TestCase {
         Set set = new WeakSet();
         List list = new LinkedList();
         for (int i = 0; i < 20; i++) {
-            Integer integer = i;
+            Integer integer = MAX_INT_START_VALUE - i;
             set.add(integer);
             list.add(integer);
         }
