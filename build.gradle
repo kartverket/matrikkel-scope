@@ -4,8 +4,15 @@ plugins {
   id 'maven-publish'
 }
 
-group = 'org.scopemvc'
+group = 'no.kartverket.matrikkelscope'
+
 version = projectVersion + System.getProperty('suffix', '-SNAPSHOT')
+
+ext.with {
+    // Versjonen angis i publish-jobb med GitHub actions
+    projectVersion = properties.get('integration_version', '1.0.0')
+}
+project.version = "${projectVersion}"
 
 
 java {
@@ -32,9 +39,7 @@ sourceSets {
 }
 
 repositories {
-  maven {
-    name = 'public'; url = MAVEN_REPO
-  }
+    mavenCentral()
 }
 
 dependencies {
@@ -63,6 +68,16 @@ task sourceJar(type: Jar) {
 }
 
 publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/kartverket/matrikkel-scope")
+            credentials {
+                username = project.findProperty("USERNAME") ?: System.getenv("USERNAME")
+                password = project.findProperty("TOKEN") ?: System.getenv("TOKEN")
+            }
+        }
+    }
   publications {
     mavenJava(MavenPublication) {
       from components.java
@@ -72,22 +87,22 @@ publishing {
 }
 
 
-manifest {
-    attributes([
-            'Specification-Title'   : project.name,
-            'Specification-Vendor'  : 'Statens kartverk',
-            'Specification-Version' : (gradle.startParameter.projectProperties.get('projectVersion') ?: projectVersion).replace('-SNAPSHOT', ''),
-
-            //misc build info
-            'Build-By'              : System.getProperty('user.name'),
-            'Build-Machine'         : java.net.InetAddress.localHost.hostName,
-            'Build-Repo'            : MAVEN_REPO,
-            'Build-Gradle'          : gradle.gradleVersion,
-            'Build-JDK'             : System.getProperty('java.version'),
-
-            'Implementation-Title'  : "${project.name} bygget for ${(version == null || version.contains('-SNAPSHOT') || version.contains('-build')) ? 'TEST' : 'Produksjon'}",
-            'Implementation-Vendor' : 'Statens kartverk',
-            'Implementation-Version': project.version,
-    ])
-}
+//manifest {
+//    attributes([
+//            'Specification-Title'   : project.name,
+//            'Specification-Vendor'  : 'Statens kartverk',
+//            'Specification-Version' : (gradle.startParameter.projectProperties.get('projectVersion') ?: projectVersion).replace('-SNAPSHOT', ''),
+//
+//            //misc build info
+//            'Build-By'              : System.getProperty('user.name'),
+//            'Build-Machine'         : java.net.InetAddress.localHost.hostName,
+//            'Build-Repo'            : MAVEN_REPO,
+//            'Build-Gradle'          : gradle.gradleVersion,
+//            'Build-JDK'             : System.getProperty('java.version'),
+//
+//            'Implementation-Title'  : "${project.name} bygget for ${(version == null || version.contains('-SNAPSHOT') || version.contains('-build')) ? 'TEST' : 'Produksjon'}",
+//            'Implementation-Vendor' : 'Statens kartverk',
+//            'Implementation-Version': project.version,
+//    ])
+//}
 

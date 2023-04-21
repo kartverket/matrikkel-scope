@@ -1,5 +1,5 @@
 rootProject.name = 'matrikkel-scope'
 
-gradle.rootProject { project ->
-    project.ext.MAVEN_REPO = settings.ext.properties.get('MAVEN_REPO', 'https://nexus.statkart.no/repository/public/')
-}
+// gradle.rootProject { project ->
+//     project.ext.MAVEN_REPO = settings.ext.properties.get('MAVEN_REPO', 'https://nexus.statkart.no/repository/public/')
+// }
