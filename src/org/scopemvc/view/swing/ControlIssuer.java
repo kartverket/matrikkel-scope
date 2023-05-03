@@ -37,15 +37,15 @@
  */
 package org.scopemvc.view.swing;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.scopemvc.util.ScopeConfig;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.util.StringTokenizer;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.scopemvc.util.ScopeConfig;
 
 /**
  * Helper class for managing the way controls are issued in some SComponents.

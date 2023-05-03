@@ -37,17 +37,18 @@
  */
 package org.scopemvc.view.swing;
 
-import javax.swing.JTable;
-import javax.swing.event.ListDataListener;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableModel;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.PropertyManager;
 import org.scopemvc.core.Selector;
 import org.scopemvc.util.convertor.StringConvertor;
+
+import javax.swing.*;
+import javax.swing.event.ListDataListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableModel;
 
 /**
  * The TableModel used in STable.

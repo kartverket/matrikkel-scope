@@ -37,7 +37,7 @@
  */
 package org.scopemvc.util;
 
-import java.awt.Color;
+import java.awt.*;
 import java.text.DateFormat;
 import java.util.ListResourceBundle;
 

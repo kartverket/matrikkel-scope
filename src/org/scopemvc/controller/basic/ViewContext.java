@@ -38,11 +38,12 @@
 package org.scopemvc.controller.basic;
 
 
-import java.util.HashMap;
-import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.View;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * <P>

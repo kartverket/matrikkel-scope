@@ -37,10 +37,9 @@
  */
 package test.view.swing;
 
+import junit.framework.TestCase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
-import junit.framework.TestCase;
 import org.scopemvc.core.Selector;
 import org.scopemvc.view.swing.SCheckBox;
 import org.scopemvc.view.swing.SPanel;

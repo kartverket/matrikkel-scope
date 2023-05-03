@@ -38,14 +38,14 @@
 package org.scopemvc.view.swing;
 
 
-import java.awt.event.MouseEvent;
-import java.util.EventObject;
-import javax.swing.AbstractCellEditor;
-import javax.swing.JTextField;
-import javax.swing.text.JTextComponent;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.util.convertor.StringConvertor;
+
+import javax.swing.*;
+import javax.swing.text.JTextComponent;
+import java.awt.event.MouseEvent;
+import java.util.EventObject;
 
 /**
  * Base class for cell editors based on Swing's <code>JTextComponent</code>. It

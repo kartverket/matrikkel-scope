@@ -37,18 +37,16 @@
  */
 package org.scopemvc.view.swing;
 
-import java.awt.event.ActionEvent;
-import java.beans.Beans;
-import javax.swing.AbstractAction;
-import javax.swing.Icon;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import org.scopemvc.core.Control;
 import org.scopemvc.core.Controller;
 import org.scopemvc.util.ResourceLoader;
 import org.scopemvc.util.UIStrings;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.beans.Beans;
 
 /**
  * A swing Action that issues a Control on action performed. <p>

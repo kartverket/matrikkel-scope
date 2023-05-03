@@ -37,13 +37,14 @@
  */
 package org.scopemvc.view.servlet;
 
-import java.util.HashMap;
-import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.Control;
 import org.scopemvc.core.Controller;
 import org.scopemvc.core.View;
+
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * <P>

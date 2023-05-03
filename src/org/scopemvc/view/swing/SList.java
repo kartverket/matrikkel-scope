@@ -39,20 +39,17 @@
  */
 package org.scopemvc.view.swing;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import javax.swing.JList;
-import javax.swing.JToolTip;
-import javax.swing.ListCellRenderer;
-import javax.swing.ListModel;
-import javax.swing.ListSelectionModel;
-import javax.swing.plaf.ListUI;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.Control;
 import org.scopemvc.core.Controller;
 import org.scopemvc.core.Selector;
 import org.scopemvc.core.View;
+
+import javax.swing.*;
+import javax.swing.plaf.ListUI;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * <P>

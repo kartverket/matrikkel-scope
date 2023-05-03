@@ -37,17 +37,17 @@
  */
 package org.scopemvc.view.swing;
 
-import java.awt.Color;
-import java.awt.Component;
-import javax.swing.JTable;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
-import javax.swing.table.TableCellEditor;
-import javax.swing.text.JTextComponent;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.util.convertor.StringConvertor;
 import org.scopemvc.util.convertor.StringConvertors;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
+import javax.swing.table.TableCellEditor;
+import javax.swing.text.JTextComponent;
+import java.awt.*;
 
 /**
  * Cell editor for {@link org.scopemvc.view.swing.STable STable} or {@link

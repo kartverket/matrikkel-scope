@@ -37,10 +37,12 @@
  */
 package test.util;
 
-import java.util.*;
 import junit.framework.TestCase;
-
 import org.scopemvc.util.ScopeConfig;
+
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * <P>

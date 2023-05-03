@@ -38,20 +38,9 @@
 package org.scopemvc.view.swing;
 
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.beans.Beans;
-
-import javax.swing.Action;
-import javax.swing.JTextField;
-import javax.swing.JToolTip;
-import javax.swing.text.JTextComponent;
-import javax.swing.text.TextAction;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.scopemvc.Pointer;
 import org.scopemvc.core.Control;
 import org.scopemvc.core.Controller;
 import org.scopemvc.core.PropertyView;
@@ -61,7 +50,15 @@ import org.scopemvc.util.ScopeConfig;
 import org.scopemvc.util.convertor.StringConvertor;
 import org.scopemvc.util.convertor.StringConvertors;
 import org.scopemvc.view.util.ModelBindable;
-import org.scopemvc.Pointer;
+
+import javax.swing.*;
+import javax.swing.text.JTextComponent;
+import javax.swing.text.TextAction;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.beans.Beans;
 
 /**
  * <P>

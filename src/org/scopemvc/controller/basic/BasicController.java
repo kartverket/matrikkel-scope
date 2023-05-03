@@ -37,11 +37,8 @@
  */
 package org.scopemvc.controller.basic;
 
-import java.util.LinkedList;
-import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-
 import org.scopemvc.core.Control;
 import org.scopemvc.core.ControlException;
 import org.scopemvc.core.Controller;
@@ -49,6 +46,9 @@ import org.scopemvc.core.PropertyView;
 import org.scopemvc.core.View;
 import org.scopemvc.util.Debug;
 import org.scopemvc.util.UIStrings;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * <P>

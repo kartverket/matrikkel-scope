@@ -38,9 +38,10 @@
 package org.scopemvc.util;
 
 
-import java.util.LinkedList;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.util.LinkedList;
 
 /**
  * Pools objects given a factory and optional maximum pool size.

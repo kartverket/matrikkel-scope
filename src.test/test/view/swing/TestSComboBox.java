@@ -38,11 +38,9 @@
 package test.view.swing;
 
 
-import java.util.ArrayList;
-import javax.swing.JTextField;
+import junit.framework.TestCase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import junit.framework.TestCase;
 import org.scopemvc.core.Selector;
 import org.scopemvc.util.convertor.StringStringConvertor;
 import org.scopemvc.view.swing.SComboBox;
@@ -50,6 +48,9 @@ import org.scopemvc.view.swing.SComboBoxEditor;
 import org.scopemvc.view.swing.SComboBoxModel;
 import org.scopemvc.view.swing.SListCellRenderer;
 import org.scopemvc.view.swing.SPanel;
+
+import javax.swing.*;
+import java.util.ArrayList;
 
 /**
  * <P>

@@ -37,14 +37,14 @@
  */
 package test.view.swing;
 
-import java.awt.Component;
-import javax.swing.ImageIcon;
-import javax.swing.JList;
+import junit.framework.TestCase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import junit.framework.TestCase;
 import org.scopemvc.core.Selector;
 import org.scopemvc.view.swing.SListCellRenderer;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * <P>

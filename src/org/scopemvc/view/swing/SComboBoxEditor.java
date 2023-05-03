@@ -37,13 +37,14 @@
  */
 package org.scopemvc.view.swing;
 
-import java.awt.Component;
-import java.awt.event.ActionListener;
-import javax.swing.ComboBoxEditor;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.util.convertor.StringConvertor;
 import org.scopemvc.util.convertor.StringConvertors;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 
 /**
  * <P>

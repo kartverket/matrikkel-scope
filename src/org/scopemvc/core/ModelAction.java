@@ -37,8 +37,9 @@
  */
 package org.scopemvc.core;
 
-import java.lang.reflect.Method;
 import org.scopemvc.util.Debug;
+
+import java.lang.reflect.Method;
 
 /**
  * <P>

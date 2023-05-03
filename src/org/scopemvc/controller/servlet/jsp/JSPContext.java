@@ -38,18 +38,19 @@
 package org.scopemvc.controller.servlet.jsp;
 
 
-import java.io.IOException;
-import java.util.HashMap;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.scopemvc.controller.servlet.ScopeServlet;
+import org.scopemvc.controller.servlet.ServletContext;
 import org.scopemvc.core.View;
 import org.scopemvc.view.servlet.Page;
 import org.scopemvc.view.servlet.ServletView;
 import org.scopemvc.view.servlet.jsp.JSPPage;
-import org.scopemvc.controller.servlet.ScopeServlet;
-import org.scopemvc.controller.servlet.ServletContext;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.HashMap;
 
 /**
  * <P>

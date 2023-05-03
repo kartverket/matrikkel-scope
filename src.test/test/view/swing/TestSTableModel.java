@@ -38,13 +38,14 @@
 package test.view.swing;
 
 
-import java.util.Date;
-import javax.swing.JTable;
+import junit.framework.TestCase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import junit.framework.TestCase;
 import org.scopemvc.model.collection.ListModel;
 import org.scopemvc.view.swing.STableModel;
+
+import javax.swing.*;
+import java.util.Date;
 
 /**
  * <P>

@@ -38,9 +38,10 @@
 package test.view.swing;
 
 
-import java.util.ArrayList;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.util.ArrayList;
 
 /**
  * <P>

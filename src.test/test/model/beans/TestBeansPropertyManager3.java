@@ -38,10 +38,6 @@
 package test.model.beans;
 
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 import junit.framework.TestCase;
 import org.scopemvc.core.PropertyManager;
 import org.scopemvc.core.Selector;
@@ -49,6 +45,11 @@ import org.scopemvc.model.beans.BeansPropertyManager;
 import org.scopemvc.model.collection.ListModel;
 import org.scopemvc.model.util.CompoundSelectorIterator;
 import org.scopemvc.model.util.IntIndexSelectorIterator;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 

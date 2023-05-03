@@ -38,16 +38,17 @@
 package org.scopemvc.controller.servlet.xml;
 
 
-import java.util.HashMap;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.scopemvc.controller.servlet.ScopeServlet;
+import org.scopemvc.controller.servlet.ServletContext;
+import org.scopemvc.view.servlet.xml.AbstractXSLPage;
+
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.scopemvc.view.servlet.xml.AbstractXSLPage;
-import org.scopemvc.controller.servlet.ScopeServlet;
-import org.scopemvc.controller.servlet.ServletContext;
+import java.util.HashMap;
 
 /**
  * <P>

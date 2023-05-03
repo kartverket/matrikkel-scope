@@ -38,14 +38,13 @@
 package org.scopemvc.view.servlet.xml;
 
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.URL;
-import java.util.HashMap;
-import java.util.Properties;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.scopemvc.util.Debug;
+import org.scopemvc.util.ScopeConfig;
+import org.scopemvc.view.servlet.Page;
+import org.xml.sax.ContentHandler;
+
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Result;
 import javax.xml.transform.Templates;
@@ -58,12 +57,14 @@ import javax.xml.transform.sax.SAXTransformerFactory;
 import javax.xml.transform.sax.TransformerHandler;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.scopemvc.util.Debug;
-import org.scopemvc.util.ScopeConfig;
-import org.xml.sax.ContentHandler;
-import org.scopemvc.view.servlet.Page;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.URL;
+import java.util.HashMap;
+import java.util.Properties;
 
 /**
  * <P>

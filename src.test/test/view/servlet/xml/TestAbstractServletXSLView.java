@@ -37,11 +37,11 @@
  */
 package test.view.servlet.xml;
 
-import java.net.URL;
 import junit.framework.TestCase;
-
 import org.scopemvc.view.servlet.xml.AbstractXSLPage;
 import org.xml.sax.ContentHandler;
+
+import java.net.URL;
 
 /**
  * <P>

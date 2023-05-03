@@ -41,14 +41,15 @@
 package org.scopemvc.util.convertor;
 
 
+import junit.framework.TestCase;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.scopemvc.util.ScopeConfig;
+
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Locale;
-
-import junit.framework.TestCase;
-import org.apache.commons.logging.LogFactory;import org.apache.commons.logging.Log;
-import org.scopemvc.util.ScopeConfig;
 
 import static java.text.DateFormat.FULL;
 import static java.text.DateFormat.LONG;

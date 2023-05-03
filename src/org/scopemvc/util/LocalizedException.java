@@ -37,9 +37,10 @@
  */
 package org.scopemvc.util;
 
-import java.text.MessageFormat;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.text.MessageFormat;
 
 /**
  * <P>

@@ -42,15 +42,15 @@
  */
 package org.scopemvc.view.swing;
 
-import java.awt.event.ActionEvent;
-import javax.swing.*;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.Control;
 import org.scopemvc.core.Controller;
 import org.scopemvc.core.View;
 import org.scopemvc.util.UIStrings;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
 
 /**
  * <P>

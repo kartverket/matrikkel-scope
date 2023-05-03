@@ -38,8 +38,8 @@
 package test.model.basic;
 
 import junit.framework.TestCase;
-
-import org.scopemvc.core.*;
+import org.scopemvc.core.ModelChangeEvent;
+import org.scopemvc.core.ModelChangeListener;
 
 /**
  * <P>

@@ -37,11 +37,16 @@
  */
 package test.controller.basic;
 
-import junit.framework.*;
-import org.scopemvc.controller.basic.*;
-
-import org.scopemvc.core.*;
-import org.scopemvc.model.basic.*;
+import junit.framework.TestCase;
+import org.scopemvc.controller.basic.BasicController;
+import org.scopemvc.controller.basic.ViewContext;
+import org.scopemvc.core.Control;
+import org.scopemvc.core.ControlException;
+import org.scopemvc.core.Controller;
+import org.scopemvc.core.ModelChangeEvent;
+import org.scopemvc.core.ModelChangeListener;
+import org.scopemvc.core.View;
+import org.scopemvc.model.basic.BasicModel;
 
 /**
  * <P>

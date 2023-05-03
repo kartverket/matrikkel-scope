@@ -40,17 +40,15 @@
 package org.scopemvc.view.swing;
 
 
-import java.awt.Component;
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.Icon;
-import javax.swing.JList;
-import javax.swing.UIManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.PropertyManager;
 import org.scopemvc.core.Selector;
 import org.scopemvc.util.convertor.StringConvertor;
 import org.scopemvc.util.convertor.StringConvertors;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * <P>

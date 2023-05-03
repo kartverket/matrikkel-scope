@@ -1,19 +1,17 @@
 package org.scopemvc.view.swing;
 
 
-import java.awt.*;
-import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.EmptyBorder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.PropertyManager;
 import org.scopemvc.core.Selector;
 import org.scopemvc.util.convertor.StringConvertor;
 import org.scopemvc.util.convertor.StringConvertors;
-import org.scopemvc.view.swing.SListCellRenderer;
-import org.scopemvc.view.swing.SPanel;
-import org.scopemvc.view.swing.ListCellRendererSelector;
+
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
 
 /**
  * ListCellRenderer for visning av multiline-tekst

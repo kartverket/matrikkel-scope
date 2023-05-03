@@ -38,12 +38,13 @@
 package test.view.swing;
 
 
-import java.awt.Rectangle;
+import junit.framework.TestCase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import junit.framework.TestCase;
 import org.scopemvc.view.swing.SMenuItem;
 import org.scopemvc.view.swing.SPanel;
+
+import java.awt.*;
 
 /**
  * Tests SwingView using SPanel concrete subclass.

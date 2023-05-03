@@ -37,13 +37,14 @@
  */
 package test.view.swing;
 
-import javax.swing.JPanel;
+import junit.framework.TestCase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import junit.framework.TestCase;
 import org.scopemvc.core.Selector;
 import org.scopemvc.view.swing.SCheckBox;
 import org.scopemvc.view.swing.SPanel;
+
+import javax.swing.*;
 
 /**
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net>Steve Meyfroidt</A>

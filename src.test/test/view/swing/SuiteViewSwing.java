@@ -37,13 +37,13 @@
  */
 package test.view.swing;
 
-import javax.swing.SwingUtilities;
 import junit.framework.Test;
 import junit.framework.TestCase;
-
 import junit.framework.TestSuite;
 import org.scopemvc.controller.basic.ViewContext;
 import org.scopemvc.controller.swing.SwingContext;
+
+import javax.swing.*;
 
 /**
  * <P>

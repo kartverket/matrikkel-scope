@@ -37,11 +37,11 @@
  */
 package test.model.util;
 
-import java.util.*;
 import junit.framework.TestCase;
+import org.scopemvc.core.Selector;
+import org.scopemvc.model.util.ArraySelectorIterator;
 
-import org.scopemvc.core.*;
-import org.scopemvc.model.util.*;
+import java.util.Iterator;
 
 /**
  * <P>

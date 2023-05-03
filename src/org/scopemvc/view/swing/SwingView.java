@@ -38,13 +38,6 @@
 package org.scopemvc.view.swing;
 
 
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JButton;
-import javax.swing.JMenuBar;
-import javax.swing.JPanel;
-import javax.swing.JRootPane;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.controller.basic.BasicController;
@@ -53,6 +46,11 @@ import org.scopemvc.controller.swing.SwingContext;
 import org.scopemvc.core.Control;
 import org.scopemvc.core.Controller;
 import org.scopemvc.core.View;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <P>

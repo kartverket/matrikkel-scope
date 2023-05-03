@@ -38,13 +38,14 @@
 package org.scopemvc.model.collection;
 
 
+import org.scopemvc.core.ModelChangeEventSource;
+import org.scopemvc.core.PropertyManager;
+import org.scopemvc.core.Selector;
+
 import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
-import org.scopemvc.core.ModelChangeEventSource;
-import org.scopemvc.core.PropertyManager;
-import org.scopemvc.core.Selector;
 
 /**
  * Used with {@link ListModelAdaptor} to wrap a Collection, List, Array,

@@ -43,24 +43,21 @@
 package org.scopemvc.view.swing;
 
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.beans.Beans;
-import javax.swing.ComboBoxEditor;
-import javax.swing.ComboBoxModel;
-import javax.swing.JComboBox;
-import javax.swing.JToolTip;
-import javax.swing.ListCellRenderer;
-import javax.swing.plaf.ComboBoxUI;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.scopemvc.Pointer;
 import org.scopemvc.core.Control;
 import org.scopemvc.core.Controller;
 import org.scopemvc.core.EditorManager;
 import org.scopemvc.core.Selector;
 import org.scopemvc.core.View;
 import org.scopemvc.util.convertor.StringConvertor;
-import org.scopemvc.Pointer;
+
+import javax.swing.*;
+import javax.swing.plaf.ComboBoxUI;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.beans.Beans;
 
 /**
  * <P>

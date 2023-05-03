@@ -37,7 +37,6 @@
  */
 package test.view.swing;
 
-import java.lang.Integer;
 import junit.framework.TestCase;
 import org.scopemvc.core.Control;
 import org.scopemvc.core.Selector;

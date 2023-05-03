@@ -38,8 +38,7 @@
 package test.core;
 
 import junit.framework.TestCase;
-
-import org.scopemvc.core.*;
+import org.scopemvc.core.ActionManager;
 
 /**
  * <P>

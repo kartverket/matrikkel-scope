@@ -40,12 +40,6 @@
 package org.scopemvc.model.beans;
 
 
-import java.beans.IndexedPropertyDescriptor;
-import java.beans.PropertyDescriptor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-import java.util.Iterator;
-import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.IncorrectImplementationException;
@@ -53,10 +47,17 @@ import org.scopemvc.core.IntIndexSelector;
 import org.scopemvc.core.PropertyManager;
 import org.scopemvc.core.Selector;
 import org.scopemvc.core.StringIndexSelector;
-import org.scopemvc.util.Debug;
 import org.scopemvc.model.util.ArraySelectorIterator;
 import org.scopemvc.model.util.CompoundSelectorIterator;
 import org.scopemvc.model.util.IntIndexSelectorIterator;
+import org.scopemvc.util.Debug;
+
+import java.beans.IndexedPropertyDescriptor;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * <P>

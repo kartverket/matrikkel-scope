@@ -38,17 +38,18 @@
 package test.view.swing;
 
 
-import java.awt.Dimension;
-import java.util.ArrayList;
+import junit.framework.TestCase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import junit.framework.TestCase;
 import org.scopemvc.core.Selector;
 import org.scopemvc.view.swing.SList;
 import org.scopemvc.view.swing.SListCellRenderer;
 import org.scopemvc.view.swing.SListModel;
 import org.scopemvc.view.swing.SListSelectionModel;
 import org.scopemvc.view.swing.SPanel;
+
+import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * <P>

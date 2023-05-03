@@ -38,8 +38,8 @@
 package test.core;
 
 import junit.framework.TestCase;
-
-import org.scopemvc.core.*;
+import org.scopemvc.core.Control;
+import org.scopemvc.core.ControlException;
 
 /**
  * <P>

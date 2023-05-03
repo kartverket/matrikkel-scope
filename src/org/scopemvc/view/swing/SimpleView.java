@@ -2,7 +2,14 @@ package org.scopemvc.view.swing;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.scopemvc.core.*;
+import org.scopemvc.core.Control;
+import org.scopemvc.core.Controller;
+import org.scopemvc.core.ModelChangeEvent;
+import org.scopemvc.core.ModelChangeEventSource;
+import org.scopemvc.core.ModelChangeListener;
+import org.scopemvc.core.PropertyManager;
+import org.scopemvc.core.Selector;
+import org.scopemvc.core.View;
 import org.scopemvc.util.Debug;
 
 import javax.swing.*;

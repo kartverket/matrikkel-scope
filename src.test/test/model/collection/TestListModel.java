@@ -38,14 +38,15 @@
 package test.model.collection;
 
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 import junit.framework.TestCase;
 import org.scopemvc.core.ModelChangeEvent;
 import org.scopemvc.core.ModelChangeListener;
 import org.scopemvc.model.collection.ListModel;
 import test.model.basic.BasicTestModel;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * <P>

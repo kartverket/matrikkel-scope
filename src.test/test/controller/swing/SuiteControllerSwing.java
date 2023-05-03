@@ -37,11 +37,11 @@
  */
 package test.controller.swing;
 
-import javax.swing.SwingUtilities;
-
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
+
+import javax.swing.*;
 
 /**
  * <P>
