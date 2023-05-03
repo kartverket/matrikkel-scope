@@ -38,10 +38,11 @@
 package org.scopemvc.model.util;
 
 
-import java.util.Iterator;
 import org.scopemvc.core.IntIndexSelector;
 import org.scopemvc.core.Selector;
 import org.scopemvc.util.Debug;
+
+import java.util.Iterator;
 
 /**
  * <P>

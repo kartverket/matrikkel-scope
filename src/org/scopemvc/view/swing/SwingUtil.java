@@ -38,13 +38,14 @@
 package org.scopemvc.view.swing;
 
 
-import java.awt.Component;
-import javax.swing.SwingUtilities;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.Control;
 import org.scopemvc.core.View;
 import org.scopemvc.view.awt.AWTUtilities;
+
+import javax.swing.*;
+import java.awt.*;
 
 /**
  * <P>

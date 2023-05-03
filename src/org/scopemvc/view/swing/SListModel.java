@@ -38,7 +38,7 @@
 package org.scopemvc.view.swing;
 
 
-import javax.swing.JList;
+import javax.swing.*;
 
 /**
  * <P>

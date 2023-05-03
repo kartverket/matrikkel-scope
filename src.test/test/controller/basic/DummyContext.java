@@ -37,9 +37,9 @@
  */
 package test.controller.basic;
 
-import org.scopemvc.controller.basic.*;
-
-import org.scopemvc.core.*;
+import org.scopemvc.controller.basic.ViewContext;
+import org.scopemvc.core.ControlException;
+import org.scopemvc.core.View;
 
 /**
  * <P>

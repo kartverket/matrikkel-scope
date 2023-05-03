@@ -37,12 +37,12 @@
  */
 package test.view.swing;
 
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
 import junit.framework.TestCase;
 import org.scopemvc.core.Control;
 import org.scopemvc.view.swing.SMenuItem;
 import org.scopemvc.view.swing.SPanel;
+
+import javax.swing.*;
 
 /**
  * <P>

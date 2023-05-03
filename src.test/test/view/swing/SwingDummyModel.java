@@ -38,14 +38,15 @@
 package test.view.swing;
 
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import javax.swing.ImageIcon;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.Selector;
 import org.scopemvc.model.basic.BasicModel;
 import org.scopemvc.model.collection.ListModel;
+
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  * <P>

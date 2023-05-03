@@ -41,12 +41,9 @@ package org.scopemvc.model;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.Pointer;
-import org.scopemvc.PointerFactory;
-import org.scopemvc.core.Selector;
 import org.scopemvc.core.ModelChangeEventSource;
+import org.scopemvc.core.Selector;
 import org.scopemvc.impl.model.ModelChangeSource;
-
-import java.util.Map;
 
 
 /**

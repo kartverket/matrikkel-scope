@@ -41,19 +41,19 @@
 package org.scopemvc.view.swing;
 
 
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
-import java.beans.Beans;
-import javax.swing.JCheckBox;
-import javax.swing.JToolTip;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.scopemvc.Pointer;
 import org.scopemvc.core.Control;
 import org.scopemvc.core.Controller;
 import org.scopemvc.core.PropertyView;
 import org.scopemvc.core.Selector;
 import org.scopemvc.view.util.ModelBindable;
-import org.scopemvc.Pointer;
+
+import javax.swing.*;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+import java.beans.Beans;
 
 /**
  * <P>

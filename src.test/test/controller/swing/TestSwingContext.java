@@ -37,13 +37,14 @@
  */
 package test.controller.swing;
 
-import java.awt.Cursor;
-
-import junit.framework.*;
-import org.scopemvc.controller.basic.*;
-import org.scopemvc.controller.swing.*;
+import junit.framework.TestCase;
+import org.scopemvc.controller.basic.ViewContext;
+import org.scopemvc.controller.swing.SwingContext;
 import org.scopemvc.util.ScopeConfig;
-import org.scopemvc.view.swing.*;
+import org.scopemvc.view.swing.SPanel;
+import org.scopemvc.view.swing.SwingView;
+
+import java.awt.*;
 
 /**
  * @author <A HREF="mailto:ludovicc@users.sourceforge.net">Ludovic Claude</A>

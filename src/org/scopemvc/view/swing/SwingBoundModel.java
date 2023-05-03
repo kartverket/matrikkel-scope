@@ -37,12 +37,13 @@
  */
 package org.scopemvc.view.swing;
 
-import java.beans.Beans;
-import javax.swing.SwingUtilities;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.view.util.ActiveBoundModel;
 import org.scopemvc.view.util.ModelBindable;
+
+import javax.swing.*;
+import java.beans.Beans;
 
 /**
  * <P>

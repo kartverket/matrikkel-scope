@@ -38,17 +38,18 @@
 package org.scopemvc.model.collection;
 
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Set;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.ModelChangeEvent;
 import org.scopemvc.core.ModelChangeEventSource;
 import org.scopemvc.core.Selector;
-import org.scopemvc.util.Debug;
 import org.scopemvc.model.basic.BasicModel;
+import org.scopemvc.util.Debug;
+
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 /**
  * <P>

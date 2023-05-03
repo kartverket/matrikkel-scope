@@ -38,10 +38,11 @@
 package test.view.swing;
 
 
-import javax.swing.JComboBox;
 import junit.framework.TestCase;
 import org.scopemvc.core.Selector;
-import org.scopemvc.view.swing.*;
+import org.scopemvc.view.swing.SComboBoxModel;
+
+import javax.swing.*;
 
 /**
  * @author <A HREF="mailto:daniel.michalik@autel.cz">Daniel Michalik</A>

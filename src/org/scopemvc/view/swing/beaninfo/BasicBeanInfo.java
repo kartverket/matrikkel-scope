@@ -37,8 +37,8 @@
  */
 package org.scopemvc.view.swing.beaninfo;
 
-import java.awt.Image;
-import java.beans.*;
+import java.awt.*;
+import java.beans.SimpleBeanInfo;
 
 /**
  * Base class for the component BeanInfos

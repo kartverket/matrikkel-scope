@@ -38,19 +38,22 @@
 package test.view.swing;
 
 
-import java.awt.Dimension;
-import java.util.ArrayList;
-import javax.swing.DefaultListSelectionModel;
-import javax.swing.JScrollPane;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import junit.extensions.jfcunit.JFCTestCase;
 import junit.extensions.jfcunit.JFCTestHelper;
 import junit.extensions.jfcunit.JTableHeaderMouseEventData;
 import junit.extensions.jfcunit.TestHelper;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.Selector;
 import org.scopemvc.model.collection.ListModel;
-import org.scopemvc.view.swing.*;
+import org.scopemvc.view.swing.SListSelectionModel;
+import org.scopemvc.view.swing.SPanel;
+import org.scopemvc.view.swing.SSortTable;
+import org.scopemvc.view.swing.SSortTableModel;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Unit test for SSortTable

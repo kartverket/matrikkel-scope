@@ -38,7 +38,8 @@
 package test.view.swing;
 
 import org.scopemvc.controller.basic.BasicController;
-import org.scopemvc.core.*;
+import org.scopemvc.core.Control;
+import org.scopemvc.core.ControlException;
 
 /**
  * <P>

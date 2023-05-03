@@ -38,14 +38,15 @@
 package org.scopemvc.model.beans;
 
 
-import java.beans.MethodDescriptor;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.ActionManager;
 import org.scopemvc.core.ModelAction;
 import org.scopemvc.util.Debug;
+
+import java.beans.MethodDescriptor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 /**
  * <P>

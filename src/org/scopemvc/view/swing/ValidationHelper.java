@@ -38,13 +38,11 @@
 package org.scopemvc.view.swing;
 
 
-import java.awt.Color;
-import java.awt.event.MouseEvent;
-import javax.swing.JComponent;
-import javax.swing.JToolTip;
-import javax.swing.ToolTipManager;
-
 import org.scopemvc.util.ScopeConfig;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseEvent;
 
 /**
  * <P>

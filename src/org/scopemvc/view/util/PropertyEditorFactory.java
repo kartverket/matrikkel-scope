@@ -38,13 +38,14 @@
 package org.scopemvc.view.util;
 
 
-import java.util.HashMap;
-import java.util.Iterator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.View;
 import org.scopemvc.util.Debug;
 import org.scopemvc.util.ScopeConfig;
+
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * <P>

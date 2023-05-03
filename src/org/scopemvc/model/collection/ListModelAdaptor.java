@@ -38,15 +38,16 @@
 package org.scopemvc.model.collection;
 
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
 import org.scopemvc.core.ModelChangeEvent;
 import org.scopemvc.core.ModelChangeListener;
 import org.scopemvc.core.ModelChangeTypes;
 import org.scopemvc.core.Selector;
 import org.scopemvc.model.basic.BasicModel;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 
 /**
  * <P>

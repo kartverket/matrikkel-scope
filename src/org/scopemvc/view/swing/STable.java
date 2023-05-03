@@ -49,28 +49,28 @@
  */
 package org.scopemvc.view.swing;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.scopemvc.Pointer;
+import org.scopemvc.core.Control;
+import org.scopemvc.core.Controller;
+import org.scopemvc.core.Selector;
+import org.scopemvc.core.View;
+import org.scopemvc.util.ScopeConfig;
+
+import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-import javax.swing.DefaultCellEditor;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JTable;
-import javax.swing.JToolTip;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.TableModelEvent;
-import javax.swing.table.*;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.scopemvc.core.Control;
-import org.scopemvc.core.Controller;
-import org.scopemvc.core.Selector;
-import org.scopemvc.core.View;
-import org.scopemvc.Pointer;
-import org.scopemvc.util.ScopeConfig;
 
 /**
  * <P>

@@ -38,7 +38,6 @@
 package test.controller.servlet;
 
 import org.apache.commons.logging.Log;
-
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.controller.basic.BasicController;
 import org.scopemvc.core.Control;

@@ -39,7 +39,6 @@ package test.util;
 
 import junit.framework.TestCase;
 import org.scopemvc.util.LocalizedException;
-
 import org.scopemvc.util.UIStrings;
 
 /**

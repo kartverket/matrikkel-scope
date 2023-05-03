@@ -40,6 +40,13 @@
 package org.scopemvc.model.collection;
 
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.scopemvc.core.ModelChangeEvent;
+import org.scopemvc.core.ModelChangeEventSource;
+import org.scopemvc.core.Selector;
+import org.scopemvc.model.basic.BasicModel;
+
 import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.lang.reflect.TypeVariable;
@@ -48,12 +55,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-import org.scopemvc.core.ModelChangeEvent;
-import org.scopemvc.core.ModelChangeEventSource;
-import org.scopemvc.core.Selector;
-import org.scopemvc.model.basic.BasicModel;
 
 /**
  * <P>

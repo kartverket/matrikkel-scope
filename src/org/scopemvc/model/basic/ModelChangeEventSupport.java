@@ -38,8 +38,6 @@
 package org.scopemvc.model.basic;
 
 
-import java.util.ArrayList;
-import java.util.Iterator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.ModelChangeEvent;
@@ -47,6 +45,9 @@ import org.scopemvc.core.ModelChangeEventSource;
 import org.scopemvc.core.ModelChangeListener;
 import org.scopemvc.core.Selector;
 import org.scopemvc.util.Debug;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * <P>

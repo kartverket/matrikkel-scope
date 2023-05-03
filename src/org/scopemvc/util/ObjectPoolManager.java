@@ -38,10 +38,11 @@
 package org.scopemvc.util;
 
 
-import java.util.HashMap;
-import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Manages pooling of instances of different classes.

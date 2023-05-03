@@ -38,11 +38,12 @@
 package test.model.beans;
 
 
-import java.util.ArrayList;
 import junit.framework.TestCase;
 import org.scopemvc.core.PropertyManager;
 import org.scopemvc.core.Selector;
 import org.scopemvc.model.beans.BeansPropertyManager;
+
+import java.util.ArrayList;
 
 /**
  * <P>

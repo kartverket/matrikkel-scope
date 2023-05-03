@@ -38,14 +38,15 @@
 package test.view.swing;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import javax.swing.event.ListDataEvent;
-import javax.swing.event.ListDataListener;
 import junit.framework.AssertionFailedError;
 import junit.framework.TestCase;
 import org.scopemvc.view.swing.SAbstractListModel;
+
+import javax.swing.event.ListDataEvent;
+import javax.swing.event.ListDataListener;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * <P>

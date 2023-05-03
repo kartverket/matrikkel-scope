@@ -7,8 +7,6 @@ Lisensen må inkluderes ved bruk og [finnes her](./licence.txt).
 
 ## Oppsett av IntelliJ
  * Last inn som gradle prosjekt
- * Enable version control (Perforce)
-
 
 
 # Versjonering og branching

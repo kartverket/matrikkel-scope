@@ -38,9 +38,10 @@
 package org.scopemvc.model.util;
 
 
+import org.scopemvc.util.Debug;
+
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-import org.scopemvc.util.Debug;
 
 /**
  * <P>

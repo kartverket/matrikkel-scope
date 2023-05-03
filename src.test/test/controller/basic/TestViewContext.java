@@ -37,8 +37,8 @@
  */
 package test.controller.basic;
 
-import junit.framework.*;
-import org.scopemvc.controller.basic.*;
+import junit.framework.TestCase;
+import org.scopemvc.controller.basic.ViewContext;
 
 /**
  * <P>

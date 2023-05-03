@@ -38,12 +38,12 @@
 package org.scopemvc.view.swing;
 
 
-import javax.swing.ComboBoxModel;
-import javax.swing.JComboBox;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.Selector;
 import org.scopemvc.view.util.ModelBindable;
+
+import javax.swing.*;
 
 /**
  * The ComboBoxModel used in SComboBox. <br>

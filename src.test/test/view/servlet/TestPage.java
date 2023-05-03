@@ -38,7 +38,6 @@
 package test.view.servlet;
 
 import junit.framework.TestCase;
-
 import org.scopemvc.controller.basic.ViewContext;
 import org.scopemvc.controller.servlet.ServletContext;
 import org.scopemvc.core.Control;

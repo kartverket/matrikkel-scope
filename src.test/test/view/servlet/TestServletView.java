@@ -37,7 +37,6 @@
  */
 package test.view.servlet;
 
-import java.io.StringWriter;
 import junit.framework.TestCase;
 import org.scopemvc.controller.basic.ViewContext;
 import org.scopemvc.controller.servlet.ServletContext;
@@ -45,6 +44,8 @@ import org.scopemvc.core.Control;
 import org.scopemvc.core.View;
 import org.scopemvc.view.servlet.Page;
 import org.scopemvc.view.servlet.ServletView;
+
+import java.io.StringWriter;
 
 /**
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>

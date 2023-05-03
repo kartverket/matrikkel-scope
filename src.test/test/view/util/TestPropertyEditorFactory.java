@@ -38,7 +38,6 @@
 package test.view.util;
 
 import junit.framework.TestCase;
-
 import org.scopemvc.view.util.PropertyEditorFactory;
 
 /**

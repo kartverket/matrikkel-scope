@@ -38,31 +38,9 @@
 package org.scopemvc.controller.swing;
 
 
-import java.awt.BorderLayout;
-import java.awt.Container;
-import java.awt.Cursor;
-import java.awt.Dialog;
-import java.awt.Frame;
-import java.awt.Image;
-import java.awt.Rectangle;
-import java.awt.Window;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Timer;
-import java.util.TimerTask;
-import javax.swing.JComponent;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JRootPane;
-import javax.swing.WindowConstants;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.scopemvc.controller.basic.ViewContext;
 import org.scopemvc.core.View;
 import org.scopemvc.util.Debug;
 import org.scopemvc.util.ResourceLoader;
@@ -71,7 +49,15 @@ import org.scopemvc.view.awt.AWTUtilities;
 import org.scopemvc.view.swing.SMenuItem;
 import org.scopemvc.view.swing.SwingUtil;
 import org.scopemvc.view.swing.SwingView;
-import org.scopemvc.controller.basic.ViewContext;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * <P>

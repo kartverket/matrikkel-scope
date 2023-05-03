@@ -38,16 +38,12 @@
 package org.scopemvc.view.awt;
 
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.Toolkit;
-import java.awt.Window;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.View;
 import org.scopemvc.util.Debug;
+
+import java.awt.*;
 
 /**
  * <P>

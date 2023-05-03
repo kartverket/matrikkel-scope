@@ -37,12 +37,13 @@
  */
 package org.scopemvc.view.swing;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.ActionManager;
 import org.scopemvc.core.ModelAction;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Connects component action event to a method in a model. <p>

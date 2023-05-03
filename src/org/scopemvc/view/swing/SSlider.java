@@ -37,9 +37,6 @@
  */
 package org.scopemvc.view.swing;
 
-import java.beans.Beans;
-import javax.swing.JSlider;
-import javax.swing.JToolTip;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.Control;
@@ -47,6 +44,9 @@ import org.scopemvc.core.Controller;
 import org.scopemvc.core.PropertyView;
 import org.scopemvc.core.Selector;
 import org.scopemvc.view.util.ModelBindable;
+
+import javax.swing.*;
+import java.beans.Beans;
 
 /**
  * <P>

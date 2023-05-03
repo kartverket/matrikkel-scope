@@ -37,10 +37,11 @@
  */
 package test.view.swing;
 
-import javax.swing.*;
 import junit.framework.TestCase;
+import org.scopemvc.view.swing.STextField;
+import org.scopemvc.view.swing.ValidationHelper;
 
-import org.scopemvc.view.swing.*;
+import javax.swing.*;
 
 /**
  * <P>

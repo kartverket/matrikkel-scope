@@ -37,11 +37,12 @@
  */
 package org.scopemvc.view.swing;
 
-import javax.swing.table.DefaultTableCellRenderer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.util.convertor.StringConvertor;
 import org.scopemvc.util.convertor.StringConvertors;
+
+import javax.swing.table.DefaultTableCellRenderer;
 
 /**
  * The render for cell elements used by STable. <br>

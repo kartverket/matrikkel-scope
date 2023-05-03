@@ -38,8 +38,6 @@
 package org.scopemvc.view.servlet.xml;
 
 
-import java.util.HashMap;
-import java.util.Iterator;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.IntIndexSelector;
@@ -53,6 +51,9 @@ import org.scopemvc.util.convertor.StringConvertors;
 import org.xml.sax.Attributes;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.helpers.AttributesImpl;
+
+import java.util.HashMap;
+import java.util.Iterator;
 
 /**
  * <P>

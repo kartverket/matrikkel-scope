@@ -38,11 +38,12 @@
 package org.scopemvc.view.swing;
 
 
-import javax.swing.JTable;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 
 /**
  * <font color="READ">ALPHA VERSION - may change in the next release</font> <p>

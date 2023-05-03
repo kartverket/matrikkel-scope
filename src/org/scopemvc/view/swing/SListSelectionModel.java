@@ -38,14 +38,15 @@
 package org.scopemvc.view.swing;
 
 
-import java.beans.Beans;
-import java.util.HashSet;
-import java.util.Iterator;
-import javax.swing.DefaultListSelectionModel;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.Selector;
 import org.scopemvc.view.util.ModelBindable;
+
+import javax.swing.*;
+import java.beans.Beans;
+import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * <P>

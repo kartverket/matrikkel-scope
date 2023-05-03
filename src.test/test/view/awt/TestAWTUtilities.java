@@ -37,12 +37,12 @@
  */
 package test.view.awt;
 
-import java.awt.*;
 import junit.framework.TestCase;
 import org.scopemvc.controller.basic.BasicController;
-import org.scopemvc.core.*;
+import org.scopemvc.core.Controller;
+import org.scopemvc.view.awt.AWTUtilities;
 
-import org.scopemvc.view.awt.*;
+import java.awt.*;
 
 /**
  * <P>

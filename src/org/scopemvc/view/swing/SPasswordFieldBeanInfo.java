@@ -37,8 +37,12 @@
  */
 package org.scopemvc.view.swing;
 
-import java.beans.*;
 import org.scopemvc.view.swing.beaninfo.BasicBeanInfo;
+
+import java.beans.BeanInfo;
+import java.beans.IntrospectionException;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
 
 /**
  * Beaninfo for SPassword

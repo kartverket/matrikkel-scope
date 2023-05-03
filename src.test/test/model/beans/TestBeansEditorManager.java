@@ -38,8 +38,8 @@
 package test.model.beans;
 
 import junit.framework.TestCase;
-
-import org.scopemvc.core.*;
+import org.scopemvc.core.EditorManager;
+import org.scopemvc.core.Selector;
 import org.scopemvc.model.beans.BeansEditorManager;
 import org.scopemvc.view.util.PropertyEditorFactory;
 

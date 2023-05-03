@@ -38,10 +38,11 @@
 package org.scopemvc.core;
 
 
-import java.util.StringTokenizer;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.util.Debug;
+
+import java.util.StringTokenizer;
 
 /**
  * <P>

@@ -38,9 +38,6 @@
 package org.scopemvc.view.swing;
 
 
-import java.util.Collection;
-import java.util.Comparator;
-import javax.swing.AbstractListModel;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.IntIndexSelector;
@@ -53,6 +50,10 @@ import org.scopemvc.model.collection.ListModelAdaptor;
 import org.scopemvc.model.collection.ListModelSource;
 import org.scopemvc.util.Debug;
 import org.scopemvc.view.util.ModelBindable;
+
+import javax.swing.*;
+import java.util.Collection;
+import java.util.Comparator;
 
 /**
  * <P>

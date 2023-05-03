@@ -38,10 +38,6 @@
 package org.scopemvc.view.servlet.jsp;
 
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.PropertyManager;
@@ -52,6 +48,11 @@ import org.scopemvc.util.convertor.StringConvertor;
 import org.scopemvc.util.convertor.StringConvertors;
 import org.scopemvc.view.servlet.Page;
 import org.scopemvc.view.servlet.ValidationFailure;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * <P>

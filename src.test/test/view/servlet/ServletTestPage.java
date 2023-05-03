@@ -39,8 +39,9 @@
 
 package test.view.servlet;
 
-import java.io.Writer;
 import org.scopemvc.view.servlet.Page;
+
+import java.io.Writer;
 
 /**
  * @author <A HREF="mailto:smeyfroi@users.sourceforge.net">Steve Meyfroidt</A>

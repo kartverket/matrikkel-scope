@@ -37,25 +37,23 @@
  */
 package test.view.swing;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-
-import javax.swing.JButton;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import junit.extensions.jfcunit.JFCTestCase;
 import junit.extensions.jfcunit.JFCTestHelper;
 import junit.extensions.jfcunit.KeyEventData;
 import junit.extensions.jfcunit.MouseEventData;
 import junit.extensions.jfcunit.TestHelper;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.scopemvc.core.Selector;
 import org.scopemvc.util.convertor.StringStringConvertor;
 import org.scopemvc.view.swing.ControlIssuer;
 import org.scopemvc.view.swing.SPanel;
 import org.scopemvc.view.swing.STextField;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 /**
  * <P>

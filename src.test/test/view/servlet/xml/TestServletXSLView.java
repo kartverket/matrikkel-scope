@@ -38,12 +38,13 @@
 package test.view.servlet.xml;
 
 
-import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
 import junit.framework.TestCase;
 import org.scopemvc.view.servlet.ServletView;
 import org.scopemvc.view.servlet.xml.XSLPage;
+
+import java.net.URL;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * <P>

@@ -38,8 +38,7 @@
 package test.view.util;
 
 import junit.framework.TestCase;
-
-import org.scopemvc.core.*;
+import org.scopemvc.core.Selector;
 import org.scopemvc.view.util.BoundModel;
 import test.model.basic.BasicTestModel;
 

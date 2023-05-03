@@ -40,17 +40,17 @@
 package org.scopemvc.view.swing;
 
 
-import java.awt.Component;
-import java.awt.Container;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.scopemvc.Pointer;
 import org.scopemvc.controller.basic.BasicController;
 import org.scopemvc.core.Control;
 import org.scopemvc.core.PropertyView;
 import org.scopemvc.core.Selector;
 import org.scopemvc.core.View;
 import org.scopemvc.view.util.ModelBindable;
-import org.scopemvc.Pointer;
+
+import java.awt.*;
 
 /**
  * <P>

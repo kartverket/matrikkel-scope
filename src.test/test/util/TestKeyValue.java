@@ -38,7 +38,6 @@
 package test.util;
 
 import junit.framework.TestCase;
-
 import org.scopemvc.util.KeyValue;
 
 /**

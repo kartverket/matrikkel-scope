@@ -37,11 +37,11 @@
  */
 package test.model.util;
 
-import java.util.Iterator;
 import junit.framework.TestCase;
-
 import org.scopemvc.core.IntIndexSelector;
 import org.scopemvc.model.util.IntIndexSelectorIterator;
+
+import java.util.Iterator;
 
 /**
  * <P>
