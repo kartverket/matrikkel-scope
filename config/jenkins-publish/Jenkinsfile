@@ -2,13 +2,12 @@
 @Library('common@master') _
 
 pipeline { //declarative pipeline syntax
-    // agent defines where the pipeline will run.
     agent {
         label 'matrikkelen'
     }
 
     tools {
-        jdk 'Java 14 Latest' //spesifisert java versjon for bygging av release
+        jdk 'Java 11 Latest' //spesifisert java versjon for bygging av release
     }
 
     parameters {
