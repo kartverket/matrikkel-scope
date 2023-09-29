@@ -32,9 +32,7 @@ sourceSets {
 }
 
 repositories {
-  maven {
-    name = 'public'; url = MAVEN_REPO
-  }
+  mavenCentral()
 }
 
 dependencies {
@@ -77,13 +75,6 @@ manifest {
             'Specification-Title'   : project.name,
             'Specification-Vendor'  : 'Statens kartverk',
             'Specification-Version' : (gradle.startParameter.projectProperties.get('projectVersion') ?: projectVersion).replace('-SNAPSHOT', ''),
-
-            //misc build info
-            'Build-By'              : System.getProperty('user.name'),
-            'Build-Machine'         : java.net.InetAddress.localHost.hostName,
-            'Build-Repo'            : MAVEN_REPO,
-            'Build-Gradle'          : gradle.gradleVersion,
-            'Build-JDK'             : System.getProperty('java.version'),
 
             'Implementation-Title'  : "${project.name} bygget for ${(version == null || version.contains('-SNAPSHOT') || version.contains('-build')) ? 'TEST' : 'Produksjon'}",
             'Implementation-Vendor' : 'Statens kartverk',
