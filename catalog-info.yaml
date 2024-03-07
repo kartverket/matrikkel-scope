@@ -1,0 +1,34 @@
+# nonk8s
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: matrikkel-scope
+  tags: [internal]
+  links:
+    - url: https://github.com/kartverket/matrikkel-scope
+      title: matrikkel-scope på GitHub
+spec:
+  type: website
+  lifecycle: production
+  owner: matrikkel
+  system: matrikkel
+  dependsOn:
+    - resource:default/SKIP
+  providesApis:
+    - matrikkel-scope-api
+---
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: matrikkel-scope-api
+  tags: [internal]
+spec:
+  type: openapi
+  lifecycle: production
+  owner: matrikkel
+  system: matrikkel
+  definition: |
+    openapi: "3.0.0"
+    info:
+      title: matrikkel-scope API
+    paths:
