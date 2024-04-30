@@ -1,0 +1,38 @@
+# nonk8s
+apiVersion: "backstage.io/v1alpha1"
+kind: "Component"
+metadata:
+  name: "matrikkel-scope"
+  tags:
+  - "internal"
+spec:
+  type: "library"
+  lifecycle: "production"
+  owner: "Heimdall"
+  system: "matrikkel"
+---
+apiVersion: "backstage.io/v1alpha1"
+kind: "Group"
+metadata:
+  name: "security_champion_matrikkel-scope"
+  title: "Security Champion matrikkel-scope"
+spec:
+  type: "security_champion"
+  parent: "eiendom_security_champions"
+  members:
+  - "lislei"
+  children:
+  - "resource:matrikkel-scope"
+---
+apiVersion: "backstage.io/v1alpha1"
+kind: "Resource"
+metadata:
+  name: "matrikkel-scope"
+  links:
+  - url: "https://github.com/kartverket/matrikkel-scope"
+    title: "matrikkel-scope på GitHub"
+spec:
+  type: "repo"
+  owner: "security_champion_matrikkel-scope"
+  dependencyOf:
+  - "component:matrikkel-scope"
