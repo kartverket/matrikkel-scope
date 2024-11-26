@@ -40,16 +40,28 @@
 package test.controller.servlet;
 
 
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletInputStream;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import jakarta.servlet.AsyncContext;
+import jakarta.servlet.DispatcherType;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletContext;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.ServletInputStream;
+import jakarta.servlet.ServletRequest;
+import jakarta.servlet.ServletResponse;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.http.HttpUpgradeHandler;
+import jakarta.servlet.http.Part;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
@@ -432,6 +444,11 @@ class DummyHTTPRequest implements HttpServletRequest {
         return null;
     }
 
+    @Override
+    public String changeSessionId() {
+        return "";
+    }
+
     /**
      * Checks whether the requested session ID is still valid.
      *
@@ -464,6 +481,36 @@ class DummyHTTPRequest implements HttpServletRequest {
      */
     public boolean isRequestedSessionIdFromUrl() {
         return false;
+    }
+
+    @Override
+    public boolean authenticate(HttpServletResponse httpServletResponse) throws IOException, ServletException {
+        return false;
+    }
+
+    @Override
+    public void login(String s, String s1) throws ServletException {
+
+    }
+
+    @Override
+    public void logout() throws ServletException {
+
+    }
+
+    @Override
+    public Collection<Part> getParts() throws IOException, ServletException {
+        return List.of();
+    }
+
+    @Override
+    public Part getPart(String s) throws IOException, ServletException {
+        return null;
+    }
+
+    @Override
+    public <T extends HttpUpgradeHandler> T upgrade(Class<T> aClass) throws IOException, ServletException {
+        return null;
     }
 
     /**
@@ -522,13 +569,48 @@ class DummyHTTPRequest implements HttpServletRequest {
         return 0;
     }
 
+    @Override
+    public ServletContext getServletContext() {
+        return null;
+    }
+
+    @Override
+    public AsyncContext startAsync() throws IllegalStateException {
+        return null;
+    }
+
+    @Override
+    public AsyncContext startAsync(ServletRequest servletRequest, ServletResponse servletResponse) throws IllegalStateException {
+        return null;
+    }
+
+    @Override
+    public boolean isAsyncStarted() {
+        return false;
+    }
+
+    @Override
+    public boolean isAsyncSupported() {
+        return false;
+    }
+
+    @Override
+    public AsyncContext getAsyncContext() {
+        return null;
+    }
+
+    @Override
+    public DispatcherType getDispatcherType() {
+        return null;
+    }
+
     /**
      * Returns the value of the named attribute as an <code>Object</code>, or
      * <code>null</code> if no attribute of the given name exists. <p>
      *
      * Attributes can be set two ways. The servlet container may set attributes
      * to make available custom information about a request. For example, for
-     * requests made using HTTPS, the attribute <code>javax.servlet.request.X509Certificate</code>
+     * requests made using HTTPS, the attribute <code>jakarta.servlet.request.X509Certificate</code>
      * can be used to retrieve information on the certificate of the client.
      * Attributes can also be set programatically using {@link
      * ServletRequest#setAttribute}. This allows information to be embedded into
@@ -626,6 +708,11 @@ class DummyHTTPRequest implements HttpServletRequest {
      */
     public int getContentLength() {
         return -1;
+    }
+
+    @Override
+    public long getContentLengthLong() {
+        return 0;
     }
 
     /**
@@ -826,4 +913,3 @@ class DummyHTTPRequest implements HttpServletRequest {
      */
     public void removeAttribute(String name) { }
 }
-

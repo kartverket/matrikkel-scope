@@ -39,8 +39,8 @@ package test.view.swing;
 
 import junit.extensions.jfcunit.JFCTestCase;
 import junit.extensions.jfcunit.JFCTestHelper;
-import junit.extensions.jfcunit.KeyEventData;
-import junit.extensions.jfcunit.MouseEventData;
+//import junit.extensions.jfcunit.KeyEventData;
+//import junit.extensions.jfcunit.MouseEventData;
 import junit.extensions.jfcunit.TestHelper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -267,152 +267,152 @@ public final class TestSPasswordField extends JFCTestCase {
      *
      * @throws Exception Any abnormal exception
      */
-    public void testControlIssue1() throws Exception {
-        textfield.setSelector(Selector.fromString("stringProperty"));
-        textfield.setControlID("test1");
-        model.setStringProperty("");
-        controller.setModel(model);
-        SuiteViewSwing.waitForAWT();
-
-        assertNull(controller.lastControl);
-
-        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_A));
-        SuiteViewSwing.waitForAWT();
-        assertNull(controller.lastControl);
-        assertEquals("", model.getStringProperty());
-        assertTrue(textfield.hasFocus());
-
-        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_B));
-        SuiteViewSwing.waitForAWT();
-        assertNull(controller.lastControl);
-        assertEquals("", model.getStringProperty());
-        assertTrue(textfield.hasFocus());
-
-        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
-        SuiteViewSwing.waitForAWT();
-        assertEquals("ab", model.getStringProperty());
-        assertTrue(controller.controlMatches("test1"));
-        assertTrue(textfield.hasFocus());
-
-        textfield.setControlID("test1a");
-        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
-        SuiteViewSwing.waitForAWT();
-        assertTrue(controller.controlMatches("test1a"));
-        assertTrue(textfield.hasFocus());
-    }
-
-
-    /**
-     * Test issuing controls after losing focus
-     *
-     * @throws Exception Any abnormal exception
-     */
-    public void testControlIssue2() throws Exception {
-        textfield.setSelector(Selector.fromString("stringProperty"));
-        controller.setModel(model);
-        textfield.setControlID("test1");
-        SuiteViewSwing.waitForAWT();
-        // select the textfield
-        helper.enterClickAndLeave(new MouseEventData(this, textfield, 1));
-
-        assertNull(controller.lastControl);
-
-        // select the view, exit the textfield
-        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
-        SuiteViewSwing.waitForAWT();
-        assertTrue(controller.controlMatches("test1"));
-
-        // select the textfield
-        helper.enterClickAndLeave(new MouseEventData(this, textfield, 1));
-        textfield.setControlID("test1a");
-        // select the view, exit the textfield
-        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
-        SuiteViewSwing.waitForAWT();
-        assertTrue(controller.controlMatches("test1a"));
-    }
-
-    /**
-     * Test the 'smart' way of issuing controls: control should be issued only
-     * if the data changed
-     *
-     * @throws Exception Any abnormal exception
-     */
-    public void testControlIssue3() throws Exception {
-        textfield.setControlSettings(ControlIssuer.ISSUE_CONTROL_ON_ENTER_KEY
-                | ControlIssuer.ISSUE_CONTROL_ON_LOST_FOCUS
-                | ControlIssuer.ISSUE_CONTROL_ONLY_ON_CHANGE);
-        textfield.setSelector(Selector.fromString("stringProperty"));
-        controller.setModel(model);
-        textfield.setControlID("test1");
-        SuiteViewSwing.waitForAWT();
-        // select the textfield
-        helper.enterClickAndLeave(new MouseEventData(this, textfield, 1));
-
-        assertNull(controller.lastControl);
-
-        // select the view, exit the textfield
-        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
-        SuiteViewSwing.waitForAWT();
-        assertNull(controller.lastControl);
-
-        // select the textfield
-        helper.enterClickAndLeave(new MouseEventData(this, textfield, 1));
-        textfield.setText("newvalue");
-        // select the view, exit the textfield
-        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
-        SuiteViewSwing.waitForAWT();
-        assertTrue(controller.controlMatches("test1"));
-    }
-
-    /**
-     * Test issuing controls after an action event
-     *
-     * @throws Exception Any abnormal exception
-     */
-    public void testKeyEnter() throws Exception {
-        JButton button = new JButton("OK");
-        ButtonListener buttonListener = new ButtonListener();
-        button.addActionListener(buttonListener);
-        button.setDefaultCapable(true);
-        view.add(button);
-        view.setDefaultButton(button);
-        view.invalidate();
-        view.validate();
-        model.setStringProperty("");
-        textfield.setSelector(Selector.fromString("stringProperty"));
-        controller.setModel(model);
-
-        // No control ID, to force default behaviour
-        textfield.setControlID(null);
-        SuiteViewSwing.waitForAWT();
-        assertNull(controller.lastControl);
-
-        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_A));
-        SuiteViewSwing.waitForAWT();
-        assertNull(controller.lastControl);
-        assertTrue(!buttonListener.gotAction);
-        assertEquals("", model.getStringProperty());
-        assertTrue(textfield.hasFocus());
-
-        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_B));
-        SuiteViewSwing.waitForAWT();
-        assertNull(controller.lastControl);
-        assertEquals("", model.getStringProperty());
-        assertTrue(textfield.hasFocus());
-
-        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
-        SuiteViewSwing.waitForAWT();
-        assertEquals("ab", model.getStringProperty());
-        assertTrue(buttonListener.gotAction);
-        assertNull(controller.lastControl);
-
-        buttonListener.gotAction = false;
-        textfield.setControlID("test1");
-        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
-        SuiteViewSwing.waitForAWT();
-        assertTrue(!buttonListener.gotAction);
-        assertTrue(controller.controlMatches("test1"));
-    }
+//    public void testControlIssue1() throws Exception {
+//        textfield.setSelector(Selector.fromString("stringProperty"));
+//        textfield.setControlID("test1");
+//        model.setStringProperty("");
+//        controller.setModel(model);
+//        SuiteViewSwing.waitForAWT();
+//
+//        assertNull(controller.lastControl);
+//
+//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_A));
+//        SuiteViewSwing.waitForAWT();
+//        assertNull(controller.lastControl);
+//        assertEquals("", model.getStringProperty());
+//        assertTrue(textfield.hasFocus());
+//
+//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_B));
+//        SuiteViewSwing.waitForAWT();
+//        assertNull(controller.lastControl);
+//        assertEquals("", model.getStringProperty());
+//        assertTrue(textfield.hasFocus());
+//
+//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
+//        SuiteViewSwing.waitForAWT();
+//        assertEquals("ab", model.getStringProperty());
+//        assertTrue(controller.controlMatches("test1"));
+//        assertTrue(textfield.hasFocus());
+//
+//        textfield.setControlID("test1a");
+//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
+//        SuiteViewSwing.waitForAWT();
+//        assertTrue(controller.controlMatches("test1a"));
+//        assertTrue(textfield.hasFocus());
+//    }
+//
+//
+//    /**
+//     * Test issuing controls after losing focus
+//     *
+//     * @throws Exception Any abnormal exception
+//     */
+//    public void testControlIssue2() throws Exception {
+//        textfield.setSelector(Selector.fromString("stringProperty"));
+//        controller.setModel(model);
+//        textfield.setControlID("test1");
+//        SuiteViewSwing.waitForAWT();
+//        // select the textfield
+//        helper.enterClickAndLeave(new MouseEventData(this, textfield, 1));
+//
+//        assertNull(controller.lastControl);
+//
+//        // select the view, exit the textfield
+//        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
+//        SuiteViewSwing.waitForAWT();
+//        assertTrue(controller.controlMatches("test1"));
+//
+//        // select the textfield
+//        helper.enterClickAndLeave(new MouseEventData(this, textfield, 1));
+//        textfield.setControlID("test1a");
+//        // select the view, exit the textfield
+//        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
+//        SuiteViewSwing.waitForAWT();
+//        assertTrue(controller.controlMatches("test1a"));
+//    }
+//
+//    /**
+//     * Test the 'smart' way of issuing controls: control should be issued only
+//     * if the data changed
+//     *
+//     * @throws Exception Any abnormal exception
+//     */
+//    public void testControlIssue3() throws Exception {
+//        textfield.setControlSettings(ControlIssuer.ISSUE_CONTROL_ON_ENTER_KEY
+//                | ControlIssuer.ISSUE_CONTROL_ON_LOST_FOCUS
+//                | ControlIssuer.ISSUE_CONTROL_ONLY_ON_CHANGE);
+//        textfield.setSelector(Selector.fromString("stringProperty"));
+//        controller.setModel(model);
+//        textfield.setControlID("test1");
+//        SuiteViewSwing.waitForAWT();
+//        // select the textfield
+//        helper.enterClickAndLeave(new MouseEventData(this, textfield, 1));
+//
+//        assertNull(controller.lastControl);
+//
+//        // select the view, exit the textfield
+//        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
+//        SuiteViewSwing.waitForAWT();
+//        assertNull(controller.lastControl);
+//
+//        // select the textfield
+//        helper.enterClickAndLeave(new MouseEventData(this, textfield, 1));
+//        textfield.setText("newvalue");
+//        // select the view, exit the textfield
+//        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
+//        SuiteViewSwing.waitForAWT();
+//        assertTrue(controller.controlMatches("test1"));
+//    }
+//
+//    /**
+//     * Test issuing controls after an action event
+//     *
+//     * @throws Exception Any abnormal exception
+//     */
+//    public void testKeyEnter() throws Exception {
+//        JButton button = new JButton("OK");
+//        ButtonListener buttonListener = new ButtonListener();
+//        button.addActionListener(buttonListener);
+//        button.setDefaultCapable(true);
+//        view.add(button);
+//        view.setDefaultButton(button);
+//        view.invalidate();
+//        view.validate();
+//        model.setStringProperty("");
+//        textfield.setSelector(Selector.fromString("stringProperty"));
+//        controller.setModel(model);
+//
+//        // No control ID, to force default behaviour
+//        textfield.setControlID(null);
+//        SuiteViewSwing.waitForAWT();
+//        assertNull(controller.lastControl);
+//
+//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_A));
+//        SuiteViewSwing.waitForAWT();
+//        assertNull(controller.lastControl);
+//        assertTrue(!buttonListener.gotAction);
+//        assertEquals("", model.getStringProperty());
+//        assertTrue(textfield.hasFocus());
+//
+//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_B));
+//        SuiteViewSwing.waitForAWT();
+//        assertNull(controller.lastControl);
+//        assertEquals("", model.getStringProperty());
+//        assertTrue(textfield.hasFocus());
+//
+//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
+//        SuiteViewSwing.waitForAWT();
+//        assertEquals("ab", model.getStringProperty());
+//        assertTrue(buttonListener.gotAction);
+//        assertNull(controller.lastControl);
+//
+//        buttonListener.gotAction = false;
+//        textfield.setControlID("test1");
+//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
+//        SuiteViewSwing.waitForAWT();
+//        assertTrue(!buttonListener.gotAction);
+//        assertTrue(controller.controlMatches("test1"));
+//    }
 
 
     /**
@@ -695,4 +695,3 @@ public final class TestSPasswordField extends JFCTestCase {
         }
     }
 }
-

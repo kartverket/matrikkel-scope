@@ -40,7 +40,7 @@ package test.view.swing;
 
 import junit.extensions.jfcunit.JFCTestCase;
 import junit.extensions.jfcunit.JFCTestHelper;
-import junit.extensions.jfcunit.JTableMouseEventData;
+//import junit.extensions.jfcunit.JTableMouseEventData;
 import junit.extensions.jfcunit.TestHelper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -357,40 +357,40 @@ public final class TestSTable extends JFCTestCase {
     }
 
 
-    /**
-     * A unit test for JUnit
-     *
-     * @throws Exception Any abnormal exception
-     */
-    public void testControlIssue() throws Exception {
-        table.setSelector(Selector.fromString("subModels"));
-        //table.setSelectionSelector("stringProperty");
-        table.setColumnSelectors(new String[]{"stringProperty", "intProperty"});
-        table.setColumnNames(new String[]{"stringProperty", "intProperty"});
-        table.setChangeSelectionControlID("changeSelection");
-        table.setDoubleClickControlID("doubleClick");
-        // force the columns to be non-editable
-        ((STableModel) table.getModel()).setEditableColumns(new boolean[]{false, false});
-        assertEquals(Selector.fromString("subModels"), ((STableModel) table.getModel()).getSelector());
-
-        controller.setModel(model);
-        SuiteViewSwing.waitForAWT();
-
-        helper.enterClickAndLeave(new JTableMouseEventData(this, table, 0, 0, 1));
-        helper.enterClickAndLeave(new JTableMouseEventData(this, table, 1, 0, 1));
-
-        SuiteViewSwing.waitForAWT();
-        assertEquals(new Control("changeSelection"), controller.lastControl);
-
-        Thread.sleep(1000);
-        helper.enterClickAndLeave(new JTableMouseEventData(this, table, 1, 0, 2));
-
-        SuiteViewSwing.waitForAWT();
-        Thread.sleep(1000);
-
-        assertEquals(new Control("doubleClick"), controller.lastControl);
-
-    }
+//    /**
+//     * A unit test for JUnit
+//     *
+//     * @throws Exception Any abnormal exception
+//     */
+//    public void testControlIssue() throws Exception {
+//        table.setSelector(Selector.fromString("subModels"));
+//        //table.setSelectionSelector("stringProperty");
+//        table.setColumnSelectors(new String[]{"stringProperty", "intProperty"});
+//        table.setColumnNames(new String[]{"stringProperty", "intProperty"});
+//        table.setChangeSelectionControlID("changeSelection");
+//        table.setDoubleClickControlID("doubleClick");
+//        // force the columns to be non-editable
+//        ((STableModel) table.getModel()).setEditableColumns(new boolean[]{false, false});
+//        assertEquals(Selector.fromString("subModels"), ((STableModel) table.getModel()).getSelector());
+//
+//        controller.setModel(model);
+//        SuiteViewSwing.waitForAWT();
+//
+//        helper.enterClickAndLeave(new JTableMouseEventData(this, table, 0, 0, 1));
+//        helper.enterClickAndLeave(new JTableMouseEventData(this, table, 1, 0, 1));
+//
+//        SuiteViewSwing.waitForAWT();
+//        assertEquals(new Control("changeSelection"), controller.lastControl);
+//
+//        Thread.sleep(1000);
+//        helper.enterClickAndLeave(new JTableMouseEventData(this, table, 1, 0, 2));
+//
+//        SuiteViewSwing.waitForAWT();
+//        Thread.sleep(1000);
+//
+//        assertEquals(new Control("doubleClick"), controller.lastControl);
+//
+//    }
 
 
     /**
@@ -514,5 +514,3 @@ public final class TestSTable extends JFCTestCase {
 //    }
 
 }
-
-

@@ -38,16 +38,20 @@
 package test.controller.servlet;
 
 
+import jakarta.servlet.WriteListener;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.scopemvc.util.Debug;
 
-import javax.servlet.ServletOutputStream;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletOutputStream;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import java.util.Locale;
 
 /**
@@ -224,6 +228,28 @@ class DummyHTTPResponse implements HttpServletResponse {
         errorMessage = sm;
     }
 
+    @Override
+    public int getStatus() {
+        return 0;
+    }
+
+    @Override
+    public String getHeader(String s) {
+        return "";
+    }
+
+    @Override
+    public Collection<String> getHeaders(String s) {
+        List<String> strings = new ArrayList<>();
+        return strings;
+    }
+
+    @Override
+    public Collection<String> getHeaderNames() {
+        List<String> strings = new ArrayList<>();
+        return strings;
+    }
+
     /**
      * Sets the status code for this response. This method is used to set the
      * return status code when there is no error (for example, for the status
@@ -247,6 +273,11 @@ class DummyHTTPResponse implements HttpServletResponse {
      */
     public void setContentLength(int len) {
         contentLength = len;
+    }
+
+    @Override
+    public void setContentLengthLong(long l) {
+
     }
 
     /**
@@ -573,5 +604,15 @@ class DummyServletOutputStream extends ServletOutputStream {
      */
     public String toString() {
         return delegate.toString();
+    }
+
+    @Override
+    public boolean isReady() {
+        return false;
+    }
+
+    @Override
+    public void setWriteListener(WriteListener writeListener) {
+
     }
 }
