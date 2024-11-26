@@ -37,13 +37,14 @@ repositories {
 
 dependencies {
   implementation 'commons-logging:commons-logging:1.0.4'
-  compileOnly 'javax.servlet:servlet-api:2.5' // provided
-  compileOnly 'javax.servlet.jsp:jsp-api:2.1' // provided
+  compileOnly 'jakarta.servlet:jakarta.servlet-api:5.0.0' // provided
+  compileOnly 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.0.0' // provided
 
   testImplementation 'junit:junit:3.8.2'
   testImplementation 'org.assertj:assertj-core:3.16.1'
   testImplementation files('lib/jfcunit.jar')
-  testImplementation 'javax.servlet:servlet-api:2.5'
+  testImplementation 'jakarta.servlet:jakarta.servlet-api:5.0.0'
+
 }
 
 
@@ -81,4 +82,3 @@ manifest {
             'Implementation-Version': project.version,
     ])
 }
-
