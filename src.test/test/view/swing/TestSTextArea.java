@@ -40,7 +40,7 @@ package test.view.swing;
 
 import junit.extensions.jfcunit.JFCTestCase;
 import junit.extensions.jfcunit.JFCTestHelper;
-//import junit.extensions.jfcunit.MouseEventData;
+import junit.extensions.jfcunit.eventdata.MouseEventData;
 import junit.extensions.jfcunit.TestHelper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;

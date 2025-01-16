@@ -39,8 +39,8 @@ package test.view.swing;
 
 import junit.extensions.jfcunit.JFCTestCase;
 import junit.extensions.jfcunit.JFCTestHelper;
-//import junit.extensions.jfcunit.KeyEventData;
-//import junit.extensions.jfcunit.MouseEventData;
+import junit.extensions.jfcunit.eventdata.KeyEventData;
+import junit.extensions.jfcunit.eventdata.MouseEventData;
 import junit.extensions.jfcunit.TestHelper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -267,39 +267,39 @@ public final class TestSTextField extends JFCTestCase {
      *
      * @throws Exception Any abnormal exception
      */
-//    public void testControlIssue1() throws Exception {
-//        textfield.setSelector(Selector.fromString("stringProperty"));
-//        textfield.setControlID("test1");
-//        model.setStringProperty("");
-//        controller.setModel(model);
-//        SuiteViewSwing.waitForAWT();
-//
-//        assertNull(controller.lastControl);
-//
-//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_A));
-//        SuiteViewSwing.waitForAWT();
-//        assertNull(controller.lastControl);
-//        assertEquals("", model.getStringProperty());
-//        assertTrue(textfield.hasFocus());
-//
-//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_B));
-//        SuiteViewSwing.waitForAWT();
-//        assertNull(controller.lastControl);
-//        assertEquals("", model.getStringProperty());
-//        assertTrue(textfield.hasFocus());
-//
-//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
-//        SuiteViewSwing.waitForAWT();
-//        assertEquals("ab", model.getStringProperty());
-//        assertTrue(controller.controlMatches("test1"));
-//        assertTrue(textfield.hasFocus());
-//
-//        textfield.setControlID("test1a");
-//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
-//        SuiteViewSwing.waitForAWT();
-//        assertTrue(controller.controlMatches("test1a"));
-//        assertTrue(textfield.hasFocus());
-//    }
+    public void testControlIssue1() throws Exception {
+        textfield.setSelector(Selector.fromString("stringProperty"));
+        textfield.setControlID("test1");
+        model.setStringProperty("");
+        controller.setModel(model);
+        SuiteViewSwing.waitForAWT();
+
+        assertNull(controller.lastControl);
+
+        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_A));
+        SuiteViewSwing.waitForAWT();
+        assertNull(controller.lastControl);
+        assertEquals("", model.getStringProperty());
+        assertTrue(textfield.hasFocus());
+
+        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_B));
+        SuiteViewSwing.waitForAWT();
+        assertNull(controller.lastControl);
+        assertEquals("", model.getStringProperty());
+        assertTrue(textfield.hasFocus());
+
+        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
+        SuiteViewSwing.waitForAWT();
+        assertEquals("ab", model.getStringProperty());
+        assertTrue(controller.controlMatches("test1"));
+        assertTrue(textfield.hasFocus());
+
+        textfield.setControlID("test1a");
+        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
+        SuiteViewSwing.waitForAWT();
+        assertTrue(controller.controlMatches("test1a"));
+        assertTrue(textfield.hasFocus());
+    }
 
 
     /**
