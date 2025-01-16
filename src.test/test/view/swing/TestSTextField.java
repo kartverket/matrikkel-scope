@@ -364,55 +364,55 @@ public final class TestSTextField extends JFCTestCase {
 //        assertTrue(controller.controlMatches("test1"));
 //    }
 //
-//    /**
-//     * Test issuing controls after an action event
-//     *
-//     * @throws Exception Any abnormal exception
-//     */
-//    public void testKeyEnter() throws Exception {
-//        JButton button = new JButton("OK");
-//        ButtonListener buttonListener = new ButtonListener();
-//        button.addActionListener(buttonListener);
-//        button.setDefaultCapable(true);
-//        view.add(button);
-//        view.setDefaultButton(button);
-//        view.invalidate();
-//        view.validate();
-//        model.setStringProperty("");
-//        textfield.setSelector(Selector.fromString("stringProperty"));
-//        controller.setModel(model);
-//
-//        // No control ID, to force default behaviour
-//        textfield.setControlID(null);
-//        SuiteViewSwing.waitForAWT();
-//        assertNull(controller.lastControl);
-//
-//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_A));
-//        SuiteViewSwing.waitForAWT();
-//        assertNull(controller.lastControl);
-//        assertTrue(!buttonListener.gotAction);
-//        assertEquals("", model.getStringProperty());
-//        assertTrue(textfield.hasFocus());
-//
-//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_B));
-//        SuiteViewSwing.waitForAWT();
-//        assertNull(controller.lastControl);
-//        assertEquals("", model.getStringProperty());
-//        assertTrue(textfield.hasFocus());
-//
-//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
-//        SuiteViewSwing.waitForAWT();
-//        assertEquals("ab", model.getStringProperty());
-//        assertTrue(buttonListener.gotAction);
-//        assertNull(controller.lastControl);
-//
-//        buttonListener.gotAction = false;
-//        textfield.setControlID("test1");
-//        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
-//        SuiteViewSwing.waitForAWT();
-//        assertTrue(!buttonListener.gotAction);
-//        assertTrue(controller.controlMatches("test1"));
-//    }
+    /**
+     * Test issuing controls after an action event
+     *
+     * @throws Exception Any abnormal exception
+     */
+    public void testKeyEnter() throws Exception {
+        JButton button = new JButton("OK");
+        ButtonListener buttonListener = new ButtonListener();
+        button.addActionListener(buttonListener);
+        button.setDefaultCapable(true);
+        view.add(button);
+        view.setDefaultButton(button);
+        view.invalidate();
+        view.validate();
+        model.setStringProperty("");
+        textfield.setSelector(Selector.fromString("stringProperty"));
+        controller.setModel(model);
+
+        // No control ID, to force default behaviour
+        textfield.setControlID(null);
+        SuiteViewSwing.waitForAWT();
+        assertNull(controller.lastControl);
+
+        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_A));
+        SuiteViewSwing.waitForAWT();
+        assertNull(controller.lastControl);
+        assertTrue(!buttonListener.gotAction);
+        assertEquals("", model.getStringProperty());
+        assertTrue(textfield.hasFocus());
+
+        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_B));
+        SuiteViewSwing.waitForAWT();
+        assertNull(controller.lastControl);
+        assertEquals("", model.getStringProperty());
+        assertTrue(textfield.hasFocus());
+
+        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
+        SuiteViewSwing.waitForAWT();
+        assertEquals("ab", model.getStringProperty());
+        assertTrue(buttonListener.gotAction);
+        assertNull(controller.lastControl);
+
+        buttonListener.gotAction = false;
+        textfield.setControlID("test1");
+        helper.sendKeyAction(new KeyEventData(this, textfield, KeyEvent.VK_ENTER));
+        SuiteViewSwing.waitForAWT();
+        assertTrue(!buttonListener.gotAction);
+        assertTrue(controller.controlMatches("test1"));
+    }
 
 
     /**
