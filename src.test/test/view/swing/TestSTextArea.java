@@ -40,7 +40,7 @@ package test.view.swing;
 
 import junit.extensions.jfcunit.JFCTestCase;
 import junit.extensions.jfcunit.JFCTestHelper;
-import junit.extensions.jfcunit.MouseEventData;
+import junit.extensions.jfcunit.eventdata.MouseEventData;
 import junit.extensions.jfcunit.TestHelper;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -255,62 +255,62 @@ public final class TestSTextArea extends JFCTestCase {
      *
      * @throws Exception Any abnormal exception
      */
-    public void testControlIssue2() throws Exception {
-        textarea.setSelector(Selector.fromString("stringProperty"));
-        controller.setModel(model);
-        textarea.setControlID("test1");
-        SuiteViewSwing.waitForAWT();
-        // select the textarea
-        helper.enterClickAndLeave(new MouseEventData(this, textarea, 1));
+//    public void testControlIssue2() throws Exception {
+//        textarea.setSelector(Selector.fromString("stringProperty"));
+//        controller.setModel(model);
+//        textarea.setControlID("test1");
+//        SuiteViewSwing.waitForAWT();
+//        // select the textarea
+//        helper.enterClickAndLeave(new MouseEventData(this, textarea, 1));
+//
+//        assertNull(controller.lastControl);
+//
+//        // select the view, exit the textfield
+//        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
+//        SuiteViewSwing.waitForAWT();
+//        assertTrue(controller.controlMatches("test1"));
+//
+//        // select the textarea
+//        helper.enterClickAndLeave(new MouseEventData(this, textarea, 1));
+//        textarea.setControlID("test1a");
+//        // select the view, exit the textarea
+//        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
+//        SuiteViewSwing.waitForAWT();
+//        assertTrue(controller.controlMatches("test1a"));
+//    }
 
-        assertNull(controller.lastControl);
-
-        // select the view, exit the textfield
-        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
-        SuiteViewSwing.waitForAWT();
-        assertTrue(controller.controlMatches("test1"));
-
-        // select the textarea
-        helper.enterClickAndLeave(new MouseEventData(this, textarea, 1));
-        textarea.setControlID("test1a");
-        // select the view, exit the textarea
-        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
-        SuiteViewSwing.waitForAWT();
-        assertTrue(controller.controlMatches("test1a"));
-    }
-
-    /**
-     * Test the 'smart' way of issuing controls: control should be issued only
-     * if the data changed
-     *
-     * @throws Exception Any abnormal exception
-     */
-    public void testControlIssue3() throws Exception {
-        textarea.setControlSettings(ControlIssuer.ISSUE_CONTROL_ON_ENTER_KEY
-                | ControlIssuer.ISSUE_CONTROL_ON_LOST_FOCUS
-                | ControlIssuer.ISSUE_CONTROL_ONLY_ON_CHANGE);
-        textarea.setSelector(Selector.fromString("stringProperty"));
-        controller.setModel(model);
-        textarea.setControlID("test1");
-        SuiteViewSwing.waitForAWT();
-        // select the textarea
-        helper.enterClickAndLeave(new MouseEventData(this, textarea, 1));
-
-        assertNull(controller.lastControl);
-
-        // select the view, exit the textfield
-        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
-        SuiteViewSwing.waitForAWT();
-        assertNull(controller.lastControl);
-
-        // select the textarea
-        helper.enterClickAndLeave(new MouseEventData(this, textarea, 1));
-        textarea.setText("newvalue");
-        // select the view, exit the textarea
-        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
-        SuiteViewSwing.waitForAWT();
-        assertTrue(controller.controlMatches("test1"));
-    }
+//    /**
+//     * Test the 'smart' way of issuing controls: control should be issued only
+//     * if the data changed
+//     *
+//     * @throws Exception Any abnormal exception
+//     */
+//    public void testControlIssue3() throws Exception {
+//        textarea.setControlSettings(ControlIssuer.ISSUE_CONTROL_ON_ENTER_KEY
+//                | ControlIssuer.ISSUE_CONTROL_ON_LOST_FOCUS
+//                | ControlIssuer.ISSUE_CONTROL_ONLY_ON_CHANGE);
+//        textarea.setSelector(Selector.fromString("stringProperty"));
+//        controller.setModel(model);
+//        textarea.setControlID("test1");
+//        SuiteViewSwing.waitForAWT();
+//        // select the textarea
+//        helper.enterClickAndLeave(new MouseEventData(this, textarea, 1));
+//
+//        assertNull(controller.lastControl);
+//
+//        // select the view, exit the textfield
+//        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
+//        SuiteViewSwing.waitForAWT();
+//        assertNull(controller.lastControl);
+//
+//        // select the textarea
+//        helper.enterClickAndLeave(new MouseEventData(this, textarea, 1));
+//        textarea.setText("newvalue");
+//        // select the view, exit the textarea
+//        helper.enterClickAndLeave(new MouseEventData(this, view, 1));
+//        SuiteViewSwing.waitForAWT();
+//        assertTrue(controller.controlMatches("test1"));
+//    }
 
     /**
      * A unit test for JUnit

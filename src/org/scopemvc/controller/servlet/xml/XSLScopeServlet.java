@@ -44,10 +44,10 @@ import org.scopemvc.controller.servlet.ScopeServlet;
 import org.scopemvc.controller.servlet.ServletContext;
 import org.scopemvc.view.servlet.xml.AbstractXSLPage;
 
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletConfig;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 
 /**

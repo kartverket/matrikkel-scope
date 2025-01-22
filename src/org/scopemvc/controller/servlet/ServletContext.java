@@ -43,8 +43,8 @@ import org.apache.commons.logging.LogFactory;
 import org.scopemvc.controller.basic.ViewContext;
 import org.scopemvc.core.View;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.PrintWriter;
