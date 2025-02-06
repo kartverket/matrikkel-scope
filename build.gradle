@@ -58,7 +58,7 @@ tasks.withType(JavaCompile).configureEach {
 
 task sourceJar(type: Jar) {
   from sourceSets.main.allJava
-  classifier 'sources'
+  archiveClassifier.set('sources')
 }
 
 publishing {
