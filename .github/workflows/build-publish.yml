@@ -7,6 +7,9 @@ on:
     pull_request:
     workflow_dispatch:
 
+env:
+    MAJOR_VERSION: 5
+
 jobs:
     calculate-version:
         name: Calculate Version
