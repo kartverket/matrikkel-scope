@@ -1,7 +1,7 @@
 plugins {
-  id 'java-library'
-  id 'idea'
-  id 'maven-publish'
+    id 'java-library'
+    id 'idea'
+    id 'maven-publish'
 }
 
 group = 'org.scopemvc'
@@ -9,76 +9,86 @@ version = projectVersion + System.getProperty('suffix', '-SNAPSHOT')
 
 
 java {
-  sourceCompatibility = JavaVersion.VERSION_1_8
-  targetCompatibility = JavaVersion.VERSION_1_8
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 sourceSets {
-  main {
-    java.srcDirs = ['src']
-    resources {
-      srcDirs = ['src']
-      exclude '**/*.java'
+    main {
+        java.srcDirs = ['src']
+        resources {
+            srcDirs = ['src']
+            exclude '**/*.java'
+        }
     }
-  }
 
-  test {
-    java.srcDirs = ['src.test']
-    resources {
-      srcDirs = ['src.test']
-      exclude '**/*.java'
+    test {
+        java.srcDirs = ['src.test']
+        resources {
+            srcDirs = ['src.test']
+            exclude '**/*.java'
+        }
     }
-  }
 }
 
 repositories {
-  mavenCentral()
+    mavenCentral()
 }
 
 dependencies {
-  implementation 'commons-logging:commons-logging:1.0.4'
-  compileOnly 'jakarta.servlet:jakarta.servlet-api:5.0.0' // provided
-  compileOnly 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.0.0' // provided
+    implementation 'commons-logging:commons-logging:1.0.4'
+    compileOnly 'jakarta.servlet:jakarta.servlet-api:5.0.0' // provided
+    compileOnly 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.0.0' // provided
 
-  testImplementation 'junit:junit:3.8.2'
-  testImplementation 'org.assertj:assertj-core:3.16.1'
+    testImplementation 'junit:junit:3.8.2'
+    testImplementation 'org.assertj:assertj-core:3.16.1'
 //  testImplementation files('lib/jfcunit.jar')
-  testImplementation 'net.sf.jfcunit:jfcunit:2.08'
-  testImplementation 'jakarta.servlet:jakarta.servlet-api:5.0.0'
+    testImplementation 'net.sf.jfcunit:jfcunit:2.08'
+    testImplementation 'jakarta.servlet:jakarta.servlet-api:5.0.0'
 }
 
 
 test {
-  useJUnit()
+    useJUnit()
 }
 
 tasks.withType(JavaCompile).configureEach {
-  options.encoding = 'UTF-8'
+    options.encoding = 'UTF-8'
 }
 
 task sourceJar(type: Jar) {
-  from sourceSets.main.allJava
-  archiveClassifier.set('sources')
+    from sourceSets.main.allJava
+    archiveClassifier.set('sources')
 }
 
 publishing {
-  publications {
-    mavenJava(MavenPublication) {
-      from components.java
-      artifact sourceJar
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            artifact sourceJar
+        }
     }
-  }
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/kartverket/matrikkel-scope"
+            credentials {
+                username = System.getenv("GITHUB_ACTOR")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
 }
 
 
 manifest {
     attributes([
-            'Specification-Title'   : project.name,
-            'Specification-Vendor'  : 'Statens kartverk',
-            'Specification-Version' : (gradle.startParameter.projectProperties.get('projectVersion') ?: projectVersion).replace('-SNAPSHOT', ''),
+        'Specification-Title'   : project.name,
+        'Specification-Vendor'  : 'Statens kartverk',
+        'Specification-Version' : (gradle.startParameter.projectProperties.get('projectVersion') ?: projectVersion).replace('-SNAPSHOT', ''),
 
-            'Implementation-Title'  : "${project.name} bygget for ${(version == null || version.contains('-SNAPSHOT') || version.contains('-build')) ? 'TEST' : 'Produksjon'}",
-            'Implementation-Vendor' : 'Statens kartverk',
-            'Implementation-Version': project.version,
+        'Implementation-Title'  : "${project.name} bygget for ${(version == null || version.contains('-SNAPSHOT') || version.contains('-build')) ? 'TEST' : 'Produksjon'}",
+        'Implementation-Vendor' : 'Statens kartverk',
+        'Implementation-Version': project.version,
     ])
 }
