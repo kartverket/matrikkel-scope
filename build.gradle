@@ -36,11 +36,11 @@ repositories {
 }
 
 dependencies {
-    implementation 'commons-logging:commons-logging:1.0.4'
+    implementation 'commons-logging:commons-logging:1.3.6'
     compileOnly 'jakarta.servlet:jakarta.servlet-api:5.0.0' // provided
     compileOnly 'jakarta.servlet.jsp:jakarta.servlet.jsp-api:3.0.0' // provided
 
-    testImplementation 'junit:junit:3.8.2'
+    testImplementation 'junit:junit:4.13.2'
     testImplementation 'org.assertj:assertj-core:3.27.7'
 //  testImplementation files('lib/jfcunit.jar')
     testImplementation 'net.sf.jfcunit:jfcunit:2.08'
