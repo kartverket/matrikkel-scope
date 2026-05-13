@@ -13,3 +13,7 @@ updates:
     directory: "/"
     schedule:
         interval: "daily"
+    ignore:
+        # Disse må samsvare med matrikkelen, så vi ønsker ikke masse dependabot updates her
+        - dependency-name: "jakarta.*"
+          update-types: [ "version-update:semver-major", "version-update:semver-minor" ]
