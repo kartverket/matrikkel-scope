@@ -102,7 +102,7 @@ public final class SuiteScope extends TestCase {
      * @param args The command line arguments
      */
     public static void main(String[] args) {
-        junit.swingui.TestRunner.run(SuiteScope.class);
+        junit.textui.TestRunner.run(SuiteScope.class);
     }
 
 

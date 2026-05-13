@@ -75,7 +75,7 @@ public class TestScopeServlet extends TestCase {
      * @param args The command line arguments
      */
     public static void main(String[] args) {
-        junit.swingui.TestRunner.run(TestScopeServlet.class);
+        junit.textui.TestRunner.run(TestScopeServlet.class);
     }
 
 
