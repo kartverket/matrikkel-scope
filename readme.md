@@ -1,9 +1,11 @@
-# Scope
+# Matrikkel Scope
 
-### Intro
-Scope er et MVC rammeverk som ligger på SourceForge; http://scope.sourceforge.net/
+Dette repositoryet inneholder en vedlikeholdt fork av Scope, et MVC-rammeverk
+som opprinnelig ble publisert på SourceForge:
+http://scope.sourceforge.net/
 
-Lisensen må inkluderes ved bruk og [finnes her](./licence.txt).
+Original lisens for Scope er bevart og finnes i [LICENSE](./LICENSE).
+Ved redistribusjon av kildekode og binære distribusjoner må lisensen følge med.
 
 ## Oppsett av IntelliJ
  * Last inn som gradle prosjekt
